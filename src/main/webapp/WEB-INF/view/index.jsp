@@ -8,7 +8,7 @@
 <title>Thejoun project</title>
 </head>
 <body>
-    <%@ include file="/WEB-INF/include/header.jsp" %>
+    <%@ include file="/WEB-INF/include/header.jsp" %> 
     <!-- MENU -->
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
@@ -26,7 +26,7 @@
                     <li class="nav-item">
                         <a href="#about" class="nav-link"><span data-hover="소개">소개</span></a>
 						<ul class="depth2">
-                        <li><a href="" class="nav-link">더조은 소개</a></li>
+                        <li><a href="/thejoun/company/index.do" class="nav-link">더조은 소개</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

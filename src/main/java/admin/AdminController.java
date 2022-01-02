@@ -14,7 +14,7 @@ public class AdminController {
 	public String index2() {
 		return "admin/board/index";
 	}
-	
+	 
 	@GetMapping("/admin/board/view.do")
 	public String view() {
 		return "admin/board/view";

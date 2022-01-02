@@ -14,6 +14,15 @@ public class MainController {
 	public String index2() {
 		return "index2";
 	}
+	
+	@GetMapping("/company/index.do")
+	public String companyIndex() {
+		return "company/index";
+	}
+	@GetMapping("/company/map.do")
+	public String companyMap() {
+		return "company/map";
+	}
 
 
 }
