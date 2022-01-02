@@ -10,5 +10,10 @@ public class MainController {
 	public String index() {
 		return "index";
 	}
+	@GetMapping("/index2.do")
+	public String index2() {
+		return "index2";
+	}
+
 
 }
