@@ -15,8 +15,5 @@ public class CommonVo {
 	public CommonVo() {  //초기값 1페이지 
 		page = 1;
 	}
-	
-//	public String getSearchWord() {
-//		return this.searchWord.toUpperCase();
-//	}
+
 }

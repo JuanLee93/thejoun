@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freeboard">
+
+	<sql id="boardWhere">
+		<where>
+			<if test="searchType == ''">
+				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%')
+			</if>
+			<if test="searchType != null and searchType !=''">
+				${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="userno > 0">
+				AND userno = ${userno}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="count" resultType="int" parameterType="freeboard.FreeBoardVo">
+		SELECT COUNT(*) FROM free_board
+		<include refid="boardWhere"/>
+	</select>
+	
+	<select id="selectList" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo">
+		SELECT *, 
+			(SELECT name FROM user WHERE userno=free_board.userno) as name, 
+			(SELECT count(*) FROM comment WHERE board_no= free_board.board_no AND tablename='free_board') as c_count
+			FROM free_board
+		<include refid="boardWhere"/>
+			ORDER BY regdate DESC
+			LIMIT ${startIdx}, 10
+	</select>
+
+	<insert id="insert" parameterType="freeboard.FreeBoardVo">
+		INSERT INTO free_board (
+			userno, title, content, regdate, readcount, filename_org, filename_real
+		) values (
+			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real}
+		)
+	</insert>
+	
+	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
+	<select id="selectOne" parameterType="int" resultType="freeboard.FreeBoardVo">
+		SELECT * FROM free_board WHERE board_no = #{xxx}
+	</select>
+
+	<update id="updateReadcount" parameterType="int">
+		UPDATE free_board SET readcount = readcount+1 WHERE board_no = #{board_no}
+	</update>
+	
+	<update id="update" parameterType="freeboard.FreeBoardVo">
+		UPDATE free_board SET
+			title=#{title}
+			, content=#{content}
+			<if test="filename_org != null">
+			, filename_org=#{filename_org}
+			, filename_real=#{filename_real}
+			</if>
+		WHERE board_no = #{board_no}
+	</update>
+	 
+	<delete id="delete" parameterType="int">
+		DELETE FROM free_board WHERE board_no = #{board_no}
+	</delete>
+</mapper>
