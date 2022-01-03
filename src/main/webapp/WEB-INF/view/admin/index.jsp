@@ -56,7 +56,7 @@ function CookieVal(cookieName) {
 <body onload="userid_chk();">
 <div id="login">
 	<div class="title">
-		<h1>Thejoun <span>관리자모드</span></h1>
+		<h1>THEJOUN(더조은) <span>관리자모드</span></h1>
 		<p>관리자 로그인 후 이용가능합니다.</p>
 	</div>
 	<div class="login"> 
@@ -83,7 +83,7 @@ function CookieVal(cookieName) {
 					</dl>
 				</div>
 				<!-- //infoBox -->
-				<input type="image" src="<%=request.getContextPath()%>/img/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" />
+				<input type="image" src="<%=request.getContextPath()%>/images/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" />
 			</div>
 			<!-- //bgBox -->
 			<div class="joinList">
@@ -97,7 +97,7 @@ function CookieVal(cookieName) {
 	</form>
 	</div>
 	<div class="footer">
-		Copyrights (c) 2020 <a href="#" target="_blank">SAMPLE</a>. All Rights Reserved.  
+		Copyrights (c) 2021 <a href="#" target="_blank">THEJOUN(더조은)</a>. All Rights Reserved.  
 	</div>
 </div>
 </body>

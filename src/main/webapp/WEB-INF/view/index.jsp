@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/thejoun/js/common.js"></script>
-<title>Thejoun project</title>
+<title>THEJOUN(더조은)</title>
 </head>
 <body>
     <%@ include file="/WEB-INF/view/include/header.jsp" %> 
