@@ -20,6 +20,11 @@
 
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="/thejoun/css/tooplate-style.css">
+    <style>
+    	.depth2 {
+    		position:absolute;	
+    	}
+    </style>
     
   </head>
       <nav class="navbar navbar-expand-sm navbar-light">

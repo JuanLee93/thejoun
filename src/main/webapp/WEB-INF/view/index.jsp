@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="/thejoun/js/common.js"></script>
 <title>THEJOUN(더조은)</title>
 </head>
 <body>
@@ -22,8 +21,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
+                <ul class="navbar-nav mx-auto depth1">
+                    <li class="nav-item ">
                         <a href="#about" class="nav-link"><span data-hover="소개">소개</span></a>
 						<ul class="depth2">
                         <li><a href="/thejoun/company/index.do" class="nav-link">더조은 소개</a></li>
@@ -308,7 +307,7 @@
     <script src="/thejoun/js/owl.carousel.min.js"></script>
     <script src="/thejoun/js/smoothscroll.js"></script>
     <script src="/thejoun/js/custom.js"></script>
-
+	<script src="/thejoun/js/common.js"></script>
   
 </body>
 </html>
