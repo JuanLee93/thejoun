@@ -8,7 +8,7 @@
 <title>Thejoun project</title>
 </head>
 <body>
-    <%@ include file="/WEB-INF/include/header.jsp" %> 
+    <%@ include file="/WEB-INF/view/include/header.jsp" %> 
     <!-- MENU -->
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
@@ -298,7 +298,7 @@
     </section>
 
     <!-- FOOTER -->
-    <%@ include file="/WEB-INF/include/footer.jsp" %>
+    <%@ include file="/WEB-INF/view/include/footer.jsp" %>
 
     <script src="/thejoun/js/jquery-3.3.1.min.js"></script>
     <script src="/thejoun/js/popper.min.js"></script>
