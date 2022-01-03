@@ -6,24 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<link rel="stylesheet" href="/project/css/reset.css"/><!-- reset을 제일 먼저 하는게 좋다. -->
-<link rel="stylesheet" href="/project/css/common.css"/>
-<link rel="stylesheet" href="/project/css/contents.css"/>
+<title>자유게시판</title>
+<link rel="stylesheet" href="/thejoun/css/reset.css"/>
+<link rel="stylesheet" href="/thejoun/css/contents.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-<script src="/project/js/common.js"></script><!-- 다른 페이지를 만들 때는 메인화면에서 쓰는 swiper가 없으므로, 분리해서 필요한 것만 사용한다. -->
+<script src="/thejoun/js/common.js"></script>
 <script>
 	function del() {
 		if (confirm("삭제하시겠습니까?")) {
-			//location.href="delete.do?boardno=${data.boardno}";// ajax 아닌 경우
-			
-			// 비동기 ajax 처리
 			$.ajax({
 				url : 'deleteAjax.do',
-				data : {boardno : ${data.boardno}},
+				data : {board_no : ${data.board_no}},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
@@ -39,15 +33,15 @@
 	function goSave() {
 		if (confirm("댓글을 등록하시겠습니까?")) {
 			$.ajax({
-				url : '/project/comment/insert.do',
+				url : '/thejoun/comment/insert.do',
 				type : 'post',
 				data : $("#frm").serialize(),
 				success : function(res) {
 					if (res.trim() == '1') {
-						alert('댓글이 등록되었습니다.');// 여기까지만 하면, 댓글 목록이 자동적으로 업데이트되지 않는다.
-						commentList('board', ${data.boardno});
+						alert('댓글이 등록되었습니다.');
+						commentList('free_board', ${data.board_no});
 						$("#content").val("");
-					} else {// 1이 아닌 경우
+					} else {
 						alert('댓글 등록 오류');
 					}
 				}
@@ -55,28 +49,28 @@
 		}
 	}
 	
-	function commentList(tablename, boardno) {// 여러 곳에서 쓰일 때는 매개변수로 받아서 처리
+	function commentList(tablename, board_no) {
 		$.ajax({
-			url : '/project/comment/list.do',
-			data : {tablename : tablename, boardno : boardno},// 매개변수를 써줌 - 속성명 : 속성값
+			url : '/thejoun/comment/list.do',
+			data : {tablename : tablename, board_no : board_no},
 			success : function(res) {
 				$("#commentArea").html(res);
 			}
 		});
 	}
-	$(function() {// 클릭한 view page에 해당하는 boardno를 넣어줘야 하므로
-		commentList('board', ${data.boardno});
+	$(function() {
+		commentList('free_board', ${data.board_no});
 	});
 	
 	function goDel(c_no) {
-		if (confirm('댓글을 삭제하시겠습니까?')) {// 확인을 누르면 아래와 같이 실행됨
+		if (confirm('댓글을 삭제하시겠습니까?')) {
 			$.ajax({
-				url : "/project/comment/delete.do",
-				data : {c_no : c_no},// 앞에는 이름, 뒤에는 매개변수
+				url : "/thejoun/comment/delete.do",
+				data : {comment_no : comment_no},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
-						commentList('board', ${data.boardno});
+						commentList('free_board', ${data.board_no});
 					} else {
 						alert('삭제오류');
 					}
@@ -91,7 +85,7 @@
 		<%@ include file="/WEB-INF/view/include/header.jsp" %>
 		<div class="sub">
             <div class="size">
-                <h3 class="sub_title">게시판</h3>
+                <h3 class="sub_title">자유게시판</h3>
                 <div class="bbs">
                     <div class="view">
                         <div class="title">
@@ -114,15 +108,14 @@
 	                            <a href="edit.do?boardno=${data.boardno }" class="btn">수정</a>
 	                            <a href="javascript:del();" class="btn">삭제</a>
                             </div>
-                            <%-- a태그는 인라인 태그 --%>
                         </div>
                     </div>
                     <div>
                     <c:if test="${!empty userInfo }"><%-- 로그인하지 않은 상태에서는 댓글작성 불가 --%>
                     <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
-                    	<input type="hidden" name="tablename" value="board">
-                    	<input type="hidden" name="boardno" value="${data.boardno }">
-                    	<input type="hidden" name="userno" value="${userInfo.userno }"><%-- 주의!!! ${data.userno}가 들어가면 해당 글을 쓴 사람의 PK가 들어감! 로그인한 사람의 userno가 들어가야 한다. --%>
+                    	<input type="hidden" name="tablename" value="free_board">
+                    	<input type="hidden" name="boardno" value="${data.board_no }">
+                    	<input type="hidden" name="userno" value="${userInfo.userno }">
                         <table class="board_write">
                             <colgroup>
                                 <col width="*" />
@@ -143,7 +136,6 @@
                         </table>
                     </form>
 					</c:if>
-                    <%-- 영역을 만들어서 ajax로 응답받은 결과를 HTML로 넣어준다. --%>
                     <div id="commentArea"></div>
                     
                     </div>

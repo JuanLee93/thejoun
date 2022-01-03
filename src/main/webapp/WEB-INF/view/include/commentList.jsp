@@ -22,8 +22,7 @@
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.content }
                                     <c:if test="${vo.userno == userInfo.userno }">
-                                    <a href="javascript:goDel(${vo.c_no});">[삭제]</a>
-                                    <%-- 자바에서 자바스크립트로 넘겨주는 것은 불가능, 서버에서 먼저 실행되고 나서 클라이언트단에서 실행되도록 --%>
+                                    <a href="javascript:goDel(${vo.comment_no});">[삭제]</a>
                                     </c:if>
                                 </td>
                                 <td class="writer">

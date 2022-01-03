@@ -5,7 +5,7 @@
 	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
-				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%')
+				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR nickname LIKE '%${searchWord}%')
 			</if>
 			<if test="searchType != null and searchType !=''">
 				${searchType} LIKE '%${searchWord}%'
