@@ -8,15 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-      <link rel="stylesheet" href="/project/css/common.css"/>
+    <link rel="stylesheet" href="/project/css/common.css"/>
     <link rel="stylesheet" href="/project/css/sub.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-  <script src="/thejoun/js/common.js"></script> 
-    
-        <script src="/thejoun/js/jquery-3.3.1.min.js"></script>
+ 	<script src="/thejoun/js/common.js"></script> 
+    <script src="/thejoun/js/jquery-3.3.1.min.js"></script>
     <script src="/thejoun/js/popper.min.js"></script>
     <script src="/thejoun/js/bootstrap.min.js"></script>
     <script src="/thejoun/js/Headroom.js"></script>
@@ -24,8 +23,6 @@
     <script src="/thejoun/js/owl.carousel.min.js"></script>
     <script src="/thejoun/js/smoothscroll.js"></script>
     <script src="/thejoun/js/custom.js"></script>
-    
-    
     
 </head>
 <body>
