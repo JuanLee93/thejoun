@@ -9,4 +9,24 @@ $(function(){
 		//$(this).find(".depth2").hide();
 	});
 });
- 
+
+function setEditor(holder){
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: holder,
+		sSkinURI: "/thejoun/smarteditor/SmartEditor2Skin.html",	
+		htParams : {
+			bUseToolbar : true,				
+			bUseVerticalResizer : true,		
+			bUseModeChanger : true,			
+			fOnBeforeUnload : function(){
+			}
+		}, 
+		fOnAppLoad : function(){
+		},
+		fCreator: "createSEditor2"
+	});
+	
+	return oEditors;
+}

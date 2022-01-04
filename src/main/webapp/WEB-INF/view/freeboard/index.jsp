@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>자유게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
+<link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -74,13 +75,10 @@
                         </c:if>
                         </tbody>
                     </table>
-                    <div class="btnSet"  style="text-align:right;">
-                    <c:if test="${!empty userInfo }">
-                        <a class="btn" href="write.do">글작성 </a>
-                    </c:if>
-                    <c:if test="${empty userInfo }">
-                        <a class="btn" href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">글작성 </a>
-                    </c:if>
+                    <div class="btn1Set"  style="text-align:right;">
+
+                        <a class="btn1" href="write.do">글작성 </a>
+  
                     </div>
                     ${pageArea }
 
