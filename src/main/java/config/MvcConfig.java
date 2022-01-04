@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration // spring 설정파일
-@ComponentScan(basePackages = {"main,admin,util"}) //chap06 하위 패키지 전부 스캔, 클래스를 뒤지면서 component anotation있나 스캔
+@ComponentScan(basePackages = {"main,admin,util,freeboard,comment,chat"}) //하위 패키지 전부 스캔, 클래스를 뒤지면서 component anotation있나 스캔
 @EnableWebMvc //spring mvc 활성화
 @EnableTransactionManagement // 트랜잭션 기능 활성화
 public class MvcConfig implements WebMvcConfigurer { 
@@ -42,41 +42,41 @@ public class MvcConfig implements WebMvcConfigurer {
 	public BasicDataSource dataSource() {
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/board");
-		ds.setUsername("root");
-		ds.setPassword("root1234");
+		ds.setUrl("jdbc:mysql://localhost:3306/thejoun");
+		ds.setUsername("thejounuser");
+		ds.setPassword("thejoun1234");
 		return ds;
 	}
 	
-//	// SqlSessionFactory
-//	// **Factory or **Builder : 직접생성이 아니라 팩토리가 생성 
-//	
-//	@Bean
-//	public SqlSessionFactory sqlSessionFactory() throws Exception {
-//		SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
-//		ssfb.setDataSource(dataSource()); //주입
-//		
-//		// sql이 들어있는 xml경로 설정
-//		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//		ssfb.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml")); // 클래스패스의 mapper폴더 밑의 모든 xml
-//		return ssfb.getObject();
-//	}
-//	
-//	//SqlSessionTemplate
-//	@Bean
-//	public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-//		return new SqlSessionTemplate(sqlSessionFactory());
-//	}
-//	
-//	//파일업로드
-//	@Bean
-//	public CommonsMultipartResolver multipartResolver () {
-//		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
-//		cmr.setDefaultEncoding("UTF-8");
-//		cmr.setMaxUploadSize(1024*10*10); // 최대업로드 사이즈(바이트단위)
-//		return cmr;
-//	}
-//	
+	// SqlSessionFactory
+	// **Factory or **Builder : 직접생성이 아니라 팩토리가 생성 
+	
+	@Bean
+	public SqlSessionFactory sqlSessionFactory() throws Exception {
+		SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
+		ssfb.setDataSource(dataSource()); //주입
+		
+		// sql이 들어있는 xml경로 설정
+		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		ssfb.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml")); // 클래스패스의 mapper폴더 밑의 모든 xml
+		return ssfb.getObject();
+	}
+	
+	//SqlSessionTemplate
+	@Bean
+	public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+		return new SqlSessionTemplate(sqlSessionFactory());
+	}
+	
+	//파일업로드
+	@Bean
+	public CommonsMultipartResolver multipartResolver () {
+		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
+		cmr.setDefaultEncoding("UTF-8");
+		cmr.setMaxUploadSize(1024*10*10); // 최대업로드 사이즈(바이트단위)
+		return cmr;
+	}
+	
 //	//인터셉터
 //	@Bean
 //	public LoginInterceptor loginInterceptor() {
