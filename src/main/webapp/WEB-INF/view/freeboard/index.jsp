@@ -83,8 +83,7 @@
                     </c:if>
                     </div>
                     ${pageArea }
-                    ${CommonUtil.getPageArea("index.do", freeBoardVo.page, totPage, 10)}
-                    
+
                     <!-- 페이지처리 -->
                     <div class="bbsSearch">
                         <form method="get" name="searchForm" id="searchForm" action="">

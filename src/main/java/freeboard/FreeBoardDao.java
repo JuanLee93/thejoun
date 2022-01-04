@@ -30,12 +30,12 @@ public class FreeBoardDao {
 		return r;
 	}
 	
-	public FreeBoardVo selectOne(int boardno) {
-		return sqlSessionTemplate.selectOne("freeboard.selectOne", boardno);
+	public FreeBoardVo selectOne(int board_no) {
+		return sqlSessionTemplate.selectOne("freeboard.selectOne", board_no);
 	}
 	
-	public int updateReadcount(int boardno) {
-		return sqlSessionTemplate.update("freeboard.updateReadcount", boardno);
+	public int updateReadcount(int board_no) {
+		return sqlSessionTemplate.update("freeboard.updateReadcount", board_no);
 	}
 	
 	public int update(FreeBoardVo vo) {

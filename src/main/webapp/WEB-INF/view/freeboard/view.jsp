@@ -98,14 +98,14 @@
                         <dl class="file">
                             <dt>첨부파일 </dt>
                             <dd>
-                            <a href="/project/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
+                            <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
                             target="_blank">${data.filename_org }</a></dd>
                         </dl>
                                     
                         <div class="btnSet clear">
                             <div class="fl_l">
                             	<a href="index.do" class="btn">목록으로</a>
-	                            <a href="edit.do?boardno=${data.boardno }" class="btn">수정</a>
+	                            <a href="edit.do?board_no=${data.board_no }" class="btn">수정</a>
 	                            <a href="javascript:del();" class="btn">삭제</a>
                             </div>
                         </div>
