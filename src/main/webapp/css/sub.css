@@ -1,35 +1,50 @@
 .sub {
+	
 	width : 100%;
 	margin : 0 auto;/*가운데 정렬*/
 	position : relative;
+    padding-bottom: 0px;
+
+}
+
+.sub > .load p{
+	font-size : 50px;
+	text-align : center;
+	line-height : 250px;
+	color : #493718;
+	width : 100%;
+	position : relative;
 }
 .sub > .sub_visual {
-	background-image : url("/project/img/sub_visual.jpg");
+
 	position : relative;
 	background-size : cover;/*옵션을 cover로 주면 이미지가 싹 덮음*/
+	background-color : #ffc200;
 }
 .sub > .sub_visual > .slogan {
-	font-size : 40px;
+	font-size : 50px;
 	text-align : center;
-	line-height : 300px;
+	line-height : 250px;
 	color : #fff;
 	width : 100%;
 }
 .sub > .size {
 	width : 1200px;
-	margin : 30px auto;
+	margin : 20px auto;
 }
 .sub > .size > .box {
-	padding : 0 20px;
-	background-image : url('/project/img/company.png');
+	padding : 80px;
+	background-image : url('/thejoun/images/project/logo2.PNG');
 	background-repeat : no-repeat;
-	padding-left : 450px;/*테두리 <-> 안쪽 내용물까지의 여백*/
+	padding-left : 750px;/*테두리 <-> 안쪽 내용물까지의 여백*/
+	border-bottom: 1px solid #1d1d1d;
 }
 .sub > .size > .box p {
 	font-size : 20px;
 	padding-bottom : 15px;/*아래쪽*/
+	color : #484848;
 }
 .sub > .size > .box .title {
 	font-size : 25px;
-	color : #4a4fe8;
+	color : #49150c;
 }
