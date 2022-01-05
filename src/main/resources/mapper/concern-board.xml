@@ -24,7 +24,7 @@
 	<select id="selectList" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo">
 		SELECT *, 
 			(SELECT name FROM user WHERE userno=concern_board.userno) as name, 
-			(SELECT count(*) FROM comment WHERE concern_board_no= concern_board.concern_board_no AND tablename='concern_board') as c_count
+			(SELECT count(*) FROM comment WHERE concern_board_no= concern_board.concern_board_no AND tablename= 2') as c_count
 			FROM concern_board
 		<include refid="boardWhere"/>
 			ORDER BY regdate DESC

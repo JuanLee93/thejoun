@@ -94,7 +94,7 @@ public class ConcernBoardController {
 		model.addAttribute("data", concernBoardService.view(board_no));
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
-		cv.setTablename("concern_board");
+		cv.setTablename(2);
 		model.addAttribute("cList", cService.selectList(cv));
 		return "concernboard/view";
 	}
