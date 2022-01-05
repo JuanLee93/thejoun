@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,16 @@
     </style>
     
   </head>
+	<div class="login" style="text-align: right;">
+		<c:if test="${empty userInfo }">
+			<a href="/thejoun/user/login.do">로그인</a>
+			<a href="/thejoun/user/join.do">회원가입</a>
+		</c:if>
+		<c:if test="${!empty userInfo }">
+			<a href="/thejoun/user/logout.do">로그아웃</a>
+			<a href="/thejoun/user/join.do">마이페이지</a>
+		</c:if>
+	</div>
       <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
             <a class="navbar-brand" href="/thejoun/index.do"><i class='uil uil-user'></i> THEJOUN(더조은)</a>
@@ -69,7 +80,7 @@
                         </ul>
                     </li>
                 </ul>
-
+                
                 <ul class="navbar-nav ml-lg-auto">
                     <div class="ml-lg-4">
                       <div class="color-mode d-lg-flex justify-content-center align-items-center">
