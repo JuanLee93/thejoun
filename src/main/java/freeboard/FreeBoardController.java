@@ -94,7 +94,7 @@ public class FreeBoardController {
 		model.addAttribute("data", freeBoardService.view(board_no));
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
-		cv.setTablename("free_board");
+		cv.setTablename(1);
 		model.addAttribute("cList", cService.selectList(cv));
 		return "freeboard/view";
 	}
