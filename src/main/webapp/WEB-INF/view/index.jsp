@@ -32,7 +32,7 @@
                         <a href="" class="nav-link"><span data-hover="커뮤니티">커뮤니티</span></a>
                         <ul class="depth2">
                         <li><a href="/thejoun/freeboard/index.do" class="nav-link">자유 게시판</a></li>
-                        <li><a href="" class="nav-link">고민 게시판</a></li>
+                        <li><a href="/thejoun/concernboard/index.do" class="nav-link">고민 게시판</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

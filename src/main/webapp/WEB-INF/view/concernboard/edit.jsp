@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고민게시판</title>
+<title>자유게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
 <link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -43,7 +43,7 @@
 		<%@ include file="/WEB-INF/view/include/header.jsp" %>
 		<div class="sub">
             <div class="size">
-                <h3 class="sub_title">고민게시판</h3>
+                <h3 class="sub_title">자유게시판</h3>
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >

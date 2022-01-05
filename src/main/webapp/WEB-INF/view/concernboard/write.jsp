@@ -12,30 +12,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
-<script src="https://malsup.github.io/jquery.form.js"></script>
+<script type="text/javascript" src="/thejoun/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
+	var oEditors;
+	$(function(){
+		oEditors = setEditor("content");
+	});
+
 	function goSave() {
 		if ($("#title").val=='') {
 			alert('제목을 입력하세요');
 			$("#title").focus();
 			return;
-		
 		}
-
-		var data = $("#frm").serialize();
+		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []);
 		$("#frm").submit();
 	}
-		$(function() {
-			$("#frm").ajaxForm({
-				success : function(res) {
-					alert('정상적으로 수정되었습니다.');
-					location.href='view.do?board_no=${data.board_no}';
-				},
-				error : function(error) {
-					console.log(error);
-				}
-			});
-		});
 </script>
 </head>
 <body>
@@ -46,26 +38,24 @@
                 <h3 class="sub_title">고민게시판</h3>
     
                 <div class="bbs">
-                <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >
-                <input type="hidden" name="boardno" value="${data.board_no }">
+                <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
                     <table class="board_write">
                         <tbody>
                         <tr>
                             <th>제목</th>
                             <td>
-                                <input type="text" name="title" id="title" class="wid100" value="${data.title }"/>
+                                <input type="text" name="title" id="title" class="wid100" value=""/>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content" id="content">${data.content }</textarea>
+                                <textarea name="content" id="content" style="width:100%;"></textarea>
                             </td>
                         </tr>
                         <tr>
                             <th>첨부파일</th>
                             <td>
-                            	<input type="checkbox" name="delCheck" value="1">기존파일삭제(${data.filename_org })<br>
                                 <input type="file" name="file">
                             </td>
                         </tr>

@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration // spring 설정파일
-@ComponentScan(basePackages = {"main,admin,util,freeboard,comment,chat"}) //하위 패키지 전부 스캔, 클래스를 뒤지면서 component anotation있나 스캔
+@ComponentScan(basePackages = {"main,admin,util,freeboard,concernboard,comment,chat"}) //하위 패키지 전부 스캔, 클래스를 뒤지면서 component anotation있나 스캔
 @EnableWebMvc //spring mvc 활성화
 @EnableTransactionManagement // 트랜잭션 기능 활성화
 public class MvcConfig implements WebMvcConfigurer { 
