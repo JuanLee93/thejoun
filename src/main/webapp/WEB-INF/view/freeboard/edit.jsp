@@ -13,7 +13,13 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="https://malsup.github.io/jquery.form.js"></script>
+<script type="text/javascript" src="/thejoun/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
+	var oEditors;
+	$(function(){
+		oEditors = setEditor("content");
+	});
+	
 	function goSave() {
 		if ($("#title").val=='') {
 			alert('제목을 입력하세요');
@@ -47,7 +53,7 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >
-                <input type="hidden" name="boardno" value="${data.board_no }">
+                <input type="hidden" name="board_no" value="${data.board_no }">
                     <table class="board_write">
                         <tbody>
                         <tr>

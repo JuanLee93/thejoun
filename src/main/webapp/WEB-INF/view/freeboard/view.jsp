@@ -40,7 +40,7 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('댓글이 등록되었습니다.');
-						commentList('free_board', ${data.board_no});
+						commentList(1, ${data.board_no});
 						$("#content").val("");
 					} else {
 						alert('댓글 등록 오류');
@@ -60,10 +60,27 @@
 		});
 	}
 	$(function() {
-		commentList('free_board', ${data.board_no});
+		commentList(1, ${data.board_no});
 	});
 	
-	function goDel(c_no) {
+	function goEdit(comment_no) {
+		if (confirm('댓글을 수정하시겠습니까?')) {
+			$.ajax({
+				url : "/thejoun/comment/edit.do",
+				data : {comment_no : comment_no},
+				success : function(res) {
+					if (res.trim() == '1') {
+						alert('정상적으로 수정되었습니다.');
+						commentList(1, ${data.board_no});
+					} else {
+						alert('수정오류');
+					}
+				}
+			});
+		}
+	}
+	
+	function goDel(comment_no) {
 		if (confirm('댓글을 삭제하시겠습니까?')) {
 			$.ajax({
 				url : "/thejoun/comment/delete.do",
@@ -71,7 +88,7 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
-						commentList('free_board', ${data.board_no});
+						commentList(1, ${data.board_no});
 					} else {
 						alert('삭제오류');
 					}
@@ -91,8 +108,8 @@
                     <div class="view">
                         <div class="title">
                             <dl>
-                                <dt>${data.title }</dt>
-                                <dd class="date">작성일 : ${data.regdate } </dd>
+                                <dt>[${data.title }] [${data.nickname }]</dt>
+                                <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
                         <div class="cont"><p>${data.content }</p> </div>
@@ -112,10 +129,10 @@
                         </div>
                     </div>
                     <div>
-                    <c:if test="${!empty userInfo }"><%-- 로그인하지 않은 상태에서는 댓글작성 불가 --%>
+                    <%-- <c:if test="${!empty userInfo }"> 로그인하지 않은 상태에서는 댓글작성 불가 --%>
                     <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
-                    	<input type="hidden" name="tablename" value="free_board">
-                    	<input type="hidden" name="boardno" value="${data.board_no }">
+                    	<input type="hidden" name="tablename" value=1>
+                    	<input type="hidden" name="board_no" value="${data.board_no }">
                     	<input type="hidden" name="userno" value="${userInfo.userno }">
                         <table class="board_write">
                             <colgroup>
@@ -129,14 +146,14 @@
                                 </td>
                                 <td>
                                     <div class="btn1Set"  style="text-align:right;">
-                                        <a class="btn1" href="javascript:goSave();">저장 </a>
+                                        <a class="btn1" href="javascript:goSave();">댓글달기 </a>
                                     </div>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </form>
-					</c:if>
+					<%-- </c:if> --%>
                     <div id="commentArea"></div>
                     
                     </div>

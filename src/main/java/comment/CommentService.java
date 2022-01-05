@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import freeboard.FreeBoardVo;
+
 @Service
 public class CommentService {
 	
@@ -17,6 +19,10 @@ public class CommentService {
 	
 	public int insert(CommentVo vo) {// 등록
 		return dao.insert(vo);
+	}
+	
+	public int update(CommentVo vo) {// 수정
+		return dao.update(vo);
 	}
 	
 	public int delete(int comment_no) {// 삭제
