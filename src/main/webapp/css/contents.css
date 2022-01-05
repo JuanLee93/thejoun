@@ -14,6 +14,22 @@
     margin: 0 0 15px 0;
 }
 
+.category_board > ul > li {
+    list-style: none;
+    border:1px solid #000000;
+    background-color: #fff;
+    color:#000000;
+    text-align: center;
+    float:left;
+    width:20%;
+    height:40px;
+    line-height: 40px;
+}
+
+.category_board > ul > li > a:hover {
+    background-color: #999;
+    color:#fff;
+}
 
 /* 게시판 */
 .board_write {border-top:2px solid #221f1f; border-bottom:1px solid #999;}

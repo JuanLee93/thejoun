@@ -19,6 +19,7 @@ public class FreeBoardVo extends CommonVo {
 	private int readcount;
 	private String filename_org;
 	private String filename_real;
+	private String id;
 	private String name;
 	private String nickname;
 	private int c_count;

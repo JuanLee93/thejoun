@@ -21,10 +21,6 @@ public class CommentService {
 		return dao.insert(vo);
 	}
 	
-	public int update(CommentVo vo) {// 수정
-		return dao.update(vo);
-	}
-	
 	public int delete(int comment_no) {// 삭제
 		return dao.delete(comment_no);
 	}

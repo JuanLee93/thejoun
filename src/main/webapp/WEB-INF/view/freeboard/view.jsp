@@ -63,23 +63,6 @@
 		commentList(1, ${data.board_no});
 	});
 	
-	function goEdit(comment_no) {
-		if (confirm('댓글을 수정하시겠습니까?')) {
-			$.ajax({
-				url : "/thejoun/comment/edit.do",
-				data : {comment_no : comment_no},
-				success : function(res) {
-					if (res.trim() == '1') {
-						alert('정상적으로 수정되었습니다.');
-						commentList(1, ${data.board_no});
-					} else {
-						alert('수정오류');
-					}
-				}
-			});
-		}
-	}
-	
 	function goDel(comment_no) {
 		if (confirm('댓글을 삭제하시겠습니까?')) {
 			$.ajax({

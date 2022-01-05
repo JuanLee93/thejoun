@@ -22,7 +22,6 @@
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.content }
                                     <%-- <c:if test="${vo.userno == userInfo.userno }">  --%>
-                                    <a href="javascript:goEdit(${vo.comment_no});">[수정]</a>
                                     <a href="javascript:goDel(${vo.comment_no});">[삭제]</a>
                                     <%-- </c:if>  --%>
                                 </td>
