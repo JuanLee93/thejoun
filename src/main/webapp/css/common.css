@@ -64,11 +64,12 @@
     color:#ffffff;
     clear:both;
     padding:20px 5px;
-    background-size : cover;
-    
+    background-size : 200px;
+
 }
 .footer > .size > .info > p {
     line-height: 25px;
+
 
 }
 .sns_area {

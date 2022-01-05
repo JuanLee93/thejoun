@@ -77,7 +77,16 @@
         		</div>
         	</div>
         </div>
-        
+        <div class="btn04">
+	    <form>
+		<div id="btn_group"> 
+			<button id="test_btn1">자유게시판</button> 
+			<button id="test_btn2">고민게시판</button> 
+			<button id="test_btn3">자유갤러리</button> 
+			<button id="test_btn4">동영상갤러리</button> 
+		</div>
+		</form>
+		</div>
             <div class="wrap">
         <div class="sub">
 				<div class="load">
