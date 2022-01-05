@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import freeboard.FreeBoardVo;
+
 @Repository
 public class CommentDao {
 
@@ -21,6 +23,11 @@ public class CommentDao {
 	// 등록
 	public int insert(CommentVo cv) {
 		return sst.insert("comment.insert", cv);
+	}
+	
+	// 수정
+	public int update(CommentVo cv) {
+		return sst.update("comment.update", cv);
 	}
 	
 	// 삭제
