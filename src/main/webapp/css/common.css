@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 * {
+<<<<<<< HEAD
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -167,3 +168,20 @@ a:hover{color:#000;text-decoration:none;}
     float:right;
 }
 #board_data {display:none;}
+=======
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrap {
+    width:100%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+a:link {color:#000;text-decoration: none;}
+a:visited {color:#000;text-decoration: none;}
+a:hover {color:#000;text-decoration: none;}
+>>>>>>> branch 'master' of https://github.com/JuanLee93/thejoun.git

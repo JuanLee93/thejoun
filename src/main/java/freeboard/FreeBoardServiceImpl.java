@@ -29,14 +29,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public FreeBoardVo view(int boardno) {
-		freeBoardDao.updateReadcount(boardno);// 상세페이지 클릭했을 때 조회수가 올라가도록.
-		return freeBoardDao.selectOne(boardno);
+	public FreeBoardVo view(int board_no) {
+		freeBoardDao.updateReadcount(board_no);// 상세페이지 클릭했을 때 조회수가 올라가도록.
+		return freeBoardDao.selectOne(board_no);
 	}
 	
 	@Override
-	public FreeBoardVo edit(int boardno) {
-		return freeBoardDao.selectOne(boardno);
+	public FreeBoardVo edit(int board_no) {
+		return freeBoardDao.selectOne(board_no);
 	}
 	
 	@Override

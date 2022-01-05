@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>자유게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
+<link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -98,15 +99,15 @@
                         <dl class="file">
                             <dt>첨부파일 </dt>
                             <dd>
-                            <a href="/project/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
+                            <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
                             target="_blank">${data.filename_org }</a></dd>
                         </dl>
                                     
-                        <div class="btnSet clear">
-                            <div class="fl_l">
-                            	<a href="index.do" class="btn">목록으로</a>
-	                            <a href="edit.do?boardno=${data.boardno }" class="btn">수정</a>
-	                            <a href="javascript:del();" class="btn">삭제</a>
+                        <div class="btnSet clear" style="text-align:center;">
+                            <div class="fl_l" >
+                            	<a href="index.do" class="btn1">목록으로</a>
+	                            <a href="edit.do?board_no=${data.board_no }" class="btn1">수정</a>
+	                            <a href="javascript:del();" class="btn1">삭제</a>
                             </div>
                         </div>
                     </div>
@@ -127,8 +128,8 @@
                                     <textarea name="content" id="content" style="height:50px;"></textarea>
                                 </td>
                                 <td>
-                                    <div class="btnSet"  style="text-align:right;">
-                                        <a class="btn" href="javascript:goSave();">저장 </a>
+                                    <div class="btn1Set"  style="text-align:right;">
+                                        <a class="btn1" href="javascript:goSave();">저장 </a>
                                     </div>
                                 </td>
                             </tr>

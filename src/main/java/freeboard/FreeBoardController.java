@@ -90,18 +90,18 @@ public class FreeBoardController {
 	}
 	
 	@GetMapping("/freeboard/view.do")
-	public String view(Model model, @RequestParam int boardno) {
-		model.addAttribute("data", freeBoardService.view(boardno));
+	public String view(Model model, @RequestParam int board_no) {
+		model.addAttribute("data", freeBoardService.view(board_no));
 		CommentVo cv = new CommentVo();
-		cv.setBoard_no(boardno);
-		cv.setTablename("board");
+		cv.setBoard_no(board_no);
+		cv.setTablename("free_board");
 		model.addAttribute("cList", cService.selectList(cv));
 		return "freeboard/view";
 	}
 	
 	@GetMapping("/freeboard/edit.do")
-	public String edit(Model model, @RequestParam int boardno) {
-		model.addAttribute("data", freeBoardService.edit(boardno));
+	public String edit(Model model, @RequestParam int board_no) {
+		model.addAttribute("data", freeBoardService.edit(board_no));
 		return "freeboard/edit";
 	}
 	
@@ -132,10 +132,10 @@ public class FreeBoardController {
 		int r = freeBoardService.update(vo);
 		if ( r > 0 ) {
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "view.do?boardno="+vo.getBoard_no());
+			model.addAttribute("url", "view.do?board_no="+vo.getBoard_no());
 		} else {
 			model.addAttribute("msg", "수정 오류가 발생하였습니다.");
-			model.addAttribute("url", "edit.do?boardno="+vo.getBoard_no());
+			model.addAttribute("url", "edit.do?board_no="+vo.getBoard_no());
 		}
 		return "include/return";
 	}
@@ -149,7 +149,7 @@ public class FreeBoardController {
 			
 		} else {
 			model.addAttribute("msg", "삭제 오류가 발생하였습니다.");
-			model.addAttribute("url", "view.do?boardno="+vo.getBoard_no());
+			model.addAttribute("url", "view.do?board_no="+vo.getBoard_no());
 		}
 		return "include/return";
 	}

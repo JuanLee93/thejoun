@@ -42,21 +42,21 @@
 }
 
 /* button */
-.btnSet {position:relative; margin:20px 0; text-align:center; overflow:hidden;}
-.btnSet .right {position:absolute; top:0; right:0;}
-.btnSet .left {position:absolute; top:0; left:0;}
-.btn {font-size:14px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:4px 20px; min-width:64px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;}
-.btnSet .btn:hover{background:#313234; color:#fff !important;  text-decoration:none !important;}
-.btn.point{border:3px solid #579408 !important; color:#579408 !important;}
-.btn.point:hover{background:#579408 !important;}
+.btn1Set {position:relative; margin:20px 0; text-align:center; overflow:hidden;}
+.btn1Set .right {position:absolute; top:0; right:0;}
+.btn1Set .left {position:absolute; top:0; left:0;}
+.btn1 {font-size:14px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:4px 20px; min-width:64px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;}
+.btn1Set .btn1:hover{background:#313234; color:#fff !important;  text-decoration:none !important;}
+.btn1.point{border:3px solid #579408 !important; color:#579408 !important;}
+.btn1.point:hover{background:#579408 !important;}
 .big{font-size:16px !important; padding:10px 40px !important; border:3px solid #1d7ab3; border-radius:5px; background-color:#1d7ab3;}
 
-.btn.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:28px; line-height:28px; padding: 2px 10px;}
-.btn.bgGray:hover{ text-decoration:none !important;}
+.btn1.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:28px; line-height:28px; padding: 2px 10px;}
+.btn1.bgGray:hover{ text-decoration:none !important;}
 
-.btn.bgGreen{background:#87b350 !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:32px;}
-.btn.bgGreen:hover{ text-decoration:none !important;}
-.tdBtn .btn{display:block; margin-bottom:3px;}
+.btn1.bgGreen{background:#87b350 !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:32px;}
+.btn1.bgGreen:hover{ text-decoration:none !important;}
+.tdBtn .btn1{display:block; margin-bottom:3px;}
 
 .member .box{position:relative; margin:30px auto; max-width:500px;}
 .member .box p{text-align:center; font-size:20px;}
@@ -93,7 +93,7 @@
 /* list */
 .bbs .list{border-collapse:collapse; border-spacing:0; box-sizing:border-box;}  /* tr에 shadow_down 클래스 사용하는 경우 border-collapse:separate; 으로 변경*/
 .bbs .list thead{border-top:2px solid #221f1f; border-bottom:1px solid #221f1f;}
-.bbs .list thead th{padding:15px 20px; font-size:13px; height:20px; line-height:14px; color:#333;}
+.bbs .list thead th{text-align:center; padding:15px 20px; font-size:13px; height:20px; line-height:14px; color:#333;}
 .bbs .list td{text-align:center; padding:8px 10px; border-bottom:1px solid #d9d9d9;}
 .bbs .list tbody tr:hover{background:#f6f6f6;} /*마우스오버 배경칼라지정*/
 .bbs .list .notice{background:#f9f9f9; } /*탑공지  배경칼라지정*/
@@ -113,13 +113,13 @@
 /* search */
 .bbsSearch {min-height:32px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; z-index:10; width:500px; margin:20px auto 15px;} 
 .bbsSearch input[type='text'] {height:32px; box-sizing:border-box; padding:5px 30px 5px 5px; border:0; width:100%; line-height:32px; background-color:#fff; border:1px solid #c7c8cc; vertical-align:middle;}
-.bbsSearch input[type='button'] {border:0; height:32px; width:32px; text-indent:-9999em; position:absolute; top:0; right:5px; background:url('/img/ico_search.png') no-repeat center center ; display:inline-block;}
+.bbsSearch input[type='button'] {border:0; height:32px; width:32px; text-indent:-9999em; position:absolute; top:0; right:5px; background:url('/images/admin/btn_search.gif') no-repeat center center ; display:inline-block;}
 .bbsSearch .srchSelect .selectric-dSelect {float:left; width:148px; color:#666;}
 .bbsSearch .searchWord {float:left; position:relative; width:345px; margin-left:5px;}
 
 .bbsSearch {min-height:32px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; z-index:10; max-width:500px; width:100%; margin:20px auto 15px;} 
 .bbsSearch input[type='text'] {height:32px; box-sizing:border-box; padding:5px 30px 5px 5px; border:0; width:100%; line-height:32px; background-color:#fff; border:1px solid #c7c8cc; vertical-align:middle;}
-.bbsSearch input[type='button'] {border:0; height:32px; width:32px; text-indent:-9999em; position:absolute; top:0; right:5px; display:inline-block;}
+.bbsSearch input[type='button'] {border:0; height:32px; width:32px; text-indent:-9999em; position:absolute; top:0; right:5px; background:url('/images/admin/btn_search.gif') no-repeat center center ; display:inline-block;}
 .bbsSearch .srchSelect .selectric-dSelect {float:left; width:148px; color:#666;}
 .bbsSearch .searchWord {float:left; position:relative; width:345px; margin-left:5px;}
 .bbsSearch .srchSelect {float:left; display:block;  }

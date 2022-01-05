@@ -73,7 +73,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	public CommonsMultipartResolver multipartResolver () {
 		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
 		cmr.setDefaultEncoding("UTF-8");
-		cmr.setMaxUploadSize(1024*10*10); // 최대업로드 사이즈(바이트단위)
+		cmr.setMaxUploadSize(1024*1024); // 최대업로드 사이즈
 		return cmr;
 	}
 	

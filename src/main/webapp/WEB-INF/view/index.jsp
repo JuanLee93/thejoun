@@ -19,7 +19,7 @@
                 <span class="navbar-toggler-icon"></span>
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+			
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto depth1">
                     <li class="nav-item ">
