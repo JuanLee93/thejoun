@@ -23,6 +23,7 @@
 	
 	<select id="selectList" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo">
 		SELECT *, 
+			(SELECT id FROM user WHERE userno=free_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=free_board.userno) as name, 
 			(SELECT nickname FROM user WHERE userno=free_board.userno) as nickname, 
 			(SELECT count(*) FROM comment WHERE board_no= free_board.board_no AND tablename=1) as c_count

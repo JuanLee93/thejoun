@@ -31,20 +31,6 @@ public class CommentController {
 		return "include/commentList";
 	}
 	
-	@PostMapping("/comment/edit.do")
-	public String update(Model model, CommentVo vo) {
-
-		int r = CommentService.update(vo);
-		if ( r > 0 ) {
-			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "view.do?board_no="+vo.getBoard_no());
-		} else {
-			model.addAttribute("msg", "수정 오류가 발생하였습니다.");
-			model.addAttribute("url", "edit.do?board_no="+vo.getBoard_no());
-		}
-		return "include/commentEdit";
-	}
-	
 	@GetMapping("/comment/delete.do")
 	public String delete(Model model, CommentVo vo) {
 		model.addAttribute("result", service.delete(vo.getComment_no()));

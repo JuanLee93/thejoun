@@ -28,7 +28,7 @@
 		<div class="sub">
             <div class="size">
                 <h3 class="sub_title">자유게시판</h3>
-    
+
                 <div class="bbs">
                     <table class="list">
                     <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
@@ -65,7 +65,7 @@
                                     ${vo.title } [${vo.c_count }]
                                 </td>
                                 <td class="writer">
-                                    ${vo.name }
+                                    ${vo.nickname }
                                 </td>
                                 <td class="date">${vo.regdate }</td>
                                 <td>${vo.readcount }</td>

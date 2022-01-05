@@ -15,12 +15,6 @@
 			#{board_no}, #{content}, #{like}, NOW(), #{gno}, #{ono}, #{nested}, #{tablename}, #{userno}
 		)
 	</insert>
-	
-	<update id="update" parameterType="comment.CommentVo">
-		UPDATE comment SET
-			content=#{content}
-		WHERE comment_no = #{comment_no}
-	</update>
 
 	<delete id="delete" parameterType="int">
 		DELETE FROM comment WHERE comment_no = #{comment_no}

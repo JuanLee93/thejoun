@@ -25,11 +25,6 @@ public class CommentDao {
 		return sst.insert("comment.insert", cv);
 	}
 	
-	// 수정
-	public int update(CommentVo cv) {
-		return sst.update("comment.update", cv);
-	}
-	
 	// 삭제
 	public int delete(int comment_no) {
 		return sst.delete("comment.delete", comment_no);
