@@ -9,8 +9,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+     <link rel="stylesheet" href="/thejoun/css/reset.css"/>
+    <link rel="stylesheet" href="/thejoun/css/common.css"/>
+    <link rel="stylesheet" href="/thejoun/css/contents.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	<script src="/thejoun/js/common.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<script>
@@ -117,12 +121,12 @@
                             <th>*아이디</th>
                             <td>
                                 <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
-                                <span class="email_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">중복확인</a></span>
+                                <span class="email_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">&nbsp;&nbsp;&nbsp;중복확인</a></span>
                             </td>
                         </tr>
                         <tr>
                             <th>*비밀번호</th>
-                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
+                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">&nbsp;&nbsp;비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
                         </tr>
                         <tr>
                             <th>*비밀번호<span>확인</span></th>
@@ -159,8 +163,8 @@
                         <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>
                 </form>
                 <!-- //write--->
-                <div class="btnSet clear">
-                    <div><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+                <div class="btnSet"  style= "text-align : center;">
+                    <div><a href="javascript:;" class="btn1" onclick="goSave();">가입</a> <a href="javascript:;" class="btn1" onclick="history.back();">취소</a></div>
                 </div>
             </div>
         </div>

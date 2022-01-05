@@ -9,14 +9,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="/project/css/reset.css"/>
-    <link rel="stylesheet" href="/project/css/common.css"/>
-    <link rel="stylesheet" href="/project/css/contents.css"/>
-    <link rel="stylesheet" href="css/reset.css"/>
-    <link rel="stylesheet" href="css/contents.css"/>
+    <link rel="stylesheet" href="/thejoun/css/reset.css"/>
+    <link rel="stylesheet" href="/thejoun/css/common.css"/>
+    <link rel="stylesheet" href="/thejoun/css/contents.css"/>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/contents.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-	<script src="/project/js/common.js"></script>
+	<script src="/thejoun/js/common.js"></script>
 	<script>
 		function loginCheck(){
 			if($("#email").val() == ''){
@@ -51,7 +51,7 @@
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인" alt="로그인" /></div>
                             </fieldset>
-                            <div class="btnSet clear">
+                            <div class="btnSet clear" style="text-align:center">
                                 <div>
                                     <a href="join.do" class="btn">회원가입</a> 
                                     <a href="searchId.do" class="btn">이메일/비밀번호 찾기</a>
