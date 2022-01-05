@@ -51,26 +51,28 @@
         	<div class="size">
         		<div class="box">
         			<div class="txt">
-        				<h4 class="title">안녕하십니까~ THEJOUN입니다.</h4><br>
+        				<h4 class="title">THEJOUN입니다.</h4><br>
+        				<br>
+        				<br>
         				<p>
-        				나쁜 기억을 글로 쓰는 행위만으로도 
-        				정서적 고통이 감소되는 효과가 있다고 해요.
+        				나쁜 기억을 글로 쓰는 행위만으로도<br>
+        				정서적 고통이 감소되는 효과가 있다고 해요.<br>
         				
         				</p>
         				<p>
-						여러분의 고민과 생각들 그밖에 다양하게 소통하고 싶은 내용들을 
-						자유롭게 소통해보세요. 
+						여러분의 고민과 생각들 <br>
+						그밖에 다양하게 소통하고 싶은 내용들을 <br>
+						자유롭게 소통해보세요. <br>
 						또한 내 주변 친구들과 대화할 수 있어요.
         				</p>
         				<p>
-        				나쁜 기억을 글로 쓰는 행위만으로도 
-        				정서적 고통이 감소되는 효과가 있다고 해요.
-						여러분의 고민과 생각들 그밖에 다양하게 소통하고 싶은 내용들을 
-						자유롭게 소통해보세요. 또한 내 주변 친구들과 대화할 수 있어요.
+        				나쁜 기억을 글로 쓰는 행위만으로도 <br>
+        				정서적 고통이 감소되는 효과가 있다고 해요.<br>
+						누구나 마음속에 고민을 갖고 있어요.<br>
+						THE JOUN에서 자신의 마음을 털어놓는 시간을 가져보세요
         				</p>
         				<p>
-        				나쁜 기억을 글로 쓰는 행위만으로도 
-        				정서적 고통이 감소되는 효과가 있다고 해요.
+        				<br>
 						더 조은과 함께 마음의 소통을 시작해보세요.
         				</p>
         			</div>
@@ -81,8 +83,8 @@
         <div class="btn04">
 	    <form>
 		<div id="btn_group" style="text-align : center;"> 
-			<button id="test_btn1">자유게시판</button> 
-			<button id="test_btn2">고민게시판</button> 
+			<button id="test_btn1" onClick="location.href='http://localhost:8080/thejoun/freeboard/index.do';" >자유게시판</button> 
+			<button id="test_btn2" onClick="location.href='http://localhost:8080/thejoun/concernboard/index.do';">고민게시판</button> 
 			<button id="test_btn3">자유갤러리</button> 
 			<button id="test_btn4">동영상갤러리</button> 
 		
