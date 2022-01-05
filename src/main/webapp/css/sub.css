@@ -24,6 +24,7 @@
 	margin-right: 40px; 
   } 
 #btn_group button{ 
+
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -31,8 +32,9 @@
 	border: 1px solid black; 
 	background-color: #4e464b;
 	color: #fff; 
-	padding: 5px; 
-
+	padding:12px; 
+	text-align : center;
+	border-bottom: 1px solid #1d1d1d;
 }
 
 .sub > .load p{
@@ -43,6 +45,7 @@
 	width : 100%;
 	position : relative;
 }
+
 .sub > .sub_visual {
 
 	position : relative;

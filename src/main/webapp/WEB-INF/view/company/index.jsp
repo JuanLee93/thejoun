@@ -79,7 +79,7 @@
         </div>
         <div class="btn04">
 	    <form>
-		<div id="btn_group"> 
+		<div id="btn_group" style="text-align : center;"> 
 			<button id="test_btn1">자유게시판</button> 
 			<button id="test_btn2">고민게시판</button> 
 			<button id="test_btn3">자유갤러리</button> 
