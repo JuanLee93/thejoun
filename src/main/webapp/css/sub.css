@@ -22,11 +22,13 @@
 	background-color : #ffc200;
 }
 .sub > .sub_visual > .slogan {
+
 	font-size : 50px;
 	text-align : center;
 	line-height : 250px;
 	color : #fff;
 	width : 100%;
+	background-color : #ffc200;
 }
 .sub > .size {
 	width : 1200px;

@@ -10,12 +10,10 @@
     <title>Document</title>
   	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<<<<<<< HEAD
 
-=======
     <link rel="stylesheet" href="/project/css/common.css"/>
     <link rel="stylesheet" href="/project/css/sub.css"/>
->>>>>>> branch 'master' of https://github.com/JuanLee93/thejoun.git
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
  	<script src="/thejoun/js/common.js"></script> 
@@ -28,7 +26,7 @@
     <script src="/thejoun/js/smoothscroll.js"></script>
     <script src="/thejoun/js/custom.js"></script>
     
-<<<<<<< HEAD
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
@@ -39,8 +37,7 @@
   		<link rel="stylesheet" href="/thejoun/css/sub.css"/>
      
     
-=======
->>>>>>> branch 'master' of https://github.com/JuanLee93/thejoun.git
+
 </head>
 <body>
     <div class="wrap">
