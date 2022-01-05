@@ -56,7 +56,7 @@
 	    	$.ajax({
 				url : "idCheck.do",
 				data : {
-					email : $("#id").val()
+					id : $("#id").val()
 				},
 				async : false,
 				success : function(res){

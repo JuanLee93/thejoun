@@ -13,7 +13,7 @@ public class UserVo {
 	private String pwd;
 	private String name;
 	private String nickname;
-	private String gender;
+	private int gender;
 	private Timestamp regdate;
 	private String tel;
 	private Timestamp moddate;

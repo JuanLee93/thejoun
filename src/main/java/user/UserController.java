@@ -35,7 +35,7 @@ public class UserController {
 	public String logout(Model model, HttpSession sess) {
 		sess.invalidate();
 		model.addAttribute("msg", "로그아웃 되었습니다.");
-		model.addAttribute("url", "/chat/index.do");
+		model.addAttribute("url", "/thejoun/index.do");
 		return "include/result";
 	}
 	
@@ -48,11 +48,11 @@ public class UserController {
 	public String insert(UserVo vo,HttpServletRequest req) {
 		if(userService.insert(vo) > 0) {
 			req.setAttribute("msg", "정상적으로 가입되었습니다");
-			req.setAttribute("url", "/chat/index.do");
+			req.setAttribute("url", "/thejoun/index.do");
 		}else {
 			req.setAttribute("msg", "가입 오류");
 		}
-		return "include/result";
+		return "include/return";
 	}
 	
 	@GetMapping("/user/idCheck.do")
