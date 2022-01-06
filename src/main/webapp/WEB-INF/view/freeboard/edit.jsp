@@ -27,7 +27,7 @@
 			return;
 		
 		}
-
+		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []);
 		var data = $("#frm").serialize();
 		$("#frm").submit();
 	}
