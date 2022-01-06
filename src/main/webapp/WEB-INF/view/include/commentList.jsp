@@ -26,7 +26,7 @@
                                     <%-- </c:if>  --%>
                                 </td>
                                 <td class="writer">
-                                    ${vo.name }
+                                    ${vo.nickname }
                                 </td>
                                 <td class="date"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
                             </tr>

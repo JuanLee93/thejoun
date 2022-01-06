@@ -12,12 +12,12 @@ public class CommentVo {
 	private int comment_no;
 	private int board_no;
 	private String content;
-	private int like;
+	private int likecount;
 	private Timestamp regdate;
 	private int gno;
 	private int ono;
 	private int nested;
 	private int tablename;
 	private int userno;
-	private String name;
+	private String nickname;
 }

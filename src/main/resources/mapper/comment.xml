@@ -3,16 +3,16 @@
 <mapper namespace="comment">
 	
 	<select id="selectList" resultType="comment.CommentVo" parameterType="comment.CommentVo">
-		SELECT *, (select name from user where userno=comment.userno) name FROM comment
+		SELECT *, (select nickname from user where userno=comment.userno) as nickname FROM comment
 		WHERE board_no=#{board_no} AND tablename=#{tablename}
 		ORDER BY regdate DESC
 	</select>
 
 	<insert id="insert" parameterType="comment.CommentVo">
 		INSERT INTO comment (
-			board_no, content, like, regdate, gno, ono, nested, tablename, userno
+			board_no, content, likecount, regdate, gno, ono, nested, tablename, userno
 		) values (
-			#{board_no}, #{content}, #{like}, NOW(), #{gno}, #{ono}, #{nested}, #{tablename}, #{userno}
+			#{board_no}, #{content}, #{likecount}, NOW(), #{gno}, #{ono}, #{nested}, #{tablename}, #{userno}
 		)
 	</insert>
 

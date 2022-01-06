@@ -95,7 +95,8 @@
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
-                        <div class="cont"><p>${data.content }</p> </div>
+                        <div class="cont"><p>${data.content }</p><br> </div>
+
                         <dl class="file">
                             <dt>첨부파일 </dt>
                             <dd>
