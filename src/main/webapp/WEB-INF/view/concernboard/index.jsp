@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고민게시판</title>
+<title>자유게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
 <link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -28,7 +28,7 @@
 		<div class="sub">
             <div class="size">
                 <h3 class="sub_title">고민게시판</h3>
-    
+
                 <div class="bbs">
                     <table class="list">
                     <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
@@ -60,12 +60,12 @@
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
                             <tr class="board_tr" data-board_no="${vo.concern_board_no }" style="cursor: pointer;">
-                                <td>${(totCount-status.index) - ((concernBoardVo.page-1)*10) }</td>
+                                <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.title } [${vo.c_count }]
                                 </td>
                                 <td class="writer">
-                                    ${vo.name }
+                                    ${vo.nickname }
                                 </td>
                                 <td class="date">${vo.regdate }</td>
                                 <td>${vo.readcount }</td>

@@ -18,7 +18,7 @@
 		if (confirm("삭제하시겠습니까?")) {
 			$.ajax({
 				url : 'deleteAjax.do',
-				data : {board_no : ${data.concern_board_no}},
+				data : {concern_board_no : ${data.concern_board_no}},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
@@ -40,7 +40,7 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('댓글이 등록되었습니다.');
-						commentList('free_board', ${data.concern_board_no});
+						commentList(2 , ${data.concern_board_no});
 						$("#content").val("");
 					} else {
 						alert('댓글 등록 오류');
@@ -60,7 +60,7 @@
 		});
 	}
 	$(function() {
-		commentList('free_board', ${data.concern_board_no});
+		commentList(2 , ${data.concern_board_no});
 	});
 	
 	function goDel(c_no) {
@@ -71,7 +71,7 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
-						commentList('free_board', ${data.concern_board_no});
+						commentList( 2 , ${data.concern_board_no});
 					} else {
 						alert('삭제오류');
 					}
@@ -114,8 +114,8 @@
                     <div>
                     <c:if test="${!empty userInfo }"><%-- 로그인하지 않은 상태에서는 댓글작성 불가 --%>
                     <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
-                    	<input type="hidden" name="tablename" value="free_board">
-                    	<input type="hidden" name="boardno" value="${data.concern_board_no }">
+                    	<input type="hidden" name="tablename" value= 2 >
+                    	<input type="hidden" name="board_no" value="${data.concern_board_no }">
                     	<input type="hidden" name="userno" value="${userInfo.userno }">
                         <table class="board_write">
                             <colgroup>

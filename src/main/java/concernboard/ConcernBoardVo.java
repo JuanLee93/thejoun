@@ -21,6 +21,8 @@ public class ConcernBoardVo extends CommonVo {
 	private String name;
 	private int c_count;
 	private int category;
+	private String nickname;
+	
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

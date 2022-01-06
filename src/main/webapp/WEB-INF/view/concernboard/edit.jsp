@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판</title>
+<title>고민게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
 <link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -13,23 +13,31 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="https://malsup.github.io/jquery.form.js"></script>
+<script type="text/javascript" src="/thejoun/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
+	var oEditors;
+	$(function(){
+		oEditors = setEditor("content");
+	});
+	
+
 	function goSave() {
 		if ($("#title").val=='') {
 			alert('제목을 입력하세요');
 			$("#title").focus();
 			return;
-		
+			
 		}
-
+		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []);
 		var data = $("#frm").serialize();
 		$("#frm").submit();
 	}
+
 		$(function() {
 			$("#frm").ajaxForm({
 				success : function(res) {
 					alert('정상적으로 수정되었습니다.');
-					location.href='view.do?concern_board_no=${data.concern_board_no}';
+					location.href='view.do?board_no=${data.concern_board_no}';
 				},
 				error : function(error) {
 					console.log(error);
@@ -43,7 +51,7 @@
 		<%@ include file="/WEB-INF/view/include/header.jsp" %>
 		<div class="sub">
             <div class="size">
-                <h3 class="sub_title">자유게시판</h3>
+                <h3 class="sub_title">고민게시판</h3>
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >

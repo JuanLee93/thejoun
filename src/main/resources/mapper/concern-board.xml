@@ -5,10 +5,13 @@
 	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
-				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR nickname LIKE '%${searchWord}%')
+				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR userno in (select userno from user where nickname LIKE '%${searchWord}%'))
 			</if>
 			<if test="searchType != null and searchType !=''">
 				${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="searchType == 'nickname'">
+			userno in (select userno from user where nickname LIKE '%${searchWord}%')
 			</if>
 			<if test="userno > 0">
 				AND userno = ${userno}
@@ -23,8 +26,10 @@
 	
 	<select id="selectList" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo">
 		SELECT *, 
+			(SELECT id FROM user WHERE userno=concern_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=concern_board.userno) as name, 
-			(SELECT count(*) FROM comment WHERE concern_board_no= concern_board.concern_board_no AND tablename= 2) as c_count
+			(SELECT nickname FROM user WHERE userno=concern_board.userno) as nickname, 
+			(SELECT count(*) FROM comment WHERE board_no= concern_board.concern_board_no AND tablename=2) as c_count
 			FROM concern_board
 		<include refid="boardWhere"/>
 			ORDER BY regdate DESC
@@ -41,7 +46,7 @@
 	
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
 	<select id="selectOne" parameterType="int" resultType="concernboard.ConcernBoardVo">
-		SELECT * FROM concern_board WHERE concern_board_no = #{xxx}
+		SELECT * FROM concern_board WHERE concern_board_no = #{concern_board_no}
 	</select>
 
 	<update id="updateReadcount" parameterType="int">
