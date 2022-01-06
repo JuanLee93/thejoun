@@ -29,7 +29,7 @@
 			$("#frm").ajaxForm({
 				success : function(res) {
 					alert('정상적으로 수정되었습니다.');
-					location.href='view.do?board_no=${data.board_no}';
+					location.href='view.do?concern_board_no=${data.concern_board_no}';
 				},
 				error : function(error) {
 					console.log(error);
@@ -47,7 +47,7 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >
-                <input type="hidden" name="boardno" value="${data.board_no }">
+                <input type="hidden" name="concern_board_no" value="${data.concern_board_no }">
                     <table class="board_write">
                         <tbody>
                         <tr>
