@@ -8,12 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Document</title>
-  	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <link rel="stylesheet" href="/project/css/common.css"/>
-    <link rel="stylesheet" href="/project/css/sub.css"/>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
  	<script src="/thejoun/js/common.js"></script> 
@@ -25,18 +19,8 @@
     <script src="/thejoun/js/owl.carousel.min.js"></script>
     <script src="/thejoun/js/smoothscroll.js"></script>
     <script src="/thejoun/js/custom.js"></script>
-    
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/thejoun/css/common.css"/>
-  		<link rel="stylesheet" href="/thejoun/css/sub.css"/>
-     
-    
+    <link rel="stylesheet" href="/thejoun/css/common.css"/>
+	<link rel="stylesheet" href="/thejoun/css/sub.css"/>
 
 </head>
 <body>
@@ -82,18 +66,17 @@
         <div class="sub">
         <div class="btn04">
 	    <form>
-		<div id="btn_group" style="text-align : center;"> 
-			<button id="test_btn1" onclick="location.href='http://localhost:8080/thejoun/freeboard/index.do'" >자유게시판</button> 
-			<button id="test_btn2" onclick="location.href='http://localhost:8080/thejoun/concernboard/index.do'">고민게시판</button> 
-			<button id="test_btn3">자유갤러리</button> 
-			<button id="test_btn4">동영상갤러리</button> 
-
-		</div>
+			<div id="btn_group" style="text-align : center;"> 
+				<button type="button" id="test_btn1" onclick="location.href='/thejoun/freeboard/index.do';" >자유게시판</button> 
+				<button type="button" id="test_btn2" onclick="location.href='/thejoun/concernboard/index.do';">고민게시판</button> 
+				<button type="button" id="test_btn3">자유갤러리</button> 
+				<button type="button" id="test_btn4">동영상갤러리</button> 
+			</div>
 		</form>
 		</div>
 		</div>
-            <div class="wrap">
-        <div class="sub">
+        <div class="wrap">
+        	<div class="sub">
 				<div class="load">
         			<p>오시는길</p>
 				</div>
@@ -140,5 +123,6 @@
         </div>
         <%@ include file="/WEB-INF/view/include/footer.jsp" %>
     </div>
+  </div>
 </body>
 </html>
