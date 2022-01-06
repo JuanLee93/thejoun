@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" href="/thejoun/css/bootstrap.min.css">
+   	<link rel="stylesheet" href="/thejoun/css/bootstrap.min.css">
     <link rel="stylesheet" href="/thejoun/css/unicons.css">
     <link rel="stylesheet" href="/thejoun/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/thejoun/css/owl.theme.default.min.css">
@@ -25,13 +25,42 @@
     	.depth2 {
     		position:absolute;	
     	}
+    	.login01{
+    		margin:40px; 20px; 0px;
+    		padding: 0px 250px; 
+    	}
+    	.login01 > .logina{
+    		border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			border: 1px solid black; 
+			background-color: #474559;
+			padding: 0px 12px; 
+			width : 12%;
+			text-align: right;
+			
+    	}
+		.login01 > .loginbtn1 > a{
+		    border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			color: #fff; 
+			background-color: #474559;
+			padding: 10px 25px;
+			
+		}
     </style>
     
   </head>
-	<div class="login" style="text-align: right;">
+	<div class="login01" style="text-align: right;"  style = "margin: 5px 15px;">
 		<c:if test="${empty userInfo }">
-			<a href="/thejoun/user/login.do">로그인</a>
+		<div class="loginbtn1">
+			<a href="/thejoun/user/login.do">로그인</a> 
 			<a href="/thejoun/user/join.do">회원가입</a>
+		</div>
+		
 		</c:if>
 		<c:if test="${!empty userInfo }">
 			<a href="/thejoun/user/logout.do">로그아웃</a>
