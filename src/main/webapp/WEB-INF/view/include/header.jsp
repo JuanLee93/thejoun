@@ -35,7 +35,7 @@
 			border-top-right-radius: 5px;
 			border-bottom-right-radius: 5px;
 			border: 1px solid black; 
-			background-color: #474559;
+			background-color: #a8a8aa;
 			padding: 0px 12px; 
 			width : 12%;
 			text-align: right;
@@ -47,7 +47,7 @@
 			border-top-right-radius: 5px;
 			border-bottom-right-radius: 5px;
 			color: #fff; 
-			background-color: #474559;
+			background-color: #a8a8aa;
 			padding: 10px 25px;
 			
 		}
