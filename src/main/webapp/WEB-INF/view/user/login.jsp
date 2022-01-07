@@ -19,9 +19,9 @@
 	<script src="/thejoun/js/common.js"></script>
 	<script>
 		function loginCheck(){
-			if($("#email").val() == ''){
-				alert("이메일을 입력해 주세요");
-				$("#email").focus();
+			if($("#id").val() == ''){
+				alert("아이디를 입력해 주세요");
+				$("#id").focus();
 				return false;
 			}
 			if($("#pwd").val() == ''){
@@ -45,7 +45,7 @@
                         <div class="box">
                             <fieldset class="login_form">
                                 <ul>
-                                    <li><input type="text" id="email" name="email" placeholder="이메일"></li>
+                                    <li><input type="text" id="id" name="id" placeholder="아이디"></li>
                                     <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호"></li>
                                     <li><label><input type="checkbox" name="reg" id="reg"/> 아이디저장</label></li>
                                 </ul>

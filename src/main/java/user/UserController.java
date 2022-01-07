@@ -36,7 +36,7 @@ public class UserController {
 		sess.invalidate();
 		model.addAttribute("msg", "로그아웃 되었습니다.");
 		model.addAttribute("url", "/thejoun/index.do");
-		return "include/result";
+		return "include/return";
 	}
 	
 	@GetMapping("/user/join.do")
