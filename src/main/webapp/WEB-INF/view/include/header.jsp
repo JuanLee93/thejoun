@@ -62,10 +62,12 @@
 		</div>
 		
 		</c:if>
+		<div class="loginbtn1">
 		<c:if test="${!empty userInfo }">
 			<a href="/thejoun/user/logout.do">로그아웃</a>
 			<a href="/thejoun/user/join.do">마이페이지</a>
 		</c:if>
+		</div>
 	</div>
       <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">

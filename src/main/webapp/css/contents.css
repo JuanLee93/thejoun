@@ -67,8 +67,8 @@
 .btn1.point:hover{background:#579408 !important;}
 .big{font-size:16px !important; padding:10px 40px !important; border:3px solid #1d7ab3; border-radius:5px; background-color:#1d7ab3;}
 
-.btn1.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:28px; line-height:28px; padding: 2px 10px;}
-.btn1.bgGray:hover{ text-decoration:none !important;}
+.btn.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:28px; line-height:28px; padding: 2px 10px;}
+.btn.bgGray:hover{ text-decoration:none !important;}
 
 .btnSet a{
     width: 20%;
@@ -153,6 +153,8 @@
 .bbsSearch .srchSelect select {height:32px; padding:0 10px; box-sizing:border-box; }
 
 /* view */
+
+
 .bbs .view{}
 .bbs .view{width:100%; border-top:2px solid #221f1f;}
 .bbs .view .title > dl{width:100%; padding:20px; border-bottom:1px solid #221f1f; background:#fafafa;}

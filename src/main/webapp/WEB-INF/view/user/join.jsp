@@ -151,6 +151,7 @@
 </head>
 <body>
     <div class="wrap">
+        <%@ include file="/WEB-INF/view/include/header.jsp" %>
     	<!--  헤더 인클루드할 공간 -->
 		 <div class="sub">
             <div class="size">
@@ -172,7 +173,7 @@
                         </tr>
                         <tr>
                             <th>*비밀번호</th>
-                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">&nbsp;&nbsp;비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요</span> </td>
+                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요</span> </td>
                         </tr>
                         <tr>
                             <th>*비밀번호<span>확인</span></th>
@@ -232,6 +233,7 @@
             </div>
         </div>
     	<!--  footer 인클루드할 공간 -->
+    	<%@ include file="/WEB-INF/view/include/footer.jsp" %>
     </div>
 </body>
 </html>
