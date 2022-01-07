@@ -22,13 +22,24 @@
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.content }
                                     <%-- <c:if test="${vo.userno == userInfo.userno }">  --%>
-                                    <a href="javascript:goDel(${vo.comment_no});">[삭제]</a>
+                                  	<button type="button" class="commentUpdateBtn" onclick="showForm(${vo.comment_no});">[수정]</button>
+                                  	<button type="button" onclick="javascript:goDel(${vo.comment_no});">[삭제]</button>
                                     <%-- </c:if>  --%>
                                 </td>
                                 <td class="writer">
                                     ${vo.nickname }
                                 </td>
                                 <td class="date"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
+                            </tr>
+                            <tr id="comment_${vo.comment_no}" style="display:none;">
+                                <td colspan="3">
+                                    <textarea name="content" id="content_${vo.comment_no}" style="height:50px;width:100%; resize:none;">${vo.content }</textarea>
+                                </td>
+                                <td>
+                                    <div class="btn1Set"  style="text-align:right;">
+                                        <a class="btn1" href="javascript:goEdit(${vo.comment_no});">댓글수정 </a>
+                                    </div>
+                                </td>
                             </tr>
                         	</c:forEach>
                         </c:if>
