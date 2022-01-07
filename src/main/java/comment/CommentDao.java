@@ -36,7 +36,7 @@ public class CommentDao {
 		return sst.update("comment.update", cv);
 	}
 	
-// 답변 -> 답변의 답변(정렬, 들여쓰기)
+	// 답변 -> 답변의 답변(정렬, 들여쓰기)
 	public int updateGno(int comment_no) {
 		return sst.update("comment.updateGno", comment_no);
 	}
