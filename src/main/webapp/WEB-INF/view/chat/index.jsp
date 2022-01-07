@@ -17,7 +17,7 @@
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/UserChat/css/custom.css">
+	<link rel="stylesheet" href="/thejoun/css/chat/custom.css">
 	<title>AJAX 실시간 채팅 서비스</title>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
