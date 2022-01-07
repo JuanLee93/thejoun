@@ -20,23 +20,23 @@
 	<script>
 		$(function(){
 			$("#idCheckBtn").click(function(){
-				if($("#email").val().trim() == ''){
-					alert("이메일을 입력해주세요.");
-					$("#email").focus();
+				if($("#id").val().trim() == ''){
+					alert("아이디를 입력해주세요.");
+					$("#id").focus();
 				}else{
 					$.ajax({
 						url : "idCheck.do",
 						data : {
-							email : $("#email").val()
+							id : $("#id").val()
 						},
 						async : false,
 						success : function(res){
 							if(res.trim() == '1'){
-								alert("중복된 이메일 입니다.");
-								$("#email").val("");
-								$("#email").focus();
+								alert("중복된 아이디 입니다.");
+								$("#id").val("");
+								$("#id").focus();
 							}else{
-								alert("사용 가능한 이메일입니다.");
+								alert("사용 가능한 아이디입니다.");
 							}
 						}
 					})
@@ -96,10 +96,10 @@
     }
 	    
 	    function goSave(){
-	    	if($("#email").val().trim() == ""){
-	    		alert("이메일을 입력해 주세요.");
-	    		$("#email").val("");
-	    		$("#email").focus();
+	    	if($("#id").val().trim() == ""){
+	    		alert("아이디를 입력해 주세요.");
+	    		$("#id").val("");
+	    		$("#id").focus();
 	    		return;
 	    	}
 	    	var con = true;
@@ -112,8 +112,8 @@
 				success : function(res){
 					if(res.trim() == '1'){
 						alert("중복된 아이디 입니다.");
-						$("#email").val("");
-						$("#email").focus();
+						$("#id").val("");
+						$("#id").focus();
 						con = false;
 					}
 				}
@@ -166,8 +166,8 @@
                         <tr>
                             <th>*아이디</th>
                             <td>
-                                <input type="text" name="email" id="email" class="inNextBtn" style="float:left;">
-                                <span class="email_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">&nbsp;&nbsp;&nbsp;중복확인</a></span>
+                                <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
+                                <span class="id_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">&nbsp;&nbsp;&nbsp;중복확인</a></span>
                             </td>
                         </tr>
                         <tr>

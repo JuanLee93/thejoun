@@ -14,10 +14,10 @@
 		</selectKey>
 	</insert>
 	
-	<select id="idcheck" parameterType="String" resultType="int">
+	<select id="idCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM user WHERE id = #{id}
 	</select>
-	
+
 	<select id="login" parameterType="user.UserVo" resultType="user.UserVo">
 		SELECT * FROM user WHERE id = #{id} and pwd = md5(#{pwd})
 	</select>
