@@ -53,7 +53,7 @@
 	function commentList(tablename, board_no) {
 		$.ajax({
 			url : '/thejoun/comment/list.do',
-			data : {tablename : tablename, concern_board_no : concern_board_no},
+			data : {tablename : tablename, board_no : board_no},
 			success : function(res) {
 				$("#commentArea").html(res);
 			}
@@ -63,7 +63,29 @@
 		commentList(2 , ${data.concern_board_no});
 	});
 	
-	function goDel(c_no) {
+	
+	function showForm(comment_no) {
+		$("#comment_"+comment_no).show();
+	}
+	
+	function goEdit(comment_no) {
+		var content = $("#content_"+comment_no).val();
+		$.ajax({
+			url : "/thejoun/comment/update.do",
+			data : {comment_no : comment_no, content:content},
+			success : function(res) {
+				if (res.trim() == '1') {
+					alert('정상적으로 수정되었습니다.');
+					commentList(2, ${data.concern_board_no});
+				} else {
+					alert('수정오류');
+				}
+			}
+		});
+	}
+	
+	
+	function goDel(comment_no) {
 		if (confirm('댓글을 삭제하시겠습니까?')) {
 			$.ajax({
 				url : "/thejoun/comment/delete.do",
@@ -91,11 +113,12 @@
                     <div class="view">
                         <div class="title">
                             <dl>
-                                <dt>${data.title }</dt>
-                                <dd class="date">작성일 : ${data.regdate } </dd>
+                                <dt>[${data.title }][${data.nickname }]</dt>
+                                <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
                         <div class="cont"><p>${data.content }</p> </div>
+    
                         <dl class="file">
                             <dt>첨부파일 </dt>
                             <dd>
@@ -111,12 +134,17 @@
                             </div>
                         </div>
                     </div>
+                    <div style="height: 30px">
+						<p>[댓글]</p>
+                    </div>
                     <div>
-                    <c:if test="${!empty userInfo }"><%-- 로그인하지 않은 상태에서는 댓글작성 불가 --%>
+	                    <div id="commentArea"></div>
+	                    
+               <%--     <c:if test="${!empty userInfo }"> 로그인하지 않은 상태에서는 댓글작성 불가 --%>
                     <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
                     	<input type="hidden" name="tablename" value= 2 >
                     	<input type="hidden" name="board_no" value="${data.concern_board_no }">
-                    	<input type="hidden" name="userno" value="${userInfo.userno }">
+                    	<input type="hidden" name="userno" value="0">
                         <table class="board_write">
                             <colgroup>
                                 <col width="*" />
@@ -129,16 +157,14 @@
                                 </td>
                                 <td>
                                     <div class="btn1Set"  style="text-align:right;">
-                                        <a class="btn1" href="javascript:goSave();">저장 </a>
+                                        <a class="btn1" href="javascript:goSave();">댓글달기 </a>
                                     </div>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </form>
-					</c:if>
-                    <div id="commentArea"></div>
-                    
+
                     </div>
                 </div>
             </div>
