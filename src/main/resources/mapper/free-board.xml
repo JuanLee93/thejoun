@@ -38,9 +38,9 @@
 
 	<insert id="insert" parameterType="freeboard.FreeBoardVo">
 		INSERT INTO free_board (
-			userno, title, content, regdate, readcount, filename_org, filename_real
+			userno, title, content, regdate, readcount, filename_org, filename_real, category
 		) values (
-			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real}
+			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{category}
 		)
 	</insert>
 	

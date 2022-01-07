@@ -10,12 +10,38 @@
 
 	<insert id="insert" parameterType="comment.CommentVo">
 		INSERT INTO comment (
+			board_no, content, likecount, regdate, tablename, userno
+		) values (
+			#{board_no}, #{content}, #{likecount}, NOW(), #{tablename}, #{userno}
+		)
+	</insert>
+	
+	<select id="selectOne" parameterType="int" resultType="comment.CommentVo">
+		SELECT * FROM comment WHERE comment_no = #{comment_no}
+	</select>
+
+	<update id="update" parameterType="comment.CommentVo">
+		UPDATE comment SET
+			content=#{content}
+		WHERE comment_no=#{comment_no}
+	</update>
+
+	<update id="updateGno" parameterType="int">
+		UPDATE comment SET gno = #{comment_no} WHERE comment_no=#{comment_no}
+	</update>
+	
+	<update id="updateOno" parameterType="comment.CommentVo">
+		UPDATE comment SET ono=ono+1 WHERE gno=#{gno} AND ono > #{ono}
+	</update>
+	
+	<insert id="insertCommentReply" parameterType="comment.CommentVo">
+		INSERT INTO comment (
 			board_no, content, likecount, regdate, gno, ono, nested, tablename, userno
 		) values (
 			#{board_no}, #{content}, #{likecount}, NOW(), #{gno}, #{ono}, #{nested}, #{tablename}, #{userno}
 		)
 	</insert>
-
+	
 	<delete id="delete" parameterType="int">
 		DELETE FROM comment WHERE comment_no = #{comment_no}
 	</delete>
