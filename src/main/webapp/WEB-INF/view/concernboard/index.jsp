@@ -46,8 +46,8 @@
 		        <div class="hg" style="height: 25px"></div>
                 <div class="bbs">
                     <table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
-                        <caption>자유게시판 목록</caption>
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${concernBoardVo.page }/${totPage }페이지</span></p>
+                        <caption>고민게시판 목록</caption>
                         <colgroup>
                             <col width="80px" />
                             <col width="*" />
@@ -75,7 +75,7 @@
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
                             <tr class="board_tr" data-board_no="${vo.concern_board_no }" style="cursor: pointer;">
-                                <td>${(totCount-status.index) - ((concern_boardVo.page-1)*10) }</td>
+                                <td>${(totCount-status.index) - ((concernboardVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.title } [${vo.c_count }]
                                 </td>
