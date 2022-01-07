@@ -5,7 +5,7 @@
 	<select id="selectList" resultType="comment.CommentVo" parameterType="comment.CommentVo">
 		SELECT *, (select nickname from user where userno=comment.userno) as nickname FROM comment
 		WHERE board_no=#{board_no} AND tablename=#{tablename}
-		ORDER BY regdate DESC
+		ORDER BY gno DESC, ono ASC
 	</select>
 
 	<insert id="insert" parameterType="comment.CommentVo">
@@ -14,6 +14,9 @@
 		) values (
 			#{board_no}, #{content}, #{likecount}, NOW(), #{tablename}, #{userno}
 		)
+		<selectKey keyProperty="comment_no" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
 	
 	<select id="selectOne" parameterType="int" resultType="comment.CommentVo">

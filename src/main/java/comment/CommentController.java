@@ -37,20 +37,11 @@ public class CommentController {
 	}
 	
 	@PostMapping("/comment/insertCommentReply.do")
-	public String insertCommentReply(CommentVo vo, HttpServletRequest req, HttpSession sess) {
+	public String insertCommentReply(Model model, CommentVo vo, HttpServletRequest req, HttpSession sess) {
 		//vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
-
 		int r = service.insertCommentReply(vo);
-		
-		if (r > 0) {
-			req.setAttribute("msg", "정상적으로 대댓글이 등록되었습니다.");
-			req.setAttribute("url", "index.do");
-		} else {
-			req.setAttribute("msg", "대댓글등록 오류가 발생하였습니다.");
-			req.setAttribute("url", "view.do?board_no="+vo.getBoard_no());
-		} 
-		
-		return "/include/return";
+		model.addAttribute("result",r);
+		return "/include/result";
 	}
 	
 	@GetMapping("/comment/delete.do")

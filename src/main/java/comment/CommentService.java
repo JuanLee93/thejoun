@@ -18,7 +18,12 @@ public class CommentService {
 	}
 	
 	public int insert(CommentVo vo) {// 등록
-		return dao.insert(vo);
+		int r = dao.insert(vo);
+		if (r>0) {
+			dao.updateGno(vo.getComment_no());
+		}
+		return r;
+		
 	}
 	
 	public CommentVo selectOne(int comment_no) {// 선택된 댓글 조회

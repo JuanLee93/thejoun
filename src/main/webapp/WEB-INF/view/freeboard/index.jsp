@@ -87,9 +87,12 @@
                         </tbody>
                     </table>
                     <div class="btn1Set"  style="text-align:right;">
-
+					<c:if test="${!empty userInfo }">
                         <a class="btn1" href="write.do">글작성 </a>
-  
+  					</c:if>
+  					<c:if test="${empty userInfo }">
+                        <a class="btn" href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">글작성 </a>
+                    </c:if>
                     </div>
                     ${pageArea }
 

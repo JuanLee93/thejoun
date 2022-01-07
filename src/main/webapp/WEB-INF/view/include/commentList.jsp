@@ -20,8 +20,13 @@
                             <tr>
                                 <td>${vo.comment_no }</td>
                                 <td class="txt_l" style="text-align:left;">
+                                    <c:if test="${vo.nested > 0 }">
+                                    	<c:forEach begin="1" end="${vo.nested }">&nbsp;&nbsp;&nbsp;</c:forEach>
+                                    	<img src="/thejoun/images/admin/answer_icon.gif">
+                                    </c:if>
                                     ${vo.content }
                                     <%-- <c:if test="${vo.userno == userInfo.userno }">  --%>
+                                    <button type="button" class="commentReplyBtn" onclick="replyForm(${vo.comment_no});">[답글]</button>
                                   	<button type="button" class="commentUpdateBtn" onclick="showForm(${vo.comment_no});">[수정]</button>
                                   	<button type="button" onclick="javascript:goDel(${vo.comment_no});">[삭제]</button>
                                     <%-- </c:if>  --%>
@@ -38,6 +43,16 @@
                                 <td>
                                     <div class="btn1Set"  style="text-align:right;">
                                         <a class="btn1" href="javascript:goEdit(${vo.comment_no});">댓글수정 </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="commentReply_${vo.comment_no}" style="display:none;">
+                                <td colspan="3">
+                                    <textarea name="content" id="contentReply_${vo.comment_no}" style="height:50px;width:100%; resize:none;"></textarea>
+                                </td>
+                                <td>
+                                    <div class="btn1Set"  style="text-align:right;">
+                                        <a class="btn1" href="javascript:goCommentReply(${vo.comment_no}, ${vo.gno}, ${vo.ono }, ${vo.nested });">답글달기 </a>
                                     </div>
                                 </td>
                             </tr>

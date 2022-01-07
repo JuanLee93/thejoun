@@ -85,6 +85,26 @@
 		});
 	}
 	
+	function replyForm(comment_no) {
+		$("#commentReply_"+comment_no).show();
+	}
+	
+	function goCommentReply(comment_no, gno, ono, nested) {
+		var content = $("#contentReply_"+comment_no).val();
+		$.ajax({
+			url : "/thejoun/comment/insertCommentReply.do",
+			type:'post',
+			data : {gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
+			success : function(res) {
+				if (res.trim() == '1') {
+					alert('정상적으로 답글이 등록되었습니다.');
+					commentList(1, ${data.board_no});
+				} else {
+					alert('답글등록 오류');
+				}
+			}
+		});
+	}
 	
 	function goDel(comment_no) {
 		if (confirm('댓글을 삭제하시겠습니까?')) {
@@ -141,11 +161,11 @@
                     <div>
 	                    <div id="commentArea"></div>
 	                    
-	                    <%-- <c:if test="${!empty userInfo }"> 로그인하지 않은 상태에서는 댓글작성 불가 --%>
+	                    <c:if test="${!empty userInfo }">
 	                    <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
 	                    	<input type="hidden" name="tablename" value='1'>
 	                    	<input type="hidden" name="board_no" value="${data.board_no }">
-	                    	<input type="hidden" name="userno" value="0">
+	                    	<input type="hidden" name="userno" value="${userInfo.userno }">
 	                        <table class="board_write">
 	                            <colgroup>
 	                                <col width="*" />
@@ -165,7 +185,7 @@
 	                            </tbody>
 	                        </table>
 	                    </form>
-						<%-- </c:if> --%>
+						</c:if>
                     </div>
                 </div>
             </div>

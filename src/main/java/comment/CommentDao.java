@@ -23,7 +23,14 @@ public class CommentDao {
 	
 	// 등록
 	public int insert(CommentVo cv) {
-		return sst.insert("comment.insert", cv);
+		int r = -1;
+		try {
+			r = sst.insert("comment.insert", cv);
+		} catch (Exception e) {
+			r = 0;
+			System.out.println(e.getMessage());
+		}
+		return r;
 	}
 	
 	// 선택된 댓글 조회
