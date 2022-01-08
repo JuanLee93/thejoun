@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판</title>
+<title>고민게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
 <link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -55,6 +55,7 @@
                             <col width="100px" />
                             <col width="100px" />
                             <col width="100px" />
+
                         </colgroup>
                         <thead>
                             <tr>
@@ -80,7 +81,7 @@
                                     ${vo.title } [${vo.c_count }]
                                 </td>
                                 <td class="writer">
-                                    ${vo.nickname }
+                                    ${userInfo.nickname }
                                 </td>
                                 <td class="date">${vo.regdate }</td>
                                 <td>${vo.readcount }</td>

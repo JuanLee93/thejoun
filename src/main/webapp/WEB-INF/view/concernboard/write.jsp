@@ -36,9 +36,10 @@
 		<div class="sub">
             <div class="size">
                 <h3 class="sub_title">고민게시판</h3>
-    
+    			
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
+                 	<input type="hidden" name="${vo.userno }">
                     <table class="board_write">
                         <tbody>
                         <tr>

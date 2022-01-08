@@ -5,9 +5,9 @@
 	
 	<insert id="insert" parameterType="user.UserVo" useGeneratedKeys="true">
 		INSERT INTO user (
-			userno, id, pwd, name, nickname, gender, regdate, tel, moddate, zipcode, addr1, addr2, email
+			 id, pwd, name, nickname, gender, regdate, tel, moddate, zipcode, addr1, addr2, email
 		) VALUES (
-			#{userno}, #{id}, md5(#{pwd}), #{name}, #{nickname}, #{gender}, NOW(), #{tel}, NOW(), #{zipcode}, #{addr1}, #{addr2}, #{email}
+			 #{id}, md5(#{pwd}), #{name}, #{nickname}, #{gender}, NOW(), #{tel}, NOW(), #{zipcode}, #{addr1}, #{addr2}, #{email}
 		)
 		<selectKey keyProperty="userno" resultType="int" order="AFTER">
 			SELECT last_insert_id()

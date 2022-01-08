@@ -38,9 +38,9 @@
 
 	<insert id="insert" parameterType="concernboard.ConcernBoardVo">
 		INSERT INTO concern_board (
-			userno, title, content, regdate, readcount, filename_org, filename_real , category
+			userno,title, content, regdate, readcount, filename_org, filename_real , category
 		) values (
-			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real} ,#{category}
+			#{userno},#{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real} ,#{category}
 		)
 	</insert>
 	
