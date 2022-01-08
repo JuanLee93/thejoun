@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -17,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import util.LoginInterceptor;
 
 @Configuration // spring 설정파일
 @ComponentScan(basePackages = {"main,admin,util,freeboard,concernboard,comment,chat,user"}) //하위 패키지 전부 스캔, 클래스를 뒤지면서 component anotation있나 스캔
@@ -77,20 +77,23 @@ public class MvcConfig implements WebMvcConfigurer {
 		return cmr;
 	}
 	
-//	//인터셉터
-//	@Bean
-//	public LoginInterceptor loginInterceptor() {
-//		return new LoginInterceptor();
-//	}
-//	
-//	//인터셉터 설정
-//	@Override
-//	public void addInterceptors(InterceptorRegistry reg) {
-//		reg.addInterceptor(loginInterceptor())
-//						.addPathPatterns("/board/write.do")
-//						.addPathPatterns("/board/insert.do")
-//						.addPathPatterns("/user/mypage.do");
-//	}
+	//인터셉터
+	@Bean
+	public LoginInterceptor loginInterceptor() {
+		return new LoginInterceptor();
+	}
+	
+	//인터셉터 설정
+	@Override
+	public void addInterceptors(InterceptorRegistry reg) {
+		reg.addInterceptor(loginInterceptor())
+						.addPathPatterns("/freeboard/write.do")
+						.addPathPatterns("/freeboard/insert.do")
+						.addPathPatterns("/freeboard/edit.do")
+						.addPathPatterns("/freeboard/update.do")
+						.addPathPatterns("/freeboard/delete.do");
+
+	}
 //	
 //	//트랜잭션 설정
 //	@Bean

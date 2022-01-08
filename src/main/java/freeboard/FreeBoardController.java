@@ -12,12 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import comment.CommentService;
 import comment.CommentVo;
+import user.UserVo;
 import util.CommonUtil;
 
 @Controller
@@ -60,7 +60,7 @@ public class FreeBoardController {
 	
 	@PostMapping("/freeboard/insert.do")
 	public String insert(FreeBoardVo vo, HttpServletRequest req, MultipartFile file, HttpSession sess) {
-//		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		// 파일 저장
 		if (!file.isEmpty()) {//사용자가 파일을 첨부했다면
 			try {

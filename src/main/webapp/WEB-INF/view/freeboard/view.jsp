@@ -150,8 +150,10 @@
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
+                            	<c:if test="${data.userno == userInfo.userno }">
 	                            <a href="edit.do?board_no=${data.board_no }" class="btn1">수정</a>
 	                            <a href="javascript:del();" class="btn1">삭제</a>
+	                            </c:if>
                             </div>
                         </div>
                     </div>
@@ -159,8 +161,8 @@
                     	<p>[댓글]</p>
                     </div>
                     <div>
-	                    <div id="commentArea"></div>
-	                    
+                    	<div id="commentArea"></div>
+                    	
 	                    <c:if test="${!empty userInfo }">
 	                    <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
 	                    	<input type="hidden" name="tablename" value='1'>
