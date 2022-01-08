@@ -89,12 +89,12 @@
 		$("#commentReply_"+comment_no).show();
 	}
 	
-	function goCommentReply(comment_no, gno, ono, nested) {
+	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
 		$.ajax({
 			url : "/thejoun/comment/insertCommentReply.do",
 			type:'post',
-			data : {gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
+			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 답글이 등록되었습니다.');

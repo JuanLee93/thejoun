@@ -25,11 +25,11 @@
                                     	<img src="/thejoun/images/admin/answer_icon.gif">
                                     </c:if>
                                     ${vo.content }
-                                    <%-- <c:if test="${vo.userno == userInfo.userno }">  --%>
                                     <button type="button" class="commentReplyBtn" onclick="replyForm(${vo.comment_no});">[답글]</button>
+                                    <c:if test="${vo.userno == userInfo.userno }">
                                   	<button type="button" class="commentUpdateBtn" onclick="showForm(${vo.comment_no});">[수정]</button>
                                   	<button type="button" onclick="javascript:goDel(${vo.comment_no});">[삭제]</button>
-                                    <%-- </c:if>  --%>
+                                    </c:if>
                                 </td>
                                 <td class="writer">
                                     ${vo.nickname }
@@ -52,7 +52,7 @@
                                 </td>
                                 <td>
                                     <div class="btn1Set"  style="text-align:right;">
-                                        <a class="btn1" href="javascript:goCommentReply(${vo.comment_no}, ${vo.gno}, ${vo.ono }, ${vo.nested });">답글달기 </a>
+                                        <a class="btn1" href="javascript:goCommentReply(${vo.userno}, ${vo.comment_no}, ${vo.gno}, ${vo.ono }, ${vo.nested });">답글달기 </a>
                                     </div>
                                 </td>
                             </tr>
