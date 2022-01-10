@@ -134,7 +134,7 @@
                     <div class="view">
                         <div class="title">
                             <dl>
-                                <dt>[${data.title }] [${data.nickname }]</dt>
+                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }</dt>
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
