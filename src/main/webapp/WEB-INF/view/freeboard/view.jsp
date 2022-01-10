@@ -94,7 +94,7 @@
 		$.ajax({
 			url : "/thejoun/comment/insertCommentReply.do",
 			type:'post',
-			data : {userno:1, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
+			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 답글이 등록되었습니다.');
@@ -125,7 +125,7 @@
 	function likeUpdate() {
 		$.ajax({
 			url : "/thejoun/likeupdate",
-			data : {board_no :  ${data.board_no}, userno : 1, tablename:1},
+			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
 			success : function(res) {
 				if (res.trim() == '1') {
 					// 삭제
@@ -163,8 +163,12 @@
                         </dl>
                         <dl class="file">
                             <dt>좋아요 </dt>
-                            <dd>
-                            <a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
+                            <c:if test="${!empty userInfo }">
+                            <dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
+                            </c:if>
+                            <c:if test="${empty userInfo }">
+                        	<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
+                    		</c:if>
                         </dl>
                                     
                         <div class="btnSet clear" style="text-align:center;">
