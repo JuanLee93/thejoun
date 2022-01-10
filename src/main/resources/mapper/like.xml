@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="like">
+
+	<insert id="likeInsert" parameterType="like.LikeVo">
+		INSERT INTO thejoun.like (
+			 userno, tablename, board_no
+		) VALUES (
+			 #{userno}, #{tablename}, #{board_no}
+		)
+	</insert>   
+	
+	<select id="likeCount" resultType="int" parameterType="like.LikeVo">
+		SELECT count(*) FROM thejoun.like WHERE userno=#{userno} AND tablename=#{tablename} AND board_no=#{board_no}
+	</select>
+	
+	<delete id="likeDelete" parameterType="like.LikeVo">
+		DELETE FROM thejoun.like WHERE userno=#{userno} AND tablename=#{tablename} AND board_no=#{board_no}
+	</delete>
+	
+	
+</mapper>

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import comment.CommentService;
 import comment.CommentVo;
+import like.LikeVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -97,6 +98,7 @@ public class FreeBoardController {
 		cv.setBoard_no(board_no);
 		cv.setTablename(1);
 		model.addAttribute("cList", cService.selectList(cv));
+
 		return "freeboard/view";
 	}
 	
