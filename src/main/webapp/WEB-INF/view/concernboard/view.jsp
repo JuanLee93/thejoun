@@ -123,7 +123,7 @@
 	function likeUpdate() {
 		$.ajax({
 			url : "/thejoun/likeupdate",
-			data : {board_no :  ${data.concern_board_no}, userno : 1, tablename:2},
+			data : {board_no :  ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
 			success : function(res) {
 				if (res.trim() == '1') {
 					// 삭제
