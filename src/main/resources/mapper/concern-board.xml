@@ -28,7 +28,7 @@
 		SELECT *, 
 			(SELECT id FROM user WHERE userno=concern_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=concern_board.userno) as name, 
-			(SELECT nickname FROM user WHERE userno=concern_board.userno) as nickname, 
+			(select nickname from user where userno=concern_board.userno) as nickname, 
 			(SELECT count(*) FROM comment WHERE board_no= concern_board.concern_board_no AND tablename=2) as c_count
 			FROM concern_board
 		<include refid="boardWhere"/>

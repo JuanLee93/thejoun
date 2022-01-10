@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import comment.CommentService;
 import comment.CommentVo;
+import user.UserVo;
 import util.CommonUtil;
 
 @Controller
@@ -59,7 +60,7 @@ public class ConcernBoardController {
 	
 	@PostMapping("/concernboard/insert.do")
 	public String insert(ConcernBoardVo vo, HttpServletRequest req, MultipartFile file, HttpSession sess) {
-//		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		// 파일 저장
 		if (!file.isEmpty()) {//사용자가 파일을 첨부했다면
 			try {
@@ -86,8 +87,8 @@ public class ConcernBoardController {
 			req.setAttribute("url", "write.do");
 		} 
 		
-		return "/include/return";
-	}
+			return "/include/return";
+		}
 	
 	@GetMapping("/concernboard/view.do")
 	public String view(Model model, @RequestParam int board_no) {

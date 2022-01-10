@@ -148,8 +148,10 @@
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
+                            	<c:if test="${data.userno == userInfo.userno }">
 	                            <a href="edit.do?board_no=${data.concern_board_no }" class="btn1">수정</a>
 	                            <a href="javascript:del();" class="btn1">삭제</a>
+	                            </c:if>
                             </div>
                         </div>
                     </div>

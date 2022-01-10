@@ -67,7 +67,7 @@
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content" id="content">${data.content }</textarea>
+                                <textarea name="content" id="content" style="width:100%;">${data.content }</textarea>
                             </td>
                         </tr>
                         <tr>
