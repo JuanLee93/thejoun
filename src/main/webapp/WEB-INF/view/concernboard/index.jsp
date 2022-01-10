@@ -87,7 +87,7 @@
                                 </td>
                                 <td class="date">${vo.regdate }</td>
                                 <td>${vo.readcount }</td>
-                                <td>0</td>
+                                <td>${vo.l_count }</td>
                             </tr>
                         </c:forEach>
                         </c:if>

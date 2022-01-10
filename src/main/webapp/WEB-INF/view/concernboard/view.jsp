@@ -120,6 +120,21 @@
 			});
 		}
 	}
+	function likeUpdate() {
+		$.ajax({
+			url : "/thejoun/likeupdate",
+			data : {board_no :  ${data.concern_board_no}, userno : 1, tablename:2},
+			success : function(res) {
+				if (res.trim() == '1') {
+					// 삭제
+					$("#likeCount").text(Number($("#likeCount").text()) - 1 );
+				} else {
+					// 추가
+					$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+				}
+			}
+		});
+	}	
 </script>
 </head>
 <body>
@@ -132,7 +147,7 @@
                     <div class="view">
                         <div class="title">
                             <dl>
-                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${userInfo.nickname }</dt>
+                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }</dt>
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
@@ -144,7 +159,11 @@
                             <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
                             target="_blank">${data.filename_org }</a></dd>
                         </dl>
-                                    
+	                    <dl class="file">
+	                          <dt>좋아요 </dt>
+	                          <dd>
+                           	 <a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
+                        </dl>                     
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>

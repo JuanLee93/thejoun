@@ -23,7 +23,7 @@ public class ConcernBoardVo extends CommonVo {
 	private String name;
 	private String nickname;
 	private int c_count;
-	
+	private int l_count;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
