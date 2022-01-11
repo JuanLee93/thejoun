@@ -30,3 +30,4 @@ function setEditor(holder){
 	
 	return oEditors;
 }
+

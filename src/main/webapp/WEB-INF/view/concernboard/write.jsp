@@ -49,6 +49,19 @@
                             </td>
                         </tr>
                         <tr>
+                        	<th>카테고리</th>
+                        	<td>
+                        	     <select name="menu1" multiple size="4" style="width:150px" >
+                        	     		<optgroup label="선택">		 	
+							                <option value="1">취업/진로</option>
+							                <option value="2">외모</option>
+							                <option value="3">연애</option>
+							                <option value="4">대인관계</option>
+		      			  				</optgroup>
+		      			  		 </select>
+		      			  	</td>
+                        </tr>
+                        <tr>
                             <th>내용</th>
                             <td>
                                 <textarea name="content" id="content" style="width:100%;"></textarea>

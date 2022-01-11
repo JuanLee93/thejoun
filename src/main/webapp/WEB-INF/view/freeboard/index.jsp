@@ -32,13 +32,6 @@
 					<a class="btn1" href="/thejoun/freeboard/index.do?orderby=readcount">조회수 순</a>
 		            <a class="btn1" href="/thejoun/freeboard/index.do?orderby=l_count">좋아요 순</a>
 		        </div>
-		        <div class="menu">
-		            <ul class="category">
-		                <li><a href="">전체</a></li>
-		                <li><a href="">일반</a></li>
-		                <li><a href="">공지</a></li>
-		            </ul>
-		        </div>
 	        	<div class="hg" style="height: 25px"></div>
                 <div class="bbs">
                     <table class="list">
