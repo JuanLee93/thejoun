@@ -29,8 +29,8 @@
             <div class="size">
                 <h3 class="sub_title">자유게시판</h3>
 		        <div class="btn1Set"  style="text-align:left;">
-		            <a class="btn1" href="">좋아요 순</a>
-					<a class="btn1" href="">조회수 순</a>
+					<a class="btn1" href="/thejoun/freeboard/index.do?orderby=readcount">조회수 순</a>
+		            <a class="btn1" href="/thejoun/freeboard/index.do?orderby=l_count">좋아요 순</a>
 		        </div>
 		        <div class="menu">
 		            <ul class="category">

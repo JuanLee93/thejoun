@@ -33,7 +33,7 @@
 			(SELECT count(*) FROM thejoun.like WHERE board_no= free_board.board_no AND tablename=1) as l_count
 			FROM free_board
 		<include refid="boardWhere"/>
-			ORDER BY regdate DESC
+			ORDER BY ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
 	</select>
 
