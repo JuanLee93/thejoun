@@ -37,13 +37,12 @@
 		       		<a class="btn1" href="http://localhost:8080/thejoun/concernboard/index.do?orderby=l_count">좋아요 순</a>
 		        </div>
 		        <div class="menu">
-		            <ul class="category">
+		            <ul class="category" >
 		                <li><a href="">전체</a></li>
 		                <li><a href="">취업/진로</a></li>
 		                <li><a href="">외모</a></li>
 		                <li><a href="">연애</a></li>
 		                <li><a href="">대인관계</a></li>
-		                <li><a href="">공지</a></li>
 		            </ul>
 		        </div>
 		        <div class="hg" style="height: 25px"></div>
