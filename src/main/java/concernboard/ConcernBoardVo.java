@@ -24,9 +24,16 @@ public class ConcernBoardVo extends CommonVo {
 	private String nickname;
 	private int c_count;
 	private int l_count;
+	private String orderby;
+	private String direction;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(this.regdate);
+	}
+	
+	public ConcernBoardVo() {
+		this.orderby = "regdate";
+		this.direction = "DESC";
 	}
 }
