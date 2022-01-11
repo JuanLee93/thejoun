@@ -22,6 +22,8 @@
 			location.href='view.do?board_no='+$(this).data("board_no");
 		});
 	});
+	
+
 </script>
 </head>
 <body>
@@ -31,8 +33,8 @@
             <div class="size">
                 <h3 class="sub_title">고민게시판</h3>
 		        <div class="btn1Set"  style="text-align:left;">
-		            <a class="btn1" href="http://localhost:8080/thejoun/concernboard/index.do?orderby=l_count">좋아요 순</a>
 					<a class="btn1" href="http://localhost:8080/thejoun/concernboard/index.do?orderby=readcount">조회수 순</a>
+		       		<a class="btn1" href="http://localhost:8080/thejoun/concernboard/index.do?orderby=l_count">좋아요 순</a>
 		        </div>
 		        <div class="menu">
 		            <ul class="category">

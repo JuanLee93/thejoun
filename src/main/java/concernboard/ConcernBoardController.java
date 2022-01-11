@@ -45,11 +45,14 @@ public class ConcernBoardController {
 		int endPage = startPage + pageRange - 1;// 종료페이지
 		if (endPage > totPage) endPage = totPage;
 		
+		String param = "&orderby="+vo.getOrderby();
+		
+		
 		List<ConcernBoardVo> list = concernBoardService.selectList(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
-		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 10));
+		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 10, param));
 		return "concernboard/index";
 	}
 	
