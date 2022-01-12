@@ -19,9 +19,13 @@ public class VideoBoardVo extends CommonVo{
 	private String filename_org;
 	private String filename_real;
 	private String url;
+	private String nickname;
+	private String id;
+	private String name;
+	private int c_count;
+	private int l_count;
 	private String orderby;
 	private String direction;	
-	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(this.regdate);

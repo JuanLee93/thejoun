@@ -27,11 +27,11 @@
 	
 	<select id="selectList" resultType="videoboard.VideoBoardVo" parameterType="videoboard.VideoBoardVo">
 		SELECT *, 
-			(SELECT id FROM user WHERE userno=video_board.userno) as id, 
-			(SELECT name FROM user WHERE userno=video_board.userno) as name, 
-			(SELECT nickname from user where userno=video_board.userno) as nickname, 
-			(SELECT count(*) FROM comment WHERE board_no= video_board.video_board_no ) as c_count,
-			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no ) as l_count
+			(SELECT id FROM user WHERE userno =video_board.userno) as id, 
+			(SELECT name FROM user WHERE userno =video_board.userno) as name, 
+			(SELECT nickname from user where userno =video_board.userno) as nickname, 
+			(SELECT count(*) FROM comment WHERE board_no= video_board.video_board_no AND tablename=3 ) as c_count,
+			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename=3) as l_count
 			FROM video_board
 		<include refid="boardWhere"/>
 			ORDER BY ${orderby} ${direction}
@@ -41,16 +41,16 @@
 
 	<insert id="insert" parameterType="videoboard.VideoBoardVo">
 		INSERT INTO video_board (
-			userno,title, content, regdate, readcount, filename_org, url
+			userno,title, content, regdate, readcount, filename_org, filename_real , url
 		) values (
-			#{userno},#{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{url} 
+			#{userno},#{title}, #{content}, NOW(), #{readcount}, #{filename_org},  #{filename_real}, #{url} 
 		)
 	</insert>
 	
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
 	<select id="selectOne" parameterType="int" resultType="videoboard.VideoBoardVo">
 			SELECT *, (SELECT nickname FROM user WHERE userno=video_board.userno) as nickname,
-			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no ) as l_count
+			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename=3 ) as l_count
 		FROM video_board WHERE video_board_no = #{xxx}
 	</select>
 

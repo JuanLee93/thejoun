@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고민게시판</title>
+<title>동영상 갤러리</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
 <link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -18,7 +18,7 @@
 		if (confirm("삭제하시겠습니까?")) {
 			$.ajax({
 				url : 'deleteAjax.do',
-				data : {concern_board_no : ${data.concern_board_no}},
+				data : {video_board_no : ${data.video_board_no}},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
@@ -40,7 +40,7 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('댓글이 등록되었습니다.');
-						commentList(2 , ${data.concern_board_no});
+						commentList(3 , ${data.video_board_no});
 						$("#content").val("");
 					} else {
 						alert('댓글 등록 오류');
@@ -60,7 +60,7 @@
 		});
 	}
 	$(function() {
-		commentList(2 , ${data.concern_board_no});
+		commentList(3 , ${data.video_board_no});
 	});
 	
 	
@@ -76,7 +76,7 @@
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 수정되었습니다.');
-					commentList(2, ${data.concern_board_no});
+					commentList(3, ${data.video_board_no});
 				} else {
 					alert('수정오류');
 				}
@@ -92,11 +92,11 @@
 		$.ajax({
 			url : "/thejoun/comment/insertCommentReply.do",
 			type:'post',
-			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.concern_board_no}, tablename:2, comment_no : comment_no, content:content},
+			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.video_board_no}, tablename:3, comment_no : comment_no, content:content},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 답글이 등록되었습니다.');
-					commentList(2, ${data.concern_board_no});
+					commentList( 3 , ${data.video_board_no});
 				} else {
 					alert('답글등록 오류');
 				}
@@ -112,7 +112,7 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
-						commentList( 2 , ${data.concern_board_no});
+						commentList( 3 , ${data.video_board_no});
 					} else {
 						alert('삭제오류');
 					}
@@ -123,7 +123,7 @@
 	function likeUpdate() {
 		$.ajax({
 			url : "/thejoun/likeupdate",
-			data : {board_no :  ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
+			data : {board_no :  ${data.video_board_no}, userno : ${userInfo.userno}, tablename:3},
 			success : function(res) {
 				if (res.trim() == '1') {
 					// 삭제
@@ -142,7 +142,7 @@
 		<%@ include file="/WEB-INF/view/include/header.jsp" %>
 		<div class="sub">
             <div class="size">
-                <h3 class="sub_title">고민게시판</h3>
+                <h3 class="sub_title">동영상 갤러리</h3>
                 <div class="bbs">
                     <div class="view">
                         <div class="title">
@@ -182,7 +182,7 @@
 	                    
               	    <c:if test="${!empty userInfo }"><!--   로그인하지 않은 상태에서는 댓글작성 불가 -->
                     <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
-                    	<input type="hidden" name="tablename" value= '2' >
+                    	<input type="hidden" name="tablename" value= '3' >
                     	<input type="hidden" name="board_no" value="${data.concern_board_no }">
                     	<input type="hidden" name="userno" value="${userInfo.userno }">
                         <table class="board_write">

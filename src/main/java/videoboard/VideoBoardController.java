@@ -22,7 +22,6 @@ import util.CommonUtil;
 
 @Controller
 public class VideoBoardController {
-
 	@Autowired
 	VideoBoardService videoBoardService;
 	
@@ -97,7 +96,7 @@ public class VideoBoardController {
 		model.addAttribute("data", videoBoardService.view(board_no));
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
-		cv.setTablename(2);
+		cv.setTablename(3);
 		model.addAttribute("cList", cService.selectList(cv));
 		return "videoboard/view";
 	}

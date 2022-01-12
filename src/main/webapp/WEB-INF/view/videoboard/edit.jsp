@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고민게시판</title>
+<title>동영상 갤러리</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
 <link rel="stylesheet" href="/thejoun/css/common.css"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -37,7 +37,7 @@
 			$("#frm").ajaxForm({
 				success : function(res) {
 					alert('정상적으로 수정되었습니다.');
-					location.href='view.do?board_no=${data.concern_board_no}';
+					location.href='view.do?board_no=${data.video_board_no}';
 				},
 				error : function(error) {
 					console.log(error);
@@ -55,7 +55,7 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >
-                <input type="hidden" name="concern_board_no" value="${data.concern_board_no }">
+                <input type="hidden" name="concern_board_no" value="${data.video_board_no }">
                     <table class="board_write">
                         <tbody>
                         <tr>
