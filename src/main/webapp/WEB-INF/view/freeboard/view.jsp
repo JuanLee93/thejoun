@@ -137,6 +137,22 @@
 			}
 		});
 	}
+	function bookmarkUpdate() {
+		$.ajax({
+			url : "/thejoun/bookmarkupdate",
+			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
+			success : function(res) {
+				if (res.trim() == '1') {
+					// 삭제
+					$("#likeCount").text(Number($("#likeCount").text()) - 1 );
+				} else {
+					// 추가
+					$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+				}
+			}
+		});
+	}
+	
 </script>
 </head>
 <body>
@@ -169,8 +185,8 @@
                             <c:if test="${empty userInfo }">
                         	<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
                     		</c:if>
-                        </dl>
-                                    
+                    		<dt><button type="button" class="bm_image" id="bookmarkCheck" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+                        </dl> 
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
