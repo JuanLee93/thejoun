@@ -38,7 +38,7 @@
                     <li class="nav-item">
                         <a href="#resume" class="nav-link"><span data-hover="갤러리">갤러리</span></a>
                         <ul class="depth2">
-                        <li><a href="" class="nav-link">자유 갤러리</a></li>
+                        <li><a href="/thejoun/imageboard/index.do" class="nav-link">자유 갤러리</a></li>
                         <li><a href="http://localhost:8080/thejoun/videoboard/index.do" class="nav-link">동영상 갤러리</a></li>
                         </ul>
                     </li>
