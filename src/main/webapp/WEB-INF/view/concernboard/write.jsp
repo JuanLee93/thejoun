@@ -51,7 +51,7 @@
                         <tr>
                         	<th>카테고리</th>
                         	<td>
-                        	     <select name="menu1" multiple size="4" style="width:150px" >
+                        	     <select  name="menu1" multiple  style="width:170px;height:90px;" >
                         	     		<optgroup label="선택">		 	
 							                <option value="1">취업/진로</option>
 							                <option value="2">외모</option>
