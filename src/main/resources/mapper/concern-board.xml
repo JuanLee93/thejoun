@@ -16,6 +16,9 @@
 			<if test="userno > 0">
 				AND userno = ${userno}
 			</if>
+			<if test="category > 0">
+				AND category = ${category}
+			</if>
 		</where>
 	</sql>
 	
@@ -36,6 +39,7 @@
 			ORDER BY ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
 	</select>
+
 
 	<insert id="insert" parameterType="concernboard.ConcernBoardVo">
 		INSERT INTO concern_board (

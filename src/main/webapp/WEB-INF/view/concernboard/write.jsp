@@ -51,13 +51,11 @@
                         <tr>
                         	<th>카테고리</th>
                         	<td>
-                        	     <select  name="menu1" style="width:170px;height:30px;" >
-                        	     		<optgroup label="선택">		 	
+                        	     <select  name="category" style="width:170px;height:30px;" >
 							                <option value="1">취업/진로</option>
 							                <option value="2">외모</option>
 							                <option value="3">연애</option>
 							                <option value="4">대인관계</option>
-		      			  				</optgroup>
 		      			  		 </select>
 		      			  	</td>
                         </tr>
