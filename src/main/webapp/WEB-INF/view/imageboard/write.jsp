@@ -48,6 +48,17 @@
                             </td>
                         </tr>
                         <tr>
+                        	<th>카테고리</th>
+                        	<td>
+                        	     <select  name="category" style="width:170px;height:30px;" >
+					                <option value="1">인물</option>
+					                <option value="2">음식</option>
+					                <option value="3">풍경</option>
+					                <option value="4">기타</option>
+		      			  		 </select>
+		      			  	</td>
+                        </tr>
+                        <tr>
                             <th>내용</th>
                             <td>
                                 <textarea name="content" id="content" style="width:100%;"></textarea>

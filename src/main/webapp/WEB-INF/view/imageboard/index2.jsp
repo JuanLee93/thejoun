@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="util.CommonUtil" %>
 <!DOCTYPE html>
 <html>
@@ -41,6 +42,7 @@
 		                <li><a href="/thejoun/imageboard/index.do?category=4">기타</a></li>
 		            </ul>
 		        </div>
+
 	        	<div class="hg" style="height: 25px"></div>
                 <div class="bbs">
                     <table class="list">
