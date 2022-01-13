@@ -18,7 +18,7 @@
 		if (confirm("삭제하시겠습니까?")) {
 			$.ajax({
 				url : 'deleteAjax.do',
-				data : {board_no : ${data.video_board_no}},
+				data : {video_board_no : ${data.video_board_no}},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');

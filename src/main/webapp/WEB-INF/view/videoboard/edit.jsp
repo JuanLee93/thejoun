@@ -55,6 +55,7 @@
 				<div class="bbs">
 					<form method="post" name="frm" id="frm" action="update.do"
 						enctype="multipart/form-data">
+						<input type="hidden" name="video_board_no" value="${data.video_board_no }">
 						<input type="hidden" name="${vo.userno }">
 						<table class="board_edit">
 							<tbody>
