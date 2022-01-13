@@ -142,12 +142,11 @@
 			url : "/thejoun/bookmarkupdate",
 			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
 			success : function(res) {
-				if (res.trim() == '1') {
-					// 삭제
-					$("#likeCount").text(Number($("#likeCount").text()) - 1 );
+				if (res.trim() == '1') {//등록된 게시물 -> 중복확인
+					alert('이미 북마크에 등록된 게시글입니다.');
 				} else {
 					// 추가
-					$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+					alert('북마크에 해당 게시글을 추가했습니다.');
 				}
 			}
 		});
@@ -185,7 +184,7 @@
                             <c:if test="${empty userInfo }">
                         	<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
                     		</c:if>
-                    		<dt><button type="button" class="bm_image" id="bookmarkCheck" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+                    		<dt><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
                         </dl> 
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >

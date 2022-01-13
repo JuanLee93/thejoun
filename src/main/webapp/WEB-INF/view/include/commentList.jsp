@@ -22,7 +22,7 @@
                                 <td class="txt_l" style="text-align:left;">
                                     <c:if test="${vo.nested > 0 }">
                                     	<c:forEach begin="1" end="${vo.nested }">&nbsp;&nbsp;&nbsp;</c:forEach>
-                                    	<img src="/thejoun/images/admin/answer_icon.gif">
+                                    	<img src="/thejoun/images/reply.gif">
                                     </c:if>
                                     ${vo.content }
                                     <button type="button" class="commentReplyBtn" onclick="replyForm(${vo.comment_no});">[답글]</button>
