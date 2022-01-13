@@ -1,0 +1,22 @@
+package report;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ReportDao {
+
+	@Autowired
+	SqlSessionTemplate sqlSessionTemplate;
+	
+	public int reportCount(ReportVo vo) {
+	
+		return sqlSessionTemplate.selectOne("report.reportCount",vo);
+	}
+	
+	public int reportInsert(ReportVo vo) {
+		return sqlSessionTemplate.insert("report.reportInsert",vo);
+	}
+	
+}

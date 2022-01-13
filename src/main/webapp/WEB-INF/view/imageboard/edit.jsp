@@ -53,7 +53,7 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >
-                <input type="hidden" name="board_no" value="${data.image_board_no }">
+                <input type="hidden" name="image_board_no" value="${data.image_board_no }">
                     <table class="board_write">
                         <tbody>
                         <tr>
@@ -66,13 +66,6 @@
                             <th>내용</th>
                             <td>
                                 <textarea name="content" id="content" style="width:100%;">${data.content }</textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>첨부파일</th>
-                            <td>
-                            	<input type="checkbox" name="delCheck" value="1">기존파일삭제(${data.filename_org })<br>
-                                <input type="file" name="file">
                             </td>
                         </tr>
                         </tbody>

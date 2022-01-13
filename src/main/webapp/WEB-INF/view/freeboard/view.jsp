@@ -91,19 +91,22 @@
 	
 	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
-		$.ajax({
-			url : "/thejoun/comment/insertCommentReply.do",
-			type:'post',
-			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
-			success : function(res) {
-				if (res.trim() == '1') {
-					alert('정상적으로 답글이 등록되었습니다.');
-					commentList(1, ${data.board_no});
-				} else {
-					alert('답글등록 오류');
+
+			$.ajax({
+				url : "/thejoun/comment/insertCommentReply.do",
+				type:'post',
+				data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
+				success : function(res) {
+					if (res.trim() == '1') {
+						alert('정상적으로 답글이 등록되었습니다.');
+						commentList(1, ${data.board_no});
+					} else {
+						alert('답글등록 오류');
+					}
 				}
-			}
-		});
+			});
+		
+		
 	}
 	
 	function goDel(comment_no) {
@@ -123,19 +126,19 @@
 		}
 	}
 	function likeUpdate() {
-		$.ajax({
-			url : "/thejoun/likeupdate",
-			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
-			success : function(res) {
-				if (res.trim() == '1') {
-					// 삭제
-					$("#likeCount").text(Number($("#likeCount").text()) - 1 );
-				} else {
-					// 추가
-					$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+			$.ajax({
+				url : "/thejoun/likeupdate",
+				data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
+				success : function(res) {
+					if (res.trim() == '1') {
+						// 삭제
+						$("#likeCount").text(Number($("#likeCount").text()) - 1 );
+					} else {
+						// 추가
+						$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+					}
 				}
-			}
-		});
+			});
 	}
 	function bookmarkUpdate() {
 		$.ajax({
@@ -150,6 +153,22 @@
 				}
 			}
 		});
+	}
+	
+	function report() {
+	
+			$.ajax({
+				url : "/thejoun/report",
+				data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
+				success : function(res) {
+					if (parseInt(res) === 1) {//등록된 신고건 -> 중복확인
+						alert('이미 신고된 게시글입니다.');
+					} else {
+						// 추가
+						alert('이 게시글을 신고하였습니다.');
+					}
+				}
+			});
 	}
 	
 </script>
@@ -177,6 +196,7 @@
                             target="_blank">${data.filename_org }</a></dd>
                         </dl>
                         <dl class="file">
+                        <div>
                             <dt>좋아요 </dt>
                             <c:if test="${!empty userInfo }">
                             <dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
@@ -184,7 +204,10 @@
                             <c:if test="${empty userInfo }">
                         	<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
                     		</c:if>
+                    		
                     		<dt><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+                    		<dt><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+						</div>                        
                         </dl> 
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >

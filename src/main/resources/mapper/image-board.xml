@@ -16,6 +16,9 @@
 			<if test="userno > 0">
 				AND userno = ${userno}
 			</if>
+			<if test="category > 0">
+				AND category = ${category}
+			</if>
 		</where>
 	</sql>
 	
@@ -39,9 +42,9 @@
 
 	<insert id="insert" parameterType="imageboard.ImageBoardVo">
 		INSERT INTO image_board (
-			userno, title, content, regdate, readcount, filename_org, filename_real, category
+			userno, title, content, regdate, readcount, category
 		) values (
-			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{category}
+			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{category}
 		)
 	</insert>
 	
@@ -60,10 +63,6 @@
 		UPDATE image_board SET
 			title=#{title}
 			, content=#{content}
-			<if test="filename_org != null">
-			, filename_org=#{filename_org}
-			, filename_real=#{filename_real}
-			</if>
 		WHERE image_board_no = #{image_board_no}
 	</update>
 	 
