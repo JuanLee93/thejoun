@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="util.CommonUtil" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@
 <script src="/thejoun/js/main.js"></script>
 <script>
 	$(function() {
-		$(".container").click(function() {
+		$(".section").click(function() {
 			location.href='view.do?board_no='+$(this).data("board_no");
 		});
 	});
@@ -42,30 +43,15 @@
 	                 </tr>
 				</c:if>
        		 	<c:if test="${!empty list }">
-       		  	<c:forEach var="vo" items="${list }" varStatus="status">
-			        <div class="container" data-board_no="${vo.video_board_no }" style="cursor: pointer;">
+			        <div class="container" style="cursor: pointer;">
 			            <div class="size">
-			                <div class="section">
-			                    <img src="/project/img/section1_1.png">
+       		  	<c:forEach var="vo" items="${list }" varStatus="status">
+			                <div class="section"  data-board_no="${vo.video_board_no }" >
+			                    <img src="${CommonUtil.getYoutubeImage(vo.url)}">
 			                </div>
-			                <div class="section">
-			                    <img src="/project/img/section1_2.png">
-			                </div>
-			                <div class="section">
-			                    <img src="/project/img/section1_3.png">
-			                </div>
-			                <div class="section">
-			                    <img src="/project/img/section1_4.png">
-			                </div>
-			                <div class="section">
-			                    <img src="/project/img/section1_5.png">
-			                </div>
-			                <div class="section">
-			                    <img src="/project/img/section1_6.png">
-			                </div>
+       			 </c:forEach>
 			            </div>
 			        </div>
-       			 </c:forEach>
         		</c:if>
         	</tbody>
         <div class="info">

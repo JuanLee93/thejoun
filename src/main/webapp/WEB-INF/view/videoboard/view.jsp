@@ -147,18 +147,18 @@
                     <div class="view">
                         <div class="title">
                             <dl>
-                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }</dt>
+                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }&emsp;&emsp;</dt>
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
-                        <div class="cont"><p>${data.content }</p> </div>
-    
-                        <dl class="file">
-                            <dt>첨부파일 </dt>
-                            <dd>
-                            <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
-                            target="_blank">${data.filename_org }</a></dd>
-                        </dl>
+                        
+                        <div class="cont" style="text-align:center;">
+                        	<p>
+                        		<iframe width="900" height="506" src="${data.url }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        		<br>${data.content }
+                        	</p>
+                        </div>
+    					
 	                    <dl class="file">
 	                          <dt>좋아요 </dt>
 	                          <dd>
@@ -168,7 +168,7 @@
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
                             	<c:if test="${data.userno == userInfo.userno }">
-	                            <a href="edit.do?board_no=${data.concern_board_no }" class="btn1">수정</a>
+	                            <a href="edit.do?board_no=${data.video_board_no }" class="btn1">수정</a>
 	                            <a href="javascript:del();" class="btn1">삭제</a>
 	                            </c:if>
                             </div>
@@ -177,13 +177,13 @@
                     <div style="height: 30px">
 						<p>[댓글]</p>
                     </div>
-                    <div>
-	                    <div id="commentArea"></div>
-	                    
+	                <div id="commentArea">
+	                
+	                </div>
               	    <c:if test="${!empty userInfo }"><!--   로그인하지 않은 상태에서는 댓글작성 불가 -->
                     <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
                     	<input type="hidden" name="tablename" value= '4' >
-                    	<input type="hidden" name="board_no" value="${data.concern_board_no }">
+                    	<input type="hidden" name="board_no" value="${data.video_board_no }">
                     	<input type="hidden" name="userno" value="${userInfo.userno }">
                         <table class="board_write">
                             <colgroup>

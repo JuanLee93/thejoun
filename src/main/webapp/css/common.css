@@ -54,8 +54,13 @@
 }
 .container > .size > .section {
     float:left;
-    width:31.333333%;
+    width:25%;
     margin:1%;
+}
+.container > .size > .section img{
+    width: 290px;
+    height: 290px;
+    overflow: hidden;
 }
 .footer {
     width:0 auto;

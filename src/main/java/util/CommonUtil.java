@@ -51,4 +51,16 @@ public class CommonUtil {
 				+ "                    </div>";
 		return ret;
 	}
+	
+	public static String getYoutubeImage(String url) {
+		String img = "";
+		if (url != null && !"".equals(url)) {
+			img = "https://img.youtube.com/vi"+url.substring(url.lastIndexOf("/"))+"/0.jpg";
+		}
+		return img;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(getYoutubeImage("https://www.youtube.com/embed/duC1HoAGo-8"));
+	}
 }

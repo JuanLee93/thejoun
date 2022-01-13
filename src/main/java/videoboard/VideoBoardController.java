@@ -9,11 +9,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import comment.CommentService;
 import comment.CommentVo;
@@ -77,7 +81,8 @@ public class VideoBoardController {
 				System.out.println(e.getMessage());
 			}
 		}
-		
+		if (vo.getUrl() != null && vo.getUrl().indexOf("v=") >= 0)
+			vo.setUrl("https://www.youtube.com/embed/" + vo.getUrl().split("v=")[1]);
 		int r = videoBoardService.insert(vo);
 		
 		if (r > 0) {
@@ -130,8 +135,10 @@ public class VideoBoardController {
 				System.out.println(e.getMessage());
 			}
 		}
-		
+		if (vo.getUrl() != null && vo.getUrl().indexOf("v=") >= 0)
+			vo.setUrl("https://www.youtube.com/embed/" + vo.getUrl().split("v=")[1]);
 		int r = videoBoardService.update(vo);
+
 		if ( r > 0 ) {
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
 			model.addAttribute("url", "view.do?board_no="+vo.getVideo_board_no());

@@ -62,6 +62,7 @@
 		UPDATE video_board SET
 			title=#{title}
 			, content=#{content}
+			, url=#{url}
 			<if test="filename_org != null">
 			, filename_org=#{filename_org}
 			, filename_real=#{filename_real}
