@@ -5,7 +5,7 @@
 	<select id="selectList" resultType="comment.CommentVo" parameterType="comment.CommentVo">
 		SELECT *, (select nickname from user where userno=comment.userno) as nickname FROM comment
 		WHERE board_no=#{board_no} AND tablename=#{tablename}
-		ORDER BY gno DESC, ono ASC
+		ORDER BY gno ASC, ono ASC
 	</select>
 
 	<insert id="insert" parameterType="comment.CommentVo">
