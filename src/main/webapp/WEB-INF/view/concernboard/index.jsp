@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>고민게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css" />
-<link rel="stylesheet" href="/thejoun/css/common.css" />
+<link rel="stylesheet" href="/thejoun/css/common.css?after" />
 <link rel="stylesheet" href="/thejoun/css/contents.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -38,7 +38,7 @@
 						href="http://localhost:8080/thejoun/concernboard/index.do?orderby=l_count">좋아요
 						순</a>
 				</div>
-				<div class="menu">
+				<div class="menu1">
 					<ul class="category">
 						<li><a
 							href="http://localhost:8080/thejoun/concernboard/index.do">전체</a></li>

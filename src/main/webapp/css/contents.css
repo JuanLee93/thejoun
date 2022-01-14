@@ -67,10 +67,10 @@
 .btn1.point:hover{background:#579408 !important;}
 .big{font-size:16px !important; padding:10px 40px !important; border:3px solid #1d7ab3; border-radius:5px; background-color:#1d7ab3;}
 
-.btn.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:28px; line-height:28px; padding: 2px 10px;}
+.btn.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; line-height:28px; padding: 2px 10px; }
 .btn.bgGray:hover{ text-decoration:none !important;}
 
-.btnSet a{
+.btnSet a {
     width: 20%;
     padding: 10px 0 !important;
     margin: 0;
@@ -79,6 +79,7 @@
     color: #fff !important;
     font-weight: 400;
 	text-align:center;
+	
 }
 
 .btn1.bgGreen{background:#87b350 !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:32px;}
@@ -98,7 +99,7 @@
 .member .login_form input[type=text], .member .login_form input[type=password]{height:40px; width:70%;}
 .member .login_form .login_btn{position:absolute; width:25%; height:90px;  right:0; top:25px;}
 .member .login_form .login_btn input[type=submit]{background: #221f1f;color:#fff;width:100%;height:100%;border:none;font-size: 18px;font-weight: 500;border-radius: 5px;}
-.member .box .btn{width: 48%;padding:10px 0 !important;margin:0;background:#221f1f !important;border:none;color:#fff !important;font-weight: 400;}
+.member .box .btn{width: 48%;padding:10px !important;margin:0;background:#221f1f !important;border:none;color:#fff !important;font-weight: 400; border-radius: 5px;}
 .member .login_form dl{}
 .member .login_form dt{padding:5px 0; float:left; width:15%; line-height:40px; vertical-align:middle; font-weight:bold;}
 .member .login_form dd{padding:5px 0; float:left; width:85%;}
