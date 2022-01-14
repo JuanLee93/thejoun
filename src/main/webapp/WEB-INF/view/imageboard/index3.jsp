@@ -17,7 +17,7 @@
 <script src="/thejoun/js/main.js"></script>
 <script>
 	$(function() {
-		$(".section").click(function() {
+		$(".board_tr").click(function() {
 			location.href='view.do?image_board_no='+$(this).data("image_board_no");
 		});
 	});
@@ -46,44 +46,61 @@
                 <div class="bbs">
                     <table class="list">
                     <p><span><strong>총 ${totCount }개</strong>  |  ${imageBoardVo.page }/${totPage }페이지</span></p>
-	                <tbody>
-			            <c:if test="${empty list }">
-			                 <tr>
-			               	    <td class="first" colspan="">등록된 글이 없습니다.</td>
-			                 </tr>
+                        <caption>자유갤러리 목록</caption>
+                        <colgroup>
+                            <col width="80px" />
+                            <col width="*" />
+                            <col width="100px" />
+                            <col width="100px" />
+                            <col width="100px" />
+                            <col width="100px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>글쓴이</th>
+                                <th>등록일</th>
+                                <th>조회수</th>
+                                <th>좋아요</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						<c:if test="${empty list }">
+                            <tr>
+                                <td class="first" colspan="6">등록된 글이 없습니다.</td>
+                            </tr>
 						</c:if>
-		       		 	<c:if test="${!empty list }">
-					        <div class="container" style="cursor: pointer;">
-					            <div class="size">
-		       		  				<c:forEach var="vo" items="${list }" varStatus="status">
-					                <div class="section"  data-image_board_no="${vo.image_board_no }">
-					                    <img src="${CommonUtil.getImgUrl(vo.content) }">
-					                    <div class="txt_l" style="text-align:left;">
-					                    [제목] ${vo.title } [${vo.c_count }]<br>
-					                    [작성자] ${vo.nickname }<br>
-					                    [조회수] ${vo.readcount }<br>
-					                    [좋아요] ${vo.l_count }<br>
-					                    </div>
-					                </div>
-		       			 			</c:forEach>
-					            </div>
-					        </div>
-		        		</c:if>
-        			</tbody>
+                        <c:if test="${!empty list }">
+                        <c:forEach var="vo" items="${list }" varStatus="status">
+                            <tr class="board_tr" data-image_board_no="${vo.image_board_no }" style="cursor: pointer;">
+
+                                <td>${(totCount-status.index) - ((imageBoardVo.page-1)*10) }</td>
+                                <td class="txt_l" style="text-align:left;">
+                                    ${vo.title } [${vo.c_count }]<br>
+                                    <img src="${CommonUtil.getImgUrl(vo.content) }">
+                                </td>
+                                <td class="writer">
+                                    ${vo.nickname }
+                                </td>
+                                <td class="date">${vo.regdate }</td>
+                                <td>${vo.readcount }</td>
+                                <td>${vo.l_count }</td>
+                            </tr>
+                        </c:forEach>
+                        </c:if>
+                        </tbody>
                     </table>
-                    <div class="info">
-	                    <div class="btn1Set"  style="text-align:right;">
-							<c:if test="${!empty userInfo }">
-		                        <a class="btn1" href="write.do">글작성 </a>
-		  					</c:if>
-		  					<c:if test="${empty userInfo }">
-		                        <a class="btn1" href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">글작성 </a>
-		                    </c:if>
-	                    </div>
-	                    
-                    	${pageArea }
-                    
-					</div>
+                    <div class="btn1Set"  style="text-align:right;">
+					<c:if test="${!empty userInfo }">
+                        <a class="btn1" href="write.do">글작성 </a>
+  					</c:if>
+  					<c:if test="${empty userInfo }">
+                        <a class="btn1" href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">글작성 </a>
+                    </c:if>
+                    </div>
+                    ${pageArea }
+
                     <!-- 페이지처리 -->
                     <div class="bbsSearch">
                         <form method="get" name="searchForm" id="searchForm" action="">

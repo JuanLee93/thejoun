@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="question">
+
+	<sql id="questionWhere">
+		<where>
+			<if test="searchType == ''">
+				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR userno in (select userno from user where nickname LIKE '%${searchWord}%'))
+			</if>
+			<if test="searchType != 'nickname' and searchType != null and searchType !=''">
+				${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="searchType == 'nickname'">
+				userno in (select userno from user where nickname LIKE '%${searchWord}%')
+			</if>
+			<if test="userno > 0">
+				AND userno = ${userno}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="count" resultType="int" parameterType="question.QuestionVo">
+		SELECT COUNT(*) FROM qna
+		<include refid="questionWhere"/>
+	</select>
+	
+	<select id="selectList" resultType="question.QuestionVo" parameterType="question.QuestionVo">
+		SELECT q.qna_no, q.title, q.regdate, q.readcount, q.secret, u.nickname as nickname
+			FROM qna q
+			LEFT JOIN user u ON q.userno = u.userno
+		<include refid="questionWhere"/>
+			ORDER BY regdate DESC
+			LIMIT ${startIdx}, 10
+	</select>
+	
+	<insert id="insert" parameterType="question.QuestionVo">
+		INSERT INTO qna (
+			userno, title, content, regdate, filename_org, filename_real, secret
+		) values (
+			#{userno}, #{title}, #{content}, NOW(), #{filename_org}, #{filename_real}, #{secret}
+		)
+	</insert>
+
+	<select id="selectOne" parameterType="int" resultType="question.QuestionVo">
+		SELECT *, (SELECT nickname FROM user WHERE userno=qna.userno) as nickname
+		FROM qna WHERE qna_no = #{xxx}
+	</select>   
+
+	<update id="updateReadcount" parameterType="int">
+		UPDATE qna SET readcount = readcount+1 WHERE qna_no = #{qna_no}
+	</update>
+	
+	<update id="update" parameterType="question.QuestionVo">
+		UPDATE qna SET
+			title=#{title}
+			, content=#{content}
+			<if test="filename_org != null">
+			, filename_org=#{filename_org}
+			, filename_real=#{filename_real}
+			</if>
+		WHERE qna_no = #{qna_no}
+	</update>
+	 
+	<delete id="delete" parameterType="int">
+		DELETE FROM qna WHERE qna_no = #{qna_no}
+	</delete>
+</mapper>

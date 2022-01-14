@@ -91,11 +91,12 @@
 	
 	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
-
+	
+		
 			$.ajax({
 				url : "/thejoun/comment/insertCommentReply.do",
 				type:'post',
-				data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
+				data : {userno:${userInfo && userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.board_no}, tablename:1, comment_no : comment_no, content:content},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 답글이 등록되었습니다.');
@@ -105,7 +106,6 @@
 					}
 				}
 			});
-		
 		
 	}
 	
@@ -126,9 +126,10 @@
 		}
 	}
 	function likeUpdate() {
+		if (${userInfo && userInfo.userno}) {
 			$.ajax({
 				url : "/thejoun/likeupdate",
-				data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
+				data : {board_no : ${data.board_no}, userno : ${userInfo && userInfo.userno}, tablename:1},
 				success : function(res) {
 					if (res.trim() == '1') {
 						// 삭제
@@ -139,11 +140,12 @@
 					}
 				}
 			});
+		}	
 	}
 	function bookmarkUpdate() {
 		$.ajax({
 			url : "/thejoun/bookmarkupdate",
-			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
+			data : {board_no : ${data.board_no}, userno : ${userInfo && userInfo.userno}, tablename:1},
 			success : function(res) {
 				if (res.trim() == '1') {//등록된 게시물 -> 중복확인
 					alert('이미 북마크에 등록된 게시글입니다.');
@@ -156,18 +158,23 @@
 	}
 	
 	function report() {
-		$.ajax({
-			url : "/thejoun/report",
-			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
-			success : function(res) {
-				if (parseInt(res) === 1) {//등록된 신고건 -> 중복확인
-					alert('이미 신고된 게시글입니다.');
-				} else {
-					// 추가
-					alert('이 게시글을 신고하였습니다.');
+		if (${userInfo && userInfo.userno}) {
+			$.ajax({
+				url : "/thejoun/report",
+				data : {board_no : ${data.board_no}, userno : ${userInfo && userInfo.userno}, tablename:1},
+				success : function(res) {
+					if (parseInt(res) === 1) {//등록된 신고건 -> 중복확인
+						alert('이미 신고된 게시글입니다.');
+					} else {
+						// 추가
+						alert('이 게시글을 신고하였습니다.');
+					}
 				}
-			}
-		});
+			});
+		
+		} else {
+			alert("로그인 후 이용해주세요.")
+		}
 	}
 	
 </script>

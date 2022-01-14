@@ -99,15 +99,14 @@
                         <a href="#resume" class="nav-link"><span data-hover="갤러리">갤러리</span></a>
                         <ul class="depth2">
                         <li><a href="" class="nav-link">자유 갤러리</a></li>
-                        <li><a href="" class="nav-link">문의사항</a></li>
+                        <li><a href="" class="nav-link">동영상 갤러리</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#contact" class="nav-link"><span data-hover="고객지원">고객지원</span></a>
                         <ul class="depth2">
                         <li><a href="" class="nav-link">공지 사항</a></li>
-                        <li><a href="" class="nav-link">자주하는 질문</a></li>
-                        <li><a href="" class="nav-link">동영상 갤러리</a></li>
+                        <li><a href="/thejoun/question/index.do" class="nav-link">문의사항</a></li>
                         </ul>
                     </li>
                 </ul>
