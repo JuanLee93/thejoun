@@ -14,7 +14,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
-<script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
 <script>
 	$(function() {
@@ -78,7 +77,8 @@
 
                                 <td>${(totCount-status.index) - ((imageBoardVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
-                                    ${vo.title } [${vo.c_count }]
+                                    ${vo.title } [${vo.c_count }]<br>
+                                    <img src="${CommonUtil.getImgUrl(vo.content) }">
                                 </td>
                                 <td class="writer">
                                     ${vo.nickname }

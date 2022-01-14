@@ -1,5 +1,8 @@
 package util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CommonUtil {
 	public static String getPageArea(String url, int curPage, int totPage, int pageRange) {
 		//페이지 범위
@@ -60,7 +63,19 @@ public class CommonUtil {
 		return img;
 	}
 	
+	public static String getImgUrl(String content) {
+		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
+		Matcher matcher = pattern.matcher(content);
+		String url = "";
+		while(matcher.find()){
+			url = matcher.group(1);
+			break;
+        }
+		return url;
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(getYoutubeImage("https://www.youtube.com/embed/duC1HoAGo-8"));
+		System.out.println(getImgUrl("asdfasdf <html> <br> <img src='aaa'></html>"));
 	}
 }
