@@ -8,67 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-   	<link rel="stylesheet" href="/thejoun/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/thejoun/css/unicons.css">
-    <link rel="stylesheet" href="/thejoun/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/thejoun/css/owl.theme.default.min.css">
-
-    <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="/thejoun/css/tooplate-style.css">
-    <style>
-    	.depth2 {
-    		position:absolute;	
-    	}
-    	.login01{
-    		margin:40px; 20px; 0px;
-    		padding: 0px 250px; 
-    	}
-    	.login01 > .logina{
-    		border-top-left-radius: 5px;
-			border-bottom-left-radius: 5px;
-			border-top-right-radius: 5px;
-			border-bottom-right-radius: 5px;
-			border: 1px solid black; 
-			background-color: #a8a8aa;
-			padding: 0px 12px; 
-			width : 12%;
-			text-align: right;
-			
-    	}
-		.login01 > .loginbtn1 > a{
-		    border-top-left-radius: 5px;
-			border-bottom-left-radius: 5px;
-			border-top-right-radius: 5px;
-			border-bottom-right-radius: 5px;
-			color: #fff; 
-			background-color: #a8a8aa;
-			padding: 10px 25px;
-			
-		}
-    </style>
-    
-  </head>
-	<div class="login01" style="text-align: right;"  style = "margin: 5px 15px;">
-		<c:if test="${empty userInfo }">
-		<div class="loginbtn1">
-			<a href="/thejoun/user/login.do">로그인</a> 
-			<a href="/thejoun/user/join.do">회원가입</a>
-		</div>
-		
-		</c:if>
-		<div class="loginbtn1">
-		<c:if test="${!empty userInfo }">
-			<a href="/thejoun/user/logout.do">로그아웃</a>
-			<a href="/thejoun/user/join.do">마이페이지</a>
-		</c:if>
+<head>
+</head>
+	 <div class="header">
+		<div class="size">
+			<div>
+				<a href="/thejoun/index.do"><img src="/thejoun/img/logo.png"></a>
+			</div>
+			<div class="login">
+			<c:if test="${empty userInfo }">
+				<a href="/thejoun/user/login.do">로그인</a> | 
+				<a href="/thejoun/user/join.do">회원가입</a>
+			</c:if>
+			<c:if test="${!empty userInfo }">
+				<a href="/thejoun/user/logout.do">로그아웃</a> | 
+				<a href="/thejoun/user/mypage.do">마이페이지</a>
+			</c:if>
+			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
       <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
             <a class="navbar-brand" href="/thejoun/index.do"><i class='uil uil-user'></i> THEJOUN(더조은)</a>
@@ -122,5 +81,31 @@
             </div>
         </div>
     </nav>
+=======
+    <div class="menu">
+		<ul class="depth1">
+			<li><a href="/thejoun/company/index.do">소개</a>
+				<ul class="depth2">
+					<li><a href="/thejoun/company/index.do">더조은 소개</a></li>
+				</ul></li>
+			<li><a href="">커뮤니티</a>
+				<ul class="depth2">
+					<li><a href="/thejoun/freeboard/index.do">자유 게시판</a></li>
+					<li><a href="/thejoun/concernboard/index.do">고민 게시판</a></li>
+				</ul></li>
+			<li><a href="">갤러리</a>
+				<ul class="depth2">
+					<li><a href="/thejoun/imageboard/index.do">이미지 갤러리</a></li>
+					<li><a href="/thejoun/videoboard/index.do">동영상 갤러리</a></li>
+				</ul></li>
+			<li><a href="">고객지원</a>
+				<ul class="depth2">
+					<li><a href="">공지 사항</a></li>
+					<li><a href="">문의 사항</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+>>>>>>> branch 'master' of https://github.com/JuanLee93/thejoun.git
 </body>
 </html>

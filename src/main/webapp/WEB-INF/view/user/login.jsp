@@ -51,11 +51,9 @@
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인" alt="로그인" /></div>
                             </fieldset>
-                            <div class="btnSet clear" style="text-align:center">
-                                <div>
-                                    <a href="join.do" class="btn">회원가입</a> 
-                                    <a href="searchId.do" class="btn">이메일/비밀번호 찾기</a>
-                                </div>
+                            <div class="btnSet" style="text-align:center">
+                                <a href="join.do" class="btn">회원가입</a> 
+                                <a href="searchId.do" class="btn">이메일/비밀번호 찾기</a>
                             </div>
                         </div>
                     </div>

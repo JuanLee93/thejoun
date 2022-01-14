@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>자유갤러리</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
-<link rel="stylesheet" href="/thejoun/css/common.css"/>
+<link rel="stylesheet" href="/thejoun/css/common.css?after"/>
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -33,7 +33,7 @@
 					<a class="btn1" href="/thejoun/imageboard/index.do?orderby=readcount">조회수 순</a>
 		            <a class="btn1" href="/thejoun/imageboard/index.do?orderby=l_count">좋아요 순</a>
 		        </div>
-		         <div class="menu">
+		         <div class="menu1">
 		            <ul class="category" >
 		                <li><a href="/thejoun/imageboard/index.do">전체</a></li>
 		                <li><a href="/thejoun/imageboard/index.do?category=1">인물</a></li>

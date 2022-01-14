@@ -168,7 +168,7 @@
                             <th>*아이디</th>
                             <td>
                                 <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
-                                <span class="id_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">&nbsp;&nbsp;&nbsp;중복확인</a></span>
+                                <span class="id_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">중복확인</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -208,7 +208,7 @@
                         	<th rowspan="3">주소</th>
                         	<td>
                         		<input type="text" name="zipcode" id="zipcode" class="inNextBtn" style="float:left;">
-                                <span class="email_check"><a href="javascript:zipcode();" class="btn bgGray" style="float:left; width:auto; clear:none;">우편번호</a></span>
+                                <a href="javascript:zipcode();" class="btn bgGray" style="float:left; width:auto; clear:none;">우편번호</a></span>
                         	</td>
                         </tr>
                         <tr>
@@ -225,11 +225,11 @@
                 </table>
                         <input type="hidden" name="cmd" value="write.do"/>
                         <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>
-                </form>
+                </form><br>
                 <!-- //write--->
                 <div class="btnSet"  style= "text-align : center;">
                     <div><a href="javascript:;" class="btn1" onclick="goSave();">가입</a> <a href="javascript:;" class="btn1" onclick="history.back();">취소</a></div>
-                </div>
+                </div><br>
             </div>
         </div>
     	<!--  footer 인클루드할 공간 -->

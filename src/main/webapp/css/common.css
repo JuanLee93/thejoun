@@ -35,10 +35,24 @@
     color:#000000;
     text-align: center;
     float:left;
-    width:16%;
+    width:25%;
     height:40px;
     line-height: 40px;
 }
+ 
+/*concernboard, imageboard 메뉴 css*/
+.menu1 > ul > li {
+    list-style: none;
+    border:1px solid #000000;
+    background-color: #fff;
+    color:#000000;
+    text-align: center;
+    float:left;
+    width:20%;
+    height:40px;
+    line-height: 40px;
+}
+
 .menu > ul > li > a:hover {
     background-color: #999;
     color:#fff;
@@ -70,7 +84,7 @@
 }
 .container > .size > .section {
     float:left;
-    width:25%;
+    width:16%;
     margin:1%;
 }
 

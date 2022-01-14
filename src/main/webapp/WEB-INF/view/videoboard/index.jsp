@@ -56,7 +56,8 @@
 			                <div class="section"  data-board_no="${vo.video_board_no }" >              
 			               	<tr>
 								<li>
-								<td valign="top" class=""><div class="gallery_list  ">
+								<td valign="top" class="">
+									<div class="gallery_list  ">
 				                    <img src="${CommonUtil.getYoutubeImage(vo.url)}"><br>
 				                    <font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
 				                    <td>좋아요:${vo.l_count  }</td>
