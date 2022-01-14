@@ -101,7 +101,7 @@ public class VideoBoardController {
 		model.addAttribute("data", videoBoardService.view(board_no));
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
-		cv.setTablename(3);
+		cv.setTablename(4);
 		model.addAttribute("cList", cService.selectList(cv));
 		return "videoboard/view";
 	}
