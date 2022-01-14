@@ -18,7 +18,7 @@
 		if (confirm("삭제하시겠습니까?")) {
 			$.ajax({
 				url : 'deleteAjax.do',
-				data : {board_no : ${data.image_board_no}},
+				data : {image_board_no : ${data.image_board_no}},
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
@@ -53,7 +53,7 @@
 	function commentList(tablename, board_no) {
 		$.ajax({
 			url : '/thejoun/comment/list.do',
-			data : {tablename : tablename, board_no : image_board_no},
+			data : {tablename : tablename, board_no : board_no},
 			async:false,
 			success : function(res) {
 				$("#commentArea").html(res);
@@ -142,12 +142,11 @@
 			url : "/thejoun/bookmarkupdate",
 			data : {board_no : ${data.image_board_no}, userno : ${userInfo.userno}, tablename:3},
 			success : function(res) {
-				if (res.trim() == '1') {
-					// 삭제
-					$("#likeCount").text(Number($("#likeCount").text()) - 1 );
+				if (res.trim() == '1') {//등록된 게시물 -> 중복확인
+					alert('이미 북마크에 등록된 게시글입니다.');
 				} else {
 					// 추가
-					$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+					alert('북마크에 해당 게시글을 추가했습니다.');
 				}
 			}
 		});
@@ -170,13 +169,6 @@
                             </dl>
                         </div>
                         <div class="cont"><p>${data.content }</p><br> </div>
-
-                        <dl class="file">
-                            <dt>첨부파일 </dt>
-                            <dd>
-                            <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
-                            target="_blank">${data.filename_org }</a></dd>
-                        </dl>
                         <dl class="file">
                             <dt>좋아요 </dt>
                             <c:if test="${!empty userInfo }">
@@ -191,7 +183,7 @@
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
                             	<c:if test="${data.userno == userInfo.userno }">
-	                            <a href="edit.do?board_no=${data.board_no }" class="btn1">수정</a>
+	                            <a href="edit.do?image_board_no=${data.image_board_no }" class="btn1">수정</a>
 	                            <a href="javascript:del();" class="btn1">삭제</a>
 	                            </c:if>
                             </div>

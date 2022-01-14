@@ -1,8 +1,6 @@
 package imageboard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,14 +27,14 @@ public class ImageBoardServiceImpl implements ImageBoardService {
 	}
 
 	@Override
-	public ImageBoardVo view(int board_no) {
-		imageBoardDao.updateReadcount(board_no);// 상세페이지 클릭했을 때 조회수가 올라가도록.
-		return imageBoardDao.selectOne(board_no);
+	public ImageBoardVo view(int image_board_no) {
+		imageBoardDao.updateReadcount(image_board_no);// 상세페이지 클릭했을 때 조회수가 올라가도록.
+		return imageBoardDao.selectOne(image_board_no);
 	}
 	
 	@Override
-	public ImageBoardVo edit(int board_no) {
-		return imageBoardDao.selectOne(board_no);
+	public ImageBoardVo edit(int image_board_no) {
+		return imageBoardDao.selectOne(image_board_no);
 	}
 	
 	@Override

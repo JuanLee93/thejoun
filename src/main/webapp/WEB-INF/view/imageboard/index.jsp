@@ -14,6 +14,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
+<script src="/thejoun/js/common.js"></script>
+<script src="/thejoun/js/main.js"></script>
 <script>
 	$(function() {
 		$(".board_tr").click(function() {
@@ -44,7 +46,7 @@
 	        	<div class="hg" style="height: 25px"></div>
                 <div class="bbs">
                     <table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${imageBoardVo.page }/${totPage }페이지</span></p>
                         <caption>자유갤러리 목록</caption>
                         <colgroup>
                             <col width="80px" />
@@ -73,6 +75,7 @@
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
                             <tr class="board_tr" data-image_board_no="${vo.image_board_no }" style="cursor: pointer;">
+
                                 <td>${(totCount-status.index) - ((imageBoardVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.title } [${vo.c_count }]

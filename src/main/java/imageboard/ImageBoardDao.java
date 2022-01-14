@@ -30,12 +30,12 @@ public class ImageBoardDao {
 		return r;
 	}
 	
-	public ImageBoardVo selectOne(int board_no) {
-		return sqlSessionTemplate.selectOne("imageboard.selectOne", board_no);
+	public ImageBoardVo selectOne(int image_board_no) {
+		return sqlSessionTemplate.selectOne("imageboard.selectOne", image_board_no);
 	}
 	
-	public int updateReadcount(int board_no) {
-		return sqlSessionTemplate.update("imageboard.updateReadcount", board_no);
+	public int updateReadcount(int image_board_no) {
+		return sqlSessionTemplate.update("imageboard.updateReadcount", image_board_no);
 	}
 	
 	public int update(ImageBoardVo vo) {

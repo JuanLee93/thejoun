@@ -1,7 +1,8 @@
 package imageboard;
 
-import java.io.File;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import comment.CommentService;
 import comment.CommentVo;
-import like.LikeVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -47,7 +47,7 @@ public class ImageBoardController {
 		if (endPage > totPage) endPage = totPage;
 		
 		String param = "&orderby="+vo.getOrderby()+"&category="+vo.getCategory();
-		
+	
 		List<ImageBoardVo> list = imageBoardService.selectList(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
@@ -64,21 +64,6 @@ public class ImageBoardController {
 	@PostMapping("/imageboard/insert.do")
 	public String insert(ImageBoardVo vo, HttpServletRequest req, MultipartFile file, HttpSession sess) {
 		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
-		// 파일 저장
-		if (!file.isEmpty()) {//사용자가 파일을 첨부했다면
-			try {
-				String path = req.getRealPath("/upload/");
-				String filename = file.getOriginalFilename();
-				String ext = filename.substring(filename.lastIndexOf("."));
-				String filename_real = System.currentTimeMillis() + ext;
-				
-				file.transferTo(new File(path+filename_real));
-				vo.setFilename_org(filename);
-				vo.setFilename_real(filename_real);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
 		
 		int r = imageBoardService.insert(vo);
 		
@@ -94,10 +79,10 @@ public class ImageBoardController {
 	}
 	
 	@GetMapping("/imageboard/view.do")
-	public String view(Model model, @RequestParam int board_no) {
-		model.addAttribute("data", imageBoardService.view(board_no));
+	public String view(Model model, @RequestParam int image_board_no) {
+		model.addAttribute("data", imageBoardService.view(image_board_no));
 		CommentVo cv = new CommentVo();
-		cv.setBoard_no(board_no);
+		cv.setBoard_no(image_board_no);
 		cv.setTablename(3);
 		model.addAttribute("cList", cService.selectList(cv));
 
@@ -105,34 +90,13 @@ public class ImageBoardController {
 	}
 	
 	@GetMapping("/imageboard/edit.do")
-	public String edit(Model model, @RequestParam int board_no) {
-		model.addAttribute("data", imageBoardService.edit(board_no));
+	public String edit(Model model, @RequestParam int image_board_no) {
+		model.addAttribute("data", imageBoardService.edit(image_board_no));
 		return "imageboard/edit";
 	}
 	
 	@PostMapping("/imageboard/update.do")
-	public String update(Model model, ImageBoardVo vo, MultipartFile file, HttpServletRequest req) {
-		if ("1".equals(req.getParameter("delCheck"))) {
-			ImageBoardVo bv = imageBoardService.edit(vo.getImage_board_no());
-			File f = new File(req.getRealPath("/upload/")+bv.getFilename_real());
-			f.delete();//실제 서버에서 삭제처리
-			vo.setFilename_org("");
-			vo.setFilename_real("");
-		}
-		if (file != null && !file.isEmpty()) {
-			try {
-				String path = req.getRealPath("/upload/");
-				String filename = file.getOriginalFilename();
-				String ext = filename.substring(filename.lastIndexOf("."));
-				String filename_real = System.currentTimeMillis() + ext;
-				
-				file.transferTo(new File(path+filename_real));
-				vo.setFilename_org(filename);
-				vo.setFilename_real(filename_real);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
+	public String update(Model model, ImageBoardVo vo, HttpServletRequest req) {
 		
 		int r = imageBoardService.update(vo);
 		if ( r > 0 ) {
@@ -164,5 +128,6 @@ public class ImageBoardController {
 		model.addAttribute("result", imageBoardService.delete(vo));
 		return "include/result";
 	}
+	
 	
 }

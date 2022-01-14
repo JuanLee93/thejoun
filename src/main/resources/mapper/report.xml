@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="report">
+
+	<insert id="reportInsert" parameterType="report.ReportVo">
+		INSERT INTO report (
+			 userno, tablename, board_no, date
+		) VALUES (
+			 #{userno}, #{tablename}, #{board_no}, NOW()
+		)
+	</insert>   
+	
+	<select id="reportCount" resultType="int" parameterType="report.ReportVo">
+		SELECT count(*) FROM report WHERE userno=#{userno} AND tablename=#{tablename} AND board_no=#{board_no}
+	</select>
+	
+	<!-- UPDATE report SET confirm = NOW() WHERE report_no = #{report_no}
+	SELECT * FROM report WHERE confirm = null
+	
+	-->
+	
+
+	
+</mapper>
