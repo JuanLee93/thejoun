@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>고민게시판</title>
-<link rel="stylesheet" href="/thejoun/css/reset.css"/>
-<link rel="stylesheet" href="/thejoun/css/common.css"/>
-<link rel="stylesheet" href="/thejoun/css/contents.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="/thejoun/css/reset.css" />
+<link rel="stylesheet" href="/thejoun/css/common.css" />
+<link rel="stylesheet" href="/thejoun/css/contents.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script>
@@ -135,81 +136,130 @@
 			}
 		});
 	}	
+	function bookmarkUpdate() {
+		$.ajax({
+			url : "/thejoun/bookmarkupdate",
+			data : {board_no : ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
+			success : function(res) {
+				if (res.trim() == '1') {//등록된 게시물 -> 중복확인
+					alert('이미 북마크에 등록된 게시글입니다.');
+				} else {
+					// 추가
+					alert('북마크에 해당 게시글을 추가했습니다.');
+				}
+			}
+		});
+	}
+	function report() {
+		
+		$.ajax({
+			url : "/thejoun/report",
+			data : {board_no : ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
+			success : function(res) {
+				if (parseInt(res) === 1) {//등록된 신고건 -> 중복확인
+					alert('이미 신고된 게시글입니다.');
+				} else {
+					// 추가
+					alert('이 게시글을 신고하였습니다.');
+				}
+			}
+		});
+	}
+
 </script>
 </head>
 <body>
 	<div class="wrap">
-		<%@ include file="/WEB-INF/view/include/header.jsp" %>
+		<%@ include file="/WEB-INF/view/include/header.jsp"%>
 		<div class="sub">
-            <div class="size">
-                <h3 class="sub_title">고민게시판</h3>
-                <div class="bbs">
-                    <div class="view">
-                        <div class="title">
-                            <dl>
-                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }</dt>
-                                <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
-                            </dl>
-                        </div>
-                        <div class="cont"><p>${data.content }</p> </div>
-    
-                        <dl class="file">
-                            <dt>첨부파일 </dt>
-                            <dd>
-                            <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
-                            target="_blank">${data.filename_org }</a></dd>
-                        </dl>
-	                    <dl class="file">
-	                          <dt>좋아요 </dt>
-	                          <dd>
-                           	 <a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
-                        </dl>                     
-                        <div class="btnSet clear" style="text-align:center;">
-                            <div class="fl_l" >
-                            	<a href="index.do" class="btn1">목록으로</a>
-                            	<c:if test="${data.userno == userInfo.userno }">
-	                            <a href="edit.do?board_no=${data.concern_board_no }" class="btn1">수정</a>
-	                            <a href="javascript:del();" class="btn1">삭제</a>
-	                            </c:if>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="height: 30px">
+			<div class="size">
+				<h3 class="sub_title">고민게시판</h3>
+				<div class="bbs">
+					<div class="view">
+						<div class="title">
+							<dl>
+								<dt class="tit" style="text-align: center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;|
+								</dt>
+								<dt class="title_nic" style="text-align: right;">작성자 :
+									${data.nickname }</dt>
+								<dd class="date" style="text-align: right;">작성일 :
+									${data.regdate }</dd>
+							</dl>
+						</div>
+						<div class="cont">
+							<p>${data.content }</p>
+						</div>
+
+						<dl class="file">
+							<dt>첨부파일</dt>
+							<dd>
+								<a
+									href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}"
+									target="_blank">${data.filename_org }</a>
+							</dd>
+						</dl>
+						<dl class="file">
+						<div>
+							<dt>좋아요</dt>
+							<c:if test="${!empty userInfo }">
+								<dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
+							</c:if>
+							<c:if test="${empty userInfo }">
+							<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
+							</c:if>
+									
+                    		<dt><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+                    		<dt><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+						</div>
+						</dl>
+						<div class="btnSet clear" style="text-align: center;">
+							<div class="fl_l">
+								<a href="index.do" class="btn1">목록으로</a>
+								<c:if test="${data.userno == userInfo.userno }">
+									<a href="edit.do?board_no=${data.concern_board_no }"
+										class="btn1">수정</a>
+									<a href="javascript:del();" class="btn1">삭제</a>
+								</c:if>
+							</div>
+						</div>
+					</div>
+					<div style="height: 30px">
 						<p>[댓글]</p>
-                    </div>
-                    <div>
-	                    <div id="commentArea"></div>
-	                    
-              	    <c:if test="${!empty userInfo }"><!--   로그인하지 않은 상태에서는 댓글작성 불가 -->
-                    <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
-                    	<input type="hidden" name="tablename" value= '2' >
-                    	<input type="hidden" name="board_no" value="${data.concern_board_no }">
-                    	<input type="hidden" name="userno" value="${userInfo.userno }">
-                        <table class="board_write">
-                            <colgroup>
-                                <col width="*" />
-                                <col width="100px" />
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <textarea name="content" id="content" style="height:50px;"></textarea>
-                                </td>
-                                <td>
-                                    <div class="btn1Set"  style="text-align:right;">
-                                        <a class="btn1" href="javascript:goSave();">댓글달기 </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </form>
-					</c:if>
-                    </div>
-                </div>
-            </div>
-        </div>
-		<%@ include file="/WEB-INF/view/include/footer.jsp" %>
+					</div>
+					<div>
+						<div id="commentArea"></div>
+
+						<c:if test="${!empty userInfo }">
+							<!--   로그인하지 않은 상태에서는 댓글작성 불가 -->
+							<form method="post" name="frm" id="frm" action=""
+								enctype="multipart/form-data">
+								<input type="hidden" name="tablename" value='2'> <input
+									type="hidden" name="board_no" value="${data.concern_board_no }">
+								<input type="hidden" name="userno" value="${userInfo.userno }">
+								<table class="board_write">
+									<colgroup>
+										<col width="*" />
+										<col width="100px" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<td><textarea name="content" id="content"
+													style="height: 50px;"></textarea></td>
+											<td>
+												<div class="btn1Set" style="text-align: right;">
+													<a class="btn1" href="javascript:goSave();">댓글달기 </a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%@ include file="/WEB-INF/view/include/footer.jsp"%>
 	</div>
 </body>
 </html>

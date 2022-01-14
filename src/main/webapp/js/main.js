@@ -10,13 +10,24 @@ $(function() {
         },
     });
 
-    $(".section > img").mouseover(function(){
+   /* $(".section > img").mouseover(function(){
         $(this).css("margin","-5px");
         $(this).css("border","5px solid #999");
     }).mouseleave(function(){
         $(this).css("margin","0px");
         $(this).css("border","");
+    });*/
+/*
+	이후에 수정 필요
+
+   $(".section > img").mouseover(function(){
+        $(this).css("margin","-5px");
+        $(this).css("border","5px solid #ffc200");
+    }).mouseleave(function(){
+        $(this).css("margin","0px");
+        $(this).css("border","");
     });
+*/
 
     $(".divPop").css({
        "top":($(window).height()-$(".divPop").outerHeight())/2+$(window).scrollTop()+"px",

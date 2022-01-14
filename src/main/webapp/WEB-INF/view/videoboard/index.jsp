@@ -20,6 +20,7 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
+
 <script>
 	$(function() {
 		$(".section").click(function() {
@@ -29,14 +30,20 @@
 	
 
 </script>
+
 </head>
 <body>
 
     <div class="wrap">
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
+        <div class="sub">
+			<div class="size">
             <p><span><strong>총 ${totCount }개</strong>  |  ${videoBoardVo.page }/${totPage }페이지</span></p>
-			<h3 class="sub_title" style="text-align:center;">동영상 갤러리</h3>
-      		<tbody>
+			<h3 class="sub_title" style="text-align:center;">동영상 갤러리</h3>      		
+      			<tbody>
+      				<div class="btn1Set" style="text-align: left;">
+					<a class="btn1" href="http://localhost:8080/thejoun/concernboard/index.do?orderby=readcount">조회수순</a> <a class="btn1" href="http://localhost:8080/thejoun/concernboard/index.do?orderby=l_count">좋아요순</a>
+				</div>
 	            <c:if test="${empty list }">
 	                 <tr>
 	               	    <td class="first" colspan="">등록된 글이 없습니다.</td>
@@ -46,8 +53,19 @@
 			        <div class="container" style="cursor: pointer;">
 			            <div class="size">
        		  	<c:forEach var="vo" items="${list }" varStatus="status">
-			                <div class="section"  data-board_no="${vo.video_board_no }" >
-			                    <img src="${CommonUtil.getYoutubeImage(vo.url)}">
+			                <div class="section"  data-board_no="${vo.video_board_no }" >              
+			               	<tr>
+								<li>
+								<td valign="top" class=""><div class="gallery_list  ">
+				                    <img src="${CommonUtil.getYoutubeImage(vo.url)}"><br>
+				                    <font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
+				                    <td>좋아요:${vo.l_count  }</td>
+				                    <td>조회수:${vo.readcount  }</td><br>
+				                    <span class="gallery_data ">작성자:${vo.nickname }</span>
+				                </div>
+				                </td>
+				                </li>
+			                </tr>
 			                </div>
        			 </c:forEach>
 			            </div>
@@ -81,6 +99,8 @@
 					</span>
 				</form>
 			</div>
+		</div>
+		</div>
 		</div>
 	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
 

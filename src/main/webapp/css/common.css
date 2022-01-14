@@ -48,7 +48,23 @@
     margin:0 auto;
     overflow: hidden;
     height:auto;
+    
 }
+.gallery_list {
+    width: 270px;
+    height: 300px;
+    background: #f7f7f7;
+    padding: 9px 9px 0 9px;
+    border:3px solid #C0C0C0;
+}
+.gallery_list .gallery_data {
+    text-align: right;
+    font-size: 11px;
+    float: right;
+    color: #676767;
+    padding-top: 1px;
+}
+
 .container > .size {
     text-align: center;
 }
@@ -57,11 +73,19 @@
     width:25%;
     margin:1%;
 }
+
 .container > .size > .section img{
-    width: 290px;
-    height: 290px;
+    width: 220px;
+    height: 220px;
     overflow: hidden;
+
 }
+.container > .size > .section thumb_list_title{
+	font-weight: bold;
+	word-break: break-all;
+	overflow: hidden;
+	text-align:center;
+	}
 .footer {
     width:0 auto;
     margin:0 auto;
