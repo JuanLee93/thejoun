@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chat"> <!-- mapper파일의 이름 -->
+
+	<insert id="insert" parameterType="chat.ChatVo" useGeneratedKeys="true">
+		INSERT INTO user (
+				chatno, from_id, to_id, chatcontent, chatregdate, checkmessage
+		) VALUES (
+			#{chatno}, #{from_id}, #{to_id}, #{chatcontent}, NOW(), 1
+		)
+		
+	</insert>
+	
+	<select id="findChattingList" parameterType="chat.ChatVo" resultType="chat.ChatVo">
+		SELECT * FROM chat
+		WHERE (from_id = #{from_id} AND to_id = #{to_id}) OR (from_id = #{to_id} AND to_id = #{from_id})
+	</select>
+	
+	<select id="findOtherUser" parameterType="int" resultType="user.UserVo">
+		SELECT * FROM user WHERE userno = #{value}
+	</select>
+	
+	<insert id="sendMessage" parameterType="chat.ChatVo" useGeneratedKeys="true">
+		INSERT INTO chat(from_id, to_id, chatcontent, chatregdate, checkmessage)
+		VALUES(#{from_id}, #{to_id}, #{chatcontent}, NOW(), 1)
+	</insert>
+	
+	<select id="findFriendsList" parameterType="int" resultType="user.UserVo">
+		SELECT a.userno, a.id, a.name, a.gender, a.email, a.profile, sum(if(c.checkmessage = 1, 1, 0)) as messagecount, c.chatregdate,IF(c.chatno, max(c.chatno), 0) as finalno
+		FROM (SELECT userno, id, name, gender, email, profile FROM user WHERE userno IN (SELECT friends_userno FROM friends WHERE my_userno = #{value} 
+		UNION SELECT my_userno FROM friends WHERE friends_userno = #{value})) as a LEFT JOIN chat as c
+		ON c.from_id = a.userno AND c.to_id = #{value} GROUP BY a.userno
+	    ORDER BY finalno DESC;
+	</select>
+	
+	<update id="messageUpdate" parameterType="chat.ChatVo">
+		UPDATE chat SET checkmessage = 0 WHERE from_id = #{to_id} AND to_id =#{from_id} 
+	</update>
+	
+</mapper>

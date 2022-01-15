@@ -6,36 +6,30 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import comment.CommentVo;
+import user.UserVo;
 
 @Repository
 public class ChatDao {
-
 	@Autowired
-	private SqlSessionTemplate sst;
+	SqlSessionTemplate sst;
 	
-	public List<ChatVo> selectList(ChatVo cv){
-		List<ChatVo> list = sst.selectList("chat.selectList", cv);
-		return list;
+	public List<ChatVo> findChattingList(ChatVo cv){
+		return sst.selectList("chat.findChattingList", cv);
 	}
 	
-	// 등록
-	public int insert(ChatVo cv) {
-		return sst.insert("chat.insert", cv);
+	public UserVo findOtherUser(int userno) {
+		return sst.selectOne("chat.findOtherUser", userno);
 	}
-
-	// 선택된 댓글 조회
-	public ChatVo selectOne(int cv) {
-		return sst.selectOne("chat.selectOne", cv);
+	
+	public int sendMessage(ChatVo cv) {
+		return sst.insert("chat.sendMessage", cv);
 	}
-
-	// 수정
-	public int update(CommentVo cv) {
-		return sst.update("chat.update", cv);
+	
+	public List<UserVo> findFriendsList(int userno){
+		return sst.selectList("chat.findFriendsList", userno);
 	}
-
-	// 삭제
-	public int delete(int cv) {
-		return sst.delete("chat.delete", cv);
+	
+	public int messageUpdate(ChatVo cv) {
+		return sst.update("chat.messageUpdate", cv);
 	}
 }

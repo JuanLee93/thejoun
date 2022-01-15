@@ -1,136 +1,112 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<%
-		String userID = null;
-		if (session.getAttribute("userID") != null){
-			userID = (String) session.getAttribute("userID");
-		}
-		String toID = null;
-		if (request.getAttribute("toID") != null){
-			toID = (String) request.getAttribute("toID");
-		}
-		
-	%>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/thejoun/css/chat/custom.css">
-	<title>AJAX 실시간 채팅 서비스</title>
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		function autoClosingAlert(selector, delay){
-			var alert = $(selector).alert();
-			alert.show();
-			window.setTimeout(function() { alert.hide() }, delay);
-		}
-		function submitFunction(){
-			var fromID = '<%= userID %>';
-			var toID = '<%= toID %>';
-			var chatContent = $(#chatContent).val();
+<meta charset="utf-8">
+<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+<!--  All snippets are MIT license http://bootdey.com/license -->
+<title>Whatsapp web chat template - Bootdey.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/chat/css/bootstrap-chat.css">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script>
+	var chat;
+	$(function() {
+		getFriendsList();
+		setInterval(getFriendsList,1000);
+	})
+	
+	function getFriendsList() {
+		$(function(){
 			$.ajax({
-					type: "POST",
-					url: "./chatSubmitServlet",
-					data : {
-						fromID : encodeURIComponent(fromID),
-						toID : encodeURIComponent(toID),
-						chatContent : encodeURIComponent(chatContent),
-					},
-					success : function(result){
-						if (result == 1){
-							autoClosingAlert("#successMessage", 2000);
-						}	else if (result == 0) {
-							autoClosingAlert("#dangerMessage", 2000);
-						}	else {
-							autoClosingAlert("#warningMessage", 2000);
-						}
-					}
-					
+				url : "/thejoun/chat/chatFriendsList.do",
+				type : "post",
+				success : function(res){
+					$("#chatFriendsListArea").html(res);
+					console.log("1")
+				}
 			});
-			$('#chatContent').val('');
-		}
-	</script>
+		});
+	}
+	
+	function findChattingList(friendsUserno){
+		$("#to_id").val(friendsUserno);
+			findChatList(friendsUserno);
+			function aaa(){
+				findChatList(friendsUserno);
+			}
+			clearInterval(chat);
+			chat = setInterval(aaa,1000);
+	}
+	
+	function findChatList(friendsUserno){
+		$(function(){
+			$.ajax({
+				url : "/thejoun/chat/findChattingTab.do",
+				type : "post",
+				data : $("#frm"+friendsUserno).serialize(),
+				success : function(res){
+					$("#messageArea").html(res);
+					$('#conversation').scrollTop($('#conversation')[0].scrollHeight);
+					console.log("2");
+				}
+			});
+		});
+	}
+	
+	function sendMessage(){
+		$.ajax({
+			url : "/thejoun/chat/sendMessage.do",
+			type : "post",
+			data : $("#inputForm").serialize(),
+			success : function(res){
+				$("#messageArea").html(res);
+				$('#conversation').scrollTop($('#conversation')[0].scrollHeight);
+				clearMessage();
+			}
+		});
+	}
+	//메세지 보내면 메세지창에있던 내용 지우는거임
+	function clearMessage(){
+		$("#chatconttent").val("");
+	}
+</script>
 </head>
 <body>
-	
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="index.do">실시간 회원제 채팅 서비스</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="/thejoun/index.do">홈페이지로 가기</a>	
-			</ul>
-			<c:if test="${empty userID}">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">접속하기<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="/thejoun/user/login.do">로그인</a></li>
-							<li><a href="/thejoun/user/join.do">회원가입</a></li>
-						</ul></li>
-				</ul>
-			</c:if>
-			<c:if test="${!empty userID}">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">회원관리<span class="caret"></span>
-					</a></li>
-				</ul>
-			</c:if>
-		</div>
-	</nav>
-	<div class="container bootstrap snippet">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="portlet portlet-default">
-					<div class="portlet-heading">
-						<div class="portlet-title">
-							<h4><i class="fa fa-circle text-green"></i>실시간 채팅창</h4>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div id="chat" class="panel-collapse collapse in">
-						<div id="chatList" class="portlet-body chat-widget" style="overflow-y:auto; width:auto; height:600px">
-						</div>
-						<div class="portlet-footer">
-							<div class="row" style="height: 90px;">
-								<div class="form-group col-xs-10">
-									<textarea style="height:80px; resize:none;" id="chatContent" class="form-control" placeholder="메시지를 입력하세요." maxlength="100"></textarea>
+
+	<div class="container app">
+		<div class="row app-one">
+			<div class="col-sm-4 side">
+			
+			<!--  좌측 친구창임 -->
+				<div id="chatFriendsListArea"></div>
+			</div>
+			<!--  우측 페이지 -->
+			<div class="col-sm-8 conversation">
+				<div>
+					<div id="messageArea" style="height:93.5%;"></div>
+						<div class="row reply">
+							<form name="inputForm" id="inputForm" method="post">
+							<input type="hidden" name="to_id" id="to_id" value="">
+							<input type="hidden" name="from_id" id="from_id" value="${userInfo.userno }">
+								<div class="col-sm-9 col-xs-9 reply-main">
+									<input type="text" class="form-control" name="chatcontent" id="chatconttent">
 								</div>
-								<div class="form group col-xs-2">
-									<button type="button" class="btn btn-default pull-right" onclick="submitFunction();">전송</button>
-									<div class="clearfix"></div>
+								<div class="col-sm-1 col-xs-1 reply-send">
+									<i class="fa fa-send fa-2x" aria-hidden="true" onclick="sendMessage()"></i>
 								</div>
-							</div>
+							</form>
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="alert alert-success" id="successMessage" style="display:none;">
-		<strong>메세지 전송에 성공했습니다.</strong>
-	</div>
-	<div class="alert alert-danger" id="dangerMessage" style="display:none;">
-		<strong>이름과 내용을 모두 입력해주세요.</strong>
-	</div>
-	<div class="alert alert-warning" id="warningMessage" style="display:none;">
-		<strong>데이터베이스 오류가 발생했습니다.</strong>
-	</div>
 </body>
-</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="friendsAdd"> <!-- mapper파일의 이름 -->
+
+	
+	<insert id="insert" parameterType="friendsAdd.FriendsAddVo" useGeneratedKeys="true">
+		INSERT INTO friendsadd (
+			from_userno, to_userno
+		) VALUES (
+			#{from_userno}, #{to_userno}
+		)
+		<selectKey keyProperty="friendsaddno" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="selectList" parameterType="int" resultType="user.UserVo">
+		SELECT userno, id, name, age FROM user
+		WHERE userno != #{x} AND userno not in (
+			SELECT friends_userno FROM friends WHERE my_userno=#{x}
+	 	   	UNION
+	  	  	SELECT my_userno FROM friends WHERE friends_userno=#{x}
+		)
+	</select>
+	
+	<select id="friendsAddCheck" parameterType="friendsAdd.FriendsAddVo" resultType="int">
+		SELECT COUNT(*) FROM friendsadd 
+		WHERE from_userno = #{from_userno} AND to_userno = #{to_userno}
+	</select>
+
+</mapper>
+
+	<!-- 
+	WHERE from_userno != ${from_userno}
+	 -->
