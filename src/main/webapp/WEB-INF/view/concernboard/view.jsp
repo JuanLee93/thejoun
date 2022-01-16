@@ -181,7 +181,14 @@
 								<dt class="tit" style="text-align: center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;|
 								</dt>
 								<dt class="title_nic" style="text-align: right;">작성자 :
-									${data.nickname }</dt>
+									${data.nickname }
+									<c:if test="${userInfo.userno } != ${data.userno }">
+										<form id="friendsAddButton" method="post" action="/thejoun/friendsAdd/addFriendsButton.do">
+										<input type="hidden" name="to_userno" value="${data.userno }">
+										<input type="submit" value="친구추가">
+									</form>
+									</c:if>
+								</dt>
 								<dd class="date" style="text-align: right;">작성일 :
 									${data.regdate }</dd>
 							</dl>

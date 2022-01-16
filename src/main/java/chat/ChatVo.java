@@ -8,12 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ChatVo {
-
-	private int chatID;
-	private String fromID;
-	private String toID;
-	private String content;
-	private Timestamp regdate ;
-	private int read;
+	private int chatno;
+	private int from_id;
+	private int to_id;
+	private String chatcontent;
+	private Timestamp chatregdate;
+	private int checkmessage;
 	
 }
