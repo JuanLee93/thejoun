@@ -29,14 +29,6 @@
 		}
 		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []);
 		var data = $("#frm").serialize();
-		var is_checked;
-		if ($('input:checkbox[name="checked"]').is(":checked")) {
-			is_checked = 'Y';
-		} else {
-			is_checked = 'N';
-		}
-		
-		$("#secret").val(is_checked);
 		$("#frm").submit();
 	}
 		$(function() {

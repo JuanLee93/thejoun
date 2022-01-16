@@ -46,7 +46,7 @@
 			<li><a href="">고객지원</a>
 				<ul class="depth2">
 					<li><a href="">공지 사항</a></li>
-					<li><a href="">문의 사항</a></li>
+					<li><a href="/thejoun/question/index.do">문의 사항</a></li>
 				</ul>
 			</li>
 		</ul>

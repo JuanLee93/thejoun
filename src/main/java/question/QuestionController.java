@@ -101,7 +101,7 @@ public class QuestionController {
 	@GetMapping("/question/edit.do")
 	public String edit(Model model, @RequestParam int qna_no) {
 		model.addAttribute("data", questionService.edit(qna_no));
-		return "freeboard/edit";
+		return "question/edit";
 	}
 	
 	@PostMapping("/question/update.do")
