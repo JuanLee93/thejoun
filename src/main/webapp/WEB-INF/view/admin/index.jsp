@@ -60,7 +60,7 @@ function CookieVal(cookieName) {
 		<p>관리자 로그인 후 이용가능합니다.</p>
 	</div>
 	<div class="login"> 
-	<form name="board" id="board" method="post" action="" onsubmit="return loginCheck();">
+	<form name="board" id="board" method="post" action="/thejoun/admin/login.do" onsubmit="return loginCheck();">
 		<fieldset>
 			<legend>관리자모드 로그인</legend>
 			<div class="bgBox">
@@ -75,10 +75,10 @@ function CookieVal(cookieName) {
 					</dl>
 					<dl>
 						<dt>
-							<label for="password"><strong>비밀번호</strong></label>
+							<label for="pwd"><strong>비밀번호</strong></label>
 						</dt>
 						<dd>
-							<input type="password" id="password" name="password" value="" title="비밀번호를 입력해주세요." />
+							<input type="password" id="pwd" name="pwd" value="" title="비밀번호를 입력해주세요." />
 						</dd>
 					</dl>
 				</div>
