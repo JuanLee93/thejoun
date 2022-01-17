@@ -46,12 +46,12 @@ public class FriendsAddController {
 		int complete2 = fas.friendsAddCheck(fav);
 		if(complete2 > 0) {
 			model.addAttribute("msg", "이미 친구신청된 유저입니다.");
-			model.addAttribute("url", "/thejoun/friendsAdd/index.do");
+			model.addAttribute("url", fav.getUrl());
 		}else {
 			int complete = fas.addButton(fav);
 			if(complete > 0){
 				model.addAttribute("msg", "친구신청 완료");
-				model.addAttribute("url", "/thejoun/friendsAdd/index.do");
+				model.addAttribute("url", fav.getUrl());
 			}else {
 				model.addAttribute("msg", "신청오류");
 			}

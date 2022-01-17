@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/chat/css/bootstrap-chat.css">
+<link rel="stylesheet" href="/thejoun/css/bootstrap-chat.css">
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -34,6 +34,12 @@
 					console.log("1")
 				}
 			});
+		});
+	}
+	
+	function getAddFriendsList(){
+		$.ajax({
+			url:"/thejoun/chat/"
 		});
 	}
 	

@@ -182,11 +182,12 @@
 								</dt>
 								<dt class="title_nic" style="text-align: right;">작성자 :
 									${data.nickname }
-									<c:if test="${userInfo.userno } != ${data.userno }">
+									<c:if test="${userInfo.userno  != data.userno }">
 										<form id="friendsAddButton" method="post" action="/thejoun/friendsAdd/addFriendsButton.do">
-										<input type="hidden" name="to_userno" value="${data.userno }">
-										<input type="submit" value="친구추가">
-									</form>
+											<input type="hidden" name="to_userno" value="${data.userno }">
+											<input type="hidden" name="url" value="${requestScope['javax.servlet.forward.request_uri']}?board_no=${data.concern_board_no}">
+											<button type="submit" value="친구추가">친구추가</button>
+										</form>
 									</c:if>
 								</dt>
 								<dd class="date" style="text-align: right;">작성일 :

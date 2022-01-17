@@ -5,9 +5,9 @@
 	
 	<insert id="insert" parameterType="friendsAdd.FriendsAddVo" useGeneratedKeys="true">
 		INSERT INTO friendsadd (
-			from_userno, to_userno
+			from_userno, to_userno, regdate
 		) VALUES (
-			#{from_userno}, #{to_userno}
+			#{from_userno}, #{to_userno}, NOW()
 		)
 		<selectKey keyProperty="friendsaddno" resultType="int" order="AFTER">
 			SELECT last_insert_id()

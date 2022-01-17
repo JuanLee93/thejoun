@@ -32,7 +32,7 @@
                                     </c:if>
                                 </td>
                                 <td class="writer">
-                                    ${vo.nickname }
+                                    ${vo.nickname } <!-- 여기 다가해야함 -->
                                 </td>
                                 <td class="date"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
                             </tr>
