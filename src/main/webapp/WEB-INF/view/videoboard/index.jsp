@@ -9,9 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>동영상 갤러리</title>
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <link rel="stylesheet" href="/thejoun/css/reset.css" />
 <link rel="stylesheet" href="/thejoun/css/common.css" />
 <link rel="stylesheet" href="/thejoun/css/contents.css"/>
@@ -56,9 +54,9 @@
 			                <div class="section"  data-board_no="${vo.video_board_no }" >              
 			               	<tr>
 								<li>
-								<td valign="top" class="">
-									<div class="gallery_list  ">
-				                    <img src="${CommonUtil.getYoutubeImage(vo.url)}"><br>
+								<td valign="top" class="" ><td>
+									<div class="gallery_list  "  >
+				                    <img src="${CommonUtil.getYoutubeImage(vo.url)}" ><br>
 				                    <font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
 				                    <td>좋아요:${vo.l_count  }</td>
 				                    <td>조회수:${vo.readcount  }</td><br>
