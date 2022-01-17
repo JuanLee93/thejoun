@@ -42,21 +42,43 @@
                 <div class="bbs">
                     <div class="view">
                         <div class="title">
-                        	<dl>
-                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }</dt>
-                                <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
-                            </dl>
-                        </div>
-                        <div class="cont"><p>${data.content }</p><br> </div>
-
-                        <dl class="file">
-                            <dt>첨부파일 </dt>
-                            <dd>
-                            <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
-                            target="_blank">${data.filename_org }</a></dd>
-                        </dl>     
-                        </div>
-                        <div class="btnSet clear" style="text-align:center;">
+		                    <table class="board_write">
+		                        <tbody>
+		                        	<H2>작성자 정보 및 내용</H1>
+			                        <tr>
+			                            <th>제목</th>
+			                            <td class ="tit">${data.title }</td>
+			                        </tr>
+			                        <tr>
+			                            <th>작성자</th>
+			                            <td class="writer">${data.nickname }</td>
+			                        </tr>
+			                        <tr>
+			                            <th>내용</th>
+			                            <td class="content">${data.content }</td>
+			                        </tr>
+			                        <tr>
+			                            <th>등록일</th>
+			                            <td class="regdate">${data.regdate }</td>
+			                        </tr>
+			                        <tr>
+			                            <th>첨부파일</th>
+			                            <td>
+			                                <a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}" 
+	                            			target="_blank">${data.filename_org }</a>
+			                            </td>
+			                        </tr>
+		                        </tbody>
+		                    </table>
+		                    <div style="width:100%; margin:50px; 0 0 0"></div>		                        
+		                    <table class="board_write2">
+		                        <tbody>
+		                        <H2>답변 내용</H2>
+		                        </tbody>
+		                    </table>
+                       	</div>    
+                    </div>
+                    <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
                             	<c:if test="${data.userno == userInfo.userno }">
@@ -64,12 +86,11 @@
 	                            <a href="javascript:del();" class="btn1">삭제</a>
 	                            </c:if>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-		<%@ include file="/WEB-INF/view/include/footer.jsp" %>
+	<%@ include file="/WEB-INF/view/include/footer.jsp" %>
 	</div>
 </body>
 </html>

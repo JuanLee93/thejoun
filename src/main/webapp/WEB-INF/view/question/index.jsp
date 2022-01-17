@@ -32,11 +32,12 @@
 	        	<div class="hg" style="height: 25px"></div>
                 <div class="bbs">
                     <table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${QuestionVo.page }/${totPage }페이지</span></p>
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${questionVo.page }/${totPage }페이지</span></p>
                         <caption>문의하기 목록</caption>
                         <colgroup>
                             <col width="80px" />
                             <col width="*" />
+                            <col width="100px" />
                             <col width="100px" />
                             <col width="100px" />
                             <col width="100px" />
@@ -46,6 +47,7 @@
                             <tr>
                                 <th>번호</th>
                                 <th>제목</th>
+                                <th>처리상태</th>
                                 <th>글쓴이</th>
                                 <th>등록일</th>
                                 <th>조회수</th>
@@ -54,18 +56,26 @@
                         <tbody>
 						<c:if test="${empty list }">
                             <tr>
-                                <td class="first" colspan="5">등록된 글이 없습니다.</td>
+                                <td class="first" colspan="6">등록된 글이 없습니다.</td>
                             </tr>
 						</c:if>
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
                             <tr class="board_tr" data-qna_no="${vo.qna_no }" style="cursor: pointer;">
-                                <td>${(totCount-status.index) - ((QuestionVo.page-1)*10) }</td>
+                                <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.title } 
                                     <c:if test="${vo.secret == 'Y'}">
-			                            secret
+			                            <img src="/thejoun/images/lock.png" style="display: inline-block; vertical-align: middle; width:13px; height: 15px;">
 									</c:if>
+                                </td>
+                                <td class="state">
+                                	<c:if test="${vo.state == 'N'}">
+                                	접수
+                                	</c:if>
+                                	<c:if test="${vo.state == 'Y'}">
+                                	답변완료
+                                	</c:if>
                                 </td>
                                 <td class="writer">
                                     ${vo.nickname }

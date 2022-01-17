@@ -25,9 +25,9 @@
 	</select>
 	
 	<select id="selectList" resultType="question.QuestionVo" parameterType="question.QuestionVo">
-		SELECT q.qna_no, q.title, q.regdate, q.readcount, q.secret, u.nickname as nickname
-			FROM qna q
-			LEFT JOIN user u ON q.userno = u.userno
+		SELECT *,
+			(SELECT nickname FROM user WHERE userno=qna.userno) as nickname
+			FROM qna
 		<include refid="questionWhere"/>
 			ORDER BY regdate DESC
 			LIMIT ${startIdx}, 10
