@@ -199,4 +199,9 @@ public class ConcernBoardController {
 		model.addAttribute("result", concernBoardService.delete(vo));
 		return "include/result";
 	}
+	@GetMapping("/admin/concernboard/deleteAjax.do")
+	public String adminDeleteAjax(Model model, ConcernBoardVo vo) {
+		model.addAttribute("result", concernBoardService.delete(vo));
+		return "include/result";
+	}
 }
