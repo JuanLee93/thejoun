@@ -44,7 +44,7 @@
                         <div class="title">
 		                    <table class="board_write">
 		                        <tbody>
-		                        	<H2>작성자 정보 및 내용</H1>
+		                        	<H2>작성자 정보 및 내용</H2>
 			                        <tr>
 			                            <th>제목</th>
 			                            <td class ="tit">${data.title }</td>

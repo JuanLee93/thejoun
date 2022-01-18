@@ -64,10 +64,10 @@
                             <tr class="board_tr" data-qna_no="${vo.qna_no }" style="cursor: pointer;">
                                 <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
-                                    ${vo.title } 
                                     <c:if test="${vo.secret == 'Y'}">
 			                            <img src="/thejoun/images/lock.png" style="display: inline-block; vertical-align: middle; width:13px; height: 15px;">
 									</c:if>
+                                    ${vo.title } 
                                 </td>
                                 <td class="state">
                                 	<c:if test="${vo.state == 'N'}">

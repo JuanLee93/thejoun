@@ -70,17 +70,11 @@ $(window).load(function(){
 		<div id="menu">
   			<ul class="menu">
   				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/admin/freeboard/index.do" class="parent"><span>커뮤니티</span></a>
+				<li><a href="<%=request.getContextPath()%>/admin/freeboard/index.do" class="parent"><span>게시물관리</span></a>
 					<div class="standard_left">
 					<ul>
 						<li><a href="<%=request.getContextPath()%>/admin/freeboard/index.do"><span>자유게시판</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/concernboard/index.do"><span>고민게시판</span></a></li>
-					</ul>
-					</div>
-				</li>
-				<li><a href="<%=request.getContextPath()%>/admin/imageboard/index.do" class="parent"><span>갤러리</span></a>
-					<div class="standard_left">
-					<ul>
 						<li><a href="<%=request.getContextPath()%>/admin/imageboard/index.do"><span>자유갤러리</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/videoboard/index.do"><span>동영상갤러리</span></a></li>
 					</ul>
