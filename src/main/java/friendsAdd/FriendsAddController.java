@@ -45,13 +45,13 @@ public class FriendsAddController {
 		fav.setFrom_userno(uv.getUserno());
 		int complete2 = fas.friendsAddCheck(fav);
 		if(complete2 > 0) {
-			model.addAttribute("msg", "이미 친구신청된 유저입니다.");
-			model.addAttribute("url", fav.getUrl());
+			model.addAttribute("msg", "이미 요청한 유저입니다.");
+			model.addAttribute("url", fav.getPageUrl());
 		}else {
 			int complete = fas.addButton(fav);
 			if(complete > 0){
 				model.addAttribute("msg", "친구신청 완료");
-				model.addAttribute("url", fav.getUrl());
+				model.addAttribute("url", fav.getPageUrl());
 			}else {
 				model.addAttribute("msg", "신청오류");
 			}

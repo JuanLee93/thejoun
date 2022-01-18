@@ -85,7 +85,7 @@
 			</c:forEach>
 		</c:if>
 	</div>
-	<button class="friendsButton" type="button" onclick="" >친구요청</button>
+	<button class="friendsButton" type="button" onclick="getFriendsAddList()" >친구요청 목록</button>
 
 
 </div>

@@ -20,6 +20,11 @@ public class FriendsServiceImpl implements FriendsService{
 	}
 	
 	@Override
+	public List<UserVo> selectAddFriendsList(FriendsAddVo fav){
+		return fd.selectAddFriendsList(fav);
+	}
+	
+	@Override
 	public int deleteFriendsAddList(FriendsAddVo fav) {
 		return fd.deleteFriendsAddList(fav);
 	}

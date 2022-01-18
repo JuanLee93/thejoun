@@ -5,9 +5,9 @@
 	
 	<insert id="friendsInsert" parameterType="friendsAdd.FriendsAddVo" useGeneratedKeys="true">
 		INSERT INTO friends (
-			my_userno, friends_userno
+			my_userno, friends_userno, regdate
 		) VALUES (
-			#{from_userno}, #{to_userno}
+			#{from_userno}, #{to_userno}, NOW()
 		)
 		<selectKey keyProperty="friendsaddno" resultType="int" order="AFTER">
 			SELECT last_insert_id()
@@ -16,9 +16,15 @@
 	
 	
 	<select id="selectFriendsAddList" parameterType="friendsAdd.FriendsAddVo" resultType="user.UserVo">
-		SELECT user.userno, user.id, user.name, user.gender, user.email, user.profile
+		SELECT user.userno, user.id, user.nickname, user.gender, user.email, fa.regdate
 		FROM friendsadd AS fa JOIN user
 		ON fa.to_userno = #{to_userno} AND fa.from_userno = user.userno;
+	</select>
+	
+	<select id="selectAddFriendsList" parameterType="friendsAdd.FriendsAddVo" resultType="user.UserVo">
+		SELECT user.userno, user.id, user.nickname, user.gender, user.email, fa.regdate
+		FROM friendsadd AS fa JOIN user
+		ON fa.to_userno = user.userno AND fa.from_userno = #{to_userno};
 	</select>
 	
 	<delete id="deleteFriendsAddList" parameterType="int">
@@ -26,7 +32,7 @@
 	</delete>
 	
 	<select id="findFriendsList" parameterType="int" resultType="user.UserVo">
-		SELECT userno, id, name, gender, email, profile FROM user
+		SELECT userno, id, name, gender, email FROM user
 		WHERE userno in (
 		SELECT friends_userno from friends where my_userno = #{x}
 		UNION
@@ -36,6 +42,3 @@
 
 </mapper>
 
-	<!-- 
-	WHERE from_userno != ${from_userno}
-	 -->

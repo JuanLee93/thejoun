@@ -8,7 +8,9 @@ import user.UserVo;
 public interface FriendsService {
 
 	List<UserVo> selectFriendsAddList(FriendsAddVo fav);
+	List<UserVo> selectAddFriendsList(FriendsAddVo fav);
 	int deleteFriendsAddList(FriendsAddVo fav);
 	int friendsInsert(FriendsAddVo fav);
 	List<UserVo> findFriendsList(int userno);
+	
 }

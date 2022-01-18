@@ -3,18 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <head>
 	<style>
-		.messageNotice{
-			width : 20px;
-			height : 20px;
-			border-radius : 50%;
-			background : #ff0000;
-			font-size : 12px;
-			color : white;
-			float : right;
-			text-align : center;
-			line-height : 20px;
-			
-		}
 		.friendsButton{
 		 	padding : 10px;
 			width : 350px;
@@ -44,23 +32,22 @@
 	</div>
 
 
-	<div class="row sideBar">
-
-		<c:if test="${empty friendsList }">
+	<div class="row sideBar" style="height : 43%;">
+		<!--  내가 받은 친구신청 리스트 -->
+		<c:if test="${empty getFriendsList }">
 			<div class="row sideBar-body">
 				<div class="col-sm-9 col-xs-9 sideBar-main">
 					<div class="row">
 						<div class="col-sm-8 col-xs-8 sideBar-name">
-							<span class="name-meta">등록된 친구가 없습니다. </span>
+							<span class="name-meta">받은 친구신청목록</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</c:if>
-		<c:if test="${!empty friendsList }">
-			<c:forEach var="vo" items="${friendsList }" varStatus="status">
-				<form name="frm" id="frm${vo.userno }" method="post">
-				<div onclick="findChattingList(${vo.userno })">
+		<c:if test="${!empty getFriendsList }">
+			<span class="name-meta">받은 친구신청 목록 </span>
+			<c:forEach var="vo" items="${getFriendsList }" varStatus="status">
 					<input type="hidden" name="to_id" value="${vo.userno }">
 						<div class="row sideBar-body">
 							<div class="col-sm-3 col-xs-3 sideBar-avatar">
@@ -71,21 +58,62 @@
 							<div class="col-sm-9 col-xs-9 sideBar-main">
 								<div class="row">
 									<div class="col-sm-8 col-xs-8 sideBar-name">
-										<span class="name-meta">${vo.name } </span>
-										<span class="messageNotice" >${vo.messagecount }</span>
+										<span class="name-meta">${vo.nickname } </span>
+										<span class="name-meta" style="font-size:13px;">신청일 : ${vo.regdate } </span>
 									</div>
 									<div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-										<span class="time-meta pull-right">${vo.chatregdate } </span>
+										<form name="toFriendUser" id="toFriendUser${vo.userno }" method="post">
+											<input type="hidden" name="from_userno" value="${vo.userno }">
+											<button type="button" onclick="addFriends(${vo.userno})">수락</button>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
+			</c:forEach>
+		</c:if>
+		</div>
+		<div class="row sideBar" style="height : 43%;">
+		<!---------------내가 신청한 친구 리스트------------->
+		<c:if test="${empty addFriendsList }">
+			<div class="row sideBar-body">
+				<div class="col-sm-9 col-xs-9 sideBar-main">
+					<div class="row">
+						<div class="col-sm-8 col-xs-8 sideBar-name">
+							<span class="name-meta">보낸 친구신청 목록</span>
+						</div>
 					</div>
+				</div>
+			</div>
+		</c:if>
+		<c:if test="${!empty addFriendsList }">
+		<span class="name-meta">보낸 친구신청 목록 </span>
+			<c:forEach var="vo" items="${addFriendsList }" varStatus="status">
+				<form name="frm" id="frm${vo.userno }" method="post">
+					<input type="hidden" name="to_id" value="${vo.userno }">
+						<div class="row sideBar-body">
+							<div class="col-sm-3 col-xs-3 sideBar-avatar">
+								<div class="avatar-icon">
+									<img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+								</div>
+							</div>
+							<div class="col-sm-9 col-xs-9 sideBar-main">
+								<div class="row">
+									<div class="col-sm-8 col-xs-8 sideBar-name">
+										<span class="name-meta">${vo.nickname } </span>
+										<span class="name-meta" style="font-size:13px;">요청일 : ${vo.regdate } </span>
+									</div>
+									<div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+										
+									</div>
+								</div>
+							</div>
+						</div>
 				</form>
 			</c:forEach>
 		</c:if>
 	</div>
-	<button class="friendsButton" type="button" onclick="" >채팅목록</button>
+	<button class="friendsButton" type="button" onclick="friendsListToChatFriendsList()" >채팅목록</button>
 
 
 </div>

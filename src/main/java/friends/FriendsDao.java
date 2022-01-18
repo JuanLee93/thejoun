@@ -19,13 +19,15 @@ public class FriendsDao {
 		return sst.selectList("friends.selectFriendsAddList", fav); 
 	}
 	
+	public List<UserVo> selectAddFriendsList(FriendsAddVo fav){
+		return sst.selectList("friends.selectAddFriendsList", fav);
+	}
+	
 	public int deleteFriendsAddList(FriendsAddVo fav) {
 		return sst.delete("friends.deleteFriendsAddList", fav);
 	}
 	
 	public int friendsInsert(FriendsAddVo fav) {
-		//친구추가하면 신청한사람이랑 신청받은사람 둘다 친구가 되어야하기때문에 2개넣음
-		
 		return sst.insert("friends.friendsInsert", fav);
 	}
 	

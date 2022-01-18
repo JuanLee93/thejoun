@@ -222,8 +222,8 @@ body {
 }
 
 .time-meta {
-  text-align: right;
-  font-size: 12px;
+  text-align: left;
+  font-size: 9px;
   padding: 1% !important;
   color: rgba(0, 0, 0, .4);
   vertical-align: baseline;
@@ -535,7 +535,7 @@ body {
   }
   .time-meta {
     text-align: right;
-    font-size: 14px;
+    font-size: 9px;
     padding: 4% !important;
     color: rgba(0, 0, 0, .4);
     vertical-align: baseline;

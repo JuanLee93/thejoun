@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import friendsAdd.FriendsAddVo;
 import user.UserVo;
@@ -21,19 +22,21 @@ public class FriendsController {
 	@Autowired
 	FriendsService fs;
 
-	@GetMapping("friends/index.do")
+	@PostMapping("friends/getFriendsList.do")
 	public String friendsIndex(UserVo vo, FriendsAddVo fav, HttpSession sess, Model model) {
 		
 		//세션에 저장되있는 로그인정보
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
 		fav.setTo_userno(uv.getUserno());
-		List<UserVo> favList = fs.selectFriendsAddList(fav);
-		model.addAttribute("favList", favList);
+		List<UserVo> getFriendsList = fs.selectFriendsAddList(fav);
+		model.addAttribute("getFriendsList", getFriendsList);
+		List<UserVo> addFriendsList = fs.selectAddFriendsList(fav);
+		model.addAttribute("addFriendsList", addFriendsList);
 		
-		return "friends/index";
+		return "chat/addFriendsList";
 	}
 	
-	@GetMapping("friends/getAccept.do")
+	@PostMapping("friends/getAccept.do")
 	public String getAccept(UserVo vo, FriendsAddVo fav, HttpSession sess, Model model) {
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
 		fav.setTo_userno(uv.getUserno());

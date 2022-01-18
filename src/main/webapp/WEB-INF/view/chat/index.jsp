@@ -19,10 +19,17 @@
 
 <script>
 	var chat;
+	var main;
+	//index페이지 시작시 바로시작하는거
 	$(function() {
 		getFriendsList();
-		setInterval(getFriendsList,1000);
-	})
+		main = setInterval(getFriendsList,1000);
+	});
+	//친구신청목록에서 채팅목록 눌렀을때
+	function friendsListToChatFriendsList(){
+		getFriendsList();
+		main = setInterval(getFriendsList,1000);
+	}
 	
 	function getFriendsList() {
 		$(function(){
@@ -31,9 +38,21 @@
 				type : "post",
 				success : function(res){
 					$("#chatFriendsListArea").html(res);
-					console.log("1")
+					console.log("1");
 				}
 			});
+		});
+	}
+	
+	function getFriendsAddList(){
+		$.ajax({
+			url : "/thejoun/friends/getFriendsList.do",
+			type : "post",
+			success : function(res){
+				clearInterval(main);
+				$("#chatFriendsListArea").html(res);
+				console.log("3");
+			}
 		});
 	}
 	
@@ -83,6 +102,18 @@
 	//메세지 보내면 메세지창에있던 내용 지우는거임
 	function clearMessage(){
 		$("#chatconttent").val("");
+	}
+	
+	function addFriends(userno){
+		$.ajax({
+			url : "/thejoun/friends/getAccept.do",
+			type : "post",
+			data : $("#toFriendUser"+userno).serialize(),
+			success : function(res){
+				alert("친구신청이 수락되었습니다.");
+				getFriendsAddList();
+			}
+		})
 	}
 </script>
 </head>
