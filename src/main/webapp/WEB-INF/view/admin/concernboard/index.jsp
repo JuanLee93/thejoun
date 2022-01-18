@@ -96,19 +96,21 @@
 								<!--//btn-->
 								<!-- 페이징 처리 -->
 								<div class='page'>
-									<strong>1</strong> <a href="">2</a> <a href="">3</a> <a href="">4</a>
+								${pageArea }
 								</div>
 								<!-- //페이징 처리 -->
 								<form name="searchForm" id="searchForm" action="index.do"
-									method="post">
+									method="get">
 									<div class="search">
 										<select name="stype" title="검색을 선택해주세요">
 											<option value="all">전체</option>
 											<option value="title">제목</option>
 											<option value="contents">내용</option>
-										</select> <input type="text" name="sval" value=""
+											<option value="nickname">닉네임</option>
+										</select> <input class="searchWord" type="text" id="sval"
+								name="searchWord"  value=""
 											title="검색할 내용을 입력해주세요" /> <input type="image"
-											src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
+											src="<%=request.getContextPath()%>/images/admin/btn_search.gif"
 											class="sbtn" alt="검색" />
 									</div>
 								</form>
