@@ -91,8 +91,10 @@
 								</div>
 							</div>
 							<!--//btn-->
-
+							
+							<div class='page'>
 							${pageArea }
+							</div>
 							
 							<!-- //페이징 처리 -->
 							<form name="searchForm" id="searchForm" action="index.do"  method="get">
