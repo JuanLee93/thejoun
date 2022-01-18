@@ -61,6 +61,15 @@
 		WHERE qna_no = #{qna_no}
 	</update>
 	 
+	 <update id="replyUpdate" parameterType="question.QuestionVo">
+		UPDATE qna SET
+			reply=#{reply}
+			, state = 'Y'
+			, admin_no=#{admin_no}
+			, updatedate=NOW()
+		WHERE qna_no = #{qna_no}
+	</update>
+	
 	<delete id="delete" parameterType="int">
 		DELETE FROM qna WHERE qna_no = #{qna_no}
 	</delete>

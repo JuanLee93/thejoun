@@ -1,15 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="util.CommonUtil" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<script src="/thejoun/js/common.js"></script>
 <script>
 	$(function() {
 		$(".board_tr").click(function() {
-			location.href='view.do?board_no='+$(this).data("board_no");
+			location.href='view.do?qna_no='+$(this).data("qna_no");
 		});
 	});
 </script>
@@ -26,16 +25,16 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>게시물관리 - 자유게시판[목록]</h2>
+					<h2>Q&A - [목록]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
-							<p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+							<p><span><strong>총 ${totCount }개</strong>  |  ${questionVo.page }/${totPage }페이지</span></p>
 							<form name="frm" id="frm" action="process.do" method="post">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 자유게시판 관리목록입니다.">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 문의사항 관리목록입니다.">
 								<colgroup>
 									<col class="w3" />
 									<col class="w4" />
@@ -43,42 +42,35 @@
 									<col class="w10" />
 									<col class="w5" />
 									<col class="w6" />
-									<col class="w6" />
 								</colgroup>
 								<thead>
 									<tr>
 										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 
-										<th scope="col">작성자</th> 
 										<th scope="col">작성일</th> 
-										<th scope="col">조회수</th>
-										<th scope="col" class="last">상태</th>
+										<th scope="col">작성자</th> 
+										<th scope="col">답변여부</th> 
 									</tr>
 								</thead>
 								<tbody>
 								<c:if test="${empty list }">
 		                            <tr>
-		                                <td class="first" colspan="7">등록된 글이 없습니다.</td>
+		                                <td class="first" colspan="6">등록된 글이 없습니다.</td>
 		                            </tr>
 								</c:if>
 		                        <c:if test="${!empty list }">
 		                        <c:forEach var="vo" items="${list }" varStatus="status">
-		                            <tr class="board_tr" data-board_no="${vo.board_no }" style="cursor: pointer;">
-		                            	<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-		                                <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
-		                                <td class="title">
-		                                    ${vo.title }
-		                                </td>
-		                                <td class="writer">
-		                                    ${vo.nickname }
-		                                </td>
-		                                <td class="date">${vo.regdate }</td>
-		                                <td>${vo.readcount }</td>
-		                                <td class="last">정상</td>
-		                            </tr>
-		                        </c:forEach>
-		                        </c:if>
+									<tr class="board_tr" data-qna_no="${vo.qna_no }"  style="cursor: pointer;">
+										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+                         		        <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
+										<td class="title"><a href="#">${vo.title }</a></td>
+										<td>${vo.regdate }</td>
+										<td>${vo.nickname }</td>
+										<td>${vo.state == 'Y' ? '답변' : '미답변' }</td>
+									</tr>
+								</c:forEach>
+								</c:if>
 								</tbody>
 							</table>
 							</form>
@@ -86,20 +78,16 @@
 								<div class="btnLeft">
 									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
 								</div>
-								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
-								</div>
 							</div>
 							<!--//btn-->
-							
+							<!-- 페이징 처리 -->
 							<div class='page'>
 							${pageArea }
 							</div>
-							
 							<!-- //페이징 처리 -->
-							<form name="searchForm" id="searchForm" action="index.do"  method="get">
+							<form name="searchForm" id="searchForm" action="index.do"  method="post">
 								<div class="search">
-									<select name="stype" name="searchType" class="dSelect" title="검색을 선택해주세요">
+									<select name="stype" title="검색을 선택해주세요">
 										<option value="all">전체</option>
 										<option value="title">제목</option>
 										<option value="contents">내용</option>

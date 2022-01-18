@@ -10,6 +10,7 @@ public interface QuestionService {
 	QuestionVo view(int qna_no);
 	QuestionVo edit(int qna_no);
 	int update(QuestionVo vo);
+	int replyUpdate(QuestionVo vo);
 	int delete(QuestionVo vo);
 	
 }
