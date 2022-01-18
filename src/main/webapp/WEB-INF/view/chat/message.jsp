@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="col-sm-8 col-xs-7 heading-name">
-			<a class="heading-name-meta">${otherUserno.name } </a> <span
+			<a class="heading-name-meta">${otherUserno.nickname } </a> <span
 				class="heading-online">Online</span>
 		</div>
 		<div class="col-sm-1 col-xs-1  heading-dot pull-right">

@@ -18,8 +18,6 @@ public class ChatController {
 	
 	@Autowired
 	ChatService cs;
-	@Autowired
-	FriendsService fs;
 		
 	@GetMapping("/chat/index.do")
 	public String chatMain() {
