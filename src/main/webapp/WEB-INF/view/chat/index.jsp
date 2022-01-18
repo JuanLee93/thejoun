@@ -16,6 +16,16 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<style>
+	.acceptButtonAgree{
+		vertical-align : center;
+		height : 22px;
+	}
+	.acceptButtonDisagree{
+		vertical-align : center;
+		height : 22px;
+	}
+</style>
 
 <script>
 	var chat;
@@ -111,6 +121,19 @@
 			data : $("#toFriendUser"+userno).serialize(),
 			success : function(res){
 				alert("친구신청이 수락되었습니다.");
+				getFriendsAddList();
+			}
+		})
+	}
+	
+	function deleteFriends(userno){
+		$.ajax({
+			url : "/thejoun/friends/deleteFriends.do",
+			type : "post",
+			data : $("#deleteFriendUser"+userno).serialize(),
+			success : function(res){
+				console.log("4");
+				alert("친구요청을 거절하셨습니다.");
 				getFriendsAddList();
 			}
 		})

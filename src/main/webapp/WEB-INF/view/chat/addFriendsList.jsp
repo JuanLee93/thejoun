@@ -14,6 +14,8 @@
 			line-height : 5px;
 			
 		}
+		
+		
 	</style>
 </head>
 <div class="side-one">
@@ -64,7 +66,11 @@
 									<div class="col-sm-4 col-xs-4 pull-right sideBar-time">
 										<form name="toFriendUser" id="toFriendUser${vo.userno }" method="post">
 											<input type="hidden" name="from_userno" value="${vo.userno }">
-											<button type="button" onclick="addFriends(${vo.userno})">수락</button>
+											<button type="button" class="acceptButtonAgree" onclick="addFriends(${vo.userno})">수락</button>
+										</form>
+										<form name="deleteFriendUser" id="deleteFriendUser${vo.userno }" method="post">
+											<input type="hidden" name="from_userno" value="${vo.userno }">
+											<button type="button" class="acceptButtonDisagree" onclick="deleteFriends(${vo.userno})">거절</button>
 										</form>
 									</div>
 								</div>

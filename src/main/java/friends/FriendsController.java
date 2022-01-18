@@ -56,6 +56,20 @@ public class FriendsController {
 		return "include/return";
 	}
 	
+	//채팅창에서 친구요청온거 거절할때 부르는 컨트롤러
+	@PostMapping("friends/deleteFriends.do")
+	public String deleteFriends(FriendsAddVo fav, HttpSession sess, Model model) {
+		UserVo uv = (UserVo)sess.getAttribute("userInfo");
+		fav.setTo_userno(uv.getUserno());
+		int deleteFriendsAddList = fs.deleteFriendsAddList(fav);
+		if(deleteFriendsAddList > 0) {
+			model.addAttribute("msg", "이거는 오류가 날수가 없는데.. 왜났지");
+		}else{
+			model.addAttribute("msg", "이 유저에게 친구신청을 받은적이 없어요");
+		}
+		return "include/return";
+	}
+	
 	@GetMapping("/friends/friendsList.do")
 	public String friendsList(UserVo vo, FriendsVo fv, Model model, HttpSession sess) {
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
