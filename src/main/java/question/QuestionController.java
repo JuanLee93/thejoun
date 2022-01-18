@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import admin.AdminVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -24,8 +25,9 @@ public class QuestionController {
 	@Autowired
 	QuestionService questionService;
 	
-	@GetMapping("/question/index.do")
-	public String index(Model model, HttpServletRequest req, HttpSession sess, QuestionVo vo) {
+	@GetMapping("/admin/question/index.do")
+	public String adminIndex(Model model, HttpServletRequest req, HttpSession sess, QuestionVo vo) {
+		
 		int totCount = questionService.count(vo); //총 개수
 		int totPage = totCount / 10; //총 페이지 수
 		if (totCount % 10 > 0) totPage++;
@@ -40,6 +42,49 @@ public class QuestionController {
 		if (endPage > totPage) endPage = totPage;
 
 		List<QuestionVo> list = questionService.selectList(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("totPage", totPage);
+		model.addAttribute("totCount", totCount);
+		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 10));
+		
+		return "admin/question/index";
+	}
+	
+	@GetMapping("/admin/question/view.do")
+	public String adminView(Model model, @RequestParam int qna_no) {
+		model.addAttribute("data", questionService.view(qna_no));
+		
+		return "admin/question/view";
+	}
+	
+	@GetMapping("/admin/question/replyUpdate.do")
+	public String replyUpdateAjax(HttpSession sess, Model model, QuestionVo vo, @RequestParam int qna_no, @RequestParam String reply) {
+		
+		vo.setQna_no(qna_no);
+		vo.setReply(reply);
+		vo.setAdmin_no(((AdminVo)sess.getAttribute("adminInfo")).getAdmin_no());
+		model.addAttribute("result", questionService.replyUpdate(vo));
+		return "include/result";
+	}
+	
+	@GetMapping("/question/index.do")
+	public String index(Model model, HttpServletRequest req, HttpSession sess, QuestionVo vo) {
+
+		int totCount = questionService.count(vo); //총 개수
+		int totPage = totCount / 10; //총 페이지 수
+		if (totCount % 10 > 0) totPage++;
+		System.out.println("totPage : "+totPage);
+		
+		int startIdx = (vo.getPage()-1) * 10;
+		vo.setStartIdx(startIdx);
+
+		int pageRange = 10;
+		int startPage = (vo.getPage()-1)/pageRange*pageRange+1; // 시작페이지
+		int endPage = startPage + pageRange - 1;// 종료페이지
+		if (endPage > totPage) endPage = totPage;
+
+		List<QuestionVo> list = questionService.selectList(vo);
+
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
@@ -90,7 +135,7 @@ public class QuestionController {
 		return "/include/return";
 
 	}
-	
+
 	@GetMapping("/question/view.do")
 	public String view(Model model, @RequestParam int qna_no) {
 		model.addAttribute("data", questionService.view(qna_no));

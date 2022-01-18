@@ -47,4 +47,9 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionDao.delete(vo);
 	}
 
+	@Override
+	public int replyUpdate(QuestionVo vo) {
+		return questionDao.replyUpdate(vo);
+	}
+
 }

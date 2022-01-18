@@ -47,4 +47,8 @@ public class QuestionDao {
 	public int delete(QuestionVo vo) {
 		return sqlSessionTemplate.delete("question.delete", vo.getQna_no());
 	}
+	
+	public int replyUpdate(QuestionVo vo) {
+		return sqlSessionTemplate.update("question.replyUpdate", vo);
+	}
 }

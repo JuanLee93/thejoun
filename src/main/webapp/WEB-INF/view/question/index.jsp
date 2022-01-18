@@ -16,8 +16,27 @@
 <script src="/thejoun/js/common.js"></script>
 <script>
 	$(function() {
+
 		$(".board_tr").click(function() {
-			location.href='view.do?qna_no='+$(this).data("qna_no");
+			
+			var writer = $(this).data("user_no");
+			var secret = $(this).data("secret");
+		
+			if (${!empty userInfo }) {
+				if (secret === "Y") {
+					if (writer === ${userInfo.userno}) {
+						location.href='view.do?qna_no='+$(this).data("qna_no");
+					} else {
+						alert("글쓴이만 열람할 수 있습니다.");
+					}
+				} else {
+					location.href='view.do?qna_no='+$(this).data("qna_no");
+				}
+				
+			} else {
+				alert("로그인 후 이용해주세요.");
+			}
+
 		});
 	});
 </script>
@@ -61,7 +80,7 @@
 						</c:if>
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
-                            <tr class="board_tr" data-qna_no="${vo.qna_no }" style="cursor: pointer;">
+                            <tr class="board_tr" data-qna_no="${vo.qna_no }" data-secret="${vo.secret }" data-user_no="${vo.userno }" style="cursor: pointer;">
                                 <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     <c:if test="${vo.secret == 'Y'}">
