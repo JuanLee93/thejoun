@@ -100,8 +100,8 @@ $(function() {
 									<a class="btns" href="index.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href="view.do" id="btn_update"><strong>수정</strong></a>
-									<a class="btns" style="cursor:pointer;" href="view.do"id="btn_save"><strong>답변</strong></a>
+									<a class="btns" style="cursor:pointer;" href="javascript:;" id="btn_update"><strong>수정</strong></a>
+									<a class="btns" style="cursor:pointer;" href="javascript:;"id="btn_save"><strong>답변</strong></a>
 								</div>
 							</div>
 							<!--//btn-->

@@ -22,21 +22,22 @@
 			var writer = $(this).data("user_no");
 			var secret = $(this).data("secret");
 		
-			if (${!empty userInfo }) {
+			
 				if (secret === "Y") {
+					<c:if test="${!empty userInfo}">
 					if (writer == ${userInfo.userno}) {
 						location.href='view.do?qna_no='+$(this).data("qna_no");
 					} else {
 						alert("글쓴이만 열람할 수 있습니다.");
 					}
+					</c:if>
+					<c:if test="${empty userInfo}">
+						alert("로그인 후 이용해주세요.");
+					</c:if>
 				} else {
 					location.href='view.do?qna_no='+$(this).data("qna_no");
 				}
 				
-			} else {
-				alert("로그인 후 이용해주세요.");
-			}
-
 		});
 	});
 </script>
