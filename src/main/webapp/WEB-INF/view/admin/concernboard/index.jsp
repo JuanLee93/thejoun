@@ -52,9 +52,7 @@
 										</colgroup>
 										<thead>
 											<tr>
-												<th scope="col" class="first"><input type="checkbox"
-													name="allChk" id="allChk"
-													onClick="check(this, document.frm.no)" /></th>
+												<th scope="col" class="first"><input type="checkbox"	name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
 												<th scope="col">작성자</th>
@@ -75,9 +73,7 @@
 													<tr class="board_tr"
 														data-board_no="${vo.concern_board_no }"
 														style="cursor: pointer;">
-														<th scope="col" class="first"><input type="checkbox"
-															name="allChk" id="allChk"
-															onClick="check(this, document.frm.no)" /></th>
+														<td scope="col" class="first"><input type="checkbox" name="allChk" id="allChk"	onClick="check(this, document.frm.no)" /></td>
 														<td>${(totCount-status.index) - ((concernboardVo.page-1)*10) }</td>
 														<td class="txt_l" style="text-align: left;">${vo.title }</td>
 														<td class="writer">${vo.nickname }</td>

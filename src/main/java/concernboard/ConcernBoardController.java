@@ -80,7 +80,19 @@ public class ConcernBoardController {
 		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 10, param));
 		return "admin/concernboard/index";
 	}
-	//여기까지 테스트
+
+	//관리자에서 게시물 view 확인
+	@GetMapping("admin/concernboard/view.do")
+	public String adminView(Model model, @RequestParam int board_no) {
+		model.addAttribute("data", concernBoardService.view(board_no));
+		CommentVo cv = new CommentVo();
+		cv.setBoard_no(board_no);
+		cv.setTablename(2);
+		model.addAttribute("cList", cService.selectList(cv));
+		return "admin/concernboard/view";
+	}
+	
+	
 	@RequestMapping("/concernboard/write.do")
 	public String write() {
 		return "concernboard/write";
@@ -127,17 +139,7 @@ public class ConcernBoardController {
 		model.addAttribute("cList", cService.selectList(cv));
 		return "concernboard/view";
 	}
-	//관리자에서 게시물 view 확인
-	@GetMapping("admin/concernboard/view.do")
-	public String adminView(Model model, @RequestParam int board_no) {
-		model.addAttribute("data", concernBoardService.view(board_no));
-		CommentVo cv = new CommentVo();
-		cv.setBoard_no(board_no);
-		cv.setTablename(2);
-		model.addAttribute("cList", cService.selectList(cv));
-		return "admin/concernboard/view";
-	}
-	//여기까지 테스트
+	
 	
 	@GetMapping("/concernboard/edit.do")
 	public String edit(Model model, @RequestParam int board_no) {
