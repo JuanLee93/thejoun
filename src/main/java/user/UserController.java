@@ -23,9 +23,28 @@ public class UserController {
 	
 	//관리자페이지의 회원관리
 	@GetMapping("/admin/member/index.do")
-	public String userIndex(Model model,  UserVo vo) {
+	public String userIndex(Model model, HttpServletRequest req, HttpSession sess, UserVo vo) {
+		
+		int totCount = userService.count(vo); //총 개수
+		int totPage = totCount / 10; //총 페이지 수
+		if (totCount % 10 > 0) totPage++;
+		System.out.println("totPage : "+totPage);
+		
+		int startIdx = (vo.getPage()-1) * 10;
+		vo.setStartIdx(startIdx);
+
+		int pageRange = 10;
+		int startPage = (vo.getPage()-1)/pageRange*pageRange+1; // 시작페이지
+		int endPage = startPage + pageRange - 1;// 종료페이지
+		if (endPage > totPage) endPage = totPage;
+
+
+		
 		List<UserVo> list = userService.selectList(vo);
 		model.addAttribute("list", list);
+		model.addAttribute("totPage", totPage);
+		model.addAttribute("totCount", totCount);
+		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 10));
 		return "admin/member/index";
 
 	}

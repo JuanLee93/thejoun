@@ -36,8 +36,7 @@
 						<div id="bbs">
 							<div id="blist">
 								<p>
-									<span><strong>총 ${totCount }개</strong> |
-										${concernBoardVo.page }/${totPage }페이지</span>
+									<span><strong>총 ${totCount }개</strong> |	${userVo.page }/${totPage }페이지</span>
 								</p>
 								<form name="frm" id="frm" action="process.do" method="post">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"

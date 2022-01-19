@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import concernboard.ConcernBoardVo;
+import question.QuestionVo;
 
 @Repository
 public class UserDao {
@@ -16,6 +17,10 @@ public class UserDao {
 	//관리자 페이지에서 사용할 user정보
 	public List<UserVo> selectList(UserVo vo){
 		return sst.selectList("user.selectList", vo);
+	}
+	//관리자 페이지 페이징처리
+	public int count(UserVo vo) {
+		return sst.selectOne("user.count", vo);
 	}
 	
 	//로그인

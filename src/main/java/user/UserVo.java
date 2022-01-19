@@ -4,10 +4,12 @@ import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
+import question.QuestionVo;
+import util.CommonVo;
 
 @Getter
 @Setter
-public class UserVo {
+public class UserVo extends CommonVo {
 	private int userno;
 	private String id;
 	private String pwd;
@@ -21,6 +23,7 @@ public class UserVo {
 	private String addr1;
 	private String addr2;
 	private String email;
+	
 	
 	//이거 2개는 db에 안들어가있음 불러오기 편할라고 집어넣었어요
 	private int messagecount;  // 확인안한 메세지 카운트할라고 만듬

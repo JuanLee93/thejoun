@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import concernboard.ConcernBoardVo;
+import question.QuestionVo;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -15,6 +16,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserDao dao;
 	
+	//관리자 페이지-회원관리 
+	@Override
+	public int count(UserVo vo) {		
+		return dao.count(vo);
+	}
 	
 	@Override
 	public List<UserVo> selectList(UserVo vo) {
@@ -41,4 +47,8 @@ public class UserServiceImpl implements UserService {
 	public int idCheck(String id) {
 		return dao.idCheck(id);
 	}
+
+
+
+
 }
