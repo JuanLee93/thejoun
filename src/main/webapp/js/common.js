@@ -31,3 +31,10 @@ function setEditor(holder){
 	return oEditors;
 }
 
+$(function(){
+	$('li').click(function(){
+		$('li').removeClass()
+			$(this).addClass('on')
+	})
+	
+})

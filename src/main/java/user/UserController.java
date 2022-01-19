@@ -61,6 +61,9 @@ public class UserController {
 		return "include/result";
 	}
 	
-	
+	@GetMapping("/user/mypage.do")
+	public String mypage() {
+		return "user/mypage";
+	}
 	
 }
