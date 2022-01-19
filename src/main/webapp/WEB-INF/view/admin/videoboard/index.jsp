@@ -55,8 +55,8 @@
 													onClick="check(this, document.frm.no)" /></th>
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
-												<th scope="col">작성일</th>
 												<th scope="col">작성자</th>
+												<th scope="col">작성일</th>
 												<th scope="col" class="last">조회수</th>
 												<th scope="col">상태</th>
 											</tr>

@@ -21,9 +21,9 @@ public class UserController {
 	@Autowired
 	UserServiceImpl userService;
 	
-	
+	//관리자페이지의 회원관리
 	@GetMapping("/admin/member/index.do")
-	public String userIndex(Model model,  HttpSession sess, UserVo vo) {
+	public String userIndex(Model model,  UserVo vo) {
 		List<UserVo> list = userService.selectList(vo);
 		model.addAttribute("list", list);
 		return "admin/member/index";
