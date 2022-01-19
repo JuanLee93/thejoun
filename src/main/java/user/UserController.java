@@ -66,4 +66,11 @@ public class UserController {
 		return "user/mypage";
 	}
 	
+	
+	@GetMapping("/user/test.do")
+	public String test() {
+		return "user/test";
+	}
+	
+	
 }

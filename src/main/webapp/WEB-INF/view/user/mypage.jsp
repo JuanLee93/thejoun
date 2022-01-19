@@ -19,12 +19,17 @@
 <script src="/thejoun/js/main.js"></script>
 <script src="/thejoun/css/common.css"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-<style>
-	btn_group {
-		color:white;
-		background:#337ab7;
-	}
-</style>
+<script>
+	$.ajax({
+		url : "/user/test.do"
+		dataType : "html"
+		type : "post"
+		data : {"a", "b"}
+		success : function(result){
+			$("#myindex").html(result);
+		}
+	})
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -44,21 +49,8 @@
 							<li role="presentation"><a href="#">1:1 문의</a></li>
 						</ul>
 					</div>
-					<div class="userinfo">
-						<ul><h3>나의 정보</h3><hr>
-							<i class="bi bi-person-circle"></i>
-							<li>
-								<a>아이디 : Lee</a><br><br><br>
-								<a>닉네임 : bani11</a><br><br><br>
-								<a>인삿말 : 안녕하세요! 고민을 나눠봐요~</a><br><br><br>
-							</li>
-						</ul>
-						<ul><br><br>
-							<div id="btn_group" style="text-align:center;">
-        						<a class="btn_useredit" href="">회원정보 수정</a>
-        						<a class="btn_useredit" href="">비밀번호 변경</a>
-    						</div>
-						</ul>
+					<div id="myindex">
+						
 					</div>
 				</div>
 			</div>
