@@ -1,5 +1,7 @@
 package user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,11 +12,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import concernboard.ConcernBoardVo;
+import util.CommonUtil;
+
 @Controller
 public class UserController {
 	
 	@Autowired
 	UserServiceImpl userService;
+	
+	
+	@GetMapping("/admin/member/index.do")
+	public String userIndex(Model model,  HttpSession sess, UserVo vo) {
+		List<UserVo> list = userService.selectList(vo);
+		model.addAttribute("list", list);
+		return "admin/member/index";
+
+	}
+	
+	
 	
 	@GetMapping("/user/login.do")
 	public String login() {

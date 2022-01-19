@@ -19,6 +19,8 @@ public class AdminController {
 	public String index() {
 		return "admin/index";
 	}
+
+	
 	
 	@GetMapping("/admin/board/index.do")
 	public String index2() {

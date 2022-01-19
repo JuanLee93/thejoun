@@ -22,4 +22,7 @@
 		SELECT * FROM user WHERE id = #{id} and pwd = md5(#{pwd})
 	</select>
 
+	<select id="selectList" resultType="user.UserVo" parameterType="user.UserVo">
+		SELECT *FROM user
+	</select>
 </mapper>
