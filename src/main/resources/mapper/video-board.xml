@@ -16,7 +16,6 @@
 			<if test="userno > 0">
 				AND userno = ${userno}
 			</if>
-
 		</where>
 	</sql>
 	
