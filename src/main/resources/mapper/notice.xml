@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+	<sql id="boardWhere">
+		<where>
+			<if test="searchType == ''">
+				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR admin_no in (select admin_no from admin where name LIKE '%${searchWord}%'))
+			</if>
+			<if test="searchType != 'nickname' and searchType != null and searchType !=''">
+				${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="searchType == 'name'">
+				admin_no in (select admin_no from admin where name LIKE '%${searchWord}%')
+			</if>
+			<if test="admin_no > 0">
+				AND admin_no = ${admin_no}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="count" resultType="int" parameterType="notice.NoticeVo">
+		SELECT COUNT(*) FROM notice
+		<include refid="boardWhere"/>
+	</select>
+	
+	<select id="selectList" resultType="notice.NoticeVo" parameterType="notice.NoticeVo">
+		SELECT *, 
+			(SELECT id FROM admin WHERE admin_no=notice.admin_no) as id, 
+			(SELECT name FROM admin WHERE admin_no=notice.admin_no) as name
+			FROM notice
+		<include refid="boardWhere"/>
+			ORDER BY ${orderby} ${direction}
+			LIMIT ${startIdx}, 10
+	</select>
+
+	<insert id="insert" parameterType="notice.NoticeVo">
+		INSERT INTO notice (
+			admin_no, title, content, regdate, noticename, readcount, filename_org, filename_real, newnotice
+		) values (
+			#{admin_no}, #{title}, #{content}, NOW(), #{noticename}, #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
+		)
+	</insert>
+	
+	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
+	<select id="selectOne" parameterType="int" resultType="notice.NoticeVo">
+		SELECT *
+		FROM notice WHERE notice_no = #{xxx}
+	</select>   
+
+	<update id="updateReadcount" parameterType="int">
+		UPDATE notice SET readcount = readcount+1 WHERE notice_no = #{notice_no}
+	</update>
+	
+	<update id="update" parameterType="notice.NoticeVo">
+		UPDATE notice SET
+			title=#{title}
+			, content=#{content}
+			<if test="filename_org != null">
+			, filename_org=#{filename_org}
+			, filename_real=#{filename_real}
+			</if>
+		WHERE notice_no = #{notice_no}
+	</update>
+	 
+	<delete id="delete" parameterType="int">
+		DELETE FROM notice WHERE notice_no = #{notice_no}
+	</delete>
+</mapper>
