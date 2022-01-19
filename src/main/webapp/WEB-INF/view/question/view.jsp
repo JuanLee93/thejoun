@@ -72,17 +72,20 @@
 		                    </table>
 		                    <div style="width:100%; margin:50px; 0 0 0"></div>		 
 		                    <c:if test="${!empty data.reply }">
-			                    <table class="board_write2">
-			                        <tbody>
-			                        <H2>답변 내용</H2>
-			                        <tr>
-				                         
-				                            <td class="content">${data.reply}</td>
-				                       </tr>
-			                        </tbody>
-			                    </table>
+		                    <table class="board_write">
+		                        <tbody>
+		                        	<H2>답변 내용</H2>
+		                        	<tr>
+		                        		<th>답변일</th>
+			                            <td class="updatedate">${data.updatedate}</td>
+			                       </tr>
+			                       <tr>
+		                        		<th>답변</th>
+			                            <td class="reply">${data.reply}</td>
+			                       </tr>
+		                        </tbody>
+		                    </table>
   							</c:if>                       
-		                    
                        	</div>    
                     </div>
                     <div class="btnSet clear" style="text-align:center;">

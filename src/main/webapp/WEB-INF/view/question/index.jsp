@@ -24,7 +24,7 @@
 		
 			if (${!empty userInfo }) {
 				if (secret === "Y") {
-					if (writer === ${userInfo.userno}) {
+					if (writer == ${userInfo.userno}) {
 						location.href='view.do?qna_no='+$(this).data("qna_no");
 					} else {
 						alert("글쓴이만 열람할 수 있습니다.");
