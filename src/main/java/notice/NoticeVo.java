@@ -21,10 +21,17 @@ public class NoticeVo extends CommonVo {
 	private String filename_org;
 	private String filename_real;
 	private int newnotice;//새로운 글
+	private String orderby;
+	private String direction;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(this.regdate);
+	}
+	
+	public NoticeVo() {
+		this.orderby = "regdate";
+		this.direction = "DESC";
 	}
 }
 

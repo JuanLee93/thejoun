@@ -75,6 +75,7 @@ input#email{ime-mode:inactive;}
 input#dong{ime-mode:active;}
 input#title{ime-mode:active;}
 input#contents{ime-mode:active;}
+input#content{ime-mode:active;}
 input.password{ime-mode:inactive;}
 textarea{border:1px solid #cccccc;}
 
