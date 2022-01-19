@@ -18,6 +18,8 @@
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
 <script src="/thejoun/css/common.css"></script>
+<link rel="stylesheet" href="/thejoun/css/mypage_index.css" />
+<link rel="stylesheet" href="/thejoun/css/mypage_info.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
