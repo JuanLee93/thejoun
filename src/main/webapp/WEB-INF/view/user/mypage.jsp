@@ -17,7 +17,7 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
-<script src="/thejoun/css/common.css?after"></script>
+<script src="/thejoun/css/common.css"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <style>
 	btn_group {

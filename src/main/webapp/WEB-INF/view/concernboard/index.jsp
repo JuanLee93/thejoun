@@ -7,8 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>고민게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css" />
 <link rel="stylesheet" href="/thejoun/css/common.css?after" />
@@ -115,20 +113,20 @@
 
 					<!-- 페이지처리 -->
 					<div class="bbsSearch">
-						<form method="get" name="searchForm" id="searchForm" action="">
-							<span class="srchSelect"> <select id="stype"
-								name="searchType" class="dSelect" title="검색분류 선택">
-									<option value="">전체</option>
-									<option value="title">제목</option>
-									<option value="content">내용</option>
-									<option value="nickname">닉네임</option>
-							</select>
-							</span> <span class="searchWord"> <input type="text" id="sval"
-								name="searchWord" value="" title="검색어 입력"> <input
-								type="button" id="" value="검색" title="검색">
-							</span>
-						</form>
-
+                        <form method="get" name="searchForm" id="searchForm" action="">
+                            <span class="srchSelect">
+                                <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
+                                    <option value="">전체</option>
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                    <option value="nickname">닉네임</option>
+                                </select>
+                            </span>
+                            <span class="searchWord">
+                                <input type="text" id="sval" name="searchWord" value="" title="검색어 입력">
+                                <input type="button" id="" value="검색" title="검색">
+                            </span>
+                        </form>
 					</div>
 				</div>
 			</div>
