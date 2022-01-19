@@ -56,6 +56,17 @@ public class FreeBoardController {
 		return "admin/freeboard/index";
 	}
 	
+	@GetMapping("/admin/freeboard/view.do")
+	public String adminView(Model model, @RequestParam int board_no) {
+		model.addAttribute("data", freeBoardService.view(board_no));
+		CommentVo cv = new CommentVo();
+		cv.setBoard_no(board_no);
+		cv.setTablename(1);
+		model.addAttribute("cList", cService.selectList(cv));
+
+		return "admin/freeboard/view";
+	}
+	
 	@GetMapping("/freeboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, FreeBoardVo vo) {
 		

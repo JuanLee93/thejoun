@@ -11,7 +11,7 @@ function del() {
 	if (confirm("삭제하시겠습니까?")) {
 		$.ajax({
 			url : 'deleteAjax.do',
-			data : {board_no : ${data.board_no}},
+			data : {image_board_no : ${data.image_board_no}},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 삭제되었습니다.');
@@ -36,7 +36,7 @@ function del() {
 			<div id="container">
 				<div id="content">
 					<div class="con_tit">
-						<h2>게시물 관리- 자유 게시판[상세 페이지]</h2>
+						<h2>게시물 관리- 자유 갤러리[상세 페이지]</h2>
 					</div>
 					<!-- //con_tit -->
 					<div class="con">
@@ -44,14 +44,12 @@ function del() {
 						<div id="bbs">
 							<div id="bread">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0"
-									summary="관리자 자유게시판 상세페이지입니다.">
+									summary="관리자 자유갤러리 상세페이지입니다.">
 									<colgroup>
-										<col width="10%" />
 										<col width="15%" />
-										<col width="10%" />
 										<col width="15%" />
-										<col width="25%" />
-										<col width="25%" />
+										<col width="15%" />
+										<col width="55%" />
 									</colgroup>
 									<tbody>
 										<tr>
@@ -69,17 +67,6 @@ function del() {
 										<tr>
 											<th scope="row"><label for="">내용</label></th>
 											<td colspan="10">${data.content }</td>
-										</tr>
-										<tr>
-											<th scope="row"><label for="">첨부파일</label></th>
-											<td colspan="10">
-												<div class="weidtFile">
-													<dd>
-														<a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}"
-															target="_blank">${data.filename_org }</a>
-													</dd>
-												</div>
-											</td>
 										</tr>
 									</tbody>
 								</table>

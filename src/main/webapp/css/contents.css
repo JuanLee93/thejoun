@@ -40,7 +40,7 @@
 /* 게시판 */
 .board_write {border-top:2px solid #221f1f; border-bottom:1px solid #999;}
 .board_write thead th{text-align:center;}
-.board_write th{padding:10px; background:#f4f4f5; color:#000000; border-bottom:1px solid #ebebeb; border-right:1px solid #ebebeb; font-size:15px;}
+.board_write th{padding:10px; background:#f4f4f5; color:#000000; border-bottom:1px solid #ebebeb; border-right:1px solid #ebebeb; font-size:15px; width:300px;}
 .board_write th br{display:none;}
 .board_write td{padding:10px; border-bottom:1px solid #ebebeb; font-size:15px; color:#2f3134; font-weight:300; box-sizing:border-box;}
 .board_write td .tx{display:inline-block;float:left;width:25px;line-height:32px;text-align:center;}

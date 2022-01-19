@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script>
 	$(function() {
-		$(".board_tr").click(function() {
+		$(".title").click(function() {
 			location.href='view.do?board_no='+$(this).data("board_no");
 		});
 	});
@@ -64,10 +64,10 @@
 								</c:if>
 		                        <c:if test="${!empty list }">
 		                        <c:forEach var="vo" items="${list }" varStatus="status">
-		                            <tr class="board_tr" data-board_no="${vo.board_no }" style="cursor: pointer;">
+		                            <tr>
 		                            	<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
 		                                <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
-		                                <td class="title">
+		                                <td class="title" data-board_no="${vo.board_no }" style="cursor: pointer;">
 		                                    ${vo.title }
 		                                </td>
 		                                <td class="writer">
@@ -97,17 +97,20 @@
 							</div>
 							
 							<!-- //페이징 처리 -->
-							<form name="searchForm" id="searchForm" action="index.do"  method="get">
-								<div class="search">
-									<select name="stype" name="searchType" class="dSelect" title="검색을 선택해주세요">
-										<option value="all">전체</option>
-										<option value="title">제목</option>
-										<option value="contents">내용</option>
-									</select>
-									<input type="text" name="sval" value="" title="검색할 내용을 입력해주세요" />
-									<input type="image" src="<%=request.getContextPath()%>/images/admin/btn_search.gif" class="sbtn" alt="검색" />
-								</div>
-							</form>
+							<div class="bbsSearch">
+								<form method="get" name="searchForm" id="searchForm" action="">
+									<div class="search">
+										<select id="stype" name="searchType" class="dSelect"
+											title="검색분류 선택">
+											<option value="">전체</option>
+											<option value="title">제목</option>
+											<option value="content">내용</option>
+											<option value="nickname">닉네임</option>
+										</select> <input type="text" id="sval1" name="searchWord" value="" title="검색어 입력"> 
+										<input type="image" src="<%=request.getContextPath()%>/images/admin/btn_search.gif" class="sbtn" alt="검색" />
+									</div>
+								</form>
+							</div>
 							<!-- //search --> 
 						</div>
 						<!-- //blist -->
