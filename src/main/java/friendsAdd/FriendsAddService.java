@@ -11,4 +11,6 @@ public interface FriendsAddService {
 	List<UserVo> selectList(int userno);
 	int addButton(FriendsAddVo add);
 	int friendsAddCheck(FriendsAddVo fav);
+	int friendsAddCheck2(FriendsAddVo fav);
+	int friendsUse(FriendsAddVo fav);
 }

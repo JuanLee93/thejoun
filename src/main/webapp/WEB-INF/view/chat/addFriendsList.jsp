@@ -18,16 +18,14 @@
 		
 	</style>
 </head>
-<div class="side-one">
-	<div class="row heading">
+<div class="side-one" >
+	<div class="row heading" style="width:370px;">
 		<div class="col-sm-3 col-xs-3 heading-avatar">
 			<div class="heading-avatar-icon">
 				<img src="https://bootdey.com/img/Content/avatar/avatar1.png">
 			</div>
 		</div>
-		<div class="col-sm-1 col-xs-1  heading-dot  pull-right">
-			<i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-		</div>
+		<div class="col-sm-8 col-xs-7 heading-name" style="width:170px;">${userInfo.nickname }</div>
 		<div class="col-sm-2 col-xs-2 heading-compose  pull-right">
 			<a href="/thejoun/index.do">
 				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house" viewBox="0 0 20 20">
@@ -68,7 +66,7 @@
 										<span class="name-meta">${vo.nickname } </span>
 										<span class="name-meta" style="font-size:13px;">신청일 : ${vo.regdate } </span>
 									</div>
-									<div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+									<div class="col-sm-4 col-xs-4"style="float:right;">
 										<form name="toFriendUser" id="toFriendUser${vo.userno }" method="post">
 											<input type="hidden" name="from_userno" value="${vo.userno }">
 											<button type="button" class="acceptButtonAgree" onclick="addFriends(${vo.userno})">수락</button>

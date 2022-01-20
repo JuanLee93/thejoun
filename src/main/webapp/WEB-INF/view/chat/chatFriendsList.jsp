@@ -29,12 +29,13 @@
 	</style>
 </head>
 <div class="side-one">
-	<div class="row heading">
+	<div class="row heading" style="width:370px;">
 		<div class="col-sm-3 col-xs-3 heading-avatar">
 			<div class="heading-avatar-icon">
 				<img src="https://bootdey.com/img/Content/avatar/avatar1.png">
 			</div>
 		</div>
+		<div class="col-sm-8 col-xs-7 heading-name" style="width:170px;">${userInfo.nickname }</div>
 		<div class="col-sm-2 col-xs-2 heading-compose  pull-right homeIcon">
 			<a href="/thejoun/index.do">
 				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house" viewBox="0 0 20 20">

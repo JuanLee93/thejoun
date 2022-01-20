@@ -18,12 +18,14 @@
 
 <style>
 	.acceptButtonAgree{
-		vertical-align : center;
-		height : 22px;
+		vertical-align : top;
+		height : 25px;
+		width:52px;
 	}
 	.acceptButtonDisagree{
-		vertical-align : center;
-		height : 22px;
+		vertical-align : top;
+		height : 25px;
+		width:52px;
 	}
 </style>
 
@@ -108,6 +110,7 @@
 				clearMessage();
 			}
 		});
+		return false;
 	}
 	//메세지 보내면 메세지창에있던 내용 지우는거임
 	function clearMessage(){
@@ -120,10 +123,16 @@
 			type : "post",
 			data : $("#toFriendUser"+userno).serialize(),
 			success : function(res){
-				alert("친구신청이 수락되었습니다.");
+				if(res == 0){
+					alert("친구신청을 받은적이 없어요");
+				}else if(res == 1){
+					alert("이미 친구가 된 사람이에요");
+				}else if(res == 2){
+					alert("친구신청이 수락되었습니다");
+				}
 				getFriendsAddList();
 			}
-		})
+		});
 	}
 	
 	function deleteFriends(userno){
@@ -138,6 +147,7 @@
 			}
 		})
 	}
+	
 </script>
 </head>
 <body>
@@ -154,14 +164,16 @@
 				<div>
 					<div id="messageArea" style="height:93.5%;"></div>
 						<div class="row reply">
-							<form name="inputForm" id="inputForm" method="post">
+							<form name="inputForm" id="inputForm" method="post" onsubmit="return sendMessage();">
 							<input type="hidden" name="to_id" id="to_id" value="">
 							<input type="hidden" name="from_id" id="from_id" value="${userInfo.userno }">
 								<div class="col-sm-9 col-xs-9 reply-main">
-									<input type="text" class="form-control" name="chatcontent" id="chatconttent">
+									<input type="text" class="form-control" name="chatcontent" id="chatconttent" autocomplete=”off” >
 								</div>
 								<div class="col-sm-1 col-xs-1 reply-send">
-									<i class="fa fa-send fa-2x" aria-hidden="true" onclick="sendMessage()"></i>
+									<button type="button" aria-hidden="true" style="height:32px;" onclick="sendMessage();">
+										<i class="fa fa-send fa-2x" aria-hidden="true"></i>
+									</button>
 								</div>
 							</form>
 						</div>

@@ -13,11 +13,6 @@ public class FriendsAddServiceImpl implements FriendsAddService{
 	@Autowired
 	FriendsAddDao fad;
 	
-//	@Override
-//	public List<FriendsAddVo> selectList(FriendsAddVo vo){
-//		return fad.selectList(vo);
-//	}
-	
 	@Override
 	public List<UserVo> selectList(int userno){
 		return fad.selectList(userno);
@@ -33,4 +28,13 @@ public class FriendsAddServiceImpl implements FriendsAddService{
 		return fad.friendsAddCheck(fav);
 	}
 	
+	@Override
+	public int friendsAddCheck2(FriendsAddVo fav) {
+		return fad.friendsAddCheck2(fav);
+	}
+	
+	@Override
+	public int friendsUse(FriendsAddVo fav) {
+		return fad.friendsUse(fav);
+	}
 }

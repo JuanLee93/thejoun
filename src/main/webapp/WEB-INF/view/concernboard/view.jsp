@@ -165,6 +165,25 @@
 			}
 		});
 	}
+	
+	function addFriends(){
+		$.ajax({
+			url : "/thejoun/friendsAdd/addFriendsButton.do",
+			type:"post",
+			data :$("#friendsAddButton").serialize(),
+			success:function(res){
+				if(res.trim() == 0){
+					alert("이미 친구가 된 사용자입니다");
+				}else if(res.trim() == 1){
+					alert("이미 친구신청이 된 사용자입니다.");
+				}else if(res.trim() == 2){
+					alert("이 사용자에게 이미 친구신청을 받았어요");
+				}else if(res.trim() > 2){
+					alert("친구신청 완료");
+				}
+			}
+		});
+	}
 
 </script>
 </head>
@@ -183,10 +202,9 @@
 								<dt class="title_nic" style="text-align: right;">작성자 :
 									${data.nickname }
 									<c:if test="${userInfo.userno  != data.userno }">
-										<form id="friendsAddButton" method="post" action="/thejoun/friendsAdd/addFriendsButton.do">
+										<form id="friendsAddButton" method="post">
 											<input type="hidden" name="to_userno" value="${data.userno }">
-											<input type="hidden" name="pageUrl" value="${requestScope['javax.servlet.forward.request_uri']}?board_no=${data.concern_board_no}">
-											<button type="submit" value="친구추가">친구추가</button>
+											<button type="button" onclick="addFriends();" value="친구추가">친구추가</button>
 										</form>
 									</c:if>
 								</dt>
