@@ -71,7 +71,7 @@ public class ConcernBoardController {
 		int endPage = startPage + pageRange - 1;// 종료페이지
 		if (endPage > totPage) endPage = totPage;
 		
-		String param = "&orderby="+vo.getOrderby()+"&category="+vo.getCategory();
+		String param = "&orderby="+vo.getOrderby()+"&category="+vo.getCategory(); 
 		
 		List<ConcernBoardVo> list = concernBoardService.selectList(vo);
 		model.addAttribute("list", list);

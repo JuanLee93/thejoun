@@ -17,7 +17,7 @@
 				AND userno = ${userno}
 			</if>
 			<if test="category > 0">
-				AND category = ${category}
+			 	AND category = ${category}
 			</if>
 		</where>
 	</sql>

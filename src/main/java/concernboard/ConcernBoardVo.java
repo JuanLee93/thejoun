@@ -35,6 +35,7 @@ public class ConcernBoardVo extends CommonVo {
 	public ConcernBoardVo() {
 		this.orderby = "regdate";
 		this.direction = "DESC";
+		
 	}
 	
 }
