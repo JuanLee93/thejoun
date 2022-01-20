@@ -41,7 +41,7 @@
 	</select>
 
 
-	<insert id="insert" parameterType="concernboard.ConcernBoardVo">
+	<insert id="insert" parameterType="concernboard.ConcernBoardVo" useGeneratedKeys="true">
 		INSERT INTO concern_board (
 			userno,title, content, regdate, readcount, filename_org, filename_real , category
 		) values (

@@ -39,7 +39,7 @@
     			
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
-                 	<input type="hidden" name="${vo.userno }">
+                 	<input type="hidden" name="${vo.userno }"><!-- 이거 물어봐야함 어케왔냐 -->
                     <table class="board_write">
                         <tbody>
                         <tr>
