@@ -71,6 +71,26 @@ public class ImageBoardController {
 		return "admin/imageboard/view";
 	}
 	
+	@GetMapping("/admin/imageboard/delete.do")
+	public String adminImageboardDelete(Model model, ImageBoardVo vo) {
+		int r = imageBoardService.delete(vo);
+		if ( r > 0 ) {
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("url", "index.do");
+			
+		} else {
+			model.addAttribute("msg", "삭제 오류가 발생하였습니다.");
+			model.addAttribute("url", "view.do?image_board_no="+vo.getImage_board_no());
+		}
+		return "include/return";
+	}
+	
+	@GetMapping("/admin/imageboard/deleteAjax.do")
+	public String adminImageboardDeleteAjax(Model model, ImageBoardVo vo) {
+		model.addAttribute("result", imageBoardService.delete(vo));
+		return "include/result";
+	}
+	
 	@GetMapping("/imageboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, ImageBoardVo vo) {
 		

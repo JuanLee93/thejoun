@@ -60,7 +60,7 @@ function goSave() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 공지사항 작성페이지 입니다.">
 								<colgroup>
 									<col width="10%" />

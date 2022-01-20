@@ -68,7 +68,7 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">내용</label></th>
-											<td colspan="10">${data.content }</td>
+											<td colspan="10">${data.contents }</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">첨부파일</label></th>

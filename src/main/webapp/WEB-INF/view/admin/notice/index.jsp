@@ -101,7 +101,7 @@
 											title="검색분류 선택">
 											<option value="">전체</option>
 											<option value="title">제목</option>
-											<option value="content">내용</option>
+											<option value="contents">내용</option>
 											<option value="name">작성자</option>
 										</select> <input type="text" id="sval1" name="searchWord" value="" title="검색어 입력"> 
 										<input type="image" src="<%=request.getContextPath()%>/images/admin/btn_search.gif" class="sbtn" alt="검색" />

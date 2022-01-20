@@ -5,9 +5,9 @@
 	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
-				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR admin_no in (select admin_no from admin where name LIKE '%${searchWord}%'))
+				(title LIKE '%${searchWord}%' OR contents LIKE '%${searchWord}%' OR admin_no in (select admin_no from admin where name LIKE '%${searchWord}%'))
 			</if>
-			<if test="searchType != 'nickname' and searchType != null and searchType !=''">
+			<if test="searchType != 'name' and searchType != null and searchType !=''">
 				${searchType} LIKE '%${searchWord}%'
 			</if>
 			<if test="searchType == 'name'">
@@ -36,9 +36,9 @@
 
 	<insert id="insert" parameterType="notice.NoticeVo">
 		INSERT INTO notice (
-			admin_no, title, content, regdate, noticename, readcount, filename_org, filename_real, newnotice
+			admin_no, title, contents, regdate, noticename, readcount, filename_org, filename_real, newnotice
 		) values (
-			#{admin_no}, #{title}, #{content}, NOW(), #{noticename}, #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
+			#{admin_no}, #{title}, #{contents}, NOW(), #{noticename}, #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
 		)
 	</insert>
 	
@@ -55,7 +55,7 @@
 	<update id="update" parameterType="notice.NoticeVo">
 		UPDATE notice SET
 			title=#{title}
-			, content=#{content}
+			, contents=#{contents}
 			<if test="filename_org != null">
 			, filename_org=#{filename_org}
 			, filename_real=#{filename_real}
