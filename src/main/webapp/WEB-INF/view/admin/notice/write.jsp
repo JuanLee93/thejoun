@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script>
+var oEditors = [];
 $(function() {
-	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
 		elPlaceHolder: "contents", // textarea ID
@@ -86,7 +86,7 @@ function goSave() {
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
 										<td colspan="10">
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." />	
+											<input type="file" id="file" name="file" class="w100" title="첨부파일을 업로드 해주세요." />	
 										</td>
 									</tr>
 								</tbody>

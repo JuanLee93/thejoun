@@ -44,7 +44,8 @@
 	
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
 	<select id="selectOne" parameterType="int" resultType="notice.NoticeVo">
-		SELECT *
+		SELECT *,
+			(SELECT name FROM admin WHERE admin_no=notice.admin_no) as name
 		FROM notice WHERE notice_no = #{xxx}
 	</select>   
 
