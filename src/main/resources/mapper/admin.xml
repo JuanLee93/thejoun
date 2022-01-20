@@ -2,38 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="admin"> <!-- mapper파일의 이름 -->
 
-		<sql id="boardWhere">
+	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
-				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR userno in (select userno from user where nickname LIKE '%${searchWord}%'))
+				(admin_no LIKE '%${searchWord}%' OR id LIKE '%${searchWord}%' OR name LIKE '%${searchWord}%')
 			</if>
 			<if test="searchType != null and searchType !=''">
 				${searchType} LIKE '%${searchWord}%'
 			</if>
-			<if test="searchType == 'nickname'">
-			userno in (select userno from user where nickname LIKE '%${searchWord}%')
-			</if>
-			<if test="userno > 0">
-				AND userno = ${userno}
+			<if test="admin_no > 0">
+				AND admin_no = ${admin_no}
 			</if>
 		</where>
 	</sql>
 	
+	<select id="login" parameterType="admin.AdminVo" resultType="admin.AdminVo">
+		SELECT * FROM admin WHERE id = #{id} and pwd = md5(#{pwd})
+	</select>
+	
+	<select id="count" resultType="int" parameterType="admin.AdminVo">
+		SELECT COUNT(*) FROM admin
+		<include refid="boardWhere"/>
+	</select>
+	
+	<select id="selectList" resultType="admin.AdminVo" parameterType="admin.AdminVo">
+		SELECT * FROM admin
+		<include refid="boardWhere"/>
+			LIMIT ${startIdx}, 10
+	</select>
+	
 	<insert id="insert" parameterType="admin.AdminVo" useGeneratedKeys="true">
 		INSERT INTO admin (
-			 id, pwd, name, log
+			 id, pwd, name
 		) VALUES (
-			 #{id}, md5(#{pwd}), #{name}, #{log}
+			 #{id}, md5(#{pwd}), #{name}
 		)
 		<selectKey keyProperty="userno" resultType="int" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
 	
-	<select id="login" parameterType="admin.AdminVo" resultType="admin.AdminVo">
-		SELECT * FROM admin WHERE id = #{id} and pwd = md5(#{pwd})
-	</select>
-
+	<select id="selectOne" parameterType="int" resultType="admin.AdminVo">
+		SELECT * FROM admin WHERE admin_no = #{admin_no}
+	</select> 
+	
+	<update id="update" parameterType="admin.AdminVo">
+		UPDATE admin SET
+			id=#{id}
+			, pwd=md5(#{pwd})
+			, name=#{name}
+		WHERE admin_no = #{admin_no}
+	</update>
+	
 	<delete id="delete" parameterType="int">
 		DELETE FROM admin WHERE admin_no = #{admin_no}
 	</delete>
