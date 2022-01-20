@@ -36,9 +36,9 @@
 
 	<insert id="insert" parameterType="notice.NoticeVo">
 		INSERT INTO notice (
-			admin_no, title, contents, regdate, noticename, readcount, filename_org, filename_real, newnotice
+			admin_no, title, contents, regdate, readcount, filename_org, filename_real, newnotice
 		) values (
-			#{admin_no}, #{title}, #{contents}, NOW(), #{noticename}, #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
+			#{admin_no}, #{title}, #{contents}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
 		)
 	</insert>
 	

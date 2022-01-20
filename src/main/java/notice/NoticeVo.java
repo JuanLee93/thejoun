@@ -24,7 +24,7 @@ public class NoticeVo extends CommonVo {
 	private String orderby;
 	private String direction;
 	private String id;
-	private String name;
+	private String name; 
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -88,6 +88,7 @@ function del() {
 										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
+										<a class="btns" style="cursor:pointer;" href="edit.do?notice_no=${data.notice_no }"><strong>수정</strong></a>
 										<a class="btns" style="cursor: pointer;" href="javascript:del();"><strong>삭제</strong></a>
 									</div>
 								</div>
