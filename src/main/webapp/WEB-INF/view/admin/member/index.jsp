@@ -71,8 +71,7 @@
 											</c:if>
 											<c:if test="${!empty list }">
 												<c:forEach var="vo" items="${list }" varStatus="status">
-													<tr class="board_tr" data-board_no="${vo.userno }"
-														style="cursor: pointer;">
+													<tr class="board_tr" data-board_no="${vo.userno }"	style="cursor: pointer;">
 														<td scope="col" class="first"><input type="checkbox"	name="allChk" id="allChk"	onClick="check(this, document.frm.no)" /></td>
 														<td>${vo.userno }</td>
 														<td class="txt_l">${vo.name }</td>

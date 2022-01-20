@@ -11,7 +11,7 @@ function del() {
 	if (confirm("삭제하시겠습니까?")) {
 		$.ajax({
 			url : 'deleteAjax.do',
-			data : {board_no : ${data.board_no}},
+			data : {notice_no : ${data.notice_no}},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 삭제되었습니다.');
@@ -60,7 +60,7 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">작성자</label></th>
-											<td colspan="10">${data.nickname }</td>
+											<td colspan="10">${data.name }</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">작성일</label></th>
@@ -68,7 +68,7 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">내용</label></th>
-											<td colspan="10">${data.content }</td>
+											<td colspan="10">${data.contents }</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">첨부파일</label></th>
@@ -88,6 +88,7 @@ function del() {
 										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
+										<a class="btns" style="cursor:pointer;" href="edit.do?notice_no=${data.notice_no }"><strong>수정</strong></a>
 										<a class="btns" style="cursor: pointer;" href="javascript:del();"><strong>삭제</strong></a>
 									</div>
 								</div>
