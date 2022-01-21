@@ -15,4 +15,5 @@ public class ReportVo {
 	private int board_no;
 	private Timestamp date;
 	private Timestamp confirm;
+	private int state;
 }
