@@ -14,7 +14,9 @@ public interface UserService {
 	
 	List<UserVo> selectList(UserVo vo);
 	boolean login(UserVo vo, HttpSession sess);
-	int idCheck(String id);
 	int insert(UserVo vo);
+	int idCheck(String id);
+	UserVo searchId(UserVo vo);
+	UserVo searchPwd(UserVo vo);
 	
 }

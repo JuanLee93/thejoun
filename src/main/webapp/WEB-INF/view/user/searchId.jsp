@@ -8,24 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="/project/css/reset.css"/>
-    <link rel="stylesheet" href="/project/css/common.css"/>
-    <link rel="stylesheet" href="/project/css/contents.css"/>
+    <link rel="stylesheet" href="/thejoun/css/reset.css"/>
+    <link rel="stylesheet" href="/thejoun/css/common.css"/>
+    <link rel="stylesheet" href="/thejoun/css/contents.css"/>
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/contents.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-	<script src="/project/js/common.js"></script>
+	<script src="/thejoun/js/common.js"></script>
 	<script>
 		function searchEmail(){
 			if($("#name").val() == ""){
-				alert("이름을 입력해");
+				alert("이름을 입력해주세요");
 				$("#name").focus();
 				return false;
 			}
 			if($("#tel").val() == ""){
-				alert("전화번호 입력");
+				alert("전화번호 입력해주세요");
 				$("#tel").focus();
 				return false;
 			}
@@ -38,9 +37,9 @@
 				},
 				success : function(res){
 					if(res.trim() == ""){
-						$("#emailArea").text("이메일이 존재하지 않습니다");
+						$("#idArea").text("아이디가 존재하지 않습니다");
 					}else{
-						$("#emailArea").text("이메일은" + res.trim() + "입니다");
+						$("#idArea").text("아이디는" + res.trim() + "입니다");
 					}
 				}
 			});
@@ -55,7 +54,7 @@
 		 <form action="login.do" method="post" id="board" name="board" onsubmit="return searchEmail();"><!-- header에서 id="board"이미 사용중이라서 board2로 함 -->
             <div class="sub">
                 <div class="size">
-                    <h3 class="sub_title">이메일 찾기</h3>
+                    <h3 class="sub_title">아이디 찾기</h3>
                     
                     <div class="member">
                         <div class="box">
@@ -63,13 +62,13 @@
                                 <ul>
                                     <li><input type="text" id="name" name="name" placeholder="이름"></li>
                                     <li><input type="text" id="tel" name="tel" placeholder="전화번호"></li>
-                                    <li id="emailArea"></li>
+                                    <li id="idArea"></li>
                                 </ul>
-                                <div class="login_btn"><input type="submit" value="이메일찾기" alt="이메일찾기" /></div>
+                                <div class="login_btn"><input type="submit" value="아이디찾기" alt="아이디찾기" /></div>
                             </fieldset>
-                            <div class="btnSet clear">
+                            <div class="btnSet clear" style="text-align:center">
                                 <div>
-                                    <a href="searchId.do" class="btn">이메일찾기</a> 
+                                    <a href="searchId.do" class="btn">아이디찾기</a> 
                                     <a href="searchPwd.do" class="btn">비밀번호 찾기</a>
                                 </div>
                             </div>

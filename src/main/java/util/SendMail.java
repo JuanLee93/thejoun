@@ -61,6 +61,6 @@ public class SendMail {
 		}
 		
 		System.out.println(tempPwd);
-		sendMail("withsky999@naver.com", "withsky999@gmail.com", "[더조은]임시비밀번호", "임시비밀번호는 <span style='color:red;'>"+tempPwd+"</span>입니다.");
+		sendMail("withsky999@naver.com", "withsky999@gmail.com","[더조은]임시비밀번호", "임시비밀번호는 <span style='color:red;'>"+tempPwd+"</span>입니다.");
 	}
 }
