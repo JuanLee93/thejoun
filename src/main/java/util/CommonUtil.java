@@ -54,7 +54,7 @@ public class CommonUtil {
 				+ "                    </div>";
 		return ret;
 	}
-	
+
 	public static String getYoutubeImage(String url) {
 		String img = "";
 		if (url != null && !"".equals(url)) {

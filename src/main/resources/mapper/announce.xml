@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="announce"> <!-- mapper파일의 이름 -->
+
+	
+	<insert id="announceInsert2" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
+		INSERT INTO announce (
+			my_userno, friends_userno,  boardno, tablename, regdate  
+		) VALUES (
+			#{my_userno}, #{friends_userno}, #{boardno}, 2, NOW()
+		)
+		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+
+</mapper>
+

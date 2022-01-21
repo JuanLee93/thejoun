@@ -14,12 +14,6 @@ public class FriendsAddDao {
 	@Autowired
 	SqlSessionTemplate sst;
 	
-//	public List<FriendsAddVo> selectList(FriendsAddVo vo){
-//		System.out.println("my number: " + vo.getFrom_userno());
-//		return sst.selectList("friendsAdd.selectList", vo);
-//	}
-	
-	
 	public List<UserVo> selectList(int userno){
 		return sst.selectList("friendsAdd.selectList", userno);
 	}
@@ -30,5 +24,13 @@ public class FriendsAddDao {
 	
 	public int friendsAddCheck(FriendsAddVo fav) {
 		return sst.selectOne("friendsAdd.friendsAddCheck", fav);
+	} 
+	
+	public int friendsAddCheck2(FriendsAddVo fav) {
+		return sst.selectOne("friendsAdd.friendsAddCheck2", fav);
+	}
+	
+	public int friendsUse(FriendsAddVo fav) {
+		return sst.selectOne("friendsAdd.friendsUse", fav);
 	}
 }

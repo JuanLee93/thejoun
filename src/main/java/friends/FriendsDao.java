@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import announce.AnnounceVo;
 import friendsAdd.FriendsAddVo;
 import user.UserVo;
 
@@ -32,7 +33,10 @@ public class FriendsDao {
 	}
 	
 	public List<UserVo> findFriendsList(int userno){
-		return sst.selectList("findFriendsList", userno); 
+		return sst.selectList("friends.findFriendsList", userno); 
 	}
 	
+	public List<Integer> getFriendsUserno(AnnounceVo av){
+		return sst.selectList("getFriendsUserno", av);
+	}
 }

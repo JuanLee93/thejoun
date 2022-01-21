@@ -20,12 +20,26 @@
 	<select id="idCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM user WHERE id = #{id}
 	</select>
-
+	
 	<select id="login" parameterType="user.UserVo" resultType="user.UserVo">
 		SELECT * FROM user WHERE id = #{id} and pwd = md5(#{pwd})
 	</select>
 
 	<select id="selectList" resultType="user.UserVo" parameterType="user.UserVo">
-		SELECT *FROM user
+		SELECT * FROM user
+		order by regdate desc      
+		limit ${startIdx}, 10   
 	</select>
+	
+		<!-- 아이디,비밀번호 찾기 -->
+	<select id="searchId" parameterType="user.UserVo" resultType="user.UserVo">
+		SELECT * FROM user WHERE tel = #{tel} AND name = #{name}
+	</select>
+	<select id="searchPwd" parameterType="user.UserVo" resultType="user.UserVo">
+		SELECT * FROM user WHERE email = #{email} AND name = #{name}
+	</select>
+	
+	<update id="updateTempPwd" parameterType="user.UserVo">
+		UPDATE user SET pwd = md5(#{pwd}) WHERE email = #{email} AND name = #{name}
+	</update>
 </mapper>

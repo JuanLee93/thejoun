@@ -49,6 +49,7 @@
 											<col class="w5" />
 											<col class="w6" />
 											<col class="w6" />
+											<col class="w6" />
 										</colgroup>
 										<thead>
 											<tr>
@@ -60,19 +61,19 @@
 												<th scope="col">성별</th>
 												<th scope="col">이메일</th>
 												<th scope="col">전화번호</th>
+												<th scope="col" class="last" >상태</th>
 											</tr>
 										</thead>
 										<tbody>
 
 											<c:if test="${empty list }">
 												<tr>
-													<td class="first" colspan="8">등록된 글이 없습니다.</td>
+													<td class="first" colspan="9">등록된 글이 없습니다.</td>
 												</tr>
 											</c:if>
 											<c:if test="${!empty list }">
 												<c:forEach var="vo" items="${list }" varStatus="status">
-													<tr class="board_tr" data-board_no="${vo.userno }"
-														style="cursor: pointer;">
+													<tr class="board_tr" data-board_no="${vo.userno }"	style="cursor: pointer;">
 														<td scope="col" class="first"><input type="checkbox"	name="allChk" id="allChk"	onClick="check(this, document.frm.no)" /></td>
 														<td>${vo.userno }</td>
 														<td class="txt_l">${vo.name }</td>
@@ -87,8 +88,8 @@
 														여성
 														</c:if></td>
 														<td class="writer">${vo.email }</td>
-
 														<td class="Last">${vo.tel }</td>
+														<td class="last">정상</td>
 													</tr>
 												</c:forEach>
 											</c:if>

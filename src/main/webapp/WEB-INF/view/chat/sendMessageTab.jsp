@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
 		</div>
 		<div class="col-sm-1 col-xs-1 reply-send">
 			<i class="fa fa-send fa-2x" aria-hidden="true" onclick="sendMessage()"></i>
+			
 		</div>
 	</form>
 </div>

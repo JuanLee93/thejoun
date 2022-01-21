@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import util.CommonUtil;
@@ -114,6 +116,32 @@ public class UserController {
 	@GetMapping("/user/test.do")
 	public String test() {
 		return "user/test";
+	}
+	@RequestMapping(value="/user/searchId.do", method=RequestMethod.GET)
+	public String searchId() {
+		return "user/searchId";
+	}
+	
+	@RequestMapping(value="/user/searchId.do", method=RequestMethod.POST)
+	public String searchId(Model model, UserVo vo) {
+		UserVo uv = userService.searchId(vo);
+		//String email = "";
+		//if (uv != null) email = uv.getEmail();
+		model.addAttribute("result", uv == null ? "" : uv.getEmail());
+		return "include/result";
+	}
+	
+	@RequestMapping(value="/user/searchPwd.do", method=RequestMethod.GET)
+	public String searchPwd() {
+		return "user/searchPwd";
+	}
+	@RequestMapping(value="/user/searchPwd.do", method=RequestMethod.POST)
+	public String searchPwd(Model model, UserVo vo) {
+		UserVo uv = userService.searchPwd(vo);
+		//String email = "";
+		//if (uv != null) email = uv.getEmail();
+		model.addAttribute("result", uv == null ? "" : "ok");
+		return "include/result";
 	}
 	
 	@GetMapping("/user/myinfo.do")

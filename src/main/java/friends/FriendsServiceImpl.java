@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import announce.AnnounceVo;
 import friendsAdd.FriendsAddVo;
 import user.UserVo;
 
@@ -37,5 +38,10 @@ public class FriendsServiceImpl implements FriendsService{
 	@Override
 	public List<UserVo> findFriendsList(int userno){
 		return fd.findFriendsList(userno);
+	}
+	
+	@Override
+	public List<Integer> getFriendsUserno(AnnounceVo av){
+		return fd.getFriendsUserno(av);
 	}
 }

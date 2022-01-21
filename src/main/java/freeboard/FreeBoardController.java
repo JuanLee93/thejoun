@@ -67,6 +67,26 @@ public class FreeBoardController {
 		return "admin/freeboard/view";
 	}
 	
+	@GetMapping("/admin/freeboard/delete.do")
+	public String adminFreeboardDelete(Model model, FreeBoardVo vo) {
+		int r = freeBoardService.delete(vo);
+		if ( r > 0 ) {
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("url", "index.do");
+			
+		} else {
+			model.addAttribute("msg", "삭제 오류가 발생하였습니다.");
+			model.addAttribute("url", "view.do?board_no="+vo.getBoard_no());
+		}
+		return "include/return";
+	}
+	
+	@GetMapping("/admin/freeboard/deleteAjax.do")
+	public String adminFreeboardDeleteAjax(Model model, FreeBoardVo vo) {
+		model.addAttribute("result", freeBoardService.delete(vo));
+		return "include/result";
+	}
+	
 	@GetMapping("/freeboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, FreeBoardVo vo) {
 		

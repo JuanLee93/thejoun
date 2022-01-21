@@ -80,7 +80,7 @@
 			                            <td class="updatedate">${data.updatedate}</td>
 			                       </tr>
 			                       <tr>
-		                        		<th>답변</th>
+		                        		<th>답변내용</th>
 			                            <td class="reply">${data.reply}</td>
 			                       </tr>
 		                        </tbody>

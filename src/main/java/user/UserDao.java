@@ -38,5 +38,18 @@ public class UserDao {
 		return sst.insert("user.insert", vo);
 	}
 	
+	//아이디 찾기
+	public UserVo searchId(UserVo vo) {
+		return sst.selectOne("user.searchId", vo);
+	}
+	
+	//비밀번호 찾기
+	public UserVo searchPwd(UserVo vo) {
+		return sst.selectOne("user.searchPwd", vo);
+	}
+	//이메일로 새로운 비밀번호 전송
+	public int updateTempPwd(UserVo vo) {
+		return sst.update("user.updateTempPwd", vo);
+	}
 
 }

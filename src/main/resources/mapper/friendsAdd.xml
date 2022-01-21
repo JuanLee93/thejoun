@@ -27,6 +27,15 @@
 		SELECT COUNT(*) FROM friendsadd 
 		WHERE from_userno = #{from_userno} AND to_userno = #{to_userno}
 	</select>
+	
+	<select id="friendsAddCheck2" parameterType="friendsAdd.FriendsAddVo" resultType="int">
+		SELECT COUNT(*) FROM friendsadd 
+		WHERE from_userno = #{to_userno} AND to_userno = #{from_userno}
+	</select>
+	
+	<select id="friendsUse" parameterType="friendsAdd.FriendsAddVo" resultType="int">
+		SELECT COUNT(*) FROM friends WHERE (my_userno = #{from_userno} AND friends_userno = #{to_userno}) OR (my_userno = #{to_userno} AND friends_userno= #{from_userno});
+	</select>
 
 </mapper>
 

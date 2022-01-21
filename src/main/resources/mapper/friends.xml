@@ -39,6 +39,10 @@
 		SELECT my_userno FROM friends WHERE friends_userno = #{x}
 		) 
 	</select>
+	
+	<select id="getFriendsUserno" parameterType="announce.AnnounceVo" resultType="Integer">
+		SELECT IF(my_userno = #{friends_userno}, friends_userno, my_userno) AS my_userno FROM friends WHERE (my_userno = #{friends_userno} OR friends_userno = #{friends_userno});
+	</select>
 
 </mapper>
 

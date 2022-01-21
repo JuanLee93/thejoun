@@ -45,15 +45,14 @@ public class FriendsController {
 //			vo.setUserno(fav.getFrom_userno());         //uservo 쓸 필요 없을것같아서 주석처리함
 			int addFriends = fs.friendsInsert(fav);
 			if(addFriends > 0) {
-				model.addAttribute("msg", "친구등록 완료");
-				model.addAttribute("url", "/chat/friends/index.do");
+				model.addAttribute("result", 2);
 			}else{
-				model.addAttribute("msg", "이거는 오류가 날수가 없는데.. 왜났지");
+				model.addAttribute("result", 1);
 			}
 		}else{
-			model.addAttribute("msg", "이 유저에게 친구신청을 받은적이 없어요");
+			model.addAttribute("result", 0);
 		}
-		return "include/return";
+		return "include/result";
 	}
 	
 	//채팅창에서 친구요청온거 거절할때 부르는 컨트롤러
@@ -63,11 +62,11 @@ public class FriendsController {
 		fav.setTo_userno(uv.getUserno());
 		int deleteFriendsAddList = fs.deleteFriendsAddList(fav);
 		if(deleteFriendsAddList > 0) {
-			model.addAttribute("msg", "이거는 오류가 날수가 없는데.. 왜났지");
+			model.addAttribute("result", "이거는 오류가 날수가 없는데.. 왜났지");
 		}else{
-			model.addAttribute("msg", "이 유저에게 친구신청을 받은적이 없어요");
+			model.addAttribute("result", "이 유저에게 친구신청을 받은적이 없어요");
 		}
-		return "include/return";
+		return "include/result";
 	}
 	
 	@GetMapping("/friends/friendsList.do")

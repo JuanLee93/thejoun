@@ -173,7 +173,7 @@ body {
 
 .sideBar-body {
   position: relative;
-  padding: 3px;
+  padding: 10px !important;
   border-bottom: 1px solid #f7f7f7;
   height: 72px;
   margin: 0 !important;

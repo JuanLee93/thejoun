@@ -5,9 +5,9 @@
 	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
-				(title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%' OR admin_no in (select admin_no from admin where name LIKE '%${searchWord}%'))
+				(title LIKE '%${searchWord}%' OR contents LIKE '%${searchWord}%' OR admin_no in (select admin_no from admin where name LIKE '%${searchWord}%'))
 			</if>
-			<if test="searchType != 'nickname' and searchType != null and searchType !=''">
+			<if test="searchType != 'name' and searchType != null and searchType !=''">
 				${searchType} LIKE '%${searchWord}%'
 			</if>
 			<if test="searchType == 'name'">
@@ -36,15 +36,16 @@
 
 	<insert id="insert" parameterType="notice.NoticeVo">
 		INSERT INTO notice (
-			admin_no, title, content, regdate, noticename, readcount, filename_org, filename_real, newnotice
+			admin_no, title, contents, regdate, readcount, filename_org, filename_real, newnotice
 		) values (
-			#{admin_no}, #{title}, #{content}, NOW(), #{noticename}, #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
+			#{admin_no}, #{title}, #{contents}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
 		)
 	</insert>
 	
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
 	<select id="selectOne" parameterType="int" resultType="notice.NoticeVo">
-		SELECT *
+		SELECT *,
+			(SELECT name FROM admin WHERE admin_no=notice.admin_no) as name
 		FROM notice WHERE notice_no = #{xxx}
 	</select>   
 
@@ -55,7 +56,7 @@
 	<update id="update" parameterType="notice.NoticeVo">
 		UPDATE notice SET
 			title=#{title}
-			, content=#{content}
+			, contents=#{contents}
 			<if test="filename_org != null">
 			, filename_org=#{filename_org}
 			, filename_real=#{filename_real}

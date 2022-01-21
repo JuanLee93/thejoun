@@ -53,7 +53,7 @@
                             </fieldset>
                             <div class="btnSet" style="text-align:center">
                                 <a href="join.do" class="btn">회원가입</a> 
-                                <a href="searchId.do" class="btn">이메일/비밀번호 찾기</a>
+                                <a href="searchId.do" class="btn">아이디/비밀번호 찾기</a>
                             </div>
                         </div>
                     </div>
