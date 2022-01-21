@@ -6,7 +6,7 @@
                         <colgroup>
                             <col width="80px" />
                             <col width="*" />
-                            <col width="100px" />
+                            <col width="250px" />
                             <col width="100px" />
                         </colgroup>
                         <tbody>
@@ -32,8 +32,15 @@
                                     </c:if>
                                 </td>
                                 <td class="writer">
-                                    ${vo.nickname } <!-- 여기 다가해야함 -->
+									<form id="friendsAddButton${vo.userno }" method="post">
+	                                    <span style="float:left;">${vo.nickname }</span> <!-- 여기 다가해야함 -->
+	                                    <c:if test="${userInfo.userno  != vo.userno }">
+												<input type="hidden" name="to_userno" value="${vo.userno }">
+												<button type="button" class="friendsButton" style="float:left;"onclick="addFriends(${vo.userno});" >친구추가</button>
+										</c:if>
+									</form>
                                 </td>
+                                
                                 <td class="date"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
                             </tr>
                             <tr id="comment_${vo.comment_no}" style="display:none;">

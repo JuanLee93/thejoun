@@ -3,16 +3,51 @@
 <mapper namespace="announce"> <!-- mapper파일의 이름 -->
 
 	
-	<insert id="announceInsert2" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
+	<insert id="announceInsert1" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
 		INSERT INTO announce (
-			my_userno, friends_userno,  boardno, tablename, regdate  
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
 		) VALUES (
-			#{my_userno}, #{friends_userno}, #{boardno}, 2, NOW()
+			#{my_userno}, #{friends_userno}, #{boardno}, 1, #{board_or_comment}, NOW()
 		)
 		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<insert id="announceInsert2" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
+		INSERT INTO announce (
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+		) VALUES (
+			#{my_userno}, #{friends_userno}, #{boardno}, 2, #{board_or_comment}, NOW()
+		)
+		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="announceInsert3" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
+		INSERT INTO announce (
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+		) VALUES (
+			#{my_userno}, #{friends_userno}, #{boardno}, 3, #{board_or_comment}, NOW()
+		)
+		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="announceInsert4" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
+		INSERT INTO announce (
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+		) VALUES (
+			#{my_userno}, #{friends_userno}, #{boardno}, 4, #{board_or_comment}, NOW()
+		)
+		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	
 	
 
 </mapper>

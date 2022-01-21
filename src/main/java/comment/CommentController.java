@@ -1,7 +1,5 @@
 package comment;
 
-import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import announce.AnnounceService;
+import announce.AnnounceVo;
 
 @Controller
 public class CommentController {
@@ -18,9 +18,28 @@ public class CommentController {
 	@Autowired
 	CommentService service;
 	
+	@Autowired
+	AnnounceService as;
+	
 	@PostMapping("/comment/insert.do")
-	public String insert(Model model, CommentVo vo) {
+	public String insert(Model model, CommentVo vo, AnnounceVo av) {
 		model.addAttribute("result", service.insert(vo));
+		//여기부터 알림
+		av.setFriends_userno(vo.getUserno());
+		av.setBoardno(vo.getBoard_no());
+		av.setBoard_or_comment(1);
+		if(av.getMy_userno() != av.getFriends_userno()) {
+			if(av.getTablename() == 1) {
+				as.announceInsert1(av);
+			}else if(av.getTablename() == 2) {
+				as.announceInsert2(av);
+			}else if(av.getTablename() == 3) {
+				as.announceInsert3(av);
+			}else if(av.getTablename() == 4) {
+				as.announceInsert4(av);
+			}
+		}
+		//여기까지 알림
 		return "include/result";
 	}
 	
