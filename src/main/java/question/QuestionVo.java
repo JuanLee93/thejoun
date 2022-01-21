@@ -30,5 +30,10 @@ public class QuestionVo extends CommonVo {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(this.regdate);
 	}
+	
+	public String getUpdatedate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(this.updatedate);
+	}  
 }
 

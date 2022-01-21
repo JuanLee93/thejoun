@@ -1,5 +1,7 @@
 package admin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,30 @@ public class AdminServiceImpl implements AdminService {
 	public int delete(AdminVo vo) {
 		return dao.delete(vo);
 	}
-	
+
+	@Override
+	public int count(AdminVo vo) {
+		return dao.count(vo);
+	}
+
+	@Override
+	public List<AdminVo> selectList(AdminVo vo) {
+		return dao.selectList(vo);
+	}
+
+	@Override
+	public AdminVo view(int admin_no) {
+		return dao.selectOne(admin_no);
+	}
+
+	@Override
+	public AdminVo edit(int admin_no) {
+		return dao.selectOne(admin_no);
+	}
+
+	@Override
+	public int update(AdminVo vo) {
+		return dao.update(vo);
+	}
 	
 }
