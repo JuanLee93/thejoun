@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import concernboard.ConcernBoardVo;
 import util.CommonUtil;
 
 @Controller
@@ -68,6 +67,16 @@ public class UserController {
 		}
 	}
 	
+	@PostMapping("/user/infoEdit.do")
+	public String infoEditDetails(Model model, UserVo vo, HttpSession sess) {
+		if(userService.login(vo,sess)) {
+			return "/user/infoEditDetails";
+		}else {
+			model.addAttribute("msg", "아이디, 비밀번호를 확인해주세요");
+			return "include/return";
+		}
+	}
+	
 	@GetMapping("/user/logout.do")
 	public String logout(Model model, HttpSession sess) {
 		sess.invalidate();
@@ -103,7 +112,7 @@ public class UserController {
 		return "user/mypage";
 	}
 	
-	
+	//테스트용
 	@GetMapping("/user/test.do")
 	public String test() {
 		return "user/test";
@@ -135,5 +144,24 @@ public class UserController {
 		return "include/result";
 	}
 	
+	@GetMapping("/user/myinfo.do")
+	public String myinfo(HttpSession sess) {
+		return "user/myinfo";
+	}
+	
+	@GetMapping("/user/infoEdit.do")
+	public String infoEdit() {
+		return "user/infoEdit";
+	}
+	
+	@GetMapping("/user/pwdChange.do")
+	public String pwdChange() {
+		return "user/pwdChange";
+	}
+	
+	@GetMapping("/user/infoEditDetails.do")
+	public String infoEditDetails() {
+		return "user/infoEditDetails";
+	}
 	
 }

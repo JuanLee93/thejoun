@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import adminLog.AdminLogServiceImpl;
+import adminLog.AdminLogVo;
+import user.UserVo;
 import util.CommonUtil;
 
 @Controller
@@ -19,6 +22,9 @@ public class AdminController {
 
 	@Autowired
 	AdminServiceImpl adminService;
+	
+	@Autowired
+	AdminLogServiceImpl adminLogService;
 	
 	@GetMapping("/admin/index.do")
 	public String index() {
@@ -47,9 +53,15 @@ public class AdminController {
 	}
 	
 	@PostMapping("/admin/login.do")
-	public String loginProcess(Model model, AdminVo vo, HttpSession sess) {
+	public String loginProcess(Model model, AdminVo vo, HttpSession sess, HttpServletRequest req) {
 		if(adminService.login(vo,sess)) {
-			//vo.setLog(); 로그인 시, 관리자 로그 남기기
+			
+			AdminLogVo logvo = new AdminLogVo();
+			logvo.setAdmin_no(((AdminVo)sess.getAttribute("adminInfo")).getAdmin_no());
+			logvo.setMsg(((AdminVo)sess.getAttribute("adminInfo")).getName()+", 관리자 로그인");
+			logvo.setLogin_IP(req.getRemoteAddr());
+			adminLogService.insert(logvo);
+			
 			return "redirect:/admin/board/index.do";
 		}else {
 			model.addAttribute("msg", "아이디, 비밀번호를 확인해주세요.");
