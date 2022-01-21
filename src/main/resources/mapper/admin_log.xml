@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="adminLog"> <!-- mapper파일의 이름 -->
+
+	<sql id="boardWhere">
+		<where>
+			<if test="searchType == ''">
+				(admin_no LIKE '%${searchWord}%' OR date LIKE '%${searchWord}%')
+			</if>
+			<if test="searchType != null and searchType !=''">
+				${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="admin_no > 0">
+				AND admin_no = ${admin_no}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="count" resultType="int" parameterType="adminLog.AdminLogVo">
+		SELECT COUNT(*) FROM admin_log
+	</select>
+	
+	<select id="selectList" resultType="adminLog.AdminLogVo" parameterType="adminLog.AdminLogVo">
+		SELECT *,
+			(SELECT name from admin WHERE admin_no = admin_log.admin_no) as name
+		FROM admin_log
+	</select>
+	
+	<insert id="insert" parameterType="adminLog.AdminLogVo" useGeneratedKeys="true">
+		INSERT INTO admin_log (
+			 admin_no, msg, date, login_IP
+		) VALUES (
+			 #{admin_no}, #{msg}, NOW(), #{login_IP}
+		)
+	</insert>
+	
+	<select id="selectOne" parameterType="int" resultType="adminLog.AdminLogVo">
+		SELECT * FROM admin_log WHERE log_no = #{log_no}
+	</select> 
+	
+</mapper>

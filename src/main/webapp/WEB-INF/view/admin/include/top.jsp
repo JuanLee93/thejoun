@@ -89,6 +89,7 @@ $(window).load(function(){
 						</div>
 					</li>
 				<li><a href="<%=request.getContextPath()%>/admin/admin/index.do" class="parent"><span>관리자관리</span></a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/loginInfo/index.do" class="parent"><span>로그인내역</span></a></li>
 			</ul>
 		</div>
 		<!--//gnb-->
