@@ -17,21 +17,6 @@
 <script src="/thejoun/css/common.css"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
-	<div class="userinfo">
-		<ul>
-			<h3>나의 정보</h3><hr>
-			<i class="bi bi-person-circle"></i>
-			<li>
-				<a>아이디 : ${userInfo.id}</a><br><br><br>
-				<a>닉네임 : ${userInfo.nickname}</a><br><br><br>
-				<a>이메일 : ${userInfo.email}</a><br><br><br>
-			</li>
-		</ul>
-		<ul><br><br>
-			<div id="btn_group" style="text-align:center;">
-    			<button class="btn_useredit1" onclick="btn_useredit1();">회원정보 수정</button>
-    			<button class="btn_useredit2" onclick="btn_useredit2();">비밀번호 변경</button>
-			</div>
-		</ul>
-	</div>
+	비번 변경 test 페이지입니다.
+	<button class="btn_useredit1" onclick="btn_useredit3();">되돌아가기</button>
 </html>

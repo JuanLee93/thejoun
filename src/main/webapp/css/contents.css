@@ -19,6 +19,12 @@
     font-size: 32px;
     margin: 1px 2px 10px 20px;
 }
+/*회원정보 수정 헤더*/
+.sub .sub_title2 {
+    font-size: 20px;
+    margin: 30px 10px 30px 10px;
+    text-align: center;
+}
 
 .category_board > ul > li {
     list-style: none;

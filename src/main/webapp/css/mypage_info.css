@@ -51,7 +51,17 @@ div.sub > div > h3 {
 	text-align: left;
 }
 
-.btn_useredit {
+.btn_useredit1 {
+	color:#fff !important;
+	background:#337ab7;
+	font-size:14px;
+	padding: 10px 20px;
+	border-radius : 4px;
+	font-weight: bold;
+	margin: 20px;
+	
+}
+.btn_useredit2 {
 	color:#fff !important;
 	background:#337ab7;
 	font-size:14px;
