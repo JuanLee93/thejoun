@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
 			vo.setPwd(tempPwd);
 			dao.updateTempPwd(vo);
 			// 이메일 발송
-			SendMail.sendMail("loveyoubin13@naver.com",
+			SendMail.sendMail("withsky999@naver.com",
 								uv.getEmail(), 
 								"[더조은]임시비밀번호입니다.", 
 								"임시비밀번호:<span style='color:red;'>"+tempPwd+"</span>");
