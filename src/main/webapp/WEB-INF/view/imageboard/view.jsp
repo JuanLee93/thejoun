@@ -94,7 +94,7 @@
 		$.ajax({
 			url : "/thejoun/comment/insertCommentReply.do",
 			type:'post',
-			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.image_board_no}, tablename:3, comment_no : comment_no, content:content},
+			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.image_board_no}, tablename:3, comment_no : comment_no, content:content, my_userno : ${data.userno}},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 답글이 등록되었습니다.');
@@ -165,6 +165,24 @@
 			}
 		});
 	}
+	function addFriends(userno){
+		$.ajax({
+			url : "/thejoun/friendsAdd/addFriendsButton.do",
+			type:"post",
+			data :$("#friendsAddButton"+userno).serialize(),
+			success:function(res){
+				if(res.trim() == 0){
+					alert("이미 친구가 된 사용자입니다");
+				}else if(res.trim() == 1){
+					alert("이 사용자에게 이미 친구신청을 받았어요");
+				}else if(res.trim() == 2){
+					alert("이미 친구신청이 된 사용자입니다.");
+				}else if(res.trim() > 2){
+					alert("친구신청 완료");
+				}
+			}
+		});
+	}
 	
 </script>
 </head>
@@ -178,7 +196,15 @@
                     <div class="view">
                         <div class="title">
                             <dl>
-                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt><dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }</dt>
+                                <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt>
+                                <dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }
+                                <c:if test="${userInfo.userno  != data.userno }">
+										<form id="friendsAddButton${data.userno }" method="post">
+											<input type="hidden" name="to_userno" value="${data.userno }">
+											<button type="button" class="friendsButton" onclick="addFriends(${data.userno});" >친구추가</button>
+										</form>
+									</c:if>
+                                </dt>
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
@@ -217,6 +243,8 @@
 	                    	<input type="hidden" name="tablename" value='3'>
 	                    	<input type="hidden" name="board_no" value="${data.image_board_no }">
 	                    	<input type="hidden" name="userno" value="${userInfo.userno }">
+	                    	<!-- 아래히든1개는 알림떄 필요한거 -->
+								<input type="hidden" name="my_userno" value="${data.userno }">
 	                        <table class="board_write">
 	                            <colgroup>
 	                                <col width="*" />

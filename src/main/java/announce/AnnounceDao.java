@@ -4,6 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import comment.CommentVo;
+
 @Repository
 public class AnnounceDao {
 
@@ -24,5 +26,9 @@ public class AnnounceDao {
 	
 	public int announceInsert4(AnnounceVo av) {
 		return sst.insert("announce.announceInsert4", av);
+	}
+	
+	public int findMakeComment(int vo) {
+		return sst.selectOne("announce.findMakeComment", vo);
 	}
 }

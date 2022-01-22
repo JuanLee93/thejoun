@@ -93,13 +93,13 @@
 	function replyForm(comment_no) {
 		$("#commentReply_"+comment_no).show();
 	}
-	
+	//my_userno 가져올라고 ${data.userno} data에서 컨트롤러로 가져감
 	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
 		$.ajax({
 			url : "/thejoun/comment/insertCommentReply.do",
 			type:'post',
-			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.concern_board_no}, tablename:2, comment_no : comment_no, content:content},
+			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.concern_board_no}, tablename:2, comment_no : comment_no, content:content, my_userno : ${data.userno}},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 답글이 등록되었습니다.');
@@ -213,6 +213,7 @@
 											<button type="button" class="friendsButton" onclick="addFriends(${data.userno});" >친구추가</button>
 										</form>
 									</c:if>
+									
 								</dt>
 								<dd class="date" style="text-align: right;">작성일 :
 									${data.regdate }</dd>
@@ -268,9 +269,8 @@
 								<input type="hidden" name="tablename" value='2'> 
 								<input type="hidden" name="board_no" value="${data.concern_board_no }">
 								<input type="hidden" name="userno" value="${userInfo.userno }">
-								<!-- 아래히든2개는 알림떄 필요한거 -->
+								<!-- 아래히든1개는 알림떄 필요한거 -->
 								<input type="hidden" name="my_userno" value="${data.userno }">
-								<input type="hidden" name="tablename" value="2">
 								<table class="board_write">
 									<colgroup>
 										<col width="*" />

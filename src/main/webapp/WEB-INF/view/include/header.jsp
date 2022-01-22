@@ -36,9 +36,13 @@
 					</svg>
 				</a>
 				<div class="">
-					<button class="btn1">알림</button>
+					<button class="friendsButton">알림</button>
 				</div>
-				
+				<ul class="">
+					<c:forEach var="vo" items="" varStatus="status">
+						
+					</c:forEach>
+				</ul>
 			</c:if>
 			</div>
 		</div>

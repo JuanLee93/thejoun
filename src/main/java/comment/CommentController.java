@@ -56,10 +56,44 @@ public class CommentController {
 	}
 	
 	@PostMapping("/comment/insertCommentReply.do")
-	public String insertCommentReply(Model model, CommentVo vo, HttpServletRequest req, HttpSession sess) {
+	public String insertCommentReply(Model model, CommentVo vo, AnnounceVo av, HttpServletRequest req, HttpSession sess) {
 		//vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		int r = service.insertCommentReply(vo);
 		model.addAttribute("result",r);
+		
+		//여기부터 알림임
+		//내가쓴 글에달린 대댓글인것들 insert
+		av.setBoardno(vo.getBoard_no());
+		av.setFriends_userno(vo.getUserno());
+		av.setBoard_or_comment(1);
+		if(av.getMy_userno() != av.getFriends_userno()) {
+			if(av.getTablename() == 1) {
+				as.announceInsert1(av);
+			}else if(av.getTablename() == 2) {
+				as.announceInsert2(av);
+			}else if(av.getTablename() == 3) {
+				as.announceInsert3(av);
+			}else if(av.getTablename() == 4) {
+				as.announceInsert4(av);
+			}
+		}
+		
+		//댓글에 대댓글이 달렸을때 알림기준
+		av.setBoard_or_comment(2);
+		int my_userno = as.findMakeComment(vo.getGno());
+		av.setMy_userno(my_userno);
+		if(av.getMy_userno() != av.getFriends_userno()) {
+			if(av.getTablename() == 1) {
+				as.announceInsert1(av);
+			}else if(av.getTablename() == 2) {
+				as.announceInsert2(av);
+			}else if(av.getTablename() == 3) {
+				as.announceInsert3(av);
+			}else if(av.getTablename() == 4) {
+				as.announceInsert4(av);
+			}
+		}
+		//여기까지 알림임
 		return "/include/result";
 	}
 	

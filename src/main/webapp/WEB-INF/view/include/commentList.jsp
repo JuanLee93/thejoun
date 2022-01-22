@@ -58,7 +58,7 @@
                                     <textarea name="content" id="contentReply_${vo.comment_no}" style="height:50px;width:100%; resize:none;"></textarea>
                                 </td>
                                 <td>
-                                    <div class="btn1Set"  style="text-align:right;">
+                                    <div class="btn1Set"  style="text-align:right;"><!-- ${data.userno} 이거 추가했음 -->
                                         <a class="btn1" href="javascript:goCommentReply(${vo.userno}, ${vo.comment_no}, ${vo.gno}, ${vo.ono }, ${vo.nested });">답글달기 </a>
                                     </div>
                                 </td>

@@ -3,6 +3,8 @@ package announce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import comment.CommentVo;
+
 @Service
 public class AnnounceService {
 	
@@ -23,5 +25,9 @@ public class AnnounceService {
 	
 	public int announceInsert4(AnnounceVo av) {
 		return ad.announceInsert4(av);
+	}
+	
+	public int findMakeComment(int vo) {
+		return ad.findMakeComment(vo);
 	}
 }

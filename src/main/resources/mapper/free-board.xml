@@ -37,12 +37,15 @@
 			LIMIT ${startIdx}, 10
 	</select>
 
-	<insert id="insert" parameterType="freeboard.FreeBoardVo">
+	<insert id="insert" parameterType="freeboard.FreeBoardVo" useGeneratedKeys="true">
 		INSERT INTO free_board (
 			userno, title, content, regdate, readcount, filename_org, filename_real, category
 		) values (
 			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{category}
 		)
+		<selectKey keyProperty="board_no" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->

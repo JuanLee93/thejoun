@@ -9,18 +9,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
+import announce.AnnounceService;
+import announce.AnnounceVo;
 import comment.CommentService;
 import comment.CommentVo;
+import friends.FriendsService;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -31,6 +30,12 @@ public class VideoBoardController {
 	
 	@Autowired
 	CommentService cService;
+	//여기아래 오토와이어드부터 알림창 insert 하는데 필요함
+	@Autowired
+	FriendsService fs;
+	
+	@Autowired
+	AnnounceService as;
 	
 	@GetMapping("/videoboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, VideoBoardVo vo) {
@@ -110,7 +115,7 @@ public class VideoBoardController {
 	}
 	
 	@PostMapping("/videoboard/insert.do")
-	public String insert(VideoBoardVo vo, HttpServletRequest req, MultipartFile file, HttpSession sess) {
+	public String insert(VideoBoardVo vo, AnnounceVo av, HttpServletRequest req, MultipartFile file, HttpSession sess) {
 		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		// 파일 저장
 		if (!file.isEmpty()) {//사용자가 파일을 첨부했다면
@@ -134,6 +139,17 @@ public class VideoBoardController {
 		if (r > 0) {
 			req.setAttribute("msg", "정상적으로 등록되었습니다.");
 			req.setAttribute("url", "index.do");
+			//여기부터 알림임
+			av.setBoardno(vo.getVideo_board_no());
+			av.setFriends_userno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+			av.setBoard_or_comment(0);
+			//FriendsService 에 메서드로 가서 내 userno기준으로 친구된 사람 리스트로 받아와야함
+			List<Integer> my_userno = fs.getFriendsUserno(av);
+			for(int i=0;i<my_userno.size();i++) {
+				av.setMy_userno(my_userno.get(i));
+				int announceCheck = as.announceInsert2(av);
+			}
+			//여기까지 알림임
 		} else {
 			req.setAttribute("msg", "등록 오류가 발생하였습니다.");
 			req.setAttribute("url", "write.do");

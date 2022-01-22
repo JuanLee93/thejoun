@@ -47,6 +47,10 @@
 		</selectKey>
 	</insert>
 	
+	<select id="findMakeComment" parameterType="int" resultType="int">
+		SELECT userno FROM comment WHERE gno = #{value} AND ono = 0 AND nested = 0
+	</select>
+	
 	
 	
 
