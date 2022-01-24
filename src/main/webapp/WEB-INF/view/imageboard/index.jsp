@@ -30,8 +30,8 @@
             <div class="size">
                 <h3 class="sub_title">자유갤러리</h3>
 		        <div class="btn1Set"  style="text-align:left;">
-					<a class="btn1" href="/thejoun/imageboard/index.do?orderby=readcount">조회수 순</a>
-		            <a class="btn1" href="/thejoun/imageboard/index.do?orderby=l_count">좋아요 순</a>
+					<a class="btn1" href="/thejoun/imageboard/index.do?orderby=readcount&category=${imageBoardVo.category }">조회수 순</a>
+		            <a class="btn1" href="/thejoun/imageboard/index.do?orderby=l_count&category=${imageBoardVo.category }">좋아요 순</a>
 		        </div>
 		         <div class="menu1">
 		            <ul class="category" >

@@ -40,6 +40,9 @@ function goSave() {
 	oEditors.getById['contents'].exec("UPDATE_CONTENTS_FIELD", []);
 	$("#frm").submit();
 }
+
+var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
+
 </script>
 </head>
 <body> 
@@ -75,6 +78,13 @@ function goSave() {
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
 											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" />	
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">*공개/비공개</label></th>
+										<td colspan="10">
+											<input type="radio" id="open" name="isopen" value="공개" checked/> 공개	
+											<input type="radio" id="close" name="isopen" value="비공개" /> 비공개	
 										</td>
 									</tr>
 									<tr>

@@ -25,6 +25,15 @@ $(function() {
 		fCreator: "createSEditor2"
 	});
 });
+
+var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
+if(checked_radio === undefined) // 선택을 하지 않았을 경우
+{
+    alert('옵션을 선택해주세요.');
+} else {
+    alert(checked_radio + "를 선택하셨습니다.");
+}
+
 </script>
 </head>
 <body> 
@@ -60,6 +69,13 @@ $(function() {
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
 											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" />	
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">*공개/비공개</label></th>
+										<td colspan="10">
+											<input type="radio" id="open" name="isopen" value="공개" /> 공개	
+											<input type="radio" id="close" name="isopen" value="비공개" /> 비공개	
 										</td>
 									</tr>
 									<tr>
