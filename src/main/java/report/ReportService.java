@@ -16,6 +16,7 @@ public class ReportService {
 			
 		} else {// 신고DB에 없는 경우 -> 추가
 			reportDao.reportInsert(vo);
+			
 			r = 2;
 		}
 		return r;

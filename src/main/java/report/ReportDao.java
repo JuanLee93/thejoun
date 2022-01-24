@@ -4,6 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import like.LikeVo;
+
 @Repository
 public class ReportDao {
 
@@ -19,4 +21,10 @@ public class ReportDao {
 		return sqlSessionTemplate.insert("report.reportInsert",vo);
 	}
 	
+	public int reportDelete(ReportVo vo) {
+		return sqlSessionTemplate.delete("report.likeDelete",vo);
+	}
+	public int reportUpdate(ReportVo vo) {
+		return sqlSessionTemplate.update("report.reportUpdate",vo);
+	}
 }

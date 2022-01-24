@@ -4,9 +4,9 @@
 
 	<insert id="reportInsert" parameterType="report.ReportVo">
 		INSERT INTO report (
-			 userno, tablename, board_no, date
+			 userno, tablename, board_no, date , state
 		) VALUES (
-			 #{userno}, #{tablename}, #{board_no}, NOW()
+			 #{userno}, #{tablename}, #{board_no}, NOW() , 1
 		)
 	</insert>   
 	
@@ -29,6 +29,11 @@
 	
 	-->
 	
-
-	
+ 	 <!--<update id="reportUpdate" parameterType="report.ReportVo">
+		UPDATE report SET
+			report_no = #{report_no}
+			, state = 1
+		WHERE board_no = #{board_no}
+	</update> 
+	-->
 </mapper>

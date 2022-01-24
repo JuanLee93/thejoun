@@ -79,7 +79,13 @@
 														<td class="writer">${vo.nickname }</td>
 														<td class="date">${vo.regdate }</td>
 														<td>${vo.readcount }</td>
-														<td class="Last">정상</td>
+														<td class="Last">
+														<c:if test="${vo.state == 1 }">
+														신고
+														</c:if>
+														<c:if test="${vo.state == 0 }">
+														정상
+														</c:if>
 													</tr>
 												</c:forEach>
 											</c:if>
