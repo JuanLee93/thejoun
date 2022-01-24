@@ -37,12 +37,15 @@
 		UPDATE comment SET ono=ono+1 WHERE gno=#{gno} AND ono > #{ono}
 	</update>
 	
-	<insert id="insertCommentReply" parameterType="comment.CommentVo">
+	<insert id="insertCommentReply" parameterType="comment.CommentVo" useGeneratedKeys="true">
 		INSERT INTO comment (
 			board_no, content, likecount, regdate, gno, ono, nested, tablename, userno
 		) values (
 			#{board_no}, #{content}, #{likecount}, NOW(), #{gno}, #{ono}, #{nested}, #{tablename}, #{userno}
 		)
+		<selectKey keyProperty="comment_no" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<delete id="delete" parameterType="int">

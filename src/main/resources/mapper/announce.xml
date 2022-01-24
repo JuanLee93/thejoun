@@ -5,9 +5,9 @@
 	
 	<insert id="announceInsert1" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
 		INSERT INTO announce (
-			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, commentno, regdate  
 		) VALUES (
-			#{my_userno}, #{friends_userno}, #{boardno}, 1, #{board_or_comment}, NOW()
+			#{my_userno}, #{friends_userno}, #{boardno}, 1, #{board_or_comment}, #{commentno}, NOW()
 		)
 		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
 			SELECT last_insert_id()
@@ -16,9 +16,9 @@
 	
 	<insert id="announceInsert2" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
 		INSERT INTO announce (
-			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, commentno, regdate  
 		) VALUES (
-			#{my_userno}, #{friends_userno}, #{boardno}, 2, #{board_or_comment}, NOW()
+			#{my_userno}, #{friends_userno}, #{boardno}, 2, #{board_or_comment}, #{commentno}, NOW()
 		)
 		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
 			SELECT last_insert_id()
@@ -27,9 +27,9 @@
 	
 	<insert id="announceInsert3" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
 		INSERT INTO announce (
-			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, commentno, regdate  
 		) VALUES (
-			#{my_userno}, #{friends_userno}, #{boardno}, 3, #{board_or_comment}, NOW()
+			#{my_userno}, #{friends_userno}, #{boardno}, 3, #{board_or_comment}, #{commentno}, NOW()
 		)
 		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
 			SELECT last_insert_id()
@@ -38,9 +38,9 @@
 	
 	<insert id="announceInsert4" parameterType="announce.AnnounceVo" useGeneratedKeys="true">
 		INSERT INTO announce (
-			my_userno, friends_userno,  boardno, tablename, board_or_comment, regdate  
+			my_userno, friends_userno,  boardno, tablename, board_or_comment, commentno, regdate  
 		) VALUES (
-			#{my_userno}, #{friends_userno}, #{boardno}, 4, #{board_or_comment}, NOW()
+			#{my_userno}, #{friends_userno}, #{boardno}, 4, #{board_or_comment}, #{commentno}, NOW()
 		)
 		<selectKey keyProperty="announceno" resultType="int" order="AFTER">
 			SELECT last_insert_id()

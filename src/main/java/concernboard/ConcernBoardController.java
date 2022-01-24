@@ -133,6 +133,7 @@ public class ConcernBoardController {
 			req.setAttribute("url", "index.do");
 			//여기부터 알림임
 			av.setBoardno(vo.getConcern_board_no());
+			av.setCommentno(0);
 			av.setFriends_userno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 			av.setBoard_or_comment(0);
 			//FriendsService 에 메서드로 가서 내 userno기준으로 친구된 사람 리스트로 받아와야함

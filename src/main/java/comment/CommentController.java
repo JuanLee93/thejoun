@@ -27,6 +27,7 @@ public class CommentController {
 		//여기부터 알림
 		av.setFriends_userno(vo.getUserno());
 		av.setBoardno(vo.getBoard_no());
+		av.setCommentno(vo.getComment_no());
 		av.setBoard_or_comment(1);
 		if(av.getMy_userno() != av.getFriends_userno()) {
 			if(av.getTablename() == 1) {
@@ -65,6 +66,7 @@ public class CommentController {
 		//내가쓴 글에달린 대댓글인것들 insert
 		av.setBoardno(vo.getBoard_no());
 		av.setFriends_userno(vo.getUserno());
+		av.setCommentno(vo.getComment_no());
 		av.setBoard_or_comment(1);
 		if(av.getMy_userno() != av.getFriends_userno()) {
 			if(av.getTablename() == 1) {

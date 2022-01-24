@@ -15,5 +15,6 @@ public class AnnounceVo {
 	private int tablename;
 	private int board_or_comment;
 	private int read_check;
+	private int commentno;
 	private Timestamp regdate;
 }
