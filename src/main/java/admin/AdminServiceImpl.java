@@ -58,4 +58,9 @@ public class AdminServiceImpl implements AdminService {
 		return dao.update(vo);
 	}
 	
+	@Override
+	public int idCheck(String id) {
+		return dao.idCheck(id);
+	}
+	
 }

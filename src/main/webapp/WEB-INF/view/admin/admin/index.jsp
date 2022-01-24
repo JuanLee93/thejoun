@@ -78,7 +78,7 @@
 									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
+									<a class="wbtn" href="adminAdd.do"><strong>등록</strong> </a>
 								</div>
 							</div>
 							<!--//btn-->

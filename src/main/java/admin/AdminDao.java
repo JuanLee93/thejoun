@@ -27,6 +27,11 @@ public class AdminDao {
 		return sst.selectList("admin.selectList", vo);
 	}
 	
+	//id 체크
+	public int idCheck(String id) {
+		return sst.selectOne("admin.idCheck",id);
+	}
+	
 	//등록
 	public int insert(AdminVo vo) {
 		return sst.insert("admin.insert", vo);

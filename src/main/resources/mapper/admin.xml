@@ -16,6 +16,10 @@
 		</where>
 	</sql>
 	
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM admin WHERE id = #{id}
+	</select>
+	
 	<select id="login" parameterType="admin.AdminVo" resultType="admin.AdminVo">
 		SELECT * FROM admin WHERE id = #{id} and pwd = md5(#{pwd})
 	</select>
@@ -37,7 +41,7 @@
 		) VALUES (
 			 #{id}, md5(#{pwd}), #{name}
 		)
-		<selectKey keyProperty="userno" resultType="int" order="AFTER">
+		<selectKey keyProperty="admin_no" resultType="int" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>

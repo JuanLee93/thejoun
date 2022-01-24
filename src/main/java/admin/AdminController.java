@@ -52,6 +52,12 @@ public class AdminController {
 		return "admin/index";
 	}
 	
+	@GetMapping("/admin/admin/idCheck.do")
+	public String idCheck(Model model, @RequestParam String id) {
+		model.addAttribute("result", adminService.idCheck(id));
+		return "include/result";
+	}
+	
 	@PostMapping("/admin/login.do")
 	public String loginProcess(Model model, AdminVo vo, HttpSession sess, HttpServletRequest req) {
 		if(adminService.login(vo,sess)) {
@@ -106,6 +112,11 @@ public class AdminController {
 		model.addAttribute("data", adminService.view(admin_no));
 
 		return "admin/admin/view";
+	}
+	
+	@GetMapping("/admin/admin/adminAdd.do")
+	public String join() {
+		return "admin/admin/adminAdd";
 	}
 	
 	@PostMapping("/admin/admin/insert.do")

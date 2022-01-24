@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 public interface AdminService {
 	
 	boolean login(AdminVo vo, HttpSession sess);
+	int idCheck(String id);
 	int count(AdminVo vo);
 	List<AdminVo> selectList(AdminVo vo);
 	int insert(AdminVo vo);
