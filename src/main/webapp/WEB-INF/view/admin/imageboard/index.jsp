@@ -75,7 +75,14 @@
 		                                </td>
 		                                <td class="date">${vo.regdate }</td>
 		                                <td>${vo.readcount }</td>
-		                                <td class="last">정상</td>
+		                                <td class="last">
+										<c:if test="${vo.state == 1}">
+										신고
+										</c:if>
+										<c:if test="${vo.state == 0}">
+										정상
+										</c:if>
+										</td>
 		                            </tr>
 		                        </c:forEach>
 		                        </c:if>

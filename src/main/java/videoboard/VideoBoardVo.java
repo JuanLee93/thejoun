@@ -26,6 +26,8 @@ public class VideoBoardVo extends CommonVo{
 	private int l_count;
 	private String orderby;
 	private String direction;	
+	private int state;
+	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(this.regdate);

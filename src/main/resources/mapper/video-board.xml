@@ -30,7 +30,8 @@
 			(SELECT name FROM user WHERE userno =video_board.userno) as name, 
 			(SELECT nickname from user where userno =video_board.userno) as nickname, 
 			(SELECT count(*) FROM comment WHERE board_no= video_board.video_board_no AND tablename=4 ) as c_count,
-			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename=4) as l_count
+			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename=4) as l_count,
+			(SELECT state FROM report WHERE report.board_no= video_board.video_board_no AND tablename=4) as state
 			FROM video_board
 		<include refid="boardWhere"/>
 			ORDER BY ${orderby} ${direction}
@@ -52,7 +53,8 @@
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
 	<select id="selectOne" parameterType="int" resultType="videoboard.VideoBoardVo">
 			SELECT *, (SELECT nickname FROM user WHERE userno=video_board.userno) as nickname,
-			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename= 4 ) as l_count
+			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename= 4 ) as l_count,
+			(SELECT state FROM report WHERE report.board_no= video_board.video_board_no AND tablename=4) as state
 		FROM video_board WHERE video_board_no = #{xxx}
 	</select>
 
