@@ -26,8 +26,5 @@ public class ReportDao {
 	public int reportUpdate(ReportVo vo) {
 		return sqlSessionTemplate.update("report.reportUpdate",vo);
 	}
-	
-	public int searchReport(ReportVo vo) {
-		return sqlSessionTemplate.selectOne("report.searchReport", vo);
-	}
+
 }

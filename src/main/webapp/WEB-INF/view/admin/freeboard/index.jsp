@@ -92,6 +92,7 @@
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="edit.do?board_no=${data.board_no }" onclick=""><strong>공지글로 적용</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="write.do"><strong>등록</strong> </a>

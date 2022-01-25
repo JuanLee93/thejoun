@@ -179,10 +179,9 @@
 				url : "/thejoun/report",
 				data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
 				success : function(res) {
-					if (parseInt(res) === 1) {//등록된 신고건 -> 중복확인
+					if (parseInt(res) === 1) {// DB에 있는 경우
 						alert('이미 신고된 게시글입니다.');
-					} else {
-						// 추가
+					} else {// DB에 없는 경우, 추가
 						alert('이 게시글을 신고하였습니다.');
 					}
 				}
