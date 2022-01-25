@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import comment.CommentVo;
+
 @Repository
 public class FreeBoardDao {
 	@Autowired
@@ -44,5 +46,9 @@ public class FreeBoardDao {
 	
 	public int delete(FreeBoardVo vo) {
 		return sqlSessionTemplate.delete("freeboard.delete", vo.getBoard_no());
+	}
+	
+	public int updateAnnounce(CommentVo cv) {
+		return sqlSessionTemplate.update("freeboard.updateAnnounce", cv);
 	}
 }

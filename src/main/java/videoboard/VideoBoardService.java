@@ -2,6 +2,8 @@ package videoboard;
 
 import java.util.List;
 
+import comment.CommentVo;
+
 public interface VideoBoardService {
 
 	List<VideoBoardVo> selectList(VideoBoardVo vo);
@@ -11,5 +13,6 @@ public interface VideoBoardService {
 	VideoBoardVo edit(int board_no);
 	int update(VideoBoardVo vo);
 	int delete(VideoBoardVo vo);
+	int updateAnnounce(CommentVo cv);
 	
 }

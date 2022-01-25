@@ -1,11 +1,11 @@
 package videoboard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import comment.CommentVo;
 
 @Service
 public class VideoServiceImpl implements VideoBoardService {
@@ -47,5 +47,10 @@ public class VideoServiceImpl implements VideoBoardService {
 	@Override
 	public int delete(VideoBoardVo vo) {
 		return videoBoardDao.delete(vo);
+	}
+	
+	@Override
+	public int updateAnnounce(CommentVo cv) {
+		return videoBoardDao.updateAnnounce(cv);
 	}
 }

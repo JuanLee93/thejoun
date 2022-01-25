@@ -2,6 +2,8 @@ package freeboard;
 
 import java.util.List;
 
+import comment.CommentVo;
+
 public interface FreeBoardService {
 
 	int count(FreeBoardVo vo);
@@ -11,5 +13,6 @@ public interface FreeBoardService {
 	FreeBoardVo edit(int board_no);
 	int update(FreeBoardVo vo);
 	int delete(FreeBoardVo vo);
+	int updateAnnounce(CommentVo cv);
 	
 }

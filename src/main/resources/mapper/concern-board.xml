@@ -79,4 +79,8 @@
 	<delete id="delete" parameterType="int">
 		DELETE FROM concern_board WHERE concern_board_no = #{concern_board_no}
 	</delete>
+	
+	<update id="updateAnnounce" parameterType="comment.CommentVo">
+		UPDATE announce SET read_check = 0 WHERE my_userno = #{userno} AND tablename = #{tablename} AND boardno = #{board_no}
+	</update>
 </mapper>

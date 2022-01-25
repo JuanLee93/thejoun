@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import comment.CommentVo;
+
 @Service
 public class ImageBoardServiceImpl implements ImageBoardService {
 	
@@ -45,5 +47,10 @@ public class ImageBoardServiceImpl implements ImageBoardService {
 	@Override
 	public int delete(ImageBoardVo vo) {
 		return imageBoardDao.delete(vo);
+	}
+	
+	@Override
+	public int updateAnnounce(CommentVo cv) {
+		return imageBoardDao.updateAnnounce(cv);
 	}
 }

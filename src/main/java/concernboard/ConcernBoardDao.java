@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import comment.CommentVo;
+
 @Repository
 public class ConcernBoardDao {
 	@Autowired
@@ -44,5 +46,9 @@ public class ConcernBoardDao {
 	
 	public int delete(ConcernBoardVo vo) {
 		return sqlSessionTemplate.delete("concernboard.delete", vo.getConcern_board_no());
+	}
+	
+	public int updateAnnounce(CommentVo cv) {
+		return sqlSessionTemplate.update("concernboard.updateAnnounce", cv);
 	}
 }

@@ -172,13 +172,16 @@ public class FreeBoardController {
 	}
 	
 	@GetMapping("/freeboard/view.do")
-	public String view(Model model, @RequestParam int board_no) {
+	public String view(Model model, HttpSession sess, @RequestParam int board_no) {
 		model.addAttribute("data", freeBoardService.view(board_no));
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
 		cv.setTablename(1);
 		model.addAttribute("cList", cService.selectList(cv));
-
+		//이 아래로 알림 지우기
+		int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
+		cv.setUserno(num);
+		freeBoardService.updateAnnounce(cv);
 		return "freeboard/view";
 	}
 	

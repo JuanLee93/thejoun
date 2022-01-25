@@ -2,6 +2,8 @@ package concernboard;
 
 import java.util.List;
 
+import comment.CommentVo;
+
 public interface ConcernBoardService {
 
 	List<ConcernBoardVo> selectList(ConcernBoardVo vo);
@@ -11,5 +13,6 @@ public interface ConcernBoardService {
 	ConcernBoardVo edit(int board_no);
 	int update(ConcernBoardVo vo);
 	int delete(ConcernBoardVo vo);
+	int updateAnnounce(CommentVo cv);
 	
 }

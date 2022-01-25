@@ -1,11 +1,11 @@
 package concernboard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import comment.CommentVo;
 
 @Service
 public class ConcernServiceImpl implements ConcernBoardService {
@@ -47,5 +47,10 @@ public class ConcernServiceImpl implements ConcernBoardService {
 	@Override
 	public int delete(ConcernBoardVo vo) {
 		return concernBoardDao.delete(vo);
+	}
+	
+	@Override
+	public int updateAnnounce(CommentVo cv) {
+		return concernBoardDao.updateAnnounce(cv);
 	}
 }

@@ -64,12 +64,12 @@
 		SELECT image_board_no as board_no, title, userno, 3 as tablename FROM image_board UNION
 		SELECT video_board_no as board_no, title, userno, 4 as tablename  FROM video_board 
 		) as b
-		ON a.boardno = b.board_no AND a.tablename = b.tablename AND a.read_check = 1 
+		ON a.boardno = b.board_no AND a.tablename = b.tablename
 		LEFT JOIN comment AS c
 		ON a.friends_userno = c.userno AND a.commentno = c.comment_no
 		LEFT JOIN user AS u
 		ON a.friends_userno = u.userno
-		where a.my_userno = #{value};
+		where a.my_userno = #{value} AND a.read_check = 1;
 	</select>
 	
 

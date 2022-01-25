@@ -145,7 +145,7 @@ public class ImageBoardController {
 			List<Integer> my_userno = fs.getFriendsUserno(av);
 			for(int i=0;i<my_userno.size();i++) {
 				av.setMy_userno(my_userno.get(i));
-				int announceCheck = as.announceInsert2(av);
+				int announceCheck = as.announceInsert3(av);
 			}
 			//여기까지 알림임
 		} else {
@@ -157,12 +157,16 @@ public class ImageBoardController {
 	}
 	
 	@GetMapping("/imageboard/view.do")
-	public String view(Model model, @RequestParam int image_board_no) {
+	public String view(Model model, HttpSession sess, @RequestParam int image_board_no) {
 		model.addAttribute("data", imageBoardService.view(image_board_no));
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(image_board_no);
 		cv.setTablename(3);
 		model.addAttribute("cList", cService.selectList(cv));
+		//이 아래로 알림 지우기
+		int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
+		cv.setUserno(num);
+		imageBoardService.updateAnnounce(cv);
 
 		return "imageboard/view";
 	}

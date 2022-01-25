@@ -1,11 +1,11 @@
 package freeboard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import comment.CommentVo;
 
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService {
@@ -47,5 +47,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public int delete(FreeBoardVo vo) {
 		return freeBoardDao.delete(vo);
+	}
+	
+	@Override
+	public int updateAnnounce(CommentVo cv) {
+		return freeBoardDao.updateAnnounce(cv);
 	}
 }
