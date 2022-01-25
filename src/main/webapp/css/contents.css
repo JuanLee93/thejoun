@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 .sub {
     width: 100%;
     position: relative;
@@ -12,6 +13,12 @@
     text-align: center;
     font-size: 32px;
     margin: 0 0 15px 0;
+    color:#614218;
+   
+     background: radial-gradient(circle, #eacec8, white);
+
+
+    
 }
 
 /*마이페이지 헤더*/

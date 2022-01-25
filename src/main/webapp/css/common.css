@@ -23,11 +23,6 @@
     top:0;
     right:0;
 }
-.login > ul > li{
-	float:left;
-	width:70px;
-	position:relative;
-}
 .menu {
     width:1200px;
     margin:0 auto;
@@ -47,26 +42,39 @@
 
 /*마우스 over했을시 테두리 생기는 css*/
 .menu > ul > li a{
-    border:1px solid #000000;
+
+    border: 1px solid seashell;
+    border-radius: 10px;
+    font-family: monospace;
+    background: linen;
+    font-weight: 600;
+    font-family: 'Noto Sans KR', sans-serif;
 }
- 
+
 /*concernboard, imageboard 메뉴 css*/
 .menu1 > ul > li {
     list-style: none;
     border:1px solid #000000;
     background-color: #fff;
-    color:#000000;
+    color:#66451a;
     text-align: center;
     float:left;
     width:20%;
     height:40px;
     line-height: 40px;
 }
-
+.menu >ul>  li > a{
+	color:#7b5420;
+}
 .menu > ul > li > a:hover {
-    background-color: #999;
+    background-color: #DEB887;
     color:#fff;
-    
+    border-radius: 10px;
+}
+.depth2 >  li > a:hover {
+    background-color: #DEB887;
+    color:#fff;
+    border-radius: 10px;
 }
 .container {
     width:1200px;
@@ -115,7 +123,7 @@
 .footer {
     width:0 auto;
     margin:0 auto;
-    background-color: #ffc200;
+    background-color: #F08080;
     color:#ffffff;
     clear:both;
     padding:20px 5px;
@@ -162,7 +170,7 @@ a:hover{color:#000;text-decoration:none;}
     height:500px;
 }
 .visual .swiper {
-    height:500px;
+    height:256px;
 }
 .swiper-slide {
     background-repeat: no-repeat;

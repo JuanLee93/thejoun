@@ -18,13 +18,6 @@
 <script src="/thejoun/js/main.js"></script>
 </head>
 <style>
-
-/*web font load*/
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');*/
-
 .visual .swiper {
     height:256px;
 }
@@ -54,6 +47,7 @@
 						style="background-image: url('/thejoun/img/visual2.png');"></div>
 					<div class="swiper-slide"
 						style="background-image: url('/thejoun/img/visual3.png');"></div>
+					
 				</div>
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
