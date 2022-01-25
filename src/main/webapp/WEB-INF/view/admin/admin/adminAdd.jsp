@@ -117,12 +117,12 @@
 				                            <th>*아이디</th>
 				                            <td>
 				                                <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
-				                                <span class="id_check"><a href="javascript:;" id="idCheckBtn" class="btn bgGray" style="float:left; width:auto; clear:none;">중복확인</a></span>
+				                                <span class="id_check"><a href="javascript:;" id="idCheckBtn" class="bgGray" style="float:left; width:auto; clear:none;">중복확인</a></span>
 				                            </td>
 				                        </tr>
 				                        <tr>
 				                            <th>*비밀번호</th>
-				                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요</span> </td>
+				                            <td class="lef"><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요</span> </td>
 				                        </tr>
 				                        <tr>
 				                            <th>*비밀번호<span>확인</span></th>

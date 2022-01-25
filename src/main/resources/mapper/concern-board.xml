@@ -57,7 +57,7 @@
 	<select id="selectOne" parameterType="int" resultType="concernboard.ConcernBoardVo">
 			SELECT *, (SELECT nickname FROM user WHERE userno=concern_board.userno) as nickname,
 			(SELECT count(*) FROM thejoun.like WHERE board_no= concern_board.concern_board_no AND tablename=2) as l_count,
-			(SELECT state FROM report WHERE report.board_no = concern_board.concern_board_no AND tablename=2) as state
+			(SELECT state FROM report WHERE report.board_no = concern_board.concern_board_no AND tablename=2 limit 1) as state
 		FROM concern_board WHERE concern_board_no = #{xxx}
 	</select>
 

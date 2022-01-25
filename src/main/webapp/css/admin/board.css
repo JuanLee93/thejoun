@@ -147,6 +147,7 @@ textarea{border:1px solid #cccccc;}
 .btn_in.inbtn{height:26px;line-height:26px; background-position:left 0;}
 .btn_in.inbtn *{height:26px;line-height:26px;padding:0 10px 0 6px;background-position:right top;font-size:11px;}
 .btn_in.strong *{font-weight:bold !important}
+.bgGray {background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; line-height:25px; padding: 2px 10px; }
 
 /*게시판 시작 */
 #bbs{position:relative; margin-bottom:50px; padding:0; width:100%;  color:#5e5e5e;}
@@ -171,6 +172,7 @@ textarea{border:1px solid #cccccc;}
 #bbs #blist table .first{background-image:none !important;}
 
 #bbs #blist table tbody td{padding:13px 2px; text-align:center; /* font-weight:bold;  */background:url(/thejoun/images/admin/blist_td_line.gif) repeat-y left top; border-bottom:1px solid #cccdd0;}
+#bbs #blist table tbody td #lef{padding:13px 2px; text-align:letf; /* font-weight:bold;  */background:url(/thejoun/images/admin/blist_td_line.gif) repeat-y left top; border-bottom:1px solid #cccdd0;}
 #bbs #blist table tbody td.tdLine_l{padding:13px 2px; text-align:center;/*  font-weight:bold; */ background:url(/thejoun/images/admin/blist_td_line.gif) repeat-y left top; border-bottom:1px solid #cccdd0;}
 #bbs #blist table tbody td.title{ text-align: left; padding-left:10px;  }
 
