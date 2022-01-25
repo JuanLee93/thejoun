@@ -97,6 +97,7 @@
 	
 	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
+		<c:if test="${!empty userInfo}">
 			$.ajax({
 				url : "/thejoun/comment/insertCommentReply.do",
 				type:'post',
@@ -110,7 +111,10 @@
 					}
 				}
 			});
-		
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	
 	function goDel(comment_no) {
@@ -130,7 +134,7 @@
 		}
 	}
 	function likeUpdate() {
-		if (${userInfo.userno}) {
+		<c:if test="${!empty userInfo}">
 			$.ajax({
 				url : "/thejoun/likeupdate",
 				data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
@@ -144,9 +148,13 @@
 					}
 				}
 			});
-		}	
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	function bookmarkUpdate() {
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/bookmarkupdate",
 			data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
@@ -159,10 +167,14 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	
 	function report() {
-		if (${userInfo.userno}) {
+		<c:if test="${!empty userInfo}">
 			$.ajax({
 				url : "/thejoun/report",
 				data : {board_no : ${data.board_no}, userno : ${userInfo.userno}, tablename:1},
@@ -175,10 +187,10 @@
 					}
 				}
 			});
-		
-		} else {
-			alert("로그인 후 이용해주세요.")
-		}
+			</c:if>
+			<c:if test="${empty userInfo}">
+				alert("로그인 후 이용해주세요.");
+			</c:if>
 	}
 	
 	function addFriends(userno){
@@ -219,7 +231,7 @@
 											<input type="hidden" name="to_userno" value="${data.userno }">
 											<button type="button" class="friendsButton" onclick="addFriends(${data.userno});" >친구추가</button>
 										</form>
-									</c:if>
+								</c:if>
                                 </dt>
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
@@ -235,12 +247,7 @@
                         <dl class="file">
                         <div>
                             <dt>좋아요 </dt>
-                            <c:if test="${!empty userInfo }">
                             <dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
-                            </c:if>
-                            <c:if test="${empty userInfo }">
-                        	<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
-                    		</c:if>
                     		<dt><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
                     		<dt><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
 						</div>                        

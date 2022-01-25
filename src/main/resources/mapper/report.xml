@@ -24,6 +24,10 @@
 		DELETE FROM report WHERE report_no = #{report_no}
 	</delete>
 	
+	<select id="searchReport" parameterType="report.ReportVo" resultType="int">
+		SELECT count(*) FROM report WHERE board_no = #{board_no} AND tablename = #{tablename}
+	</select>
+	
 	<!-- UPDATE report SET confirm = NOW() WHERE report_no = #{report_no}
 	SELECT * FROM report WHERE confirm = null
 	
