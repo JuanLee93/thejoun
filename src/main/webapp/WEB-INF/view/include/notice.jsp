@@ -56,6 +56,18 @@
 	function view(){
 		$(".noticeMain").toggle();
 	}
+	
+	function goBoard(boardno, tablename){
+		if(tablename == 1){
+			location.href="/thejoun/freeboard/view.do?board_no="+boardno;
+		}else if(tablename == 2){
+			location.href="/thejoun/concernboard/view.do?board_no="+boardno;
+		}else if(tablename == 3){
+			location.href="/thejoun/imageboard/view.do?image_board_no="+boardno;	
+		}else if(tablename == 4){
+			location.href="/thejoun/videoboard/view.do?board_no="+boardno;
+		}
+	}
 </script>
 <meta charset="UTF-8">
 </head>
@@ -64,13 +76,13 @@
 	<ul class="noticeMain">
 		<c:forEach var="vo" items="${userVoList}" varStatus="status">
 			<c:if test="${vo.board_or_comment == 0 }">
-				<li>친구 ${vo.nickname} 님이 게시글을 올렸어요 <br> 게시글내용 : ${vo.content}</li>
+				<li onclick="goBoard(${vo.boardno},${vo.tablename });">친구 ${vo.nickname} 님이 게시글을 올렸어요 <br> 게시글내용 : ${vo.content} <br> 알림일 : ${vo.regdate }</li>
 			</c:if>
 			<c:if test="${vo.board_or_comment == 1 }">
-				<li>${vo.nickname} 님이 내 글에 댓글을 달았어요 <br> 댓글내용 : ${vo.content}</li>
+				<li onclick="goBoard(${vo.boardno},${vo.tablename });">${vo.nickname} 님이 내 글에 댓글을 달았어요 <br> 댓글내용 : ${vo.content} <br> 알림일 : ${vo.regdate }</li>
 			</c:if>
 			<c:if test="${vo.board_or_comment == 2 }">
-				<li>${vo.nickname} 님이 내 댓글에 대댓글을 달았어요 <br> 대댓글내용 : ${vo.content}</li>
+				<li onclick="goBoard(${vo.boardno},${vo.tablename });">${vo.nickname} 님이 내 댓글에 대댓글을 달았어요 <br> 대댓글내용 : ${vo.content} <br> 알림일 : ${vo.regdate }</li>
 			</c:if>
 		</c:forEach>
 	</ul>
