@@ -75,6 +75,11 @@ public class FreeBoardController {
 		return "admin/freeboard/view";
 	}
 	
+	@RequestMapping("/admin/freeboard/write.do")
+	public String adminWrite() {
+		return "admin/freeboard/write";
+	}
+	
 	@GetMapping("/admin/freeboard/delete.do")
 	public String adminFreeboardDelete(Model model, FreeBoardVo vo) {
 		int r = freeBoardService.delete(vo);
@@ -93,6 +98,13 @@ public class FreeBoardController {
 	public String adminFreeboardDeleteAjax(Model model, FreeBoardVo vo) {
 		model.addAttribute("result", freeBoardService.delete(vo));
 		return "include/result";
+	}
+	
+	@PostMapping("/admin/freeboard/boardDeleteAjax.do")
+	public List<String[]> adminBoardDeleteAjax(Model model, FreeBoardVo vo, @RequestParam(value="deleteArray[]") List<String[]> deleteArray) {
+		System.out.println("-----------------"+ deleteArray);
+		//model.addAttribute("result", freeBoardService.board_delete(vo));
+		return deleteArray;
 	}
 	
 	@GetMapping("/freeboard/index.do")

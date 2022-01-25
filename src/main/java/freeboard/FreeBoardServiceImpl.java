@@ -53,4 +53,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int updateAnnounce(CommentVo cv) {
 		return freeBoardDao.updateAnnounce(cv);
 	}
+
+	@Override
+	public int board_delete(FreeBoardVo vo) {
+		return freeBoardDao.delete(vo);
+	}
 }
