@@ -1,9 +1,9 @@
 package announce;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import comment.CommentVo;
 
 @Service
 public class AnnounceService {
@@ -29,5 +29,13 @@ public class AnnounceService {
 	
 	public int findMakeComment(int vo) {
 		return ad.findMakeComment(vo);
+	}
+	
+	public int chatCountMain(int num) {
+		return ad.chatCountMain(num);
+	}
+	
+	public List<AnnounceUserVo> userVoList(int userno){
+		return ad.userVoList(userno);
 	}
 }

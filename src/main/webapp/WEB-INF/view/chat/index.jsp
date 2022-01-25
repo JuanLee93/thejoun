@@ -37,6 +37,7 @@
 		getFriendsList();
 		main = setInterval(getFriendsList,1000);
 	});
+	
 	//친구신청목록에서 채팅목록 눌렀을때
 	function friendsListToChatFriendsList(){
 		getFriendsList();

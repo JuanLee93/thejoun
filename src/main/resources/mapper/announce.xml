@@ -51,7 +51,26 @@
 		SELECT userno FROM comment WHERE gno = #{value} AND ono = 0 AND nested = 0
 	</select>
 	
+	<select id="chatCountMain" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM chat WHERE to_id = #{value} AND checkmessage = 1;
+	</select>
 	
+	<select id="userVoList" parameterType="int" resultType="announce.AnnounceUserVo">
+		SELECT a.announceno, a.my_userno, a.friends_userno, a.boardno, a.tablename, a.board_or_comment, u.nickname, a.regdate,
+		if(a.board_or_comment = 0, b.title,if(a.board_or_comment BETWEEN 1 AND 2, c.content, null)) as content
+		FROM announce as a left JOIN (
+		SELECT board_no as board_no, title, userno , 1 as tablename FROM free_board UNION
+		SELECT concern_board_no as board_no, title, userno ,2 as tablename  FROM concern_board UNION
+		SELECT image_board_no as board_no, title, userno, 3 as tablename FROM image_board UNION
+		SELECT video_board_no as board_no, title, userno, 4 as tablename  FROM video_board 
+		) as b
+		ON a.boardno = b.board_no AND a.tablename = b.tablename AND a.read_check = 1 
+		LEFT JOIN comment AS c
+		ON a.friends_userno = c.userno AND a.commentno = c.comment_no
+		LEFT JOIN user AS u
+		ON a.friends_userno = u.userno
+		where a.my_userno = #{value};
+	</select>
 	
 
 </mapper>

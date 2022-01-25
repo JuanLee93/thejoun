@@ -1,10 +1,10 @@
 package announce;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import comment.CommentVo;
 
 @Repository
 public class AnnounceDao {
@@ -30,5 +30,13 @@ public class AnnounceDao {
 	
 	public int findMakeComment(int vo) {
 		return sst.selectOne("announce.findMakeComment", vo);
+	}
+	
+	public int chatCountMain(int num) {
+		return sst.selectOne("announce.chatCountMain", num);
+	}
+	
+	public List<AnnounceUserVo> userVoList(int userno){
+		return sst.selectList("announce.userVoList", userno);
 	}
 }
