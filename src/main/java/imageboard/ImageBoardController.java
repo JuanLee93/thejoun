@@ -18,6 +18,7 @@ import announce.AnnounceService;
 import announce.AnnounceVo;
 import comment.CommentService;
 import comment.CommentVo;
+import freeboard.FreeBoardVo;
 import friends.FriendsService;
 import user.UserVo;
 import util.CommonUtil;
@@ -92,6 +93,20 @@ public class ImageBoardController {
 	public String adminImageboardDeleteAjax(Model model, ImageBoardVo vo) {
 		model.addAttribute("result", imageBoardService.delete(vo));
 		return "include/result";
+	}
+	
+	@PostMapping("/admin/imageboard/boardDeleteAjax.do")
+	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
+		String[] deleteArray = req.getParameterValues("no");
+		for (int i=0; i<deleteArray.length; i++) {
+			ImageBoardVo vo = new ImageBoardVo();
+			vo.setImage_board_no(Integer.parseInt(deleteArray[i]));
+			imageBoardService.delete(vo);
+		}
+		model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		model.addAttribute("url", "index.do");
+		
+		return "include/return";
 	}
 	
 	@GetMapping("/imageboard/index.do")

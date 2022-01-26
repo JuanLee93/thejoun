@@ -28,7 +28,9 @@ public class FreeBoardVo extends CommonVo {
 	private String orderby;
 	private String direction;
 	private int state;
-	
+	private int prev;
+	private int next;
+	private int rownum;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -12,7 +12,27 @@
 		$(".board_tr").click(function() {
 			location.href = 'view.do?board_no=' + $(this).data("board_no");
 		});
+		
+		$('#allChk').click(function(){  
+			var checked = $('#allChk').is(':checked');
+		
+			if(checked) {
+				$("input[name='no']").each(function() {
+					$(this).prop('checked',true);
+				});
+			} else {
+				$("input[name='no']").each(function() {
+					$(this).prop('checked',false);
+				});
+			}
+		});
 	});
+	
+	function goDelete() {//체크박스 삭제처리
+		if (confirm("삭제하시겠습니까?")) {
+			$("#frm").submit();
+		}
+	}
 </script>
 
 <body>
@@ -38,7 +58,7 @@
 									<span><strong>총 ${totCount }개</strong> |
 										${concernBoardVo.page }/${totPage }페이지</span>
 								</p>
-								<form name="frm" id="frm" action="process.do" method="post">
+								<form name="frm" id="frm" action="boardDeleteAjax.do" method="post">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
 										summary="관리자 관리목록입니다.">
 										<colgroup>
@@ -52,7 +72,7 @@
 										</colgroup>
 										<thead>
 											<tr>
-												<th scope="col" class="first"><input type="checkbox"	name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
+												<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk"/></th>
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
 												<th scope="col">작성자</th>
@@ -73,7 +93,7 @@
 													<tr class="board_tr"
 														data-board_no="${vo.concern_board_no }"
 														style="cursor: pointer;">
-														<td scope="col" class="first"><input type="checkbox" name="allChk" id="allChk"	onClick="check(this, document.frm.no)" /></td>
+														<td scope="col" class="first"><input type="checkbox" name="no" value="${vo.concern_board_no }"/></td>
 														<td>${(totCount-status.index) - ((concernboardVo.page-1)*10) }</td>
 														<td class="txt_l" style="text-align: left;">${vo.title }</td>
 														<td class="writer">${vo.nickname }</td>
@@ -94,7 +114,8 @@
 								</form>
 								<div class="btn">
 									<div class="btnLeft">
-										<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+										<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
+										<a class="btns" href="#" onclick=""><strong>공지글로 적용</strong> </a>
 									</div>
 									<div class="btnRight">
 										<a class="wbtn" href="write.do"><strong>등록</strong> </a>
@@ -140,72 +161,4 @@
 	<!--//wrap -->
 
 </body>
-<style>
-.pagenate {
-	width: 100%;
-	clear: both;
-}
-
-.pagenate {
-	text-align: center;
-	margin: 20px auto 0;
-}
-
-.pagenate li {
-	display: inline-block;
-}
-
-.pagenate li:first-child {
-	margin-left: 0px;
-}
-
-.pagenate li a {
-	display: inline-block;
-	text-decoration: none;
-	padding: 0;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	border: 1px solid #c7c8cc;
-	box-sizing: border-box;
-	margin-left: -1px;
-	vertical-align: middle;
-}
-
-.pagenate li a:hover {
-	background: #f6f6f6;
-	font-weight: bold;
-	text-decoration: none !important;
-}
-
-.pagenate li a.board {
-	text-indent: -9999em;
-	margin-left: 4px;
-}
-
-.pagenate li a.board.first {
-	background: #f3f3f3 url('/img/ico_first.png') no-repeat center center;
-}
-
-.pagenate li a.board.prev {
-	margin-right: 30px;
-	background: #efefef url('/img/ico_prev.png') no-repeat center center;
-}
-
-.pagenate li a.board.next {
-	margin-left: 30px;
-	background: #efefef url('/img/ico_next.png') no-repeat center center;
-}
-
-.pagenate li a.board.last {
-	background: #f3f3f3 url('/img/ico_last.png') no-repeat center center;
-}
-
-.pagenate li a.current {
-	color: #fff;
-	background-color: #221f1f;
-	font-weight: bold;
-	border: 1px solid #221f1f;
-}
-</style>
 </html>

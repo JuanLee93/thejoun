@@ -253,15 +253,19 @@
                         </dl> 
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
-                            	<a href="index.do" class="btn1">목록으로</a>
+                            	<a href="index.do" class="btn1" style="margin-top: 40px;">목록으로</a>
                             	<c:if test="${data.userno == userInfo.userno }">
 	                            <a href="edit.do?board_no=${data.board_no }" class="btn1">수정</a>
 	                            <a href="javascript:del();" class="btn1">삭제</a>
 	                            </c:if>
                             </div>
                         </div>
+                        <table>
+                        	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">< 이전글</a></td>
+                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">다음글 ></td>                        	
+                        </table>
                     </div>
-                    <div style="height: 30px">
+                    <div style="margin-top: 40px; height: 30px">
                     	<p>[댓글]</p>
                     </div>
                     <div>

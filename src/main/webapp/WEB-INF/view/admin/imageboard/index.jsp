@@ -11,7 +11,27 @@
 		$(".title").click(function() {
 			location.href='view.do?image_board_no='+$(this).data("image_board_no");
 		});
+		
+		$('#allChk').click(function(){  
+			var checked = $('#allChk').is(':checked');
+		
+			if(checked) {
+				$("input[name='no']").each(function() {
+					$(this).prop('checked',true);
+				});
+			} else {
+				$("input[name='no']").each(function() {
+					$(this).prop('checked',false);
+				});
+			}
+		});
 	});
+	
+	function goDelete() {//체크박스 삭제처리
+		if (confirm("삭제하시겠습니까?")) {
+			$("#frm").submit();
+		}
+	}
 </script>
 </head>
 <body> 
@@ -34,7 +54,7 @@
 					<div id="bbs">
 						<div id="blist">
 							<p><span><strong>총 ${totCount }개</strong>  |  ${imageBoardVo.page }/${totPage }페이지</span></p>
-							<form name="frm" id="frm" action="process.do" method="post">
+							<form name="frm" id="frm" action="boardDeleteAjax.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 자유갤러리 관리목록입니다.">
 								<colgroup>
 									<col class="w3" />
@@ -47,7 +67,7 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 
 										<th scope="col">작성자</th> 
@@ -65,7 +85,7 @@
 		                        <c:if test="${!empty list }">
 		                        <c:forEach var="vo" items="${list }" varStatus="status">
 		                            <tr>
-		                            	<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+		                            	<td class="first"><input type="checkbox" name="no" id="no" value="${vo.image_board_no }"/></td>
 		                                <td>${(totCount-status.index) - ((imageBoardVo.page-1)*10) }</td>
 		                                <td class="title" data-image_board_no="${vo.image_board_no }" style="cursor: pointer;">
 		                                    ${vo.title }
@@ -91,7 +111,8 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick=""><strong>공지글로 적용</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="write.do"><strong>등록</strong> </a>

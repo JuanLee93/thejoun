@@ -114,6 +114,17 @@ public class FreeBoardController {
 		return "include/return";
 	}
 	
+	@PostMapping("/admin/freeboard/noticeUpdateAjax.do")
+	public String adminNoticeUpdateAjax(HttpServletRequest req) {
+		String[] updateArray = req.getParameterValues("no");
+		for (int i=0; i<updateArray.length; i++) {
+			FreeBoardVo vo = new FreeBoardVo();
+			vo.setBoard_no(Integer.parseInt(updateArray[i]));
+			freeBoardService.updateNotice(vo);
+		}
+		return "include/return";
+	}
+	
 	@GetMapping("/freeboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, FreeBoardVo vo) {
 		

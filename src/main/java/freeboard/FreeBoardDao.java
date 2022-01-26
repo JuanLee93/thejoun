@@ -51,4 +51,19 @@ public class FreeBoardDao {
 	public int updateAnnounce(CommentVo cv) {
 		return sqlSessionTemplate.update("freeboard.updateAnnounce", cv);
 	}
+	
+	public int insertNotice(FreeBoardVo vo) {
+		int r = -1;
+		try {
+			r = sqlSessionTemplate.insert("freeboard.insertNotice", vo);
+		} catch (Exception e) {
+			r = 0;
+			System.out.println(e.getMessage());
+		}
+		return r;
+	}
+	
+	public int updateNotice(FreeBoardVo vo) {
+		return sqlSessionTemplate.update("freeboard.updateNotice", vo);
+	}
 }

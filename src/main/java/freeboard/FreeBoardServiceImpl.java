@@ -53,4 +53,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int updateAnnounce(CommentVo cv) {
 		return freeBoardDao.updateAnnounce(cv);
 	}
+
+	@Override
+	public int insertNotice(FreeBoardVo vo) {
+		return freeBoardDao.insertNotice(vo);
+	}
+
+	@Override
+	public int updateNotice(FreeBoardVo vo) {
+		return freeBoardDao.updateNotice(vo);
+	}
 }

@@ -19,6 +19,7 @@ import announce.AnnounceService;
 import announce.AnnounceVo;
 import comment.CommentService;
 import comment.CommentVo;
+import freeboard.FreeBoardVo;
 import friends.FriendsService;
 import user.UserVo;
 import util.CommonUtil;
@@ -107,6 +108,21 @@ public class VideoBoardController {
 		model.addAttribute("result", videoBoardService.delete(vo));
 		return "include/result";
 	}
+	
+	@PostMapping("/admin/videoboard/boardDeleteAjax.do")
+	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
+		String[] deleteArray = req.getParameterValues("no");
+		for (int i=0; i<deleteArray.length; i++) {
+			VideoBoardVo vo = new VideoBoardVo();
+			vo.setVideo_board_no(Integer.parseInt(deleteArray[i]));
+			videoBoardService.delete(vo);
+		}
+		model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		model.addAttribute("url", "index.do");
+		
+		return "include/return";
+	}
+	
 	//여기까지 관리자 페이지에 추가
 	
 	@RequestMapping("/videoboard/write.do")
