@@ -164,9 +164,11 @@ public class ImageBoardController {
 		cv.setTablename(3);
 		model.addAttribute("cList", cService.selectList(cv));
 		//이 아래로 알림 지우기
-		int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
-		cv.setUserno(num);
-		imageBoardService.updateAnnounce(cv);
+		if(sess.getAttribute("userInfo") != null) {
+			int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
+			cv.setUserno(num);
+			imageBoardService.updateAnnounce(cv);
+		}
 
 		return "imageboard/view";
 	}

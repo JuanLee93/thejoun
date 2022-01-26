@@ -159,9 +159,11 @@ public class ConcernBoardController {
 		cv.setTablename(2);
 		model.addAttribute("cList", cService.selectList(cv));
 		//이 아래로 알림 지우기
-		int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
-		cv.setUserno(num);
-		concernBoardService.updateAnnounce(cv);
+		if(sess.getAttribute("userInfo") != null) {
+			int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
+			cv.setUserno(num);
+			concernBoardService.updateAnnounce(cv);
+		}
 		return "concernboard/view";
 	}
 	

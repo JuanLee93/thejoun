@@ -167,9 +167,11 @@ public class VideoBoardController {
 		cv.setTablename(4);
 		model.addAttribute("cList", cService.selectList(cv));
 		//이 아래로 알림 지우기
-		int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
-		cv.setUserno(num);
-		videoBoardService.updateAnnounce(cv);
+		if(sess.getAttribute("userInfo") != null) {
+			int num = ((UserVo)sess.getAttribute("userInfo")).getUserno();
+			cv.setUserno(num);
+			videoBoardService.updateAnnounce(cv);
+		}
 		return "videoboard/view";
 	}
 	
