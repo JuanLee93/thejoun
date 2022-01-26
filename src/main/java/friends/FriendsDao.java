@@ -39,4 +39,5 @@ public class FriendsDao {
 	public List<Integer> getFriendsUserno(AnnounceVo av){
 		return sst.selectList("getFriendsUserno", av);
 	}
+	
 }

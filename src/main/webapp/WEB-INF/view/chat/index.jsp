@@ -149,6 +149,21 @@
 		})
 	}
 	
+	function requestCancel(userno){
+		$.ajax({
+			url : "/thejoun/friends/requestCancel.do",
+			type : "post",
+			data : $("#requestCancel"+userno).serialize(),
+			success : function(res){
+				if(res.trim() == 1){
+					alert("친구요청을 취소하였습니다.");
+					getFriendsAddList();
+					console.log("7");
+				}
+			}
+		});
+	}
+	
 </script>
 </head>
 <body>

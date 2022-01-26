@@ -44,4 +44,5 @@ public class FriendsServiceImpl implements FriendsService{
 	public List<Integer> getFriendsUserno(AnnounceVo av){
 		return fd.getFriendsUserno(av);
 	}
+	
 }

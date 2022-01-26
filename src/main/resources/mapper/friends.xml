@@ -27,7 +27,7 @@
 		ON fa.to_userno = user.userno AND fa.from_userno = #{to_userno};
 	</select>
 	
-	<delete id="deleteFriendsAddList" parameterType="int">
+	<delete id="deleteFriendsAddList" parameterType="friendsAdd.FriendsAddVo">
 		DELETE FROM friendsadd WHERE from_userno = #{from_userno} AND to_userno = #{to_userno}
 	</delete>
 	
@@ -43,6 +43,7 @@
 	<select id="getFriendsUserno" parameterType="announce.AnnounceVo" resultType="Integer">
 		SELECT IF(my_userno = #{friends_userno}, friends_userno, my_userno) AS my_userno FROM friends WHERE (my_userno = #{friends_userno} OR friends_userno = #{friends_userno});
 	</select>
+	
 
 </mapper>
 

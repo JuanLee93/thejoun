@@ -98,8 +98,6 @@
 		<c:if test="${!empty addFriendsList }">
 		<span class="name-meta">보낸 친구신청 목록 </span>
 			<c:forEach var="vo" items="${addFriendsList }" varStatus="status">
-				<form name="frm" id="frm${vo.userno }" method="post">
-					<input type="hidden" name="to_id" value="${vo.userno }">
 						<div class="row sideBar-body">
 							<div class="col-sm-3 col-xs-3 sideBar-avatar">
 								<div class="avatar-icon">
@@ -113,12 +111,14 @@
 										<span class="name-meta" style="font-size:13px;">요청일 : ${vo.regdate } </span>
 									</div>
 									<div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-										
+										<form id="requestCancel${vo.userno }" method="post">
+											<input type="hidden" name="to_userno" value="${vo.userno }">
+											<button type="button" class="" style="width:70px;font-size:12px;"onclick="requestCancel(${vo.userno});">요청 취소</button>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-				</form>
 			</c:forEach>
 		</c:if>
 	</div>

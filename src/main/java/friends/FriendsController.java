@@ -22,7 +22,7 @@ public class FriendsController {
 	@Autowired
 	FriendsService fs;
 
-	@PostMapping("friends/getFriendsList.do")
+	@PostMapping("/friends/getFriendsList.do")
 	public String friendsIndex(UserVo vo, FriendsAddVo fav, HttpSession sess, Model model) {
 		
 		//세션에 저장되있는 로그인정보
@@ -36,7 +36,7 @@ public class FriendsController {
 		return "chat/addFriendsList";
 	}
 	
-	@PostMapping("friends/getAccept.do")
+	@PostMapping("/friends/getAccept.do")
 	public String getAccept(UserVo vo, FriendsAddVo fav, HttpSession sess, Model model) {
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
 		fav.setTo_userno(uv.getUserno());
@@ -75,6 +75,17 @@ public class FriendsController {
 		List<UserVo> friendsList = fs.findFriendsList(uv.getUserno());
 		model.addAttribute("friendsList", friendsList);
 		return "friends/friendsList";
+	}
+	
+	@PostMapping("/friends/requestCancel.do")
+	public String requestCancel(FriendsAddVo fav, HttpSession sess, Model model) {
+		int hhh = ((UserVo)sess.getAttribute("userInfo")).getUserno();
+		fav.setFrom_userno(hhh);
+		int num = fs.deleteFriendsAddList(fav);
+		if(num > 0) {
+			model.addAttribute("result", 1);
+		}
+		return "include/result";
 	}
 			
 }
