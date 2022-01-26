@@ -99,12 +99,19 @@ public class FreeBoardController {
 		model.addAttribute("result", freeBoardService.delete(vo));
 		return "include/result";
 	}
-	
+
 	@PostMapping("/admin/freeboard/boardDeleteAjax.do")
-	public List<String[]> adminBoardDeleteAjax(Model model, FreeBoardVo vo, @RequestParam(value="deleteArray[]") List<String[]> deleteArray) {
-		System.out.println("-----------------"+ deleteArray);
-		//model.addAttribute("result", freeBoardService.board_delete(vo));
-		return deleteArray;
+	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
+		String[] deleteArray = req.getParameterValues("no");
+		for (int i=0; i<deleteArray.length; i++) {
+			FreeBoardVo vo = new FreeBoardVo();
+			vo.setBoard_no(Integer.parseInt(deleteArray[i]));
+			freeBoardService.delete(vo);
+		}
+		model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		model.addAttribute("url", "index.do");
+		
+		return "include/return";
 	}
 	
 	@GetMapping("/freeboard/index.do")

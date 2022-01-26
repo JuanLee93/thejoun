@@ -14,6 +14,5 @@ public interface FreeBoardService {
 	int update(FreeBoardVo vo);
 	int delete(FreeBoardVo vo);
 	int updateAnnounce(CommentVo cv);
-	int board_delete(FreeBoardVo vo);
-	
+
 }

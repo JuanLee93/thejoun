@@ -29,32 +29,11 @@
 
 	});
 	
-	function boardDelete() {
-		
-		var deleteArray = new Array;
-		
-		$("input[name='no']:checked").each(function() {
-			deleteArray.push($(this).val());
-		});
-		
-		if (confirm("게시글을 삭제하시겠습니까?")) {
-			$.ajax({
-				url : 'boardDeleteAjax.do',
-				method: 'POST',
-				headers: {'Content-Type': 'application/json'},
-				data :JSON.stringify(deleteArray),
-				success : function(res) {
-					if (res.trim() == '1') {
-						alert('정상적으로 삭제되었습니다.');
-						location.reload();
-					} else {
-						alert('삭제 오류');
-					}
-				}
-			});
+	function goDelete() {
+		if (confirm("삭제하시겠습니까?")) {
+			$("#frm").submit();
 		}
 	}
-	
 </script>
 </head>
 <body> 
@@ -77,7 +56,7 @@
 					<div id="bbs">
 						<div id="blist">
 							<p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
-							<form name="frm" id="frm" action="index.do" method="post">
+							<form name="frm" id="frm" action="boardDeleteAjax.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 자유게시판 관리목록입니다.">
 								<colgroup>
 									<col class="w3" />
@@ -134,7 +113,7 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="javascript:boardDelete();"><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
 									<a class="btns" href="edit.do?board_no=${data.board_no }" onclick=""><strong>공지글로 적용</strong> </a>
 								</div>
 								<div class="btnRight">
