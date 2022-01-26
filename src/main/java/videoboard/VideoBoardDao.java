@@ -20,6 +20,9 @@ public class VideoBoardDao {
 	public List<VideoBoardVo> selectList(VideoBoardVo vo){
 		return sqlSessionTemplate.selectList("videoboard.selectList", vo);
 	}
+	public List<VideoBoardVo> mainSelectList(VideoBoardVo vo){
+		return sqlSessionTemplate.selectList("videoboard.mainSelectList", vo);
+	}
 	
 	public int insert(VideoBoardVo vo) {
 		int r = -1;

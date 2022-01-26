@@ -7,6 +7,7 @@ import comment.CommentVo;
 public interface VideoBoardService {
 
 	List<VideoBoardVo> selectList(VideoBoardVo vo);
+	List<VideoBoardVo> mainSelectList(VideoBoardVo vo);
 	int count(VideoBoardVo vo);
 	int insert(VideoBoardVo vo);
 	VideoBoardVo view(int board_no);

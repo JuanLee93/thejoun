@@ -37,6 +37,22 @@
 			ORDER BY ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
 	</select>
+	
+	<!-- main에 video갤러리 가져오기 -->
+	
+	<select id="mainSelectList" resultType="videoboard.VideoBoardVo" parameterType="videoboard.VideoBoardVo">
+		SELECT *, 
+			(SELECT id FROM user WHERE userno =video_board.userno) as id, 
+			(SELECT name FROM user WHERE userno =video_board.userno) as name, 
+			(SELECT nickname from user where userno =video_board.userno) as nickname, 
+			(SELECT count(*) FROM comment WHERE board_no= video_board.video_board_no AND tablename=4 ) as c_count,
+			(SELECT count(*) FROM thejoun.like WHERE board_no= video_board.video_board_no AND tablename=4) as l_count,
+			(SELECT state FROM report WHERE report.board_no= video_board.video_board_no AND tablename=4 limit 1) as state
+			FROM video_board
+		<include refid="boardWhere"/>
+			ORDER BY ${orderby}
+			LIMIT 4
+	</select>
 
 
 	<insert id="insert" parameterType="videoboard.VideoBoardVo" useGeneratedKeys="true">

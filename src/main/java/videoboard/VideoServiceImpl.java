@@ -22,6 +22,11 @@ public class VideoServiceImpl implements VideoBoardService {
 	public List<VideoBoardVo> selectList(VideoBoardVo vo) {
 		return videoBoardDao.selectList(vo);
 	}
+	
+	@Override
+	public List<VideoBoardVo> mainSelectList(VideoBoardVo vo) {
+		return videoBoardDao.selectList(vo);
+	}
 
 	@Override
 	public int insert(VideoBoardVo vo) {

@@ -56,4 +56,18 @@ $(function() {
             $("#board_notice").hide();
         }
     });
+
+	//만약 main페이지 공지사항,문의사항 두개의 목록으로 만든다면 필요
+	/*$(".board_title1").click(function() {
+        $(".board_title1").removeClass("on"); // board_title1클래스 선택자에 on클래스 제거
+        $(this).addClass("on"); // 클릭한 선택자에 on클래스 추가
+        console.log($(this).text());
+        if ($(this).text() == '공지사항') {
+            $("#board_data1").hide();
+            $("#board_notice1").show();
+        } else {
+            $("#board_data1").show();
+            $("#board_notice1").hide();
+        }
+    });*/
 });
