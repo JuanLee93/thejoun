@@ -16,17 +16,46 @@
 	   position:relative;
 	}
 	
+		
 	.button-1 {
-		padding: 5px 3px;
-		position: relative;
-		background-color: #eae5fa;
-		border: 1px solid #eae5fa;
-		border-radius: 4px;
-		color: #484855;
-		line-height: 52px;
-		-webkit-transition: none;
-		transition: none;
-		text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+	  padding: 5px 3px;
+	  width: 130px;
+	  height: 40px;
+	  line-height: 42px;
+	  border: none;
+	  background-color: #eae5fa;
+	  border-radius: 5px 5px;
+	}
+	.button-1:hover {
+	  color: #c8bee8;
+	  background: transparent;
+	   box-shadow:none;
+	}
+	.button-1:before,
+	.button-1:after{
+	  content:'';
+	  position:absolute;
+	  top:0;
+	  right:0;
+	  height:2px;
+	  width:0;
+	  background: #c8bee8;
+	  box-shadow:
+	   -1px -1px 5px 0px #fff,
+	   7px 7px 20px 0px #0003,
+	   4px 4px 5px 0px #0002;
+	  transition:400ms ease all;
+	}
+	.button-1:after{
+	  right:inherit;
+	  top:inherit;
+	  left:0;
+	  bottom:0;
+	}
+	.button-1:hover:before,
+	.button-1:hover:after{
+	  width:100%;
+	  transition:800ms ease all;
 	}
 
 </style>
