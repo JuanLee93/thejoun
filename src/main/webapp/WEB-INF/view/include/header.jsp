@@ -19,24 +19,16 @@
 	.button-1 {
 		padding: 5px 3px;
 		position: relative;
-		background-color: #eeeef1;
-		border: 1px solid #bdbdc1;
+		background-color: #eae5fa;
+		border: 1px solid #eae5fa;
 		border-radius: 4px;
 		color: #484855;
 		line-height: 52px;
 		-webkit-transition: none;
 		transition: none;
-		box-shadow: 0 3px 0 #bdbdc1;
 		text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
 	}
-	.button-1:hover {
-		top: -4px;
-		box-shadow: 0 5px 0 #bdbdc1;
-	}
-	.button-1:active {
-		top: 3px;
-	box-shadow: none;
-}
+
 </style>
 <script>
 	$(function (){
