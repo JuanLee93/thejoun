@@ -28,8 +28,8 @@ public class MainController {
 	
 	@GetMapping("/index.do")
 	public String index(FreeBoardVo vo , Model model , ConcernBoardVo vo2) {
-		List<FreeBoardVo> list = freeBoardService.selectList(vo);
-		List<ConcernBoardVo> concernlist = concernBoardService.selectList(vo2);
+		List<FreeBoardVo> list = freeBoardService.mainSelectList(vo);
+		List<ConcernBoardVo> concernlist = concernBoardService.mainSelectList(vo2);
 		model.addAttribute("list", list);
 		model.addAttribute("concernlist", concernlist);
 		return "index";

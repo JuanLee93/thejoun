@@ -22,6 +22,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public List<FreeBoardVo> selectList(FreeBoardVo vo) {
 		return freeBoardDao.selectList(vo);
 	}
+	@Override
+	public List<FreeBoardVo> mainSelectList(FreeBoardVo vo) {
+		return freeBoardDao.mainSelectList(vo);
+	}
 
 	@Override
 	public int insert(FreeBoardVo vo) {

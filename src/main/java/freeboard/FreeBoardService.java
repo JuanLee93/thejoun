@@ -8,6 +8,7 @@ public interface FreeBoardService {
 
 	int count(FreeBoardVo vo);
 	List<FreeBoardVo> selectList(FreeBoardVo vo);
+	List<FreeBoardVo> mainSelectList(FreeBoardVo vo);
 	int insert(FreeBoardVo vo);
 	FreeBoardVo view(int board_no);
 	FreeBoardVo edit(int board_no);

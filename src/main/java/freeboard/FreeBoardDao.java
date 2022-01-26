@@ -21,6 +21,10 @@ public class FreeBoardDao {
 		return sqlSessionTemplate.selectList("freeboard.selectList", vo);
 	}
 	
+	public List<FreeBoardVo> mainSelectList(FreeBoardVo vo){
+		return sqlSessionTemplate.selectList("freeboard.mainSelectList", vo);
+	}
+	
 	public int insert(FreeBoardVo vo) {
 		int r = -1;
 		try {

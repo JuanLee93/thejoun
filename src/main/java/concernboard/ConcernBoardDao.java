@@ -21,15 +21,19 @@ public class ConcernBoardDao {
 		return sqlSessionTemplate.selectList("concernboard.selectList", vo);
 	}
 	
+	public List<ConcernBoardVo> mainSelectList(ConcernBoardVo vo){
+		return sqlSessionTemplate.selectList("concernboard.mainSelectList", vo);
+	}
+	
 	public int insert(ConcernBoardVo vo) {
-		int r = -1;
-		try {
-			r = sqlSessionTemplate.insert("concernboard.insert", vo);
-		} catch (Exception e) {
-			r = 0;
-			System.out.println(e.getMessage());
-		}
-		return r;
+	int r = -1;
+	try {
+		r = sqlSessionTemplate.insert("concernboard.insert", vo);
+	} catch (Exception e) {
+		r = 0;
+		System.out.println(e.getMessage());
+	}
+	return r;
 	}
 	
 	public ConcernBoardVo selectOne(int board_no) {

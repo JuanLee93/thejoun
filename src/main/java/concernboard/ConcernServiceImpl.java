@@ -22,6 +22,10 @@ public class ConcernServiceImpl implements ConcernBoardService {
 	public List<ConcernBoardVo> selectList(ConcernBoardVo vo) {
 		return concernBoardDao.selectList(vo);
 	}
+	@Override
+	public List<ConcernBoardVo> mainSelectList(ConcernBoardVo vo) {
+		return concernBoardDao.mainSelectList(vo);
+	}
 
 	@Override
 	public int insert(ConcernBoardVo vo) {

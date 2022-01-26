@@ -7,6 +7,7 @@ import comment.CommentVo;
 public interface ConcernBoardService {
 
 	List<ConcernBoardVo> selectList(ConcernBoardVo vo);
+	List<ConcernBoardVo> mainSelectList(ConcernBoardVo vo);
 	int count(ConcernBoardVo vo);
 	int insert(ConcernBoardVo vo);
 	ConcernBoardVo view(int board_no);

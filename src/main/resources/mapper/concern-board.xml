@@ -41,7 +41,24 @@
 			LIMIT ${startIdx}, 10
 	</select>
 
-
+	<!--main 페이지용 selectlist  -->
+	
+	<select id="mainSelectList" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo">
+		SELECT *, 
+			(SELECT id FROM user WHERE userno=concern_board.userno) as id, 
+			(SELECT name FROM user WHERE userno=concern_board.userno) as name, 
+			(SELECT nickname from user where userno=concern_board.userno) as nickname, 
+			(SELECT count(*) FROM comment WHERE board_no= concern_board.concern_board_no AND tablename=2) as c_count,
+			(SELECT count(*) FROM thejoun.like WHERE board_no= concern_board.concern_board_no AND tablename=2) as l_count,
+			(SELECT state FROM report WHERE report.board_no = concern_board.concern_board_no AND tablename=2 limit 1) as state
+			FROM concern_board
+		<include refid="boardWhere"/>
+			ORDER BY ${orderby} 
+			LIMIT 8
+	</select>
+	
+	
+	
 	<insert id="insert" parameterType="concernboard.ConcernBoardVo" useGeneratedKeys="true">
 		INSERT INTO concern_board (
 			userno,title, content, regdate, readcount, filename_org, filename_real , category
