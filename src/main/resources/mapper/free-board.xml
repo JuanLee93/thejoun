@@ -19,6 +19,31 @@
 		</where>
 	</sql>
 	
+	<select id="getRownum" resultType="int" parameterType="freeboard.FreeBoardVo">  
+		select rownum from (
+			select row_number() over () as rownum, board_no, title from board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.board_no=#{board_no};
+	</select> 
+	<select id="getNext" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo"> 
+		select board_no, title from (
+			select row_number() over () as rownum, board_no, title from free_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}+1;
+	</select>  
+	<select id="getPrev" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo"> 
+		select board_no, title from (
+			select row_number() over () as rownum, board_no, title from free_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}-1;
+	</select>
+	
 	<select id="count" resultType="int" parameterType="freeboard.FreeBoardVo">
 		SELECT COUNT(*) FROM free_board
 		<include refid="boardWhere"/>
