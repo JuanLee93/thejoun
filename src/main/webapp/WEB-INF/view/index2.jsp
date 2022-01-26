@@ -92,6 +92,12 @@
 				</div>
 			</div>
 		</div>
+		<div class="wrap">
+		<div class="visual">
+		
+		
+		</div>
+		</div>	
 		<div class="content">
 			<div class="youtube_area">
 				<iframe width="100%" height="400"

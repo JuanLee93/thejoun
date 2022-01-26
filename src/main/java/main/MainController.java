@@ -11,15 +11,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import announce.AnnounceService;
 import announce.AnnounceUserVo;
+import concernboard.ConcernBoardService;
+import concernboard.ConcernBoardVo;
+import freeboard.FreeBoardService;
+import freeboard.FreeBoardVo;
 import user.UserVo;
 
 @Controller
 public class MainController {
-	
+	@Autowired
+	FreeBoardService freeBoardService;	
 	@Autowired
 	AnnounceService as;
+	@Autowired
+	ConcernBoardService concernBoardService;
+	
 	@GetMapping("/index.do")
-	public String index() {
+	public String index(FreeBoardVo vo , Model model , ConcernBoardVo vo2) {
+		List<FreeBoardVo> list = freeBoardService.selectList(vo);
+		List<ConcernBoardVo> concernlist = concernBoardService.selectList(vo2);
+		model.addAttribute("list", list);
+		model.addAttribute("concernlist", concernlist);
 		return "index";
 	}
 	

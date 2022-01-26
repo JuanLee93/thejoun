@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="util.CommonUtil" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +18,13 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
+<script>
+	$(function() {
+		$(".board_tr").click(function() {
+			location.href='view.do?board_no='+$(this).data("board_no");
+		});
+	});
+</script>
 </head>
 <style>
 
@@ -63,30 +72,20 @@
 	<div class="info">
 		<div class="content">
 			<div class="board_area">
-				<div class="board_title on ">공지사항</div>
-				<div class="board_title">자료실</div>
+				<div class="board_title on ">자유게시판</div>
+				<div class="board_title">고민게시판</div>
 				<div class="board_content" id="board_notice">
 					<ul>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
-						<li>공지사항입니다.<span>2021-12-09</span></li>
+				<c:forEach var="vo" items="${list }" varStatus="status">
+						<li>${vo.title }<span>${vo.nickname }</span></li>
+				</c:forEach>
 					</ul>
 				</div>
 				<div class="board_content" id="board_data">
 					<ul>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
-						<li>자료실입니다.<span>2021-12-09</span></li>
+				<c:forEach var="vo" items="${concernlist }" varStatus="status">
+						<li>${vo.title }<span>${vo.nickname }</span></li>
+				</c:forEach>
 					</ul>
 				</div>
 			</div>
