@@ -43,10 +43,9 @@
 				data : $("#frm").serialize(),
 				success : function(res) {
 					if (res.trim() == '1') {
-						alert('선택하신 글이 공지글로 적용되었습니다.');
 						location.href='index.do';
 					} else {
-						alert('적용 오류');
+						
 					}
 				}
 			});

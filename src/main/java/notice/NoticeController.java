@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import admin.AdminVo;
+import freeboard.FreeBoardVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -192,6 +193,20 @@ public class NoticeController {
 	public String deleteAjax(Model model, NoticeVo vo) {
 		model.addAttribute("result", noticeService.delete(vo));
 		return "include/result";
+	}
+	
+	@PostMapping("/admin/notice/boardDeleteAjax.do")
+	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
+		String[] deleteArray = req.getParameterValues("no");
+		for (int i=0; i<deleteArray.length; i++) {
+			NoticeVo vo = new NoticeVo();
+			vo.setNotice_no(Integer.parseInt(deleteArray[i]));
+			noticeService.delete(vo);
+		}
+		model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		model.addAttribute("url", "index.do");
+		
+		return "include/return";
 	}
 	
 }

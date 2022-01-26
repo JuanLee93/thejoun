@@ -7,13 +7,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="util.CommonUtil"%>
 </head>
-<script>
-	$(function() {
-		$(".board_tr").click(function() {
-			location.href = 'view.do?log_no=' + $(this).data("log_no");
-		});
-	});
-</script>
 <body>
 <div id="wrap">
 	<!-- canvas -->
@@ -40,7 +33,6 @@
 								<table width="100%" border="0" cellspacing="0" cellpadding="0"
 									summary="관리자 로그인 접속내역 입니다.">
 									<colgroup>
-										<col class="w3" />
 										<col class="w6" />
 										<col class="w6" />
 										<col class="" />
@@ -49,7 +41,6 @@
 									</colgroup>
 									<thead>
 										<tr>
-											<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
 											<th scope="col">관리자번호</th>
 											<th scope="col">이름</th>
 											<th scope="col">메세지</th>
@@ -61,13 +52,12 @@
 
 										<c:if test="${empty list }">
 											<tr>
-												<td class="first" colspan="6">등록된 글이 없습니다.</td>
+												<td class="first" colspan="5">등록된 글이 없습니다.</td>
 											</tr>
 										</c:if>
 										<c:if test="${!empty list }">
 											<c:forEach var="vo" items="${list }" varStatus="status">
-												<tr class="board_tr" data-log_no="${vo.log_no }" style="cursor: pointer;">
-													<td scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></td>
+												<tr class="board_tr">
 													<td>${vo.admin_no }</td>
 													<td>${vo.name }</td>
 													<td>${vo.msg }</td>

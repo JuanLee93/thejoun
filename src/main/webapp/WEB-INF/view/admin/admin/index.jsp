@@ -9,10 +9,30 @@
 </head>
 <script>
 	$(function() {
-		$(".board_tr").click(function() {
+		$(".adminName").click(function() {
 			location.href = 'view.do?admin_no=' + $(this).data("admin_no");
 		});
+		
+		$('#allChk').click(function(){  
+			var checked = $('#allChk').is(':checked');
+		
+			if(checked) {
+				$("input[name='no']").each(function() {
+					$(this).prop('checked',true);
+				});
+			} else {
+				$("input[name='no']").each(function() {
+					$(this).prop('checked',false);
+				});
+			}
+		});
 	});
+	
+	function goDelete() {//체크박스 삭제처리
+		if (confirm("삭제하시겠습니까?")) {
+			$("#frm").submit();
+		}
+	}
 </script>
 <body>
 <div id="wrap">
@@ -36,7 +56,7 @@
 							<p>
 								<span><strong>총 ${totCount }개</strong> |	${adminVo.page }/${totPage }페이지</span>
 							</p>
-							<form name="frm" id="frm" action="process.do" method="post">
+							<form name="frm" id="frm" action="boardDeleteAjax.do" method="post">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0"
 									summary="관리자 관리목록입니다.">
 									<colgroup>
@@ -47,7 +67,7 @@
 									</colgroup>
 									<thead>
 										<tr>
-											<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
+											<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" /></th>
 											<th scope="col">관리자번호</th>
 											<th scope="col">아이디</th>
 											<th scope="col">이름</th>
@@ -62,11 +82,11 @@
 										</c:if>
 										<c:if test="${!empty list }">
 											<c:forEach var="vo" items="${list }" varStatus="status">
-												<tr class="board_tr" data-admin_no="${vo.admin_no }" style="cursor: pointer;">
-													<td scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></td>
+												<tr>
+													<td scope="col" class="first"><input type="checkbox" name="no" value="${vo.admin_no }"/></td>
 													<td>${vo.admin_no }</td>
 													<td>${vo.id }</td>
-													<td>${vo.name }</td>
+													<td class="adminName" data-admin_no="${vo.admin_no }" style="cursor: pointer;">${vo.name }</td>
 												</tr>
 											</c:forEach>
 										</c:if>
@@ -75,7 +95,7 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="adminAdd.do"><strong>등록</strong> </a>

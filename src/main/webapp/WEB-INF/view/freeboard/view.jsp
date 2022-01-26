@@ -245,10 +245,12 @@
                         </dl>
                         <dl class="file">
                         <div>
-                            <dt>좋아요 </dt>
-                            <dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
-                    		<dt><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
-                    		<dt><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+                            <dd>
+                            	<dt>좋아요</dt>
+	                            <dt class="like"><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dt>
+	                    		<dt class="bookmark" style="text-align: center;"><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+	                    		<dt class="report" style="text-align: right;"><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+                    		</dd>
 						</div>                        
                         </dl> 
                         <div class="btnSet clear" style="text-align:center;">

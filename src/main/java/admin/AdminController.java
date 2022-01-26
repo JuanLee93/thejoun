@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import adminLog.AdminLogServiceImpl;
 import adminLog.AdminLogVo;
+import freeboard.FreeBoardVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -168,6 +169,20 @@ public class AdminController {
 	public String adminadminDeleteAjax(Model model, AdminVo vo) {
 		model.addAttribute("result", adminService.delete(vo));
 		return "include/result";
+	}
+	
+	@PostMapping("/admin/admin/boardDeleteAjax.do")
+	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
+		String[] deleteArray = req.getParameterValues("no");
+		for (int i=0; i<deleteArray.length; i++) {
+			AdminVo vo = new AdminVo();
+			vo.setAdmin_no(Integer.parseInt(deleteArray[i]));
+			adminService.delete(vo);
+		}
+		model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		model.addAttribute("url", "index.do");
+		
+		return "include/return";
 	}
 	
 }

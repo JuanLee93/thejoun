@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import admin.AdminVo;
+import notice.NoticeVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -65,6 +66,34 @@ public class QuestionController {
 		vo.setAdmin_no(((AdminVo)sess.getAttribute("adminInfo")).getAdmin_no());
 		model.addAttribute("result", questionService.replyUpdate(vo));
 		return "include/result";
+	}
+	
+	@GetMapping("/admin/question/delete.do")
+	public String adminQuestionDelete(Model model, QuestionVo vo) {
+		int r = questionService.delete(vo);
+		if ( r > 0 ) {
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("url", "index.do");
+			
+		} else {
+			model.addAttribute("msg", "삭제 오류가 발생하였습니다.");
+			model.addAttribute("url", "view.do?qna_no="+vo.getQna_no());
+		}
+		return "include/return";
+	}
+	
+	@PostMapping("/admin/question/boardDeleteAjax.do")
+	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
+		String[] deleteArray = req.getParameterValues("no");
+		for (int i=0; i<deleteArray.length; i++) {
+			QuestionVo vo = new QuestionVo();
+			vo.setQna_no(Integer.parseInt(deleteArray[i]));
+			questionService.delete(vo);
+		}
+		model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		model.addAttribute("url", "index.do");
+		
+		return "include/return";
 	}
 	
 	@GetMapping("/question/index.do")
