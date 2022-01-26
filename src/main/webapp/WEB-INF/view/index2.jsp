@@ -18,6 +18,13 @@
 <script src="/thejoun/js/main.js"></script>
 </head>
 <style>
+
+/*web font load*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');*/
+
 .visual .swiper {
     height:256px;
 }

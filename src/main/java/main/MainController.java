@@ -22,6 +22,12 @@ public class MainController {
 	public String index() {
 		return "index";
 	}
+	
+	//메인css 테스트용으로 만든 index2
+	@GetMapping("/index2.do")
+	public String index2() {
+		return "index2";
+	}
 
 	@GetMapping("/company/index.do")
 	public String companyIndex() {

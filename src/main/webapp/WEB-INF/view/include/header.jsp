@@ -9,6 +9,12 @@
 	display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:0px 10px; 
 	min-width:60px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; 
 	font-weight:bold; border-radius:5px; background-color:#221f1f;}
+	
+	.login > ul > li{
+	   float:left;
+	   width:70px;
+	   position:relative;
+	}
 </style>
 <script>
 	$(function (){

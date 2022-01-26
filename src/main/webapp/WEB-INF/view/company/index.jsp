@@ -11,21 +11,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
  	<script src="/thejoun/js/common.js"></script> 
-    <script src="/thejoun/js/jquery-3.3.1.min.js"></script>
-    <script src="/thejoun/js/popper.min.js"></script>
-    <script src="/thejoun/js/bootstrap.min.js"></script>
-    <script src="/thejoun/js/Headroom.js"></script>
-    <script src="/thejoun/js/jQuery.headroom.js"></script>
-    <script src="/thejoun/js/owl.carousel.min.js"></script>
-    <script src="/thejoun/js/smoothscroll.js"></script>
-    <script src="/thejoun/js/custom.js"></script>
+    <!--  <script src="/thejoun/js/jquery-3.3.1.min.js"></script>-->
     <link rel="stylesheet" href="/thejoun/css/common.css?after"/>
 	<link rel="stylesheet" href="/thejoun/css/sub.css"/>
+	<link rel="stylesheet" href="/thejoun/css/reset.css" />
 
 </head>
 <body>
     <div class="wrap">
- 	  <%@ include file="/WEB-INF/view/include/header.jsp" %> 
+		<%@ include file="/WEB-INF/view/include/header.jsp"%>
         <div class="sub">
         	<div class="sub_visual">
         		<div class="slogan">
