@@ -41,7 +41,7 @@ function goSave() {
 	$("#frm").submit();
 }
 
-var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
+//var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
 
 </script>
 </head>
@@ -80,6 +80,7 @@ var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 ra
 											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" />	
 										</td>
 									</tr>
+									<!-- 
 									<tr>
 										<th scope="row"><label for="">*공개/비공개</label></th>
 										<td colspan="10">
@@ -87,6 +88,7 @@ var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 ra
 											<input type="radio" id="close" name="isopen" value="비공개" /> 비공개	
 										</td>
 									</tr>
+									 -->
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
