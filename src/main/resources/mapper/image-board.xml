@@ -63,7 +63,7 @@
 			FROM image_board
 		<include refid="boardWhere"/>
 			ORDER BY ${orderby} ${direction}
-			LIMIT ${startIdx}, 10
+			LIMIT ${startIdx}, 12
 	</select>
 
 	<insert id="insert" parameterType="imageboard.ImageBoardVo" useGeneratedKeys="true">

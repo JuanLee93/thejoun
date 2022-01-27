@@ -120,6 +120,21 @@
     overflow: hidden;
 
 }
+
+.container > .size > .section1 {
+    float:left;
+    width:23%;
+    margin:1%;
+    
+}
+
+.container > .size > .section1 img{
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+
+}
+
 .container > .size > .section thumb_list_title{
 	font-weight: bold;
 	word-break: break-all;
