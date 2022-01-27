@@ -51,5 +51,9 @@ public class UserDao {
 	public int updateTempPwd(UserVo vo) {
 		return sst.update("user.updateTempPwd", vo);
 	}
+	
+	public int infoUpdate(UserVo vo) {
+		return sst.update("user.infoUpdate", vo);
+	}
 
 }

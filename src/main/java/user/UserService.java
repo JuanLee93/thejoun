@@ -18,5 +18,5 @@ public interface UserService {
 	int idCheck(String id);
 	UserVo searchId(UserVo vo);
 	UserVo searchPwd(UserVo vo);
-	
+	int infoUpdate(UserVo vo);
 }

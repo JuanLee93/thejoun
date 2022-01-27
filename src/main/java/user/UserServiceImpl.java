@@ -82,4 +82,9 @@ public class UserServiceImpl implements UserService {
 		return uv;
 	}
 
+	@Override
+	public int infoUpdate(UserVo vo) {
+		return dao.infoUpdate(vo);
+	}
+
 }

@@ -18,7 +18,7 @@ div.userinfo > ul {
 
 div > div.bs-example\.left > ul > li.on > a {
 	color:white;
-	background:#337ab7;
+	background:#F08080;
 	border-radius : 4px;
 }
 
@@ -53,7 +53,7 @@ div.sub > div > h3 {
 
 .btn_useredit1 {
 	color:#fff !important;
-	background:#337ab7;
+	background:#F08080;
 	font-size:14px;
 	padding: 10px 20px;
 	border-radius : 4px;
@@ -63,7 +63,7 @@ div.sub > div > h3 {
 }
 .btn_useredit2 {
 	color:#fff !important;
-	background:#337ab7;
+	background:#F08080;
 	font-size:14px;
 	padding: 10px 20px;
 	border-radius : 4px;

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import util.CommonUtil;
 
 @Controller
@@ -162,6 +163,17 @@ public class UserController {
 	@GetMapping("/user/infoEditDetails.do")
 	public String infoEditDetails() {
 		return "user/infoEditDetails";
+	}
+	
+	@PostMapping("/user/infoUpdate.do")
+	public String infoUpdate(HttpServletRequest req, UserVo vo) {
+		if(userService.infoUpdate(vo) > 0) {
+			req.setAttribute("msg", "정상적으로 수정되었습니다");
+			req.setAttribute("url", "/thejoun/user/mypage.do");
+		}else {
+			req.setAttribute("msg", "수정 오류");
+		}
+		return "include/return";
 	}
 	
 }

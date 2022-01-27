@@ -42,4 +42,10 @@
 	<update id="updateTempPwd" parameterType="user.UserVo">
 		UPDATE user SET pwd = md5(#{pwd}) WHERE email = #{email} AND name = #{name}
 	</update>
+	
+	<update id="infoUpdate" parameterType="user.UserVo" >
+		UPDATE user SET 
+			nickname = #{nickname} , tel = #{tel} , regdate = NOW() , zipcode = #{zipcode}, addr1 = #{addr1}, addr2 = #{addr2} 
+			WHERE id = #{id}
+	</update>
 </mapper>
