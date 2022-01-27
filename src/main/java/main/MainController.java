@@ -15,6 +15,8 @@ import concernboard.ConcernBoardService;
 import concernboard.ConcernBoardVo;
 import freeboard.FreeBoardService;
 import freeboard.FreeBoardVo;
+import notice.NoticeService;
+import notice.NoticeVo;
 import user.UserVo;
 import videoboard.VideoBoardService;
 import videoboard.VideoBoardVo;
@@ -24,20 +26,24 @@ public class MainController {
 	@Autowired
 	FreeBoardService freeBoardService;	
 	@Autowired
-	AnnounceService as;
-	@Autowired
 	ConcernBoardService concernBoardService;
 	@Autowired
 	VideoBoardService videoBoardService;
+	@Autowired
+	AnnounceService as;
+	@Autowired
+	NoticeService noticeService;
 	
 	@GetMapping("/index.do")
-	public String index(FreeBoardVo vo , Model model , ConcernBoardVo vo2 , VideoBoardVo vo3) {
+	public String index(FreeBoardVo vo , Model model , ConcernBoardVo vo2 , VideoBoardVo vo3 ,NoticeVo vo4) {
 		List<FreeBoardVo> list = freeBoardService.mainSelectList(vo);
 		List<ConcernBoardVo> concernlist = concernBoardService.mainSelectList(vo2);
 		List<VideoBoardVo> videolist = videoBoardService.mainSelectList(vo3);
+		List<NoticeVo> noticelist = noticeService.mainSelectList(vo4);
 		model.addAttribute("list", list);
 		model.addAttribute("concernlist", concernlist);
 		model.addAttribute("videolist", videolist);
+		model.addAttribute("noticelist", noticelist);
 		return "index";
 	}
 	

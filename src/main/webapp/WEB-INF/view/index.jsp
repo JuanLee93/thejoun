@@ -19,11 +19,31 @@
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
 <script>
+
+// view로 넘기는건 수정중
+/*
+ * 
+ 
 	$(function() {
-		$(".board_tr").click(function() {
+		$("#board_notice").click(function() {
 			location.href = 'view.do?board_no=' + $(this).data("board_no");
 		});
 	});
+	$(function() {
+		$("#board_data").click(function() {
+			location.href = 'view.do?board_no=' + $(this).data("board_no");
+		});
+	});
+	$(function() {
+		$("#board_notice1").click(function() {
+			location.href = 'view.do?board_no=' + $(this).data("board_no");
+		});
+	});
+ 
+ 
+ */
+
+
 </script>
 </head>
 <style>
@@ -57,6 +77,16 @@
 
 	border-bottom: 1px solid #1d1d1d;
 }
+.board_title1{
+	text-align:center;
+	color: #fff;
+    background-color: #d3d3d3;
+    width: 150px;
+    font-size: 25px;
+    line-height: 50px;
+    margin-left: 200px;
+}
+}
 </style>
 <body>
 	<%@ include file="/WEB-INF/view/include/header.jsp"%>
@@ -82,14 +112,14 @@
 			<div class="board_area">
 				<div class="board_title on ">자유게시판</div>
 				<div class="board_title">고민게시판</div>
-				<div class="board_content" id="board_notice">
+				<div class="board_content" id="board_notice" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${list }" varStatus="status">
 							<li>${vo.title }<span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
-				<div class="board_content" id="board_data">
+				<div class="board_content" id="board_data" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${concernlist }" varStatus="status">
 							<li>${vo.title }<span>${vo.nickname }</span></li>
@@ -100,11 +130,11 @@
 		</div>
 		<div class="content">
 			<div class="board_area">
-				<div class="board_title on1 ">공지사항</div>
-				<div class="board_content" id="board_notice1">
+				<div class="board_title1 ">공지사항</div>
+				<div class="board_content" id="board_notice1" style="cursor: pointer;">
 					<ul>
-						<c:forEach var="vo" items="${list }" varStatus="status">
-							<li>${vo.title }<span>${vo.nickname }</span></li>
+						<c:forEach var="vo" items="${noticelist}" varStatus="status">
+							<li>${vo.title }<span>${vo.regdate}</span></li>
 						</c:forEach>
 					</ul>
 				</div>

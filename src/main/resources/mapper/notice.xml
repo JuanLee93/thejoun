@@ -33,6 +33,17 @@
 			ORDER BY ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
 	</select>
+	
+	<!--main 페이지용 selectlist  -->	
+	<select id="mainSelectList" resultType="notice.NoticeVo" parameterType="notice.NoticeVo">
+		SELECT *, 
+			(SELECT id FROM admin WHERE admin_no=notice.admin_no) as id, 
+			(SELECT name FROM admin WHERE admin_no=notice.admin_no) as name
+			FROM notice
+		<include refid="boardWhere"/>
+			ORDER BY ${orderby} DESC
+			LIMIT 8
+	</select>
 
 	<insert id="insert" parameterType="notice.NoticeVo">
 		INSERT INTO notice (

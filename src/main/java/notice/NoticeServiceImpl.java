@@ -20,6 +20,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVo> selectList(NoticeVo vo) {
 		return questionDao.selectList(vo);
 	}
+	@Override
+	public List<NoticeVo> mainSelectList(NoticeVo vo) {
+		return questionDao.mainSelectList(vo);
+	}
 
 	@Override
 	public int insert(NoticeVo vo) {

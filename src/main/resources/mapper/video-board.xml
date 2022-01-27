@@ -50,7 +50,7 @@
 			(SELECT state FROM report WHERE report.board_no= video_board.video_board_no AND tablename=4 limit 1) as state
 			FROM video_board
 		<include refid="boardWhere"/>
-			ORDER BY ${orderby}
+			ORDER BY ${orderby} DESC
 			LIMIT 4
 	</select>
 

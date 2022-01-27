@@ -20,6 +20,10 @@ public class NoticeDao {
 		return sqlSessionTemplate.selectList("notice.selectList", vo);
 	}
 	
+	public List<NoticeVo> mainSelectList(NoticeVo vo){
+		return sqlSessionTemplate.selectList("notice.mainSelectList", vo);
+	}
+	
 	public int insert(NoticeVo vo) {
 		int r = 0;
 		try {
