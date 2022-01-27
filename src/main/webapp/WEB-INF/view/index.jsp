@@ -18,73 +18,53 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
-<script>
 
-/*
- * 
- 
-	$(function() {
-		$("#board_notice").click(function() {
-			location.href = 'view.do?board_no=' + $(this).data("board_no");
-		});
-	});
-	$(function() {
-		$("#board_data").click(function() {
-			location.href = 'view.do?board_no=' + $(this).data("board_no");
-		});
-	});
-	$(function() {
-		$("#board_notice1").click(function() {
-			location.href = 'view.do?board_no=' + $(this).data("board_no");
-		});
-	});
- 
- 
- */
-
-
-</script>
 </head>
 <style>
 
 /*web font load*/
-@import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
-	;
-
-/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');*/
-.visual .swiper {
-	height: 256px;
-}
-
-.swiper-wrapper>div {
-	height: 256px;
-	position: relative;
-	display: flex;
-}
-
-.swiper-button-next:after {
-	color: blanchedalmond;
-}
-
-.swiper-button-prev:after {
-	color: blanchedalmond;
-}
-
-.newcontent {
-	padding-top: 50px;
-
-	border-bottom: 1px solid #1d1d1d;
-}
-.board_title1{
-	text-align:center;
-	color: #fff;
-    background-color: #d3d3d3;
-    width: 150px;
-    font-size: 25px;
-    line-height: 50px;
-    margin-left: 200px;
-}
+	@import
+		url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
+		;
+	
+	/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');*/
+	.visual .swiper {
+		height: 256px;
+	}
+	
+	.swiper-wrapper>div {
+		height: 256px;
+		position: relative;
+		display: flex;
+	}
+	
+	.swiper-button-next:after {
+		color: blanchedalmond;
+	}
+	
+	.swiper-button-prev:after {
+		color: blanchedalmond;
+	}
+	
+	.newcontent {
+		padding-top: 50px;
+	
+		border-bottom: 1px solid #1d1d1d;
+	}
+	.board_title1{
+		text-align:center;
+		color: #fff;
+	    background-color: #d3d3d3;
+	    width: 150px;
+	    font-size: 25px;
+	    line-height: 50px;
+	    margin-left: 200px;
+	}
+	.video{
+	style="font-family: 'Noto Sans KR', sans-serif;
+	font-size: x-large;
+    color: #F08080;
+	}
 }
 </style>
 <body>
@@ -141,14 +121,15 @@
 		</div>
 	</div>
 	<div class="newcontent">
-		<div class="container" style="cursor: pointer;">
+		<div class="container" >
+				<h1 class="video">&emsp;동영상</h1><br>
 			<div class="size">
-				<c:forEach var="vo" items="${videolist }" varStatus="status">
+				<c:forEach var="vo" items="${videolist }" varStatus="status" >
 					<div class="section" data-board_no="${vo.video_board_no }">
 						<tr>
 							<li>
 							<td>
-							<div class="gallery_list  ">
+							<div class="gallery_list " style="cursor: pointer;">
 							<a href="/thejoun/videoboard/view.do?board_no=${vo.video_board_no }">
 										<img src="${CommonUtil.getYoutubeImage(vo.url)}"><br></a>
 										<font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
