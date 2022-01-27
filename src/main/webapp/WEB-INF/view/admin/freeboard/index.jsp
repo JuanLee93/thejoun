@@ -101,7 +101,12 @@
 		                        <c:forEach var="vo" items="${list }" varStatus="status">
 		                            <tr>
 		                            	<td class="first"><input type="checkbox" name="no" value="${vo.board_no }"/></td>
+		                            	<c:if test="${vo.noticeYN == 'Y' }">
+		                            	<td>[공지]</td>
+		                            	</c:if>
+		                            	<c:if test="${vo.noticeYN == 'N' }">
 		                                <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
+		                                </c:if>
 		                                <td class="title" data-board_no="${vo.board_no }" style="cursor: pointer;">
 		                                    ${vo.title }
 		                                </td>
