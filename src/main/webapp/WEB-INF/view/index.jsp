@@ -33,7 +33,7 @@
 	}
 	
 	.swiper-wrapper>div {
-		height: 256px;
+		height: 230px;
 		position: relative;
 		display: flex;
 	}
