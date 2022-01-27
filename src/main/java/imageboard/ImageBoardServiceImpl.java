@@ -53,4 +53,29 @@ public class ImageBoardServiceImpl implements ImageBoardService {
 	public int updateAnnounce(CommentVo cv) {
 		return imageBoardDao.updateAnnounce(cv);
 	}
+
+	@Override
+	public int insertNotice(ImageBoardVo vo) {
+		return imageBoardDao.insertNotice(vo);
+	}
+
+	@Override
+	public int updateNotice(ImageBoardVo vo) {
+		return imageBoardDao.updateNotice(vo);
+	}
+
+	@Override
+	public int getRownum(ImageBoardVo vo) {
+		return imageBoardDao.getRownum(vo);
+	}
+
+	@Override
+	public ImageBoardVo getNext(ImageBoardVo vo) {
+		return imageBoardDao.getNext(vo);
+	}
+
+	@Override
+	public ImageBoardVo getPrev(ImageBoardVo vo) {
+		return imageBoardDao.getPrev(vo);
+	}
 }

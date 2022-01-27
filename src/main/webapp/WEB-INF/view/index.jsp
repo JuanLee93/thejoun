@@ -20,7 +20,6 @@
 <script src="/thejoun/js/main.js"></script>
 <script>
 
-// view로 넘기는건 수정중
 /*
  * 
  
@@ -115,14 +114,14 @@
 				<div class="board_content" id="board_notice" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${list }" varStatus="status">
-							<li>${vo.title }<span>${vo.nickname }</span></li>
+							<li><a href="/thejoun/freeboard/view.do?board_no=${vo.board_no }">${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
 				<div class="board_content" id="board_data" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${concernlist }" varStatus="status">
-							<li>${vo.title }<span>${vo.nickname }</span></li>
+							<li><a href="/thejoun/concernboard/view.do?board_no=${vo.concern_board_no }">${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -134,7 +133,7 @@
 				<div class="board_content" id="board_notice1" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${noticelist}" varStatus="status">
-							<li>${vo.title }<span>${vo.regdate}</span></li>
+							<li><a href="/thejoun/notice/view.do?notice_no=${vo.notice_no} ">${vo.title }</a><span>${vo.regdate}</span></li>
 						</c:forEach>
 					</ul>
 				</div>

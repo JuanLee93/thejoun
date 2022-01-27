@@ -67,4 +67,19 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int updateNotice(FreeBoardVo vo) {
 		return freeBoardDao.updateNotice(vo);
 	}
+
+	@Override
+	public int getRownum(FreeBoardVo vo) {
+		return freeBoardDao.getRownum(vo);
+	}
+
+	@Override
+	public FreeBoardVo getNext(FreeBoardVo vo) {
+		return freeBoardDao.getNext(vo);
+	}
+
+	@Override
+	public FreeBoardVo getPrev(FreeBoardVo vo) {
+		return freeBoardDao.getPrev(vo);
+	}
 }

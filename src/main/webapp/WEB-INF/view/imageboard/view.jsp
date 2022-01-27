@@ -231,6 +231,18 @@
 	                            </c:if>
                             </div>
                         </div>
+                        <table>
+                        	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
+                        		<c:if test="${empty prev.image_board_no}">< 이전 글이 없습니다.</c:if>
+                        		<c:if test="${!empty prev.image_board_no}">
+                        		<a href="view.do?image_board_no=${prev.image_board_no }">< 이전글 - ${prev.title }</a>
+                        		</c:if></td>
+                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
+                        		<c:if test="${!empty next.image_board_no}">
+                        		<a href="view.do?image_board_no=${next.image_board_no }">${next.title } - 다음글 ></a>
+                        		</c:if>       
+                        		<c:if test="${empty next.image_board_no}">다음 글이 없습니다. ></c:if></td>        	
+                        </table>
                     </div>
                     <div style="height: 30px">
                     	<p>[댓글]</p>
