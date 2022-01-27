@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import comment.CommentVo;
+import freeboard.FreeBoardVo;
 
 @Service
 public class ConcernServiceImpl implements ConcernBoardService {
@@ -56,5 +57,24 @@ public class ConcernServiceImpl implements ConcernBoardService {
 	@Override
 	public int updateAnnounce(CommentVo cv) {
 		return concernBoardDao.updateAnnounce(cv);
+	}
+	@Override
+	public int updateNotice(ConcernBoardVo vo) {
+		return concernBoardDao.updateNotice(vo);
+	}
+
+	@Override
+	public int getRownum(ConcernBoardVo vo) {
+		return concernBoardDao.getRownum(vo);
+	}
+
+	@Override
+	public ConcernBoardVo getNext(ConcernBoardVo vo) {
+		return concernBoardDao.getNext(vo);
+	}
+
+	@Override
+	public ConcernBoardVo getPrev(ConcernBoardVo vo) {
+		return concernBoardDao.getPrev(vo);
 	}
 }

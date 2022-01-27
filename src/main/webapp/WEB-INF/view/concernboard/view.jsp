@@ -255,8 +255,20 @@
 								</c:if>
 							</div>
 						</div>
+				        <table>
+                        	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
+                        		<c:if test="${empty prev.concern_board_no}">< 이전 글이 없습니다.</c:if>
+                        		<c:if test="${!empty prev.concern_board_no}">
+                        		<a href="view.do?board_no=${prev.concern_board_no }">< 이전글 - ${prev.title }</a>
+                        		</c:if></td>
+                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
+                        		<c:if test="${!empty next.concern_board_no}">
+                        		<a href="view.do?board_no=${next.concern_board_no }">${next.title } - 다음글 ></a>
+                        		</c:if>       
+                        		<c:if test="${empty next.concern_board_no}">다음 글이 없습니다. ></c:if></td>        	
+                        </table>		
 					</div>
-					<div style="height: 30px">
+					<div style="margin-top: 40px; height: 30px">
 						<p>[댓글]</p>
 					</div>
 					<div>

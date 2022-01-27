@@ -116,6 +116,17 @@ public class ConcernBoardController {
 		return "include/return";
 	}
 	
+	@PostMapping("/admin/concernboard/noticeUpdateAjax.do")
+	public String adminNoticeUpdateAjax(HttpServletRequest req) {
+		String[] updateArray = req.getParameterValues("no");
+		for (int i=0; i<updateArray.length; i++) {
+			ConcernBoardVo vo = new ConcernBoardVo();
+			vo.setConcern_board_no(Integer.parseInt(updateArray[i]));
+			concernBoardService.updateNotice(vo);
+		}
+		return "include/result";
+	}
+	
 	@RequestMapping("/concernboard/write.do")
 	public String write() {
 		return "concernboard/write";
@@ -166,8 +177,17 @@ public class ConcernBoardController {
 		}
 	
 	@GetMapping("/concernboard/view.do")
-	public String view(Model model, HttpSession sess, @RequestParam int board_no) {
+	public String view(Model model, HttpSession sess, @RequestParam int board_no, HttpServletRequest req, ConcernBoardVo vo) {
 		model.addAttribute("data", concernBoardService.view(board_no));
+		
+		vo.setConcern_board_no(board_no);
+		int Rownum = concernBoardService.getRownum(vo);
+		vo.setRownum(Rownum);
+		ConcernBoardVo prev = concernBoardService.getPrev(vo);
+		ConcernBoardVo next = concernBoardService.getNext(vo);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+		
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
 		cv.setTablename(2);

@@ -27,6 +27,8 @@ public class ConcernBoardVo extends CommonVo {
 	private String orderby;
 	private String direction;
 	private int state;
+	private int rownum;
+	private String noticeYN;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
