@@ -211,28 +211,37 @@
                         <div class="cont"><p>${data.content }</p><br> </div>
                         <dl class="file">
                         <div>
-                            <dt>좋아요 </dt>
-                            <c:if test="${!empty userInfo }">
-                            <dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
-                            </c:if>
-                            <c:if test="${empty userInfo }">
-                        	<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
-                    		</c:if>
-                    		<dt><button type="button" class="bm_image" id="bookmarkCheck" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
-                    		<dt><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+                        	<dd>
+                            	<dt>좋아요</dt>
+	                            <dt class="like"><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dt>
+	                    		<dt class="bookmark" style="text-align: center;"><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+	                    		<dt class="report" style="text-align: right;"><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+                    		</dd>
                         </div>
                         </dl> 
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
-                            	<a href="index.do" class="btn1">목록으로</a>
+                            	<a href="index.do" class="btn1" style="margin-top: 40px;">목록으로</a>
                             	<c:if test="${data.userno == userInfo.userno }">
 	                            <a href="edit.do?image_board_no=${data.image_board_no }" class="btn1">수정</a>
 	                            <a href="javascript:del();" class="btn1">삭제</a>
 	                            </c:if>
                             </div>
                         </div>
+                        <table>
+                        	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
+                        		<c:if test="${empty prev.image_board_no}">< 이전 글이 없습니다.</c:if>
+                        		<c:if test="${!empty prev.image_board_no}">
+                        		<a href="view.do?image_board_no=${prev.image_board_no }">< 이전글 - ${prev.title }</a>
+                        		</c:if></td>
+                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
+                        		<c:if test="${!empty next.image_board_no}">
+                        		<a href="view.do?image_board_no=${next.image_board_no }">${next.title } - 다음글 ></a>
+                        		</c:if>       
+                        		<c:if test="${empty next.image_board_no}">다음 글이 없습니다. ></c:if></td>        	
+                        </table>
                     </div>
-                    <div style="height: 30px">
+                    <div style="margin-top: 40px; height: 30px">
                     	<p>[댓글]</p>
                     </div>
                     <div>

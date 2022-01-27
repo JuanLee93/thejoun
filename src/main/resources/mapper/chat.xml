@@ -18,7 +18,7 @@
 	</insert>
 	
 	<select id="findFriendsList" parameterType="int" resultType="user.UserVo">
-		SELECT a.userno, a.id, a.nickname, a.gender, a.email, sum(if(c.checkmessage = 1, 1, 0)) as messagecount, c.chatregdate,IF(c.chatno, max(c.chatno), 0) as finalno
+		SELECT a.userno, a.id, a.nickname, a.gender, a.email, sum(if(c.checkmessage = 1, 1, 0)) as messagecount, (unix_timestamp(now()) - unix_timestamp(c.chatregdate)) as regdateCheck,IF(c.chatno, max(c.chatno), 0) as finalno
 		FROM (SELECT userno, id, nickname, gender, email FROM user WHERE userno IN (SELECT friends_userno FROM friends WHERE my_userno = #{value} 
 		UNION SELECT my_userno FROM friends WHERE friends_userno = #{value})) as a LEFT JOIN chat as c
 		ON c.from_id = a.userno AND c.to_id = #{value} GROUP BY a.userno
