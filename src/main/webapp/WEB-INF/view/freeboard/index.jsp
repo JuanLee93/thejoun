@@ -63,8 +63,13 @@
 						</c:if>
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
-                            <tr class="board_tr" data-board_no="${freeBoardVo.board_no }" style="cursor: pointer;">
+                            <tr class="board_tr" data-board_no="${vo.board_no }" style="cursor: pointer;">
+                            	<c:if test="${vo.noticeYN == 'Y' }">
+                            	<td>[공지]</td>
+                            	</c:if>
+                            	<c:if test="${vo.noticeYN == 'N' }">
                                 <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
+                                </c:if>
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.title } [${vo.c_count }]
                                 </td>
