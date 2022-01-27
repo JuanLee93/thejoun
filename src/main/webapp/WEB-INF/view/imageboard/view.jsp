@@ -91,6 +91,7 @@
 	
 	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/comment/insertCommentReply.do",
 			type:'post',
@@ -104,6 +105,10 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	
 	function goDel(comment_no) {
@@ -123,6 +128,7 @@
 		}
 	}
 	function likeUpdate() {
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/likeupdate",
 			data : {board_no : ${data.image_board_no}, userno : ${userInfo.userno}, tablename:3},
@@ -136,8 +142,13 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	function bookmarkUpdate() {
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/bookmarkupdate",
 			data : {board_no : ${data.image_board_no}, userno : ${userInfo.userno}, tablename:3},
@@ -150,8 +161,13 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	function report() {
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/report",
 			data : {board_no : ${data.image_board_no}, userno : ${userInfo.userno}, tablename:3},
@@ -164,6 +180,10 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	function addFriends(userno){
 		$.ajax({
