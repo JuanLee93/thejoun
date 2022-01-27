@@ -21,17 +21,17 @@
 	
 	<select id="getRownum" resultType="int" parameterType="freeboard.FreeBoardVo">  
 		select rownum from (
-			select row_number() over () as rownum, board_no, title from board
+			select row_number() over () as rownum, board_no, title from free_board
 			<include refid = "boardWhere"/>
-			order by ${orderby} ${direction}
+			order by noticeYN DESC, ${orderby} ${direction}
 		) as r
-		where r.board_no=#{board_no};
+		where r.board_no=#{board_no};  
 	</select> 
 	<select id="getNext" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo"> 
 		select board_no, title from (
 			select row_number() over () as rownum, board_no, title from free_board
 			<include refid = "boardWhere"/>
-			order by ${orderby} ${direction}
+			order by noticeYN DESC, ${orderby} ${direction}
 		) as r
 		where r.rownum=#{rownum}+1;
 	</select>  
@@ -39,7 +39,7 @@
 		select board_no, title from (
 			select row_number() over () as rownum, board_no, title from free_board
 			<include refid = "boardWhere"/>
-			order by ${orderby} ${direction}
+			order by noticeYN DESC, ${orderby} ${direction}
 		) as r
 		where r.rownum=#{rownum}-1;
 	</select>
@@ -59,7 +59,7 @@
 			(SELECT state FROM report WHERE report.board_no = free_board.board_no AND tablename=1 limit 1) as state
 			FROM free_board
 		<include refid="boardWhere"/>
-			ORDER BY ${orderby} ${direction}
+			ORDER BY noticeYN DESC, ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
 	</select>
 

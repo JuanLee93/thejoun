@@ -20,6 +20,7 @@ public class FreeBoardVo extends CommonVo {
 	private String filename_org;
 	private String filename_real;
 	private int category;
+	private String noticeYN;
 	private String id;
 	private String name;
 	private String nickname;
@@ -28,8 +29,6 @@ public class FreeBoardVo extends CommonVo {
 	private String orderby;
 	private String direction;
 	private int state;
-	private int prev;
-	private int next;
 	private int rownum;
 	
 	public String getRegdate() {

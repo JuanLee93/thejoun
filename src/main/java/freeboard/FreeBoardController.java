@@ -122,7 +122,7 @@ public class FreeBoardController {
 			vo.setBoard_no(Integer.parseInt(updateArray[i]));
 			freeBoardService.updateNotice(vo);
 		}
-		return "include/return";
+		return "include/result";
 	}
 	
 	@GetMapping("/freeboard/index.do")
@@ -202,8 +202,17 @@ public class FreeBoardController {
 	}
 	
 	@GetMapping("/freeboard/view.do")
-	public String view(Model model, HttpSession sess, @RequestParam int board_no) {
+	public String view(Model model, HttpSession sess, @RequestParam int board_no, HttpServletRequest req, FreeBoardVo vo) {
 		model.addAttribute("data", freeBoardService.view(board_no));
+		
+		vo.setBoard_no(board_no);
+		int Rownum = freeBoardService.getRownum(vo);
+		vo.setRownum(Rownum);
+		FreeBoardVo prev = freeBoardService.getPrev(vo);
+		FreeBoardVo next = freeBoardService.getNext(vo);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+		
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
 		cv.setTablename(1);

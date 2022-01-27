@@ -42,11 +42,7 @@
 				type : 'POST',
 				data : $("#frm").serialize(),
 				success : function(res) {
-					if (res.trim() == '1') {
-						location.href='index.do';
-					} else {
-						
-					}
+					alert('선택하신 글을 공지글로 적용하였습니다.');
 				}
 			});
 		}
