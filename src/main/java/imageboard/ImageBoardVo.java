@@ -18,6 +18,7 @@ public class ImageBoardVo extends CommonVo {
 	private Timestamp regdate;
 	private int readcount;
 	private int category;
+	private String noticeYN;
 	private String id;
 	private String name;
 	private String nickname;
@@ -26,6 +27,7 @@ public class ImageBoardVo extends CommonVo {
 	private String orderby;
 	private String direction;
 	private int state;
+	private int rownum;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
