@@ -26,7 +26,7 @@
 		select rownum from (
 			select row_number() over () as rownum, image_board_no, title from image_board
 			<include refid = "boardWhere"/>
-			order by noticeYN DESC, ${orderby} ${direction}
+			order by ${orderby} ${direction}
 		) as r
 		where r.image_board_no=#{image_board_no};  
 	</select> 
@@ -34,7 +34,7 @@
 		select image_board_no, title from (
 			select row_number() over () as rownum, image_board_no, title from image_board
 			<include refid = "boardWhere"/>
-			order by noticeYN DESC, ${orderby} ${direction}
+			order by ${orderby} ${direction}
 		) as r
 		where r.rownum=#{rownum}+1;
 	</select>  
@@ -42,7 +42,7 @@
 		select image_board_no, title from (
 			select row_number() over () as rownum, image_board_no, title from image_board
 			<include refid = "boardWhere"/>
-			order by noticeYN DESC, ${orderby} ${direction}
+			order by ${orderby} ${direction}
 		) as r
 		where r.rownum=#{rownum}-1;
 	</select>
@@ -62,7 +62,7 @@
 			(SELECT state FROM report WHERE report.board_no= image_board.image_board_no AND tablename=3 limit 1) as state
 			FROM image_board
 		<include refid="boardWhere"/>
-			ORDER BY noticeYN DESC, ${orderby} ${direction}
+			ORDER BY ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
 	</select>
 
@@ -75,14 +75,6 @@
 		<selectKey keyProperty="image_board_no" resultType="int" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert>
-	
-	<insert id="insertNotice" parameterType="imageboard.ImageBoardVo" useGeneratedKeys="true">
-		INSERT INTO image_board (
-			userno, title, content, regdate, readcount, category, noticeYN
-		) values (
-			#{userno}, #{title}, #{content}, NOW(), #{readcount}, #{category}, 'Y'
-		)
 	</insert>
 	
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
@@ -101,12 +93,6 @@
 		UPDATE image_board SET
 			title=#{title}
 			, content=#{content}
-		WHERE image_board_no = #{image_board_no}
-	</update>
-	 
-	 <update id="updateNotice" parameterType="imageboard.ImageBoardVo">
-		UPDATE image_board SET
-			noticeYN='Y'
 		WHERE image_board_no = #{image_board_no}
 	</update>
 	

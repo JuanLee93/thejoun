@@ -15,8 +15,6 @@ public interface ImageBoardService {
 	int update(ImageBoardVo vo);
 	int delete(ImageBoardVo vo);
 	int updateAnnounce(CommentVo cv);
-	int insertNotice(ImageBoardVo vo);
-	int updateNotice(ImageBoardVo vo);
 	int getRownum(ImageBoardVo vo);
 	ImageBoardVo getNext(ImageBoardVo vo);
 	ImageBoardVo getPrev(ImageBoardVo vo);

@@ -55,16 +55,6 @@ public class ImageBoardServiceImpl implements ImageBoardService {
 	}
 
 	@Override
-	public int insertNotice(ImageBoardVo vo) {
-		return imageBoardDao.insertNotice(vo);
-	}
-
-	@Override
-	public int updateNotice(ImageBoardVo vo) {
-		return imageBoardDao.updateNotice(vo);
-	}
-
-	@Override
 	public int getRownum(ImageBoardVo vo) {
 		return imageBoardDao.getRownum(vo);
 	}

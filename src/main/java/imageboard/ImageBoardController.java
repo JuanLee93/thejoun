@@ -109,17 +109,6 @@ public class ImageBoardController {
 		return "include/return";
 	}
 	
-	@PostMapping("/admin/imageboard/noticeUpdateAjax.do")
-	public String adminNoticeUpdateAjax(HttpServletRequest req) {
-		String[] updateArray = req.getParameterValues("no");
-		for (int i=0; i<updateArray.length; i++) {
-			ImageBoardVo vo = new ImageBoardVo();
-			vo.setImage_board_no(Integer.parseInt(updateArray[i]));
-			imageBoardService.updateNotice(vo);
-		}
-		return "include/result";
-	}
-	
 	@GetMapping("/imageboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, ImageBoardVo vo) {
 		

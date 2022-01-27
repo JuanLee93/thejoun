@@ -53,21 +53,6 @@ public class ImageBoardDao {
 		return sqlSessionTemplate.update("imageboard.updateAnnounce", cv);
 	}
 	
-	public int insertNotice(ImageBoardVo vo) {
-		int r = -1;
-		try {
-			r = sqlSessionTemplate.insert("imageboard.insertNotice", vo);
-		} catch (Exception e) {
-			r = 0;
-			System.out.println(e.getMessage());
-		}
-		return r;
-	}
-	
-	public int updateNotice(ImageBoardVo vo) {
-		return sqlSessionTemplate.update("imageboard.updateNotice", vo);
-	}
-	
 	public int getRownum(ImageBoardVo vo) {
 		return sqlSessionTemplate.selectOne("imageboard.getRownum", vo);
 	}

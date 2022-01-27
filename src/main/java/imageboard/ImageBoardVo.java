@@ -18,7 +18,6 @@ public class ImageBoardVo extends CommonVo {
 	private Timestamp regdate;
 	private int readcount;
 	private int category;
-	private String noticeYN;
 	private String id;
 	private String name;
 	private String nickname;
