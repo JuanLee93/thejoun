@@ -152,7 +152,6 @@
 							<div class="gallery_list  ">
 										<img src="${CommonUtil.getYoutubeImage(vo.url)}"><br>
 										<font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
-										<br> <span class="gallery_data ">작성자:${vo.nickname }</span>
 							</div>
 							</td>
 							</li>
