@@ -19,6 +19,31 @@
 		</where>
 	</sql>
 	
+	<select id="getRownum" resultType="int" parameterType="notice.NoticeVo">  
+		select rownum from (
+			select row_number() over () as rownum, notice_no, title from notice
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.notice_no=#{notice_no};  
+	</select> 
+	<select id="getNext" resultType="notice.NoticeVo" parameterType="notice.NoticeVo"> 
+		select notice_no, title from (
+			select row_number() over () as rownum, notice_no, title from notice
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}+1;
+	</select>  
+	<select id="getPrev" resultType="notice.NoticeVo" parameterType="notice.NoticeVo"> 
+		select notice_no, title from (
+			select row_number() over () as rownum, notice_no, title from notice
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}-1;
+	</select>
+	
 	<select id="count" resultType="int" parameterType="notice.NoticeVo">
 		SELECT COUNT(*) FROM notice
 		<include refid="boardWhere"/>

@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import notice.NoticeVo;
+
 @Repository
 public class NoticeDao {
 	
@@ -54,5 +56,17 @@ public class NoticeDao {
 	
 	public int replyUpdate(NoticeVo vo) {
 		return sqlSessionTemplate.update("notice.replyUpdate", vo);
+	}
+	
+	public int getRownum(NoticeVo vo) {
+		return sqlSessionTemplate.selectOne("notice.getRownum", vo);
+	}
+	
+	public NoticeVo getNext(NoticeVo vo) {
+		return sqlSessionTemplate.selectOne("notice.getNext", vo);
+	}
+	
+	public NoticeVo getPrev(NoticeVo vo) {
+		return sqlSessionTemplate.selectOne("notice.getPrev", vo);
 	}
 }

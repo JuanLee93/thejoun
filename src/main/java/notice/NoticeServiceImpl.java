@@ -56,4 +56,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return questionDao.replyUpdate(vo);
 	}
 
+	@Override
+	public int getRownum(NoticeVo vo) {
+		return questionDao.getRownum(vo);
+	}
+
+	@Override
+	public NoticeVo getNext(NoticeVo vo) {
+		return questionDao.getNext(vo);
+	}
+
+	@Override
+	public NoticeVo getPrev(NoticeVo vo) {
+		return questionDao.getPrev(vo);
+	}
+
 }
