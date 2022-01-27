@@ -56,17 +56,6 @@ public class FreeBoardDao {
 		return sqlSessionTemplate.update("freeboard.updateAnnounce", cv);
 	}
 	
-	public int insertNotice(FreeBoardVo vo) {
-		int r = -1;
-		try {
-			r = sqlSessionTemplate.insert("freeboard.insertNotice", vo);
-		} catch (Exception e) {
-			r = 0;
-			System.out.println(e.getMessage());
-		}
-		return r;
-	}
-	
 	public int updateNotice(FreeBoardVo vo) {
 		return sqlSessionTemplate.update("freeboard.updateNotice", vo);
 	}
@@ -81,5 +70,16 @@ public class FreeBoardDao {
 	
 	public FreeBoardVo getPrev(FreeBoardVo vo) {
 		return sqlSessionTemplate.selectOne("freeboard.getPrev", vo);
+	}
+	
+	public int noticeInsert(FreeBoardVo vo) {
+		int r = -1;
+		try {
+			r = sqlSessionTemplate.insert("freeboard.noticeInsert", vo);
+		} catch (Exception e) {
+			r = 0;
+			System.out.println(e.getMessage());
+		}
+		return r;
 	}
 }

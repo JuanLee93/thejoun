@@ -71,10 +71,18 @@
                                 <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
                                 </c:if>
                                 <td class="txt_l" style="text-align:left;">
+	                                <c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                                </c:if>
                                     ${vo.title } [${vo.c_count }]
                                 </td>
                                 <td class="writer">
-                                    ${vo.nickname }
+                                	<c:if test="${!empty vo.nickname}">
+                                  	  ${vo.nickname }
+                                   </c:if>
+                                   <c:if test="${empty vo.nickname}">
+                                  	  관리자
+                                   </c:if>
                                 </td>
                                 <td class="date">${vo.regdate }</td>
                                 <td>${vo.readcount }</td>
@@ -101,7 +109,7 @@
                                 <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
                                     <option value="">전체</option>
                                     <option value="title">제목</option>
-                                    <option value="content">내용</option>
+                                    <option value="contents">내용</option>
                                     <option value="nickname">닉네임</option>
                                 </select>
                             </span>

@@ -8,6 +8,7 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script>
 	$(function() {
+	
 		$(".title").click(function() {
 			location.href='view.do?board_no='+$(this).data("board_no");
 		});
@@ -111,7 +112,12 @@
 		                                    ${vo.title }
 		                                </td>
 		                                <td class="writer">
-		                                    ${vo.nickname }
+		                                    <c:if test="${!empty vo.nickname}">
+                                  	  			${vo.nickname }
+                                   			</c:if>
+                                   			<c:if test="${empty vo.nickname}">
+                                  	  			${vo.admin_name }
+                                   			</c:if>
 		                                </td>
 		                                <td class="date">${vo.regdate }</td>
 		                                <td>${vo.readcount }</td>
@@ -152,7 +158,7 @@
 											title="검색분류 선택">
 											<option value="">전체</option>
 											<option value="title">제목</option>
-											<option value="content">내용</option>
+											<option value="contents">내용</option>
 											<option value="nickname">닉네임</option>
 										</select> <input type="text" id="sval1" name="searchWord" value="" title="검색어 입력"> 
 										<input type="image" src="<%=request.getContextPath()%>/images/admin/btn_search.gif" class="sbtn" alt="검색" />

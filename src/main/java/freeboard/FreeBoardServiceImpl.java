@@ -59,11 +59,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public int insertNotice(FreeBoardVo vo) {
-		return freeBoardDao.insertNotice(vo);
-	}
-
-	@Override
 	public int updateNotice(FreeBoardVo vo) {
 		return freeBoardDao.updateNotice(vo);
 	}
@@ -81,5 +76,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public FreeBoardVo getPrev(FreeBoardVo vo) {
 		return freeBoardDao.getPrev(vo);
+	}
+
+	@Override
+	public int adminInsert(FreeBoardVo vo) {
+		return freeBoardDao.noticeInsert(vo);
 	}
 }

@@ -224,18 +224,24 @@
                         <div class="title">
                             <dl>
                                 <dt class ="tit" style="text-align:center;">|&emsp;&emsp;&emsp;&emsp;${data.title }&emsp;&emsp;&emsp;&emsp;| </dt>
-                                <dt class="title_nic" style="text-align:right;">작성자 : ${data.nickname }
-                                <c:if test="${userInfo.userno  != data.userno }">
-										<form id="friendsAddButton${data.userno }" method="post">
-											<input type="hidden" name="to_userno" value="${data.userno }">
-											<button type="button" class="friendsButton" onclick="addFriends(${data.userno});" >친구추가</button>
-										</form>
-								</c:if>
+                                <dt class="title_nic" style="text-align:right;">
+	                                <c:if test="${!empty data.nickname}">
+		                                작성자 : ${data.nickname }
+		                                <c:if test="${userInfo.userno  != data.userno }">
+												<form id="friendsAddButton${data.userno }" method="post">
+													<input type="hidden" name="to_userno" value="${data.userno }">
+													<button type="button" class="friendsButton" onclick="addFriends(${data.userno});" >친구추가</button>
+												</form>
+										</c:if>
+									</c:if>
+									<c:if test="${empty data.nickname}">
+									작성자 : 관리자
+									</c:if>
                                 </dt>
                                 <dd class="date" style="text-align:right;">작성일 : ${data.regdate } </dd>
                             </dl>
                         </div>
-                        <div class="cont"><p>${data.content }</p><br> </div>
+                        <div class="cont"><p>${data.contents }</p><br> </div>
 
                         <dl class="file">
                             <dt>첨부파일 </dt>

@@ -16,7 +16,7 @@
 <script>
 	var oEditors;
 	$(function(){
-		oEditors = setEditor("content");
+		oEditors = setEditor("contents");
 	});
 
 	function goSave() {
@@ -25,7 +25,7 @@
 			$("#title").focus();
 			return;
 		}
-		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []);
+		oEditors.getById['contents'].exec("UPDATE_CONTENTS_FIELD", []);
 		$("#frm").submit();
 	}
 </script>
@@ -50,7 +50,7 @@
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content" id="content" style="width:100%;"></textarea>
+                                <textarea name="contents" id="contents" style="width:100%;"></textarea>
                             </td>
                         </tr>
                         <tr>

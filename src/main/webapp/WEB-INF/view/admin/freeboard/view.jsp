@@ -60,7 +60,14 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">작성자</label></th>
-											<td colspan="10">${data.nickname }</td>
+											<td colspan="10">
+											<c:if test="${!empty data.nickname}">
+                                  	  			${data.nickname }
+                                   			</c:if>
+                                   			<c:if test="${empty data.nickname}">
+                                  	  			관리자
+                                   			</c:if>
+											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">작성일</label></th>
@@ -68,7 +75,7 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">내용</label></th>
-											<td colspan="10">${data.content }</td>
+											<td colspan="10">${data.contents }</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">첨부파일</label></th>
