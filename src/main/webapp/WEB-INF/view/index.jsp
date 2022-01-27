@@ -149,7 +149,8 @@
 							<li>
 							<td>
 							<div class="gallery_list  ">
-										<img src="${CommonUtil.getYoutubeImage(vo.url)}"><br>
+							<a href="/thejoun/videoboard/view.do?board_no=${vo.video_board_no }">
+										<img src="${CommonUtil.getYoutubeImage(vo.url)}"><br></a>
 										<font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
 							</div>
 							</td>
