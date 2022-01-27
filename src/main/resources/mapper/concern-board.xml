@@ -63,9 +63,9 @@
 			(SELECT state FROM report WHERE report.board_no = concern_board.concern_board_no AND tablename=2 limit 1) as state
 			FROM concern_board
 		<include refid="boardWhere"/>
-			ORDER BY ${orderby} ${direction}
+			ORDER BY noticeYN DESC, ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
-	</select>
+	</select>  
 
 	<!--main 페이지용 selectlist  -->
 	
