@@ -61,6 +61,12 @@
 </style>
 <script>
 	$(function (){
+		chatMain();
+		notice();
+		setInterval(chatMain,1000);
+	});
+	
+	function chatMain(){
 		if (${!empty userInfo }) {
 			$.ajax({
 				url : "/thejoun/include/chatMain.do",
@@ -71,6 +77,9 @@
 				}
 			});
 		}
+	}
+	
+	function notice(){
 		if (${!empty userInfo }) {
 			$.ajax({
 				url : "/thejoun/include/notice.do",
@@ -81,7 +90,7 @@
 				}
 			});
 		}
-	});
+	}
 	
 	function view(){
 		$(".noticeMain").toggle();

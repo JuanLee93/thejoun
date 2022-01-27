@@ -66,6 +66,8 @@ public class MainController {
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
 		List<AnnounceUserVo> userVoList = as.userVoList(uv.getUserno());
 		model.addAttribute("userVoList", userVoList);
+		int announceCount = as.announceCount(uv.getUserno());
+		model.addAttribute("announceCount", announceCount);
 		return "include/notice";
 	}
 	
