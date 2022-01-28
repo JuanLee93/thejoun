@@ -31,7 +31,6 @@
 			}
 		}
 	</script>
-	
 </head>
 <body>
     <div class="wrap">

@@ -71,6 +71,7 @@
 			}
 		});
 	}
+	
 </script>
 </head>
 <body>

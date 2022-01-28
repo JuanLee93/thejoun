@@ -86,5 +86,10 @@ public class UserServiceImpl implements UserService {
 	public int infoUpdate(UserVo vo) {
 		return dao.infoUpdate(vo);
 	}
+	
+	@Override
+	public int pwdChange(UserVo vo) {
+		return dao.pwdChange(vo);
+	}
 
 }

@@ -71,3 +71,9 @@ div.sub > div > h3 {
 	margin: 20px;
 	
 }
+.bi-file-lock2-fill::before{
+	font-size: 80px;
+    color:grey;
+    margin: 15px 10px 15px 10px;
+    
+}

@@ -19,4 +19,5 @@ public interface UserService {
 	UserVo searchId(UserVo vo);
 	UserVo searchPwd(UserVo vo);
 	int infoUpdate(UserVo vo);
+	int pwdChange(UserVo vo);
 }

@@ -48,4 +48,10 @@
 			nickname = #{nickname} , tel = #{tel} , regdate = NOW() , zipcode = #{zipcode}, addr1 = #{addr1}, addr2 = #{addr2} 
 			WHERE id = #{id}
 	</update>
+	
+	<update id="pwdChange" parameterType="user.UserVo">
+		UPDATE user SET
+			pwd = md5(#{newPwd})
+			WHERE pwd = md5(#{pwd})
+	</update>
 </mapper>

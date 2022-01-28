@@ -55,5 +55,8 @@ public class UserDao {
 	public int infoUpdate(UserVo vo) {
 		return sst.update("user.infoUpdate", vo);
 	}
+	public int pwdChange(UserVo vo) {
+		return sst.update("user.pwdChange", vo);
+	}
 
 }

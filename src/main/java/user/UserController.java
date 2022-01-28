@@ -176,4 +176,15 @@ public class UserController {
 		return "include/return";
 	}
 	
+	@PostMapping("/user/pwdChange.do")
+	public String pwdChange(HttpServletRequest req, UserVo vo) {
+		if(userService.pwdChange(vo) > 0) {
+			req.setAttribute("msg", "비밀번호가 수정되었습니다");
+			req.setAttribute("url", "/thejoun/user/mypage.do");
+		}else {
+			req.setAttribute("msg", "비밀번호를 확인해주세요");
+		}
+		return "include/return";
+	}
+	
 }
