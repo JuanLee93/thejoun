@@ -48,8 +48,7 @@
 	
 	.newcontent {
 		padding-top: 50px;
-	
-		border-bottom: 1px solid #1d1d1d;
+	    background-color: snow;
 	}
 	.board_title1{
 		text-align:center;
@@ -85,6 +84,30 @@
 				<div class="swiper-button-prev"></div>
 			</div>
 		</div>
+	</div>
+	<div>
+	<div class="newcontent">
+		<div class="container" >
+				<h1 class="video">&emsp;이미지 갤러리</h1><br>
+			<div class="size">
+				<c:forEach var="vo" items="${imagelist }" varStatus="status" >
+					<div class="section1"  data-image_board_no="${vo.image_board_no }">
+						<tr>
+							<li>
+							<td>
+							<div class="gallery_list " style="cursor: pointer;">
+							<a href="/thejoun/imageboard/view.do?image_board_no=${vo.image_board_no }">
+										<img src="${CommonUtil.getImgUrl(vo.content) }"><br></a>
+										<font class="txt_l">&nbsp;&nbsp;${vo.title }</font><br>
+							</div>
+							</td>
+							</li>
+						</tr>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>	
 	</div>
 	<div class="info">
 		<div class="content">
@@ -122,7 +145,7 @@
 	</div>
 	<div class="newcontent">
 		<div class="container" >
-				<h1 class="video">&emsp;동영상</h1><br>
+				<h1 class="video">&emsp;동영상 갤러리</h1><br>
 			<div class="size">
 				<c:forEach var="vo" items="${videolist }" varStatus="status" >
 					<div class="section" data-board_no="${vo.video_board_no }">

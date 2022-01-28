@@ -21,6 +21,9 @@ public class ImageBoardDao {
 	public List<ImageBoardVo> selectList(ImageBoardVo vo){
 		return sqlSessionTemplate.selectList("imageboard.selectList", vo);
 	}
+	public List<ImageBoardVo> mainSelectList(ImageBoardVo vo){
+		return sqlSessionTemplate.selectList("imageboard.mainSelectList", vo);
+	}
 	
 	public int insert(ImageBoardVo vo) {
 		int r = -1;

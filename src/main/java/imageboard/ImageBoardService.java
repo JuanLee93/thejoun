@@ -9,6 +9,7 @@ public interface ImageBoardService {
 
 	int count(ImageBoardVo vo);
 	List<ImageBoardVo> selectList(ImageBoardVo vo);
+	List<ImageBoardVo> mainSelectList(ImageBoardVo vo);
 	int insert(ImageBoardVo vo);
 	ImageBoardVo view(int image_board_no);
 	ImageBoardVo edit(int image_board_no);

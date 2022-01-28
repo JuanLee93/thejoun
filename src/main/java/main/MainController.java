@@ -8,15 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import announce.AnnounceService;
 import announce.AnnounceUserVo;
-import comment.CommentVo;
 import concernboard.ConcernBoardService;
 import concernboard.ConcernBoardVo;
 import freeboard.FreeBoardService;
 import freeboard.FreeBoardVo;
+import imageboard.ImageBoardService;
+import imageboard.ImageBoardVo;
 import notice.NoticeService;
 import notice.NoticeVo;
 import user.UserVo;
@@ -35,17 +35,21 @@ public class MainController {
 	AnnounceService as;
 	@Autowired
 	NoticeService noticeService;
+	@Autowired
+	ImageBoardService imageBoardService;
 	
 	@GetMapping("/index.do")
-	public String index(FreeBoardVo vo , Model model , ConcernBoardVo vo2 , VideoBoardVo vo3 ,NoticeVo vo4) {
+	public String index(FreeBoardVo vo , Model model , ConcernBoardVo vo2 , VideoBoardVo vo3 ,NoticeVo vo4 , ImageBoardVo vo5) {
 		List<FreeBoardVo> list = freeBoardService.mainSelectList(vo);
 		List<ConcernBoardVo> concernlist = concernBoardService.mainSelectList(vo2);
 		List<VideoBoardVo> videolist = videoBoardService.mainSelectList(vo3);
 		List<NoticeVo> noticelist = noticeService.mainSelectList(vo4);
+		List<ImageBoardVo> imagelist = imageBoardService.mainSelectList(vo5);
 		model.addAttribute("list", list);
 		model.addAttribute("concernlist", concernlist);
 		model.addAttribute("videolist", videolist);
 		model.addAttribute("noticelist", noticelist);
+		model.addAttribute("imagelist", imagelist);
 		return "index";
 	}
 

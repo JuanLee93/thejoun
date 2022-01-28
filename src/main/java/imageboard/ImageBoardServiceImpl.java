@@ -22,6 +22,10 @@ public class ImageBoardServiceImpl implements ImageBoardService {
 	public List<ImageBoardVo> selectList(ImageBoardVo vo) {
 		return imageBoardDao.selectList(vo);
 	}
+	@Override
+	public List<ImageBoardVo> mainSelectList(ImageBoardVo vo) {
+		return imageBoardDao.mainSelectList(vo);
+	}
 
 	@Override
 	public int insert(ImageBoardVo vo) {
