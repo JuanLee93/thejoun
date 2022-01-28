@@ -1,0 +1,45 @@
+.info {
+    width:1200px;
+    margin:0 auto;
+}
+.info > .content {
+    width:50%;
+    float:left;
+    background-color: snow;
+}
+.info > .content > .board_area {
+    width: 580px;
+    height: 400px;
+    border:1px solid #999;
+    padding:10px;
+}
+.info > .content > .board_area > .board_title {
+    font-size:25px;
+    line-height: 50px;
+    float:left;
+    cursor:pointer;
+    width: 150px;
+    text-align: center;
+}
+.info > .content > .board_area > .board_title.on {
+    color:#fff;
+    background-color: #d3d3d3;
+    width: 150px;
+}
+.info > .content > .board_area > .board_content > ul {
+    clear:both;
+}
+.board_content > ul > li {
+    font-size:18px;
+    line-height: 40px;
+    border-bottom: 1px solid #d3d3d3;
+}
+.board_content > ul:first-child {border-top: 1px solid #d3d3d3;}
+.board_content > ul > li > span {
+    float:right;
+}
+#board_data {display:none;
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}

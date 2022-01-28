@@ -49,6 +49,7 @@
 }
 .noticeMain > li:hover{
 	background-color : #eeeeee;
+	 cursor : pointer;
 }
 .nav-counter {
  position:absolute;
