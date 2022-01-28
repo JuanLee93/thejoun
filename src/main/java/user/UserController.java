@@ -187,4 +187,29 @@ public class UserController {
 		return "include/return";
 	}
 	
+	@GetMapping("/user/myBoardConfirm.do")
+	public String myBoardConfirm() {
+		return "user/myBoardConfirm";
+	}
+	
+	@GetMapping("/user/myFriendsConfirm.do")
+	public String myFriendsConfirm() {
+		return "user/myFriendsConfirm";
+	}
+	
+	@GetMapping("/user/bookmark.do")
+	public String bookmark() {
+		return "user/bookmark";
+	}
+	
+	@GetMapping("/user/blockFriends.do")
+	public String blockFriends() {
+		return "user/blockFriends";
+	}
+	
+	@GetMapping("/user/myInquiry.do")
+	public String myInquiry() {
+		return "user/myInquiry";
+	}
+	
 }

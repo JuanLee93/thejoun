@@ -33,8 +33,8 @@
 				<div class="bs-example" data-example-id="simple-nav-stacked">
 					<div class="bs-example.left">
 						<ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
-							<li role="presentation" class="active"><a href="/thejoun/user/mypage.do">나의 정보</a></li>
-							<li role="presentation"><a href="/thejoun/user/myBoardConfirm.do">나의 글 확인</a></li>
+							<li role="presentation" ><a href="/thejoun/user/mypage.do">나의 정보</a></li>
+							<li role="presentation" class="active"><a href="/thejoun/user/myBoardConfirm.do">나의 글 확인</a></li>
 							<li role="presentation"><a href="/thejoun/user/myFriendsConfirm.do">친구 정보 확인</a></li>
 							<li role="presentation"><a href="/thejoun/user/bookmark.do">북마크</a></li>
 							<li role="presentation"><a href="/thejoun/user/blockFriends.do">차단 친구 목록</a></li>
@@ -42,23 +42,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="userinfo">
-					<ul>
-						<h3>나의 정보</h3><hr>
-						<i class="bi bi-person-circle"></i>
-						<li>
-							<a>아이디 : ${userInfo.id}</a><br><br><br>
-							<a>닉네임 : ${userInfo.nickname}</a><br><br><br>
-							<a>이메일 : ${userInfo.email}</a><br><br><br>
-						</li>
-					</ul>
-					<ul><br><br>
-						<div id="btn_group" style="text-align:center;">
-    						<button class="btn_useredit1" href="/thejoun/user/infoEdit.do">회원정보 수정</button>
-    						<button class="btn_useredit2" onclick="btn_useredit2();">비밀번호 변경</button>
-						</div>
-					</ul>
-				</div>
+				<div>test1</div>
 			</div>
 		</div>
 	</div>

@@ -44,23 +44,54 @@ div > input[type=button] {
 }
 </style>
 </head>
-	<form action="infoEdit.do" method="post" id="board" name="board" onsubmit="return loginCheck();">
-	<div class="size">
-		<ul>	<h3 class="sub_title2" >회원정보 수정</h3>
-			<h4>비밀번호(재확인) 인증</h4><br>
-			<li>
-				<i class="bi bi-person"></i></i>&nbsp;&nbsp;&nbsp;
-				<input type="text" id="id" name="id" placeholder="아이디">
-			</li>
-			<li>
-				<i class="bi bi-key"></i>&nbsp;&nbsp;&nbsp;
-				<input type="password" id="pwd" name="pwd" placeholder="비밀번호">
-			</li><br>
-			<div class="login_btn">
-				<input type="submit" value="로그인" alt="로그인" >
-				<input type="button" value="이전 페이지로" onclick="myinfo()">
+<body>
+	<div class="wrap">
+		<%@ include file="/WEB-INF/view/include/header.jsp"%>
+		<div class="sub">
+			<div class="size">
+				<h3 class="sub_title1">마이 페이지</h3>
+				<hr>
+				<div class="bs-example" data-example-id="simple-nav-stacked">
+					<div class="bs-example.left">
+						<ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+							<li role="presentation"><a href="/thejoun/user/mypage.do">나의
+									정보</a></li>
+							<li role="presentation"><a
+								href="/thejoun/user/myBoardConfirm.do">나의 글 확인</a></li>
+							<li role="presentation"><a
+								href="/thejoun/user/myFriendsConfirm.do">친구 정보 확인</a></li>
+							<li role="presentation" class="active"><a
+								href="/thejoun/user/bookmark.do">북마크</a></li>
+							<li role="presentation"><a
+								href="/thejoun/user/blockFriends.do">차단 친구 목록</a></li>
+							<li role="presentation"><a href="/thejoun/user/myInquiry.do">1:1
+									문의</a></li>
+						</ul>
+					</div>
+				</div>
+				<form action="infoEdit.do" method="post" id="board" name="board"
+					onsubmit="return loginCheck();">
+					<div class="size">
+						<ul>
+							<h3 class="sub_title2">회원정보 수정</h3>
+							<h4>비밀번호(재확인) 인증</h4>
+							<br>
+							<li><i class="bi bi-person"></i></i>&nbsp;&nbsp;&nbsp; <input
+								type="text" id="id" name="id" placeholder="아이디"></li>
+							<li><i class="bi bi-key"></i>&nbsp;&nbsp;&nbsp; <input
+								type="password" id="pwd" name="pwd" placeholder="비밀번호">
+							</li>
+							<br>
+							<div class="login_btn">
+								<input type="submit" value="로그인" alt="로그인"> <input
+									type="button" value="이전 페이지로" onclick="myinfo()">
+							</div>
+						</ul>
+					</div>
+				</form>
 			</div>
-		</ul>
+		</div>
 	</div>
-	</form>
+	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
+</body>
 </html>

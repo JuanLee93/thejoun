@@ -68,19 +68,30 @@ function zipcode() {
         }
     }).open();
 }
+
+function setThumbnail(event) { 
+	var reader = new FileReader(); 
+	
+	reader.onload = function(event){ 
+	var img = document.createElement("img"); 
+	img.setAttribute("src", event.target.result); 
+	document.querySelector("div#image_container").appendChild(img);
+	}; 
+	
+	reader.readAsDataURL(event.target.files[0]); 
+	}
 </script>
 <style>
 div.size > ul {
 	position: relative;
-	padding: 10px 15px 15px;
+	padding: 10px;
 	float: right;
 	width: 75%;
-	height: 250px;
 	text-align: center;
 }
 div.size > ul > li {
 	position: relative;
-	padding: 5px 0px 5px 0px;
+	padding: 10px 10px 10px 10px;
 	vertical-align: middle;
 	height : 20%;
 }
@@ -105,6 +116,17 @@ div.size > ul > li > button {
     border: none;
     color: #fff !important;
     border-radius: 5px;
+}
+input#image {
+    vertical-align: middle;
+    padding : 10px;
+    height: auto;
+    width : auto;
+    margin-right : auto;
+}
+
+not
+
 </style>
 </head>
 <div class="wrap">
@@ -135,11 +157,8 @@ div.size > ul > li > button {
 					</li>
 					<li>전화번호 : <input type="text" id="tel" name="tel" value="${userInfo.tel}">
 					</li>
-					<li>친구추가 허용 : <input type="radio" id="r1" name="rr" />
-    								<label for="r1"><span></span>Yes</label>&nbsp;&nbsp;&nbsp;
-    								<input type="radio" id="r2" name="rr" />
-    								<label for="r2"><span></span>No</label></li>
-					<li><input type="hidden" name="regdate" value="${userInfo.regdate}">회원정보 수정일 : ${userInfo.regdate}</li><hr>
+					<li><input type="hidden" name="regdate" value="${userInfo.regdate}">회원정보 수정일 : ${userInfo.regdate}</li>
+					<hr>
 				</ul>
 				<ul>
 					<li>이름 : ${userInfo.name}</li>
@@ -153,16 +172,9 @@ div.size > ul > li > button {
 					<li>주소2 : <input type="text" name="addr2" id="addr2" value="${userInfo.addr2}"></li><hr>
 				</ul>
 				<ul>
-					<li>SMS 수신여부 | 이용지침 및 공지사항 등에 대한 정보를 SMS로 받아보시겠습니까?</li>
-					<li><input type="radio" id="r3" name="rr1" />
-    					<label for="r3"><span></span>예</label>&nbsp;&nbsp;&nbsp;
-    					<input type="radio" id="r4" name="rr1" />
-    					<label for="r4"><span></span>아니오</label></li>
-					<li>EMAIL 수신여부 | 이용지침 및 공지사항 등에 대한 정보를 이메일로 받아보시겠습니까?</li>
-					<li><input type="radio" id="r5" name="rr2" />
-    					<label for="r5"><span></span>예</label>&nbsp;&nbsp;&nbsp;
-    					<input type="radio" id="r6" name="rr2" />
-    					<label for="r6"><span></span>아니오</label></li>
+					<li>프로필 사진 넣기 (미리보기) : </li>
+					<div id="image_container" ></div>
+					<input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/> 
     				<div>
     					<input type="submit" value="확인" >
     					<input type="button" value="취소" onclick=location.href="/thejoun/user/mypage.do";>
