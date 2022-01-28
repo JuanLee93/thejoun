@@ -50,29 +50,68 @@
 .noticeMain > li:hover{
 	background-color : #eeeeee;
 }
+.nav-counter {
+ position:absolute;
+ top: -1px;
+ right: 1px;
+ min-width: 8px;
+ height: 20px;
+ line-height: 20px;
+ margin-top: -11px;
+ padding: 0 6px;
+ font-weight: normal;
+ font-size: small;
+ color: white;
+ text-align: center;
+ text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+ background: #e23442;
+ border: 1px solid #911f28;
+ border-radius: 11px;
+ background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+ background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+ background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+ background-image: linear-gradient(to bottom, #e8616c, #dd202f);
+ -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+ box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.button {
+ box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+ background-color: #EEE;
+ display: inline-block;
+ vertical-align: middle;
+ border: 1px solid #d4d4d4;
+ height: 32px;
+ line-height: 30px;
+ padding: 0px 25.6px;
+ font-weight: 300;
+ font-size: 14px;
+ font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
+ color: #666;
+ text-shadow: 0 1px 1px white;
+ margin: 0;
+ text-decoration: none;
+ text-align: center;
+}
+.noticeSub > svg{
+		width : 28px;
+		height : 28px;
+	}
 
 </style>
 <script>
-	function view(){
-		$(".noticeMain").toggle();
-	}
-	
-	function goBoard(boardno, tablename){
-		if(tablename == 1){
-			location.href="/thejoun/freeboard/view.do?board_no="+boardno;
-		}else if(tablename == 2){
-			location.href="/thejoun/concernboard/view.do?board_no="+boardno;
-		}else if(tablename == 3){
-			location.href="/thejoun/imageboard/view.do?image_board_no="+boardno;	
-		}else if(tablename == 4){
-			location.href="/thejoun/videoboard/view.do?board_no="+boardno;
-		}
-	}
+
 </script>
 <meta charset="UTF-8">
 </head>
 <body>
-	<button class="friendsButton" onclick="view();">알림</button>
+
+	<a class="noticeSub" onclick="view();"> 
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+	  	<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+		</svg>
+		<span class="nav-counter">${announceCount }</span>
+	</a>
 	<ul class="noticeMain">
 		<c:forEach var="vo" items="${userVoList}" varStatus="status">
 			<c:if test="${vo.board_or_comment == 0 }">

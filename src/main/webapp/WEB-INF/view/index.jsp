@@ -18,74 +18,53 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
-<script>
 
-// view로 넘기는건 수정중
-/*
- * 
- 
-	$(function() {
-		$("#board_notice").click(function() {
-			location.href = 'view.do?board_no=' + $(this).data("board_no");
-		});
-	});
-	$(function() {
-		$("#board_data").click(function() {
-			location.href = 'view.do?board_no=' + $(this).data("board_no");
-		});
-	});
-	$(function() {
-		$("#board_notice1").click(function() {
-			location.href = 'view.do?board_no=' + $(this).data("board_no");
-		});
-	});
- 
- 
- */
-
-
-</script>
 </head>
 <style>
 
 /*web font load*/
-@import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
-	;
-
-/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');*/
-.visual .swiper {
-	height: 256px;
-}
-
-.swiper-wrapper>div {
-	height: 256px;
-	position: relative;
-	display: flex;
-}
-
-.swiper-button-next:after {
-	color: blanchedalmond;
-}
-
-.swiper-button-prev:after {
-	color: blanchedalmond;
-}
-
-.newcontent {
-	padding-top: 50px;
-
-	border-bottom: 1px solid #1d1d1d;
-}
-.board_title1{
-	text-align:center;
-	color: #fff;
-    background-color: #d3d3d3;
-    width: 150px;
-    font-size: 25px;
-    line-height: 50px;
-    margin-left: 200px;
-}
+	@import
+		url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
+		;
+	
+	/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');*/
+	.visual .swiper {
+		height: 256px;
+	}
+	
+	.swiper-wrapper>div {
+		height: 230px;
+		position: relative;
+		display: flex;
+	}
+	
+	.swiper-button-next:after {
+		color: blanchedalmond;
+	}
+	
+	.swiper-button-prev:after {
+		color: blanchedalmond;
+	}
+	
+	.newcontent {
+		padding-top: 50px;
+	
+		border-bottom: 1px solid #1d1d1d;
+	}
+	.board_title1{
+		text-align:center;
+		color: #fff;
+	    background-color: #d3d3d3;
+	    width: 150px;
+	    font-size: 25px;
+	    line-height: 50px;
+	    margin-left: 200px;
+	}
+	.video{
+	style="font-family: 'Noto Sans KR', sans-serif;
+	font-size: x-large;
+    color: #F08080;
+	}
 }
 </style>
 <body>
@@ -115,14 +94,14 @@
 				<div class="board_content" id="board_notice" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${list }" varStatus="status">
-							<li>${vo.title }<span>${vo.nickname }</span></li>
+							<li><a href="/thejoun/freeboard/view.do?board_no=${vo.board_no }">${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
 				<div class="board_content" id="board_data" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${concernlist }" varStatus="status">
-							<li>${vo.title }<span>${vo.nickname }</span></li>
+							<li><a href="/thejoun/concernboard/view.do?board_no=${vo.concern_board_no }">${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -134,7 +113,7 @@
 				<div class="board_content" id="board_notice1" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${noticelist}" varStatus="status">
-							<li>${vo.title }<span>${vo.regdate}</span></li>
+							<li><a href="/thejoun/notice/view.do?notice_no=${vo.notice_no} ">${vo.title }</a><span>${vo.regdate}</span></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -142,17 +121,18 @@
 		</div>
 	</div>
 	<div class="newcontent">
-		<div class="container" style="cursor: pointer;">
+		<div class="container" >
+				<h1 class="video">&emsp;동영상</h1><br>
 			<div class="size">
-				<c:forEach var="vo" items="${videolist }" varStatus="status">
+				<c:forEach var="vo" items="${videolist }" varStatus="status" >
 					<div class="section" data-board_no="${vo.video_board_no }">
 						<tr>
 							<li>
 							<td>
-							<div class="gallery_list  ">
-										<img src="${CommonUtil.getYoutubeImage(vo.url)}"><br>
+							<div class="gallery_list " style="cursor: pointer;">
+							<a href="/thejoun/videoboard/view.do?board_no=${vo.video_board_no }">
+										<img src="${CommonUtil.getYoutubeImage(vo.url)}"><br></a>
 										<font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
-										<br> <span class="gallery_data ">작성자:${vo.nickname }</span>
 							</div>
 							</td>
 							</li>

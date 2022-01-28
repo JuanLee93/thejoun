@@ -61,6 +61,12 @@
 </style>
 <script>
 	$(function (){
+		chatMain();
+		notice();
+		setInterval(chatMain,1000);
+	});
+	
+	function chatMain(){
 		if (${!empty userInfo }) {
 			$.ajax({
 				url : "/thejoun/include/chatMain.do",
@@ -71,6 +77,9 @@
 				}
 			});
 		}
+	}
+	
+	function notice(){
 		if (${!empty userInfo }) {
 			$.ajax({
 				url : "/thejoun/include/notice.do",
@@ -81,7 +90,23 @@
 				}
 			});
 		}
-	});
+	}
+	
+	function view(){
+		$(".noticeMain").toggle();
+	}
+	
+	function goBoard(boardno, tablename){
+		if(tablename == 1){
+			location.href="/thejoun/freeboard/view.do?board_no="+boardno;
+		}else if(tablename == 2){
+			location.href="/thejoun/concernboard/view.do?board_no="+boardno;
+		}else if(tablename == 3){
+			location.href="/thejoun/imageboard/view.do?image_board_no="+boardno;	
+		}else if(tablename == 4){
+			location.href="/thejoun/videoboard/view.do?board_no="+boardno;
+		}
+	}
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>

@@ -85,15 +85,22 @@
 							</c:if>
 							<c:if test="${!empty list }">
 								<c:forEach var="vo" items="${list }" varStatus="status">
-									<tr class="board_tr" data-board_no="${vo.concern_board_no }"
-										style="cursor: pointer;">
-										<td>${(totCount-status.index) - ((concernboardVo.page-1)*10) }</td>
-										<td class="txt_l" style="text-align: left;">${vo.title }
-											[${vo.c_count }]</td>
-										<td class="writer">${vo.nickname }</td>
-										<td class="date">${vo.regdate }</td>
-										<td>${vo.readcount }</td>
-										<td>${vo.l_count }</td>
+									<tr class="board_tr" data-board_no="${vo.concern_board_no }" style="cursor: pointer;">
+                            	<c:if test="${vo.noticeYN == 'Y' }">
+                            	<td>[공지]</td>
+                            	</c:if>
+                            	<c:if test="${vo.noticeYN == 'N' }">
+                                <td>${(totCount-status.index) - ((ConcernBoardVo.page-1)*10) }</td>
+                                </c:if>
+	                                <td class="txt_l" style="text-align:left;">
+	                                    ${vo.title } [${vo.c_count }]
+	                                </td>
+	                                <td class="writer">
+	                                    ${vo.nickname }
+	                                </td>
+	                                <td class="date">${vo.regdate }</td>
+	                                <td>${vo.readcount }</td>
+	                                <td>${vo.l_count }</td>
 									</tr>
 								</c:forEach>
 							</c:if>

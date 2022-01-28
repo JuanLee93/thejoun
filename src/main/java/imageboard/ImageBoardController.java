@@ -172,8 +172,17 @@ public class ImageBoardController {
 	}
 	
 	@GetMapping("/imageboard/view.do")
-	public String view(Model model, HttpSession sess, @RequestParam int image_board_no) {
+	public String view(Model model, HttpSession sess, @RequestParam int image_board_no, HttpServletRequest req, ImageBoardVo vo) {
 		model.addAttribute("data", imageBoardService.view(image_board_no));
+		
+		vo.setImage_board_no(image_board_no);
+		int Rownum = imageBoardService.getRownum(vo);
+		vo.setRownum(Rownum);
+		ImageBoardVo prev = imageBoardService.getPrev(vo);
+		ImageBoardVo next = imageBoardService.getNext(vo);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+		
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(image_board_no);
 		cv.setTablename(3);

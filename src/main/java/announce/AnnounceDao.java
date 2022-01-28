@@ -39,4 +39,8 @@ public class AnnounceDao {
 	public List<AnnounceUserVo> userVoList(int userno){
 		return sst.selectList("announce.userVoList", userno);
 	}
+	
+	public int announceCount(int userno) {
+		return sst.selectOne("announce.announceCount", userno);
+	}
 }

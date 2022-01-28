@@ -53,8 +53,16 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/notice/view.do")
-	public String view(Model model, @RequestParam int notice_no) {
+	public String view(Model model, @RequestParam int notice_no, HttpServletRequest req, NoticeVo vo) {
 		model.addAttribute("data", noticeService.view(notice_no));
+		
+		vo.setNotice_no(notice_no);
+		int Rownum = noticeService.getRownum(vo);
+		vo.setRownum(Rownum);
+		NoticeVo prev = noticeService.getPrev(vo);
+		NoticeVo next = noticeService.getNext(vo);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
 		
 		return "notice/view";
 	}

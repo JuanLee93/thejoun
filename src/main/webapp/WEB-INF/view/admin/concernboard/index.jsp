@@ -33,6 +33,19 @@
 			$("#frm").submit();
 		}
 	}
+	
+	function goNoticeUpdate() {//체크박스 공지글로 적용
+		if (confirm("이 글을 공지글로 적용하시겠습니까?")) {
+			$.ajax({
+				url : 'noticeUpdateAjax.do',
+				type : 'POST',
+				data : $("#frm").serialize(),
+				success : function(res) {
+					alert('선택하신 글을 공지글로 적용하였습니다.');
+				}
+			});
+		}
+	}
 </script>
 
 <body>
@@ -115,7 +128,7 @@
 								<div class="btn">
 									<div class="btnLeft">
 										<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
-										<a class="btns" href="#" onclick=""><strong>공지글로 적용</strong> </a>
+										<a class="btns" href="#" onclick="javascript:goNoticeUpdate();"><strong>공지글로 적용</strong> </a>
 									</div>
 									<div class="btnRight">
 										<a class="wbtn" href="write.do"><strong>등록</strong> </a>

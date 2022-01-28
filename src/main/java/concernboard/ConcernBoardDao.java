@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import comment.CommentVo;
+import freeboard.FreeBoardVo;
 
 @Repository
 public class ConcernBoardDao {
@@ -54,5 +55,22 @@ public class ConcernBoardDao {
 	
 	public int updateAnnounce(CommentVo cv) {
 		return sqlSessionTemplate.update("concernboard.updateAnnounce", cv);
+	}
+
+
+	public int updateNotice(ConcernBoardVo vo) {
+		return sqlSessionTemplate.update("concernboard.updateNotice", vo);
+	}
+	
+	public int getRownum(ConcernBoardVo vo) {
+		return sqlSessionTemplate.selectOne("concernboard.getRownum", vo);
+	}
+	
+	public ConcernBoardVo getNext(ConcernBoardVo vo) {
+		return sqlSessionTemplate.selectOne("concernboard.getNext", vo);
+	}
+	
+	public ConcernBoardVo getPrev(ConcernBoardVo vo) {
+		return sqlSessionTemplate.selectOne("concernboard.getPrev", vo);
 	}
 }

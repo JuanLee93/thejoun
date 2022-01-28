@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import announce.AnnounceService;
 import announce.AnnounceUserVo;
+import comment.CommentVo;
 import concernboard.ConcernBoardService;
 import concernboard.ConcernBoardVo;
 import freeboard.FreeBoardService;
@@ -46,6 +48,7 @@ public class MainController {
 		model.addAttribute("noticelist", noticelist);
 		return "index";
 	}
+
 	
 	//메인css 테스트용으로 만든 index2
 	@GetMapping("/index2.do")
@@ -63,6 +66,8 @@ public class MainController {
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
 		List<AnnounceUserVo> userVoList = as.userVoList(uv.getUserno());
 		model.addAttribute("userVoList", userVoList);
+		int announceCount = as.announceCount(uv.getUserno());
+		model.addAttribute("announceCount", announceCount);
 		return "include/notice";
 	}
 	

@@ -72,6 +72,9 @@
 		where a.my_userno = #{value} AND a.read_check = 1;
 	</select>
 	
+	<select id="announceCount" parameterType="int" resultType="int">
+		SELECT count(*) FROM announce WHERE my_userno = #{value} AND read_check = 1
+	</select>
 
 </mapper>
 

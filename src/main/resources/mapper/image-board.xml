@@ -22,6 +22,31 @@
 		</where>
 	</sql>
 	
+	<select id="getRownum" resultType="int" parameterType="imageboard.ImageBoardVo">  
+		select rownum from (
+			select row_number() over () as rownum, image_board_no, title from image_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.image_board_no=#{image_board_no};  
+	</select> 
+	<select id="getNext" resultType="imageboard.ImageBoardVo" parameterType="imageboard.ImageBoardVo"> 
+		select image_board_no, title from (
+			select row_number() over () as rownum, image_board_no, title from image_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}+1;
+	</select>  
+	<select id="getPrev" resultType="imageboard.ImageBoardVo" parameterType="imageboard.ImageBoardVo"> 
+		select image_board_no, title from (
+			select row_number() over () as rownum, image_board_no, title from image_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}-1;
+	</select>
+	
 	<select id="count" resultType="int" parameterType="imageboard.ImageBoardVo">
 		SELECT COUNT(*) FROM image_board
 		<include refid="boardWhere"/>
@@ -38,7 +63,7 @@
 			FROM image_board
 		<include refid="boardWhere"/>
 			ORDER BY ${orderby} ${direction}
-			LIMIT ${startIdx}, 10
+			LIMIT ${startIdx}, 12
 	</select>
 
 	<insert id="insert" parameterType="imageboard.ImageBoardVo" useGeneratedKeys="true">
@@ -70,7 +95,7 @@
 			, content=#{content}
 		WHERE image_board_no = #{image_board_no}
 	</update>
-	 
+	
 	<delete id="delete" parameterType="int">
 		DELETE FROM image_board WHERE image_board_no = #{image_board_no}
 	</delete>

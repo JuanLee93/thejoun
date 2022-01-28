@@ -13,5 +13,7 @@ public interface NoticeService {
 	int update(NoticeVo vo);
 	int replyUpdate(NoticeVo vo);
 	int delete(NoticeVo vo);
-	
+	int getRownum(NoticeVo vo);
+	NoticeVo getNext(NoticeVo vo);
+	NoticeVo getPrev(NoticeVo vo);
 }

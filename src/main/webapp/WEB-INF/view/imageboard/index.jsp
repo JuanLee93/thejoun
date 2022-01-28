@@ -17,7 +17,7 @@
 <script src="/thejoun/js/main.js"></script>
 <script>
 	$(function() {
-		$(".section").click(function() {
+		$(".section1").click(function() {
 			location.href='view.do?image_board_no='+$(this).data("image_board_no");
 		});
 	});
@@ -56,7 +56,7 @@
 					        <div class="container" style="cursor: pointer;">
 					            <div class="size">
 		       		  				<c:forEach var="vo" items="${list }" varStatus="status">
-					                <div class="section"  data-image_board_no="${vo.image_board_no }">
+					                <div class="section1"  data-image_board_no="${vo.image_board_no }">
 					                    <img src="${CommonUtil.getImgUrl(vo.content) }">
 					                    <div class="txt_l" style="text-align:left;">
 					                    [제목] ${vo.title } [${vo.c_count }]<br>

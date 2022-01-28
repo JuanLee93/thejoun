@@ -3,6 +3,7 @@ package imageboard;
 import java.util.List;
 
 import comment.CommentVo;
+import freeboard.FreeBoardVo;
 
 public interface ImageBoardService {
 
@@ -14,5 +15,7 @@ public interface ImageBoardService {
 	int update(ImageBoardVo vo);
 	int delete(ImageBoardVo vo);
 	int updateAnnounce(CommentVo cv);
-	
+	int getRownum(ImageBoardVo vo);
+	ImageBoardVo getNext(ImageBoardVo vo);
+	ImageBoardVo getPrev(ImageBoardVo vo);
 }

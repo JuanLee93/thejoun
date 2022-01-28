@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script>
+var oEditors = [];
 $(function() {
-	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
 		elPlaceHolder: "contents", // textarea ID
@@ -25,15 +25,37 @@ $(function() {
 		fCreator: "createSEditor2"
 	});
 	
-	var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
-	if(checked_radio === undefined) // 선택을 하지 않았을 경우
-	{
-	    alert('옵션을 선택해주세요.');
-	} else {
-	    alert(checked_radio + "를 선택하셨습니다.");
-	}
+	$("input:radio[name=isopen]").on("click", function() {
+		var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
+		if(checked_radio === undefined) // 선택을 하지 않았을 경우
+		{
+		    alert('옵션을 선택해주세요.');
+		} else {
+			if (checked_radio == "Y") {
+				 alert("공개를 선택하셨습니다.");
+			} else {
+				 alert("비공개를 선택하셨습니다.");
+			}
+		   
+		}
+	});
 	
 });
+
+function goSave() {
+	if ($("#title").val=='') {
+		alert('제목을 입력하세요');
+		$("#title").focus();
+		return false;
+	}
+	if ($("#contents").val=='') {
+		alert('내용을 입력하세요');
+		$("#contents").focus();
+		return false;
+	}
+	oEditors.getById['contents'].exec("UPDATE_CONTENTS_FIELD", []);
+	$("#frm").submit();
+}
 
 </script>
 </head>
@@ -55,7 +77,7 @@ $(function() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -75,8 +97,8 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*공개/비공개</label></th>
 										<td colspan="10">
-											<input type="radio" id="open" name="isopen" value="공개" checked="checked"/> 공개	
-											<input type="radio" id="close" name="isopen" value="비공개" /> 비공개	
+											<input type="radio" id="open" name="isopen" value="Y" checked="checked"/> 공개	
+											<input type="radio" id="close" name="isopen" value="N" /> 비공개	
 										</td>
 									</tr>
 									<tr>
@@ -88,21 +110,23 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
 										<td colspan="10">
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." />	
+											<input type="file" id="filename_tmp" name="file" class="w100" title="첨부파일을 업로드 해주세요." />	
 										</td>
 									</tr>
 								</tbody>
 							</table>
 							<input type="hidden" name="cmd" value="write" />
-							</form>
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" href="index.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;"><strong>저장</strong></a>
+									<a class="btns" href="javascript:goSave();" style="cursor:pointer;"><strong>저장</strong></a>
 								</div>
 							</div>
+							</form>
+							
+							
 							<!--//btn-->
 						</div>
 						<!-- //bread -->

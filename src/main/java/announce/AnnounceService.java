@@ -38,4 +38,8 @@ public class AnnounceService {
 	public List<AnnounceUserVo> userVoList(int userno){
 		return ad.userVoList(userno);
 	}
+	
+	public int announceCount(int userno) {
+		return ad.announceCount(userno);
+	}
 }

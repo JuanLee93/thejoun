@@ -35,24 +35,6 @@
  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
 }
 
-.button {
- box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
- background-color: #EEE;
- display: inline-block;
- vertical-align: middle;
- border: 1px solid #d4d4d4;
- height: 32px;
- line-height: 30px;
- padding: 0px 25.6px;
- font-weight: 300;
- font-size: 14px;
- font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
- color: #666;
- text-shadow: 0 1px 1px white;
- margin: 0;
- text-decoration: none;
- text-align: center;
-}
 	
 </style>
 </head>

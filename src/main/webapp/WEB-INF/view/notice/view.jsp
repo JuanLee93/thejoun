@@ -39,11 +39,24 @@
 						<div style="height: 30px">
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >
-                            	<a href="index.do" class="btn1">목록으로</a>
+                            	<a href="index.do" class="btn1" style="margin-top: 40px;">목록으로</a>
                             </div>
                         </div>
-                    </div>
-      
+                    	</div>
+                    	<table>
+                        	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
+                        		<c:if test="${empty prev.notice_no}">< 이전 글이 없습니다.</c:if>
+                        		<c:if test="${!empty prev.notice_no}">
+                        		<a href="view.do?notice_no=${prev.notice_no }">< 이전글 - ${prev.title }</a>
+                        		</c:if></td>
+                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
+                        		<c:if test="${!empty next.notice_no}">
+                        		<a href="view.do?notice_no=${next.notice_no }">${next.title } - 다음글 ></a>
+                        		</c:if>       
+                        		<c:if test="${empty next.notice_no}">다음 글이 없습니다. ></c:if></td>        	
+                        </table>
+                	</div>
+                	<div style="margin-top: 40px; height: 30px">
                 </div>
             </div>
         </div>

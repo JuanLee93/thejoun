@@ -22,6 +22,32 @@
 		</where>
 	</sql>
 	
+		<select id="getRownum" resultType="int" parameterType="concernboard.ConcernBoardVo">  
+		select rownum from (
+			select row_number() over () as rownum, concern_board_no, title from concern_board
+			<include refid = "boardWhere"/>
+			order by noticeYN DESC, ${orderby} ${direction}
+		) as r
+		where r.concern_board_no=#{concern_board_no};  
+	</select> 
+	<select id="getNext" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo"> 
+		select concern_board_no, title from (
+			select row_number() over () as rownum, concern_board_no, title from concern_board
+			<include refid = "boardWhere"/>
+			order by noticeYN DESC, ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}+1;
+	</select>  
+	<select id="getPrev" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo"> 
+		select concern_board_no, title from (
+			select row_number() over () as rownum, concern_board_no, title from concern_board
+			<include refid = "boardWhere"/>
+			order by noticeYN DESC, ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}-1;
+	</select>
+	
+	
 	<select id="count" resultType="int" parameterType="concernboard.ConcernBoardVo">
 		SELECT COUNT(*) FROM concern_board
 		<include refid="boardWhere"/>
@@ -37,9 +63,9 @@
 			(SELECT state FROM report WHERE report.board_no = concern_board.concern_board_no AND tablename=2 limit 1) as state
 			FROM concern_board
 		<include refid="boardWhere"/>
-			ORDER BY ${orderby} ${direction}
+			ORDER BY noticeYN DESC, ${orderby} ${direction}
 			LIMIT ${startIdx}, 10
-	</select>
+	</select>  
 
 	<!--main 페이지용 selectlist  -->
 	
@@ -92,6 +118,14 @@
 			</if>
 		WHERE concern_board_no = #{concern_board_no}
 	</update>
+	
+	<update id="updateNotice" parameterType="concernboard.ConcernBoardVo">
+		UPDATE concern_board SET
+			noticeYN='Y'
+		WHERE concern_board_no = #{concern_board_no}
+	</update>
+	 
+	 
 	 
 	<delete id="delete" parameterType="int">
 		DELETE FROM concern_board WHERE concern_board_no = #{concern_board_no}
