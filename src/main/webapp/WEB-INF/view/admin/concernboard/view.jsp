@@ -11,7 +11,7 @@ function del() {
 	if (confirm("삭제하시겠습니까?")) {
 		$.ajax({
 			url : 'deleteAjax.do',
-			data : {concern_board_no : ${data.concern_board_no}},
+			data : {board_no : ${data.concern_board_no}},
 			success : function(res) {
 				if (res.trim() == '1') {
 					alert('정상적으로 삭제되었습니다.');
@@ -19,7 +19,7 @@ function del() {
 				} else {
 					alert('삭제 오류');
 				}
-			}   
+			}
 		});
 	}
 }
@@ -44,7 +44,7 @@ function del() {
 						<div id="bbs">
 							<div id="bread">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0"
-									summary="관리자 관리 기본내용입니다.">
+									summary="관리자 자유게시판 상세페이지입니다.">
 									<colgroup>
 										<col width="10%" />
 										<col width="15%" />
@@ -60,7 +60,14 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">작성자</label></th>
-											<td colspan="10">${data.nickname }</td>
+											<td colspan="10">
+											<c:if test="${!empty data.nickname}">
+                                  	  			${data.nickname }
+                                   			</c:if>
+                                   			<c:if test="${empty data.nickname}">
+                                  	  			${data.admin_name }
+                                   			</c:if>
+											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">작성일</label></th>
@@ -68,15 +75,14 @@ function del() {
 										</tr>
 										<tr>
 											<th scope="row"><label for="">내용</label></th>
-											<td colspan="10">${data.content }</td>
+											<td colspan="10">${data.contents }</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="">첨부파일</label></th>
 											<td colspan="10">
 												<div class="weidtFile">
 													<dd>
-														<a
-															href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}"
+														<a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}"
 															target="_blank">${data.filename_org }</a>
 													</dd>
 												</div>
@@ -89,6 +95,7 @@ function del() {
 										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
+										<a class="btns" style="cursor:pointer;" href="edit.do?board_no=${data.concern_board_no }"><strong>수정</strong></a>
 										<a class="btns" style="cursor: pointer;" href="javascript:del();"><strong>삭제</strong></a>
 									</div>
 								</div>

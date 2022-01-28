@@ -220,7 +220,7 @@
 							</dl>
 						</div>
 						<div class="cont">
-							<p>${data.content }</p>
+							<p>${data.contents }</p>
 						</div>
 
 						<dl class="file">

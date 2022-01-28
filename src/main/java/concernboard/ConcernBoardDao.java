@@ -83,4 +83,7 @@ public class ConcernBoardDao {
 		}
 		return r;
 	}
+	public int adminUpdate(ConcernBoardVo vo) {
+		return sqlSessionTemplate.update("concernboard.adminUpdate", vo);
+	}
 }

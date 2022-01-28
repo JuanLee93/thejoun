@@ -21,4 +21,6 @@ public interface ConcernBoardService {
 	ConcernBoardVo getNext(ConcernBoardVo vo);
 	ConcernBoardVo getPrev(ConcernBoardVo vo);
 	int adminInsert(ConcernBoardVo vo);
+	int adminUpdate(ConcernBoardVo vo);
+	ConcernBoardVo adminEdit(int board_no);
 }

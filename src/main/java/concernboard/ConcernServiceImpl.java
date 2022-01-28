@@ -82,4 +82,14 @@ public class ConcernServiceImpl implements ConcernBoardService {
 	public int adminInsert(ConcernBoardVo vo) {
 		return concernBoardDao.noticeInsert(vo);
 	}
+	@Override
+	public int adminUpdate(ConcernBoardVo vo) {
+		return concernBoardDao.adminUpdate(vo);
+	}
+
+	@Override
+	public ConcernBoardVo adminEdit(int board_no) {
+		return concernBoardDao.selectOne(board_no);
+	}
+	
 }
