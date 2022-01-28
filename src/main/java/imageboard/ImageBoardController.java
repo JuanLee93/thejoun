@@ -113,14 +113,14 @@ public class ImageBoardController {
 	public String index(Model model, HttpServletRequest req, HttpSession sess, ImageBoardVo vo) {
 		
 		int totCount = imageBoardService.count(vo); //총 개수
-		int totPage = totCount / 10; //총 페이지 수
-		if (totCount % 10 > 0) totPage++;
+		int totPage = totCount / 12; //총 페이지 수
+		if (totCount % 12 > 0) totPage++;
 		System.out.println("totPage : "+totPage);
 		
-		int startIdx = (vo.getPage()-1) * 10;
+		int startIdx = (vo.getPage()-1) * 12;
 		vo.setStartIdx(startIdx);
 
-		int pageRange = 10;
+		int pageRange = 12;
 		int startPage = (vo.getPage()-1)/pageRange*pageRange+1; // 시작페이지
 		int endPage = startPage + pageRange - 1;// 종료페이지
 		if (endPage > totPage) endPage = totPage;
@@ -132,7 +132,7 @@ public class ImageBoardController {
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
-		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 10, param));
+		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", vo.getPage(), totPage, 12, param));
 		
 		return "imageboard/index";
 	}
