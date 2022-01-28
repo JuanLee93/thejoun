@@ -284,6 +284,7 @@ public class FreeBoardController {
 		model.addAttribute("data", freeBoardService.view(board_no));
 		
 		vo.setBoard_no(board_no);
+		vo.setIs_user('Y');
 		int Rownum = freeBoardService.getRownum(vo);
 		vo.setRownum(Rownum);
 		FreeBoardVo prev = freeBoardService.getPrev(vo);

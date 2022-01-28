@@ -57,6 +57,7 @@ public class NoticeController {
 		model.addAttribute("data", noticeService.view(notice_no));
 		
 		vo.setNotice_no(notice_no);
+		vo.setIs_user('Y');
 		int Rownum = noticeService.getRownum(vo);
 		vo.setRownum(Rownum);
 		NoticeVo prev = noticeService.getPrev(vo);
