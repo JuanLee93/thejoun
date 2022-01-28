@@ -20,4 +20,5 @@ public interface ConcernBoardService {
 	int getRownum(ConcernBoardVo vo);
 	ConcernBoardVo getNext(ConcernBoardVo vo);
 	ConcernBoardVo getPrev(ConcernBoardVo vo);
+	int adminInsert(ConcernBoardVo vo);
 }

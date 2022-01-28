@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import admin.AdminVo;
 import announce.AnnounceService;
 import announce.AnnounceVo;
 import comment.CommentService;
@@ -91,6 +92,42 @@ public class ConcernBoardController {
 		return "admin/concernboard/index";
 	}
 
+	@PostMapping("/admin/concernboard/insert.do")
+	public String adminInsert(ConcernBoardVo vo,AnnounceVo av, HttpServletRequest req, MultipartFile file, HttpSession sess) {
+		vo.setAdmin_no(((AdminVo)sess.getAttribute("adminInfo")).getAdmin_no());
+		// 파일 저장
+		if (file == null || !file.isEmpty()) {//사용자가 파일을 첨부했다면
+			try {
+				String path = req.getRealPath("/upload/");
+				String filename = file.getOriginalFilename();
+				String ext = filename.substring(filename.lastIndexOf("."));
+				String filename_real = System.currentTimeMillis() + ext;
+				
+				file.transferTo(new File(path+filename_real));
+				vo.setFilename_org(filename);
+				vo.setFilename_real(filename_real);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		int r = concernBoardService.adminInsert(vo);
+		
+		if (r > 0) {
+			req.setAttribute("msg", "정상적으로 등록되었습니다.");
+			req.setAttribute("url", "index.do");
+			
+			
+			//여기까지 알림임
+		} else {
+			req.setAttribute("msg", "등록 오류가 발생하였습니다.");
+			req.setAttribute("url", "write.do");
+		} 
+		
+		return "/include/return";
+	}
+		
+	
 	//관리자에서 게시물 view 확인
 	@GetMapping("admin/concernboard/view.do")
 	public String adminView(Model model, @RequestParam int board_no) {

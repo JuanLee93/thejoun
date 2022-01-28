@@ -9,7 +9,7 @@
 </head>
 <script>
 	$(function() {
-		$(".board_tr").click(function() {
+		$(".title").click(function() {
 			location.href = 'view.do?board_no=' + $(this).data("board_no");
 		});
 		
@@ -60,7 +60,7 @@
 			<div id="container">
 				<div id="content">
 					<div class="con_tit">
-						<h2>게시물관리 - [고민 게시판]</h2>
+						<h2>게시물관리 - 고민 게시판[목록]</h2>
 					</div>
 					<!-- //con_tit -->
 					<div class="con">
@@ -90,36 +90,48 @@
 												<th scope="col">제목</th>
 												<th scope="col">작성자</th>
 												<th scope="col">작성일</th>
-												<th scope="col" class="last">조회수</th>
-												<th scope="col">상태</th>
+												<th scope="col" >조회수</th>
+												<th scope="col" class="last" >상태</th>
 											</tr>
 										</thead>
 										<tbody>
 
 											<c:if test="${empty list }">
 												<tr>
-													<td class="first" colspan="8">등록된 글이 없습니다.</td>
+													<td class="first" colspan="7">등록된 글이 없습니다.</td>
 												</tr>
 											</c:if>
 											<c:if test="${!empty list }">
 												<c:forEach var="vo" items="${list }" varStatus="status">
-													<tr class="board_tr"
-														data-board_no="${vo.concern_board_no }"
-														style="cursor: pointer;">
-														<td scope="col" class="first"><input type="checkbox" name="no" value="${vo.concern_board_no }"/></td>
+													<tr>
+														<td class="first"><input type="checkbox" name="no" value="${vo.concern_board_no }"/></td>
+														<c:if test="${vo.noticeYN == 'Y' }">
+		                           						 	<td>[공지]</td>
+		                            					</c:if>
+		                            					<c:if test="${vo.noticeYN =='N' }">
 														<td>${(totCount-status.index) - ((concernboardVo.page-1)*10) }</td>
-														<td class="txt_l" style="text-align: left;">${vo.title }</td>
-														<td class="writer">${vo.nickname }</td>
+														</c:if>
+						                                <td class="title" data-board_no="${vo.concern_board_no }" style="cursor: pointer;">
+						                                    ${vo.title }
+						                                </td>
+						                                <td class="writer">
+						                                    <c:if test="${!empty vo.nickname}">
+				                                  	  			${vo.nickname }
+				                                   			</c:if>
+				                                   			<c:if test="${empty vo.nickname}">
+				                                  	  			${vo.admin_name }
+				                                   			</c:if>
+						                                </td>
 														<td class="date">${vo.regdate }</td>
 														<td>${vo.readcount }</td>
 														<td class="Last">
-														<c:if test="${vo.state == 1 }">
-														신고
-														</c:if>
-														<c:if test="${vo.state == 0 }">
-														정상
-														</c:if>
-													</tr>
+															<c:if test="${vo.state == 1 }">
+															신고
+															</c:if>
+															<c:if test="${vo.state == 0 }">
+															정상
+															</c:if>
+														</tr>
 												</c:forEach>
 											</c:if>
 										</tbody>

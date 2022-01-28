@@ -77,4 +77,9 @@ public class ConcernServiceImpl implements ConcernBoardService {
 	public ConcernBoardVo getPrev(ConcernBoardVo vo) {
 		return concernBoardDao.getPrev(vo);
 	}
+	
+	@Override
+	public int adminInsert(ConcernBoardVo vo) {
+		return concernBoardDao.noticeInsert(vo);
+	}
 }

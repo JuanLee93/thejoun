@@ -19,6 +19,9 @@
 			<if test="category > 0">
 			 	AND category = ${category}
 			</if>
+			<if test="is_user == 'Y'">
+				AND useYN = 'Y'
+			</if>  
 		</where>
 	</sql>
 	
@@ -55,6 +58,7 @@
 	
 	<select id="selectList" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM user WHERE userno=concern_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=concern_board.userno) as name, 
 			(SELECT nickname from user where userno=concern_board.userno) as nickname, 
@@ -90,6 +94,17 @@
 			userno,title, content, regdate, readcount, filename_org, filename_real , category
 		) values (
 			#{userno},#{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real} ,#{category}
+		)
+		<selectKey keyProperty="concern_board_no" resultType="int" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="noticeInsert" parameterType="concernboard.ConcernBoardVo" useGeneratedKeys="true">
+		INSERT INTO concern_board (
+			userno,title, content, regdate, readcount, filename_org, filename_real , category , noticeYN, admin_no, useYN
+		) values (
+			0 ,#{title}, #{content}, NOW(), #{readcount}, #{filename_org}, #{filename_real} ,#{category} ,'Y', #{admin_no}, #{isopen}
 		)
 		<selectKey keyProperty="concern_board_no" resultType="int" order="AFTER">
 			SELECT last_insert_id()

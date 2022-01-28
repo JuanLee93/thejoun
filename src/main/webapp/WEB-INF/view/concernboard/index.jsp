@@ -93,10 +93,18 @@
                                 <td>${(totCount-status.index) - ((ConcernBoardVo.page-1)*10) }</td>
                                 </c:if>
 	                                <td class="txt_l" style="text-align:left;">
+	                                <c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                                </c:if>
 	                                    ${vo.title } [${vo.c_count }]
 	                                </td>
 	                                <td class="writer">
+	                                    <c:if test="${!empty vo.nickname }">
 	                                    ${vo.nickname }
+	                                    </c:if>
+	                       			    <c:if test="${empty vo.nickname}">
+                                  		  관리자
+                                  	    </c:if>
 	                                </td>
 	                                <td class="date">${vo.regdate }</td>
 	                                <td>${vo.readcount }</td>

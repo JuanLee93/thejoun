@@ -73,4 +73,14 @@ public class ConcernBoardDao {
 	public ConcernBoardVo getPrev(ConcernBoardVo vo) {
 		return sqlSessionTemplate.selectOne("concernboard.getPrev", vo);
 	}
+	public int noticeInsert(ConcernBoardVo vo) {
+		int r = -1;
+		try {
+			r = sqlSessionTemplate.insert("concernboard.noticeInsert", vo);
+		} catch (Exception e) {
+			r = 0;
+			System.out.println(e.getMessage());
+		}
+		return r;
+	}
 }
