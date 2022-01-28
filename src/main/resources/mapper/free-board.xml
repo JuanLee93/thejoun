@@ -73,6 +73,7 @@
 
 	<select id="mainSelectList" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM user WHERE userno=free_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=free_board.userno) as name, 
 			(SELECT nickname FROM user WHERE userno=free_board.userno) as nickname, 

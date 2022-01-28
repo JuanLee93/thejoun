@@ -75,6 +75,7 @@
 	
 	<select id="mainSelectList" resultType="concernboard.ConcernBoardVo" parameterType="concernboard.ConcernBoardVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM user WHERE userno=concern_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=concern_board.userno) as name, 
 			(SELECT nickname from user where userno=concern_board.userno) as nickname, 

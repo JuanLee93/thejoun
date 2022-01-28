@@ -117,14 +117,20 @@
 				<div class="board_content" id="board_notice" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${list }" varStatus="status">
-							<li><a href="/thejoun/freeboard/view.do?board_no=${vo.board_no }">${vo.title }</a><span>${vo.nickname }</span></li>
+							<li><a href="/thejoun/freeboard/view.do?board_no=${vo.board_no }">
+								<c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                            </c:if>${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
 				<div class="board_content" id="board_data" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${concernlist }" varStatus="status">
-							<li><a href="/thejoun/concernboard/view.do?board_no=${vo.concern_board_no }">${vo.title }</a><span>${vo.nickname }</span></li>
+							<li><a href="/thejoun/concernboard/view.do?board_no=${vo.concern_board_no }">
+							<c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                            </c:if>${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
