@@ -14,14 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import concernboard.ConcernBoardService;
+import freeboard.FreeBoardService;
+import freeboard.FreeBoardVo;
+import imageboard.ImageBoardService;
 import util.CommonUtil;
+import videoboard.VideoBoardService;
 
 @Controller
 public class UserController {
 	
 	@Autowired
 	UserServiceImpl userService;
+	@Autowired
+	FreeBoardService freeboardService;
+	@Autowired
+	ConcernBoardService concernBoardService;
+	@Autowired
+	ImageBoardService imageBoardService;
+	@Autowired
+	VideoBoardService videoBoardService;
 	
 	//관리자페이지의 회원관리
 	@GetMapping("/admin/member/index.do")
@@ -187,8 +199,24 @@ public class UserController {
 		return "include/return";
 	}
 	
+	//자유게시판에 쓴 자신의 글 목록을 출력
 	@GetMapping("/user/myBoardConfirm.do")
-	public String myBoardConfirm() {
+	public String myBoardConfirm(Model model, HttpServletRequest req, FreeBoardVo fbv, HttpSession sess) {
+		fbv.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		
+		int totCount = freeboardService.count(fbv); //총 개수
+		int totPage = totCount / 10; //총 페이지수
+		if (totCount % 10 > 0) totPage++;
+		System.out.println("totPage:"+totPage);
+		
+		int startIdx = (fbv.getPage() -1) * 10;
+		fbv.setStartIdx(startIdx);
+		
+		List<FreeBoardVo> list = freeboardService.selectList(fbv); 
+		model.addAttribute("list", list);
+		model.addAttribute("totPage", totPage);
+		model.addAttribute("totCount", totCount);
+		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", fbv.getPage(), totPage, 10));
 		return "user/myBoardConfirm";
 	}
 	

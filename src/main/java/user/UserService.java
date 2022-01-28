@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import freeboard.FreeBoardVo;
 import question.QuestionVo;
 
 
@@ -20,4 +21,5 @@ public interface UserService {
 	UserVo searchPwd(UserVo vo);
 	int infoUpdate(UserVo vo);
 	int pwdChange(UserVo vo);
+	List<FreeBoardVo> selectList(FreeBoardVo fbv);
 }

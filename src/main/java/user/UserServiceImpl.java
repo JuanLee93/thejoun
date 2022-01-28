@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import concernboard.ConcernBoardVo;
+import freeboard.FreeBoardVo;
 import question.QuestionVo;
 import util.SendMail;
 
@@ -28,6 +29,10 @@ public class UserServiceImpl implements UserService {
 		return dao.selectList(vo);
 	}
 	
+	@Override
+	public List<FreeBoardVo> selectList(FreeBoardVo fbv){
+		return dao.selectList(fbv);
+	}
 	
 	@Override
 	public boolean login(UserVo vo, HttpSession sess) {
