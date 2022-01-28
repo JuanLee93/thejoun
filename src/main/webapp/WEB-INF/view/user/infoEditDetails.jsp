@@ -143,7 +143,6 @@ not
 						<li role="presentation"><a href="#">나의 글 확인</a></li>
 						<li role="presentation"><a href="#">친구 정보 확인</a></li>
 						<li role="presentation"><a href="#">북마크</a></li>
-						<li role="presentation"><a href="#">차단 친구 목록</a></li>
 						<li role="presentation"><a href="#">1:1 문의</a></li>
 					</ul>
 				</div>

@@ -62,8 +62,6 @@ div > input[type=button] {
 								href="/thejoun/user/myFriendsConfirm.do">친구 정보 확인</a></li>
 							<li role="presentation" class="active"><a
 								href="/thejoun/user/bookmark.do">북마크</a></li>
-							<li role="presentation"><a
-								href="/thejoun/user/blockFriends.do">차단 친구 목록</a></li>
 							<li role="presentation"><a href="/thejoun/user/myInquiry.do">1:1
 									문의</a></li>
 						</ul>
