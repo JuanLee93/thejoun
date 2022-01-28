@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<head>
+	<style>
+		.tttt {font-size:14px; text-decoration:none !important; height:24px; width:130px; white-space:nowrap; 
+	display:inline-block; position:relative; cursor:pointer; padding:0px 10px; top:8px; left:10px;
+	min-width:60px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; 
+	font-weight:bold; border-radius:5px; background-color:#221f1f;}
+	
+	</style>
+</head>
 	<div class="row heading">
 		<div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
 			<div class="heading-avatar-icon">
@@ -12,19 +20,11 @@
 			<a class="heading-name-meta">${otherUserno.nickname } </a> <span
 				class="heading-online">Online</span>
 		</div>
-		<div class="col-sm-1 col-xs-1  heading-dot pull-right">
-			<i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-		</div>
+		<button type="" class="tttt" onclick="chattingStop(${otherUserno.userno})" >이전내용 보기</button>
 	</div>
 
 	<div class="row message" id="conversation">
-		<div class="row message-previous">
-			<div class="col-sm-12 previous">
-				<a onclick="previous(this)" id="ankitjain28" name="20"> Show
-					Previous Message! </a>
-			</div>
-		</div>
-
+		<br>
 		<c:forEach var="vo" items="${findChatting}" varStatus="status">
 			<c:if test="${userInfo.userno != vo.from_id }"> 
 				<div class="row message-body">

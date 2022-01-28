@@ -33,7 +33,9 @@ public class ChatController {
 		List<UserVo> friendsList = cs.findFriendsList((int)uv.getUserno());
 		for(int i=0;i<friendsList.size();i++) {
 			long nowDate = friendsList.get(i).getRegdateCheck();
-			if(nowDate >= 86400) {
+			if(nowDate == 0) {
+				friendsList.get(i).setCcc("");
+			}else if(nowDate >= 86400) {
 				System.out.println(nowDate);
 				nowDate = nowDate / 86400;
 				friendsList.get(i).setCcc((int)nowDate+"일전");

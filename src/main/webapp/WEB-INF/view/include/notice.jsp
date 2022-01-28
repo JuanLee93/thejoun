@@ -74,7 +74,7 @@
  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
 }
-
+<!-- 아래꺼 필요없는거 button 만  지우면 안됨 나중에 쓸수도 있음
 .button {
  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
  background-color: #EEE;
@@ -92,7 +92,7 @@
  margin: 0;
  text-decoration: none;
  text-align: center;
-}
+}-->
 .noticeSub > svg{
 		width : 28px;
 		height : 28px;

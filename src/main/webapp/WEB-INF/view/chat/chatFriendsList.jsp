@@ -24,16 +24,8 @@
 			background-color : green;
 			text-align : center;
 			line-height : 5px;
-			
 		}
 	</style>
-	<script>
-		$(function(){
-			var today = new Date();
-			today = today - ${vo.chatregdate};
-			$(".regdateFormat"+${vo.userno})
-		});
-	</script>
 </head>
 <div class="side-one">
 	<div class="row heading" style="width:370px;">
@@ -87,9 +79,7 @@
 										</c:if>
 									</div>
 									<div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-										<c:if test="${vo.messagecount != 0}">
 											<span class="time-meta pull-right">${vo.ccc }</span>
-										</c:if>
 									</div>
 								</div>
 							</div>

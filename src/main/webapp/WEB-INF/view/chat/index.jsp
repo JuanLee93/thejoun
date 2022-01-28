@@ -32,6 +32,8 @@
 <script>
 	var chat;
 	var main;
+	var stop = "stop";
+	
 	//index페이지 시작시 바로시작하는거
 	$(function() {
 		getFriendsList();
@@ -69,12 +71,7 @@
 		});
 	}
 	
-	function getAddFriendsList(){
-		$.ajax({
-			url:"/thejoun/chat/"
-		});
-	}
-	
+	//친구목록 불러오기
 	function findChattingList(friendsUserno){
 		$("#to_id").val(friendsUserno);
 			findChatList(friendsUserno);
@@ -83,6 +80,21 @@
 			}
 			clearInterval(chat);
 			chat = setInterval(aaa,1000);
+			stop = "stop";
+	}
+	//이전내용버튼 이벤트용
+	function chattingStop(userno){
+		console.log("aa");
+		console.log(userno);
+		if(stop == "stop"){
+			clearInterval(chat);
+			stop = "go";
+			$("#tttt").val("그만보기");
+		}else if(stop == "go"){
+			findChattingList(userno);
+			$("#tttt").val("이전내용 보기");
+			stop = "stop";
+		}
 	}
 	
 	function findChatList(friendsUserno){
@@ -99,6 +111,7 @@
 			});
 		});
 	}
+	
 	
 	function sendMessage(){
 		$.ajax({
@@ -146,7 +159,7 @@
 				alert("친구요청을 거절하셨습니다.");
 				getFriendsAddList();
 			}
-		})
+		});
 	}
 	
 	function requestCancel(userno){
