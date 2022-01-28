@@ -15,6 +15,8 @@
 <script src="/thejoun/js/common.js"></script>
 <script src="/thejoun/js/main.js"></script>
 <script src="/thejoun/css/common.css"></script>
+<link rel="stylesheet" href="/thejoun/css/mypage_index.css" />
+<link rel="stylesheet" href="/thejoun/css/mypage_info.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <script>
 	function infoEditDetails() {
@@ -54,36 +56,32 @@ div > input[type=button] {
 				<div class="bs-example" data-example-id="simple-nav-stacked">
 					<div class="bs-example.left">
 						<ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
-							<li role="presentation"><a href="/thejoun/user/mypage.do">나의
-									정보</a></li>
-							<li role="presentation"><a
-								href="/thejoun/user/myBoardConfirm.do">나의 글 확인</a></li>
-							<li role="presentation"><a
-								href="/thejoun/user/myFriendsConfirm.do">친구 정보 확인</a></li>
-							<li role="presentation" class="active"><a
-								href="/thejoun/user/bookmark.do">북마크</a></li>
-							<li role="presentation"><a href="/thejoun/user/myInquiry.do">1:1
-									문의</a></li>
+							<li role="presentation" class="active"><a href="/thejoun/user/mypage.do">나의 정보</a></li>
+							<li role="presentation"><a href="/thejoun/user/myBoardConfirm.do">나의 글 확인</a></li>
+							<li role="presentation"><a href="/thejoun/user/myFriendsConfirm.do">친구 정보 확인</a></li>
+							<li role="presentation" ><a href="/thejoun/user/bookmark.do">북마크</a></li>
+							<li role="presentation"><a href="/thejoun/user/myInquiry.do">1:1문의</a></li>
 						</ul>
 					</div>
 				</div>
-				<form action="infoEdit.do" method="post" id="board" name="board"
-					onsubmit="return loginCheck();">
+				<form action="infoEdit.do" method="post" id="board" name="board" onsubmit="return loginCheck();">
 					<div class="size">
 						<ul>
 							<h3 class="sub_title2">회원정보 수정</h3>
 							<h4>비밀번호(재확인) 인증</h4>
 							<br>
-							<li><i class="bi bi-person"></i></i>&nbsp;&nbsp;&nbsp; <input
-								type="text" id="id" name="id" placeholder="아이디"></li>
-							<li><i class="bi bi-key"></i>&nbsp;&nbsp;&nbsp; <input
-								type="password" id="pwd" name="pwd" placeholder="비밀번호">
+							<li>
+								<i class="bi bi-person"></i></i>&nbsp;&nbsp;&nbsp; 
+								<input type="text" id="id" name="id" placeholder="아이디"></li>
+							<li>
+								<i class="bi bi-key"></i>&nbsp;&nbsp;&nbsp; 
+								<input type="password" id="pwd" name="pwd" placeholder="비밀번호">
 							</li>
 							<br>
-							<div class="login_btn">
-								<input type="submit" value="로그인" alt="로그인"> <input
-									type="button" value="이전 페이지로" onclick="myinfo()">
-							</div>
+								<div class="login_btn">
+								<input type="submit" value="로그인" alt="로그인"> 
+								<input type="button" value="이전 페이지로" onclick="location.href='/thejoun/user/mypage.do'">
+								</div>
 						</ul>
 					</div>
 				</form>

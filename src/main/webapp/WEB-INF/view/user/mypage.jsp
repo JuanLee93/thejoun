@@ -53,8 +53,8 @@
 					</ul>
 					<ul><br><br>
 						<div id="btn_group" style="text-align:center;">
-    						<button class="btn_useredit1" href="/thejoun/user/infoEdit.do">회원정보 수정</button>
-    						<button class="btn_useredit2" onclick="btn_useredit2();">비밀번호 변경</button>
+    						<button class="btn_useredit1"><a href="/thejoun/user/infoEdit.do">회원정보 수정</button>
+    						<button class="btn_useredit2"><a href="/thejoun/user/pwdChange.do">비밀번호 변경</button>
 						</div>
 					</ul>
 				</div>

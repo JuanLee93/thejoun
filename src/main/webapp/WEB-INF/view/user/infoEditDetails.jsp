@@ -139,11 +139,11 @@ not
 			<div class="bs-example" data-example-id="simple-nav-stacked">
 				<div class="bs-example.left">
 					<ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
-						<li role="presentation" class="active"><a href="#">나의 정보</a></li>
-						<li role="presentation"><a href="#">나의 글 확인</a></li>
-						<li role="presentation"><a href="#">친구 정보 확인</a></li>
-						<li role="presentation"><a href="#">북마크</a></li>
-						<li role="presentation"><a href="#">1:1 문의</a></li>
+						<li role="presentation" class="active"><a href="/thejoun/user/mypage.do">나의 정보</a></li>
+						<li role="presentation"><a href="/thejoun/user/myBoardConfirm.do">나의 글 확인</a></li>
+						<li role="presentation"><a href="/thejoun/user/myFriendsConfirm.do">친구 정보 확인</a></li>
+						<li role="presentation"><a href="/thejoun/user/bookmark.do">북마크</a></li>
+						<li role="presentation"><a href="/thejoun/user/myInquiry.do">1:1 문의</a></li>
 					</ul>
 				</div>
 			</div>
