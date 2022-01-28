@@ -61,35 +61,33 @@
 </style>
 <script>
 	$(function (){
-		chatMain();
-		notice();
-		setInterval(chatMain,1000);
+		if (${!empty userInfo }){
+			chatMain();
+			notice();
+			setInterval(chatMain,1000);
+		}
 	});
 	
 	function chatMain(){
-		if (${!empty userInfo }) {
-			$.ajax({
-				url : "/thejoun/include/chatMain.do",
-				type : "get",
-				success : function(res){
-					$("#chatMain").html(res);
-					console.log("3");
-				}
-			});
-		}
+		$.ajax({
+			url : "/thejoun/include/chatMain.do",
+			type : "get",
+			success : function(res){
+				$("#chatMain").html(res);
+				console.log("3");
+			}
+		});
 	}
 	
 	function notice(){
-		if (${!empty userInfo }) {
-			$.ajax({
-				url : "/thejoun/include/notice.do",
-				type : "get",
-				success : function(res){
-					$("#notice").html(res);
-					console.log("2");
-				}
-			});
-		}
+		$.ajax({
+			url : "/thejoun/include/notice.do",
+			type : "get",
+			success : function(res){
+				$("#notice").html(res);
+				console.log("2");
+			}
+		});
 	}
 	
 	function view(){
@@ -112,8 +110,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<head>
-</head>
 	 <div class="header">
 		<div class="size">
 			<a href="/thejoun/index.do"><img src="/thejoun/img/logo.png"></a>

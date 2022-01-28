@@ -73,9 +73,11 @@ public class MainController {
 	
 	@GetMapping("/include/chatMain.do")
 	public String chatMain(HttpSession sess, Model model) {
-		UserVo uv = (UserVo)sess.getAttribute("userInfo");
-		int chatCountMain = as.chatCountMain(uv.getUserno());
-		model.addAttribute("chatCountMain", chatCountMain);
+		if(sess.getAttribute("userInfo") != null) {
+			UserVo uv = (UserVo)sess.getAttribute("userInfo");
+			int chatCountMain = as.chatCountMain(uv.getUserno());
+			model.addAttribute("chatCountMain", chatCountMain);
+		}
 		return "include/chatMain";
 	}
 
