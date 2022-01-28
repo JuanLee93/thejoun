@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import announce.AnnounceService;
 import announce.AnnounceUserVo;
@@ -83,6 +84,14 @@ public class MainController {
 			model.addAttribute("chatCountMain", chatCountMain);
 		}
 		return "include/chatMain";
+	}
+	
+	@PostMapping("/include/deleteAnnounce.do")
+	public String deleteAnnounce(HttpSession sess, Model model) {
+		UserVo uv = (UserVo)sess.getAttribute("userInfo");
+		int acceptDelete = as.deleteAnnounce(uv.getUserno());
+		model.addAttribute("result", acceptDelete);
+		return "include/result";
 	}
 
 

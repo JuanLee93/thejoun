@@ -84,8 +84,6 @@
 	}
 	//이전내용버튼 이벤트용
 	function chattingStop(userno){
-		console.log("aa");
-		console.log(userno);
 		if(stop == "stop"){
 			clearInterval(chat);
 			stop = "go";

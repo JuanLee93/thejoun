@@ -75,6 +75,10 @@
 	<select id="announceCount" parameterType="int" resultType="int">
 		SELECT count(*) FROM announce WHERE my_userno = #{value} AND read_check = 1
 	</select>
+	
+	<update id="deleteAnnounce" parameterType="int">
+		UPDATE announce SET read_check = 0 WHERE my_userno= #{value} AND read_check = 1 
+	</update>
 
 </mapper>
 
