@@ -82,4 +82,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int adminInsert(FreeBoardVo vo) {
 		return freeBoardDao.noticeInsert(vo);
 	}
+	
+	@Override
+	public FreeBoardVo adminEdit(int board_no) {
+		return freeBoardDao.selectOne(board_no);
+	}
+	
+	@Override
+	public int adminUpdate(FreeBoardVo vo) {
+		return freeBoardDao.adminUpdate(vo);
+	}
 }

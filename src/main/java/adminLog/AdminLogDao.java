@@ -27,8 +27,4 @@ public class AdminLogDao {
 		return sst.insert("adminLog.insert", vo);
 	}
 
-	public AdminLogVo selectOne(int log_no) {
-		return sst.selectOne("adminLog.selectOne", log_no);
-	}
-
 }

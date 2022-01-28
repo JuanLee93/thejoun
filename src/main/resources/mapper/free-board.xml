@@ -100,7 +100,7 @@
 		INSERT INTO free_board (
 			userno, title, contents, regdate, readcount, filename_org, filename_real, noticeYN, admin_no, useYN
 		) values (
-			0, #{title}, #{contents}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, 'Y', #{admin_no}, #{isopen}
+			0, #{title}, #{contents}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, 'Y', #{admin_no}, #{useYN}
 		)
 		<selectKey keyProperty="board_no" resultType="int" order="AFTER">
 			SELECT last_insert_id()
@@ -110,6 +110,7 @@
 	<!-- 수정페이지에서는 selectOne만 호출/ 상세페이지에서는 selectOne/updateReadcount 호출해야 한다. -->
 	<select id="selectOne" parameterType="int" resultType="freeboard.FreeBoardVo">
 		SELECT *, (SELECT nickname FROM user WHERE userno=free_board.userno) as nickname,
+			(SELECT name FROM admin WHERE admin_no=free_board.admin_no) as admin_name,
 			(SELECT count(*) FROM thejoun.like WHERE board_no= free_board.board_no AND tablename=1) as l_count,
 			(SELECT state FROM report WHERE report.board_no = free_board.board_no AND tablename=1 limit 1) as state
 		FROM free_board WHERE board_no = #{xxx}
@@ -122,6 +123,19 @@
 	<update id="update" parameterType="freeboard.FreeBoardVo">
 		UPDATE free_board SET
 			title=#{title}
+			, contents=#{contents}
+			<if test="filename_org != null">
+			, filename_org=#{filename_org}
+			, filename_real=#{filename_real}
+			</if>
+		WHERE board_no = #{board_no}
+	</update>
+	
+	<update id="adminUpdate" parameterType="freeboard.FreeBoardVo">
+		UPDATE free_board SET
+			title=#{title}
+			, admin_no=#{admin_no}
+			, useYN=#{useYN}
 			, contents=#{contents}
 			<if test="filename_org != null">
 			, filename_org=#{filename_org}

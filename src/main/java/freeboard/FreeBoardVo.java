@@ -33,8 +33,7 @@ public class FreeBoardVo extends CommonVo {
 	private int state;//상태-정상/신고된 글
 	private int rownum;//이전글/다음글에서 사용
 	private int new_time;//새로운 글(new) 표시
-	private String isopen;//관리자페이지-자유게시판 등록(공개/비공개-radio name)
-	private char is_user;//이 값이 'Y'이면 사용자화면에서 공개(useYN = 'Y')
+	private char is_user;//이 값이 'Y'이고, useYN = 'Y'이면 사용자화면에서 공개
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

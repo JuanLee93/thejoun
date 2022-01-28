@@ -65,7 +65,7 @@ function del() {
                                   	  			${data.nickname }
                                    			</c:if>
                                    			<c:if test="${empty data.nickname}">
-                                  	  			관리자
+                                  	  			${data.admin_name }
                                    			</c:if>
 											</td>
 										</tr>
@@ -95,6 +95,7 @@ function del() {
 										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
+										<a class="btns" style="cursor:pointer;" href="edit.do?board_no=${data.board_no }"><strong>수정</strong></a>
 										<a class="btns" style="cursor: pointer;" href="javascript:del();"><strong>삭제</strong></a>
 									</div>
 								</div>

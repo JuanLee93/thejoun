@@ -24,6 +24,8 @@
 		SELECT *,
 			(SELECT name from admin WHERE admin_no = admin_log.admin_no) as name
 		FROM admin_log
+		order by date DESC
+		limit ${startIdx}, 10
 	</select>
 	
 	<insert id="insert" parameterType="adminLog.AdminLogVo" useGeneratedKeys="true">
@@ -33,9 +35,5 @@
 			 #{admin_no}, #{msg}, NOW(), #{login_IP}
 		)
 	</insert>
-	
-	<select id="selectOne" parameterType="int" resultType="adminLog.AdminLogVo">
-		SELECT * FROM admin_log WHERE log_no = #{log_no}
-	</select> 
 	
 </mapper>

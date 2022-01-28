@@ -21,6 +21,7 @@ import announce.AnnounceVo;
 import comment.CommentService;
 import comment.CommentVo;
 import friends.FriendsService;
+import notice.NoticeVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -79,6 +80,47 @@ public class FreeBoardController {
 	@RequestMapping("/admin/freeboard/write.do")
 	public String adminWrite() {
 		return "admin/freeboard/write";
+	}
+	
+	@GetMapping("/admin/freeboard/edit.do")
+	public String adminEdit(Model model, @RequestParam int board_no) {
+		model.addAttribute("data", freeBoardService.adminEdit(board_no));
+		return "admin/freeboard/edit";
+	}
+	
+	@PostMapping("/admin/freeboard/update.do")
+	public String adminUpdate(Model model, FreeBoardVo vo, MultipartFile file, HttpServletRequest req) {
+		if ("1".equals(req.getParameter("delCheck"))) {
+			FreeBoardVo bv = freeBoardService.adminEdit(vo.getBoard_no());
+			File f = new File(req.getRealPath("/upload/")+bv.getFilename_real());
+			f.delete();//실제 서버에서 삭제처리
+			vo.setFilename_org("");
+			vo.setFilename_real("");
+		}
+		if (!file.isEmpty()) {
+			try {
+				String path = req.getRealPath("/upload/");
+				String filename = file.getOriginalFilename();
+				String ext = filename.substring(filename.lastIndexOf("."));
+				String filename_real = System.currentTimeMillis() + ext;
+				
+				file.transferTo(new File(path+filename_real));
+				vo.setFilename_org(filename);
+				vo.setFilename_real(filename_real);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		int r = freeBoardService.adminUpdate(vo);
+		if ( r > 0 ) {
+			model.addAttribute("msg", "정상적으로 수정되었습니다.");
+			model.addAttribute("url", "view.do?board_no="+vo.getBoard_no());
+		} else {
+			model.addAttribute("msg", "수정 오류가 발생하였습니다.");
+			model.addAttribute("url", "edit.do?board_no="+vo.getBoard_no());
+		}
+		return "include/return";
 	}
 	
 	@PostMapping("/admin/freeboard/insert.do")

@@ -36,6 +36,7 @@
                 <div class="bbs">
                     <table class="list">
                     <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+                    <span style="text-align:right;">보기 정렬</span>
                         <caption>자유게시판 목록</caption>
                         <colgroup>
                             <col width="80px" />

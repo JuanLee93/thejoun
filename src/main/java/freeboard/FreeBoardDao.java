@@ -82,4 +82,8 @@ public class FreeBoardDao {
 		}
 		return r;
 	}
+	
+	public int adminUpdate(FreeBoardVo vo) {
+		return sqlSessionTemplate.update("freeboard.adminUpdate", vo);
+	}
 }

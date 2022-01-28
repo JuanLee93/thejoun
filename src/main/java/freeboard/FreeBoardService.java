@@ -20,4 +20,6 @@ public interface FreeBoardService {
 	int getRownum(FreeBoardVo vo);
 	FreeBoardVo getNext(FreeBoardVo vo);
 	FreeBoardVo getPrev(FreeBoardVo vo);
+	FreeBoardVo adminEdit(int board_no);
+	int adminUpdate(FreeBoardVo vo);
 }

@@ -26,9 +26,4 @@ public class AdminLogServiceImpl implements AdminLogService {
 		return dao.selectList(vo);
 	}
 
-	@Override
-	public AdminLogVo view(int log_no) {
-		return dao.selectOne(log_no);
-	}
-
 }

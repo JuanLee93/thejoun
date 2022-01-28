@@ -44,13 +44,6 @@ public class AdminLogController {
 		return "admin/loginInfo/index";
 	}
 	
-	@GetMapping("/admin/loginInfo/view.do")
-	public String adminView(Model model, @RequestParam int admin_no) {
-		model.addAttribute("data", adminService.view(admin_no));
-
-		return "admin/loginInfo/view";
-	}
-	
 	@PostMapping("/admin/loginInfo/insert.do")
 	public String insert(AdminLogVo vo, HttpServletRequest req) {
 		if(adminService.insert(vo) > 0) {
