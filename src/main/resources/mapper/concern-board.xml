@@ -154,6 +154,11 @@
 			noticeYN='Y'
 		WHERE concern_board_no = #{concern_board_no}
 	</update>
+	<update id="updateNotNotice" parameterType="concernboard.ConcernBoardVo">
+		UPDATE concern_board SET
+			noticeYN='N'
+		WHERE concern_board_no = #{concern_board_no}
+	</update>
 	 
 	 
 	 

@@ -17,6 +17,7 @@ public interface ConcernBoardService {
 	int delete(ConcernBoardVo vo);
 	int updateAnnounce(CommentVo cv);
 	int updateNotice(ConcernBoardVo vo);
+	int updateNotNotice(ConcernBoardVo vo);
 	int getRownum(ConcernBoardVo vo);
 	ConcernBoardVo getNext(ConcernBoardVo vo);
 	ConcernBoardVo getPrev(ConcernBoardVo vo);

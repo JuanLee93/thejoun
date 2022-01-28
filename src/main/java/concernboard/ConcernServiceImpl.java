@@ -91,5 +91,10 @@ public class ConcernServiceImpl implements ConcernBoardService {
 	public ConcernBoardVo adminEdit(int board_no) {
 		return concernBoardDao.selectOne(board_no);
 	}
+
+	@Override
+	public int updateNotNotice(ConcernBoardVo vo) {
+		return concernBoardDao.updateNotNotice(vo);
+	}
 	
 }

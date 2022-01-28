@@ -199,12 +199,22 @@ public class ConcernBoardController {
 	}
 	
 	@PostMapping("/admin/concernboard/noticeUpdateAjax.do")
-	public String adminNoticeUpdateAjax(HttpServletRequest req) {
+	public String adminNoticeUpdateAjax(HttpServletRequest req) { //일반 사용자 일반글 ->공지글로 변경
 		String[] updateArray = req.getParameterValues("no");
 		for (int i=0; i<updateArray.length; i++) {
 			ConcernBoardVo vo = new ConcernBoardVo();
 			vo.setConcern_board_no(Integer.parseInt(updateArray[i]));
 			concernBoardService.updateNotice(vo);
+		}
+		return "include/result";
+	}
+	@PostMapping("/admin/concernboard/noticeNotUpdateAjax.do")
+	public String adminNoticeNotUpdateAjax(HttpServletRequest req) { //일반 사용자 공지글 -> 일반글로 다시 변경
+		String[] updateArray = req.getParameterValues("no");
+		for (int i=0; i<updateArray.length; i++) {
+			ConcernBoardVo vo = new ConcernBoardVo();
+			vo.setConcern_board_no(Integer.parseInt(updateArray[i]));
+			concernBoardService.updateNotNotice(vo);
 		}
 		return "include/result";
 	}

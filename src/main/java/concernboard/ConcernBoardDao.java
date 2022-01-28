@@ -61,6 +61,9 @@ public class ConcernBoardDao {
 	public int updateNotice(ConcernBoardVo vo) {
 		return sqlSessionTemplate.update("concernboard.updateNotice", vo);
 	}
+	public int updateNotNotice(ConcernBoardVo vo) {
+		return sqlSessionTemplate.update("concernboard.updateNotNotice", vo);
+	}
 	
 	public int getRownum(ConcernBoardVo vo) {
 		return sqlSessionTemplate.selectOne("concernboard.getRownum", vo);
