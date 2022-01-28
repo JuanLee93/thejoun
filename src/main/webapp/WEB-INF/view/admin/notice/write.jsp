@@ -25,8 +25,8 @@ $(function() {
 		fCreator: "createSEditor2"
 	});
 	
-	$("input:radio[name=isopen]").on("click", function() {
-		var checked_radio = $('input:radio[name=isopen]:checked').val(); // 선택된 radio의 value 가져오기
+	$("input:radio[name=useYN]").on("click", function() {
+		var checked_radio = $('input:radio[name=useYN]:checked').val(); // 선택된 radio의 value 가져오기
 		if(checked_radio === undefined) // 선택을 하지 않았을 경우
 		{
 		    alert('옵션을 선택해주세요.');
@@ -95,8 +95,8 @@ function goSave() {
 									<tr>
 										<th scope="row"><label for="">*공개/비공개</label></th>
 										<td colspan="10">
-											<input type="radio" id="open" name="isopen" value="Y" checked="checked"/> 공개	
-											<input type="radio" id="close" name="isopen" value="N" /> 비공개	
+											<input type="radio" id="open" name="useYN" value="Y" checked="checked"/> 공개	
+											<input type="radio" id="close" name="useYN" value="N" /> 비공개	
 										</td>
 									</tr>
 									<tr>

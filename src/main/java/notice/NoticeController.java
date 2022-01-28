@@ -28,7 +28,7 @@ public class NoticeController {
 	
 	@GetMapping("/notice/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, NoticeVo vo) {
-
+		vo.setIs_user('Y');
 		int totCount = noticeService.count(vo); //총 개수
 		int totPage = totCount / 10; //총 페이지 수
 		if (totCount % 10 > 0) totPage++;

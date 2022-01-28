@@ -60,6 +60,9 @@
                             <tr class="board_tr" data-notice_no="${vo.notice_no }" style="cursor: pointer;">
                                 <td>${(totCount-status.index) - ((noticeVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
+                                 	<c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                                </c:if>
                                     ${vo.title }
                                 </td>
                                 <td class="writer">
