@@ -47,6 +47,19 @@
 			});
 		}
 	}
+	
+	function goUpdate() {//체크박스 공지글 적용 취소
+		if (confirm("이 글을 일반글로 적용하시겠습니까?")) {
+			$.ajax({
+				url : 'noticeNotUpdateAjax.do',
+				type : 'POST',
+				data : $("#frm").serialize(),
+				success : function(res) {
+					alert('선택하신 글을 일반글로 적용하였습니다.');
+				}
+			});
+		}
+	}
 </script>
 </head>
 <body> 
@@ -138,6 +151,7 @@
 								<div class="btnLeft">
 									<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
 									<a class="btns" href="#" onclick="javascript:goNoticeUpdate();"><strong>공지글로 적용</strong> </a>
+									<a class="btns" href="#" onclick="javascript:goUpdate();"><strong>공지글 취소</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="write.do"><strong>등록</strong> </a>

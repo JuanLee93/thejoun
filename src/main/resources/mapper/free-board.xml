@@ -150,6 +150,12 @@
 			noticeYN='Y'
 		WHERE board_no = #{board_no}
 	</update>
+	
+	<update id="updateNotNotice" parameterType="freeboard.FreeBoardVo">
+		UPDATE free_board SET
+			noticeYN='N'
+		WHERE board_no = #{board_no}
+	</update>
 	 
 	<delete id="delete" parameterType="int">
 		DELETE FROM free_board WHERE board_no = #{board_no}

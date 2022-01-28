@@ -60,6 +60,10 @@ public class FreeBoardDao {
 		return sqlSessionTemplate.update("freeboard.updateNotice", vo);
 	}
 	
+	public int updateNotNotice(FreeBoardVo vo) {
+		return sqlSessionTemplate.update("freeboard.updateNotNotice", vo);
+	}
+	
 	public int getRownum(FreeBoardVo vo) {
 		return sqlSessionTemplate.selectOne("freeboard.getRownum", vo);
 	}
