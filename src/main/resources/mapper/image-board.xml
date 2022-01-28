@@ -65,6 +65,20 @@
 			ORDER BY ${orderby} ${direction}
 			LIMIT ${startIdx}, 12
 	</select>
+	
+	<select id="mainSelectList" resultType="imageboard.ImageBoardVo" parameterType="imageboard.ImageBoardVo">
+		SELECT *, 
+			(SELECT id FROM user WHERE userno=image_board.userno) as id, 
+			(SELECT name FROM user WHERE userno=image_board.userno) as name, 
+			(SELECT nickname FROM user WHERE userno=image_board.userno) as nickname, 
+			(SELECT count(*) FROM comment WHERE board_no= image_board.image_board_no AND tablename=3) as c_count,
+			(SELECT count(*) FROM thejoun.like WHERE board_no= image_board.image_board_no AND tablename=3) as l_count,
+			(SELECT state FROM report WHERE report.board_no= image_board.image_board_no AND tablename=3 limit 1) as state
+			FROM image_board
+		<include refid="boardWhere"/>
+			ORDER BY ${orderby} DESC
+			LIMIT 4
+	</select>
 
 	<insert id="insert" parameterType="imageboard.ImageBoardVo" useGeneratedKeys="true">
 		INSERT INTO image_board (

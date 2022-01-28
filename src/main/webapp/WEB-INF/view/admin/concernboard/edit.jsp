@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -56,7 +57,6 @@ function goSave() {
 	oEditors.getById['contents'].exec("UPDATE_CONTENTS_FIELD", []);
 	$("#frm").submit();
 }
-
 </script>
 </head>
 <body> 
@@ -70,14 +70,16 @@ function goSave() {
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>자유게시판 - [공지사항 작성]</h2>
+					<h2>자유게시판 - [수정]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data">
+							<input type="hidden" name="concern_board_no" value="${data.concern_board_no }">
+							<input type="hidden" name="admin_no" value="${data.admin_no }">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -91,26 +93,42 @@ function goSave() {
 									<tr>
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" />	
+											<input type="text" id="title" name="title" class="w100" value="${data.title }" />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*공개/비공개</label></th>
 										<td colspan="10">
-											<input type="radio" id="open" name="useYN" value="Y" checked="checked"/> 공개	
-											<input type="radio" id="close" name="useYN" value="N" /> 비공개	
+											<input type="radio" id="open" name="useYN" value="Y" <c:if test="${data.useYN == 'Y' }">checked</c:if> checked="checked"/> 공개	
+											<input type="radio" id="close" name="useYN" value="N" <c:if test="${data.useYN == 'N' }">checked</c:if>/> 비공개	
 										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">작성자</label></th>
+										<td colspan="10">
+										<c:if test="${!empty data.nickname}">
+                                 	  			${data.nickname }
+                                  			</c:if>
+                                  			<c:if test="${empty data.nickname}">
+                                 	  			${data.admin_name }
+                                  			</c:if>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">작성일</label></th>
+										<td colspan="10">${data.regdate }</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id="contents" name="contents" title="내용을 입력해주세요" style="width:100%;"></textarea>	
+											<textarea id="contents" name="contents" title="내용을 입력해주세요" style="width:100%;">${data.contents }</textarea>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
 										<td colspan="10">
-											<input type="file" id="file" name="file" class="w100" title="첨부파일을 업로드 해주세요." />	
+											<input type="checkbox" name="delCheck" value="1">기존파일삭제(${data.filename_org })<br>
+											<input type="file" id="file" name="file" class="w100"/>	
 										</td>
 									</tr>
 								</tbody>

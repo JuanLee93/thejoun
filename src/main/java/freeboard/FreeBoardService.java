@@ -17,6 +17,7 @@ public interface FreeBoardService {
 	int delete(FreeBoardVo vo);
 	int updateAnnounce(CommentVo cv);
 	int updateNotice(FreeBoardVo vo);
+	int updateNotNotice(FreeBoardVo vo);
 	int getRownum(FreeBoardVo vo);
 	FreeBoardVo getNext(FreeBoardVo vo);
 	FreeBoardVo getPrev(FreeBoardVo vo);

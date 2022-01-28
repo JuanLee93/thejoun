@@ -16,6 +16,9 @@
 			<if test="admin_no > 0">
 				AND admin_no = ${admin_no}
 			</if>
+			<if test="is_user == 'Y'">
+				AND useYN = 'Y'
+			</if>
 		</where>
 	</sql>
 	
@@ -51,6 +54,7 @@
 	
 	<select id="selectList" resultType="notice.NoticeVo" parameterType="notice.NoticeVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM admin WHERE admin_no=notice.admin_no) as id, 
 			(SELECT name FROM admin WHERE admin_no=notice.admin_no) as name
 			FROM notice
@@ -72,9 +76,9 @@
 
 	<insert id="insert" parameterType="notice.NoticeVo">
 		INSERT INTO notice (
-			admin_no, title, contents, regdate, readcount, filename_org, filename_real, newnotice
+			admin_no, title, contents, regdate, readcount, filename_org, filename_real, useYN
 		) values (
-			#{admin_no}, #{title}, #{contents}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{newnotice}
+			#{admin_no}, #{title}, #{contents}, NOW(), #{readcount}, #{filename_org}, #{filename_real}, #{useYN}
 		)
 	</insert>
 	
@@ -92,6 +96,7 @@
 	<update id="update" parameterType="notice.NoticeVo">
 		UPDATE notice SET
 			title=#{title}
+			, useYN=#{useYN}
 			, contents=#{contents}
 			<if test="filename_org != null">
 			, filename_org=#{filename_org}

@@ -43,4 +43,8 @@ public class AnnounceDao {
 	public int announceCount(int userno) {
 		return sst.selectOne("announce.announceCount", userno);
 	}
+	
+	public int deleteAnnounce(int userno) {
+		return sst.insert("announce.deleteAnnounce", userno);
+	}
 }

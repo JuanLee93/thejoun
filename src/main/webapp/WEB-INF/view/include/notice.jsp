@@ -42,6 +42,7 @@
 	border : 1px solid black;
 	align : right;
 	overflow: auto;
+	cursor : pointer;
 }
 .noticeMain > li{
 	border : 1px solid black;
@@ -49,6 +50,7 @@
 }
 .noticeMain > li:hover{
 	background-color : #eeeeee;
+	 cursor : pointer;
 }
 .nav-counter {
  position:absolute;
@@ -74,25 +76,6 @@
  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
 }
-<!-- 아래꺼 필요없는거 button 만  지우면 안됨 나중에 쓸수도 있음
-.button {
- box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
- background-color: #EEE;
- display: inline-block;
- vertical-align: middle;
- border: 1px solid #d4d4d4;
- height: 32px;
- line-height: 30px;
- padding: 0px 25.6px;
- font-weight: 300;
- font-size: 14px;
- font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
- color: #666;
- text-shadow: 0 1px 1px white;
- margin: 0;
- text-decoration: none;
- text-align: center;
-}-->
 .noticeSub > svg{
 		width : 28px;
 		height : 28px;
@@ -113,6 +96,7 @@
 		<span class="nav-counter">${announceCount }</span>
 	</a>
 	<ul class="noticeMain">
+		<li onclick="deleteAnnounce();">모두 지우기</li>
 		<c:forEach var="vo" items="${userVoList}" varStatus="status">
 			<c:if test="${vo.board_or_comment == 0 }">
 				<li onclick="goBoard(${vo.boardno},${vo.tablename });">친구 ${vo.nickname} 님이 게시글을 올렸어요 <br> 게시글내용 : ${vo.content} <br> 알림일 : ${vo.regdate }</li>

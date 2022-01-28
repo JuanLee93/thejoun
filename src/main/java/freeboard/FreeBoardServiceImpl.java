@@ -92,4 +92,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int adminUpdate(FreeBoardVo vo) {
 		return freeBoardDao.adminUpdate(vo);
 	}
+
+	@Override
+	public int updateNotNotice(FreeBoardVo vo) {
+		return freeBoardDao.updateNotNotice(vo);
+	}
 }

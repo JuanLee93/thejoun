@@ -193,12 +193,23 @@ public class FreeBoardController {
 	}
 	
 	@PostMapping("/admin/freeboard/noticeUpdateAjax.do")
-	public String adminNoticeUpdateAjax(HttpServletRequest req) {
+	public String adminNoticeUpdateAjax(HttpServletRequest req) {//일반 사용자 일반글 -> 공지글로 변경
 		String[] updateArray = req.getParameterValues("no");
 		for (int i=0; i<updateArray.length; i++) {
 			FreeBoardVo vo = new FreeBoardVo();
 			vo.setBoard_no(Integer.parseInt(updateArray[i]));
 			freeBoardService.updateNotice(vo);
+		}
+		return "include/result";
+	}
+	
+	@PostMapping("/admin/freeboard/noticeNotUpdateAjax.do")
+	public String adminNoticeNotUpdateAjax(HttpServletRequest req) {//일반 사용자 공지글 -> 일반글로 다시 변경
+		String[] updateArray = req.getParameterValues("no");
+		for (int i=0; i<updateArray.length; i++) {
+			FreeBoardVo vo = new FreeBoardVo();
+			vo.setBoard_no(Integer.parseInt(updateArray[i]));
+			freeBoardService.updateNotNotice(vo);
 		}
 		return "include/result";
 	}
@@ -284,6 +295,7 @@ public class FreeBoardController {
 		model.addAttribute("data", freeBoardService.view(board_no));
 		
 		vo.setBoard_no(board_no);
+		vo.setIs_user('Y');
 		int Rownum = freeBoardService.getRownum(vo);
 		vo.setRownum(Rownum);
 		FreeBoardVo prev = freeBoardService.getPrev(vo);

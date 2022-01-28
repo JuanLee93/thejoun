@@ -42,7 +42,7 @@ public class ConcernBoardController {
 	
 	@GetMapping("/concernboard/index.do")
 	public String index(Model model, HttpServletRequest req, HttpSession sess, ConcernBoardVo vo) {
-		
+		vo.setIs_user('Y');
 		int totCount = concernBoardService.count(vo); //총 개수
 		int totPage = totCount / 10; //총 페이지 수
 		if (totCount % 10 > 0) totPage++;
@@ -139,6 +139,51 @@ public class ConcernBoardController {
 		return "admin/concernboard/view";
 	}
 	
+	@RequestMapping("/admin/concernboard/write.do")
+	public String adminWrite() {
+		return "admin/concernboard/write";
+	}
+	
+	@GetMapping("/admin/concernboard/edit.do")
+	public String adminEdit(Model model, @RequestParam int board_no) {
+		model.addAttribute("data", concernBoardService.adminEdit(board_no));
+		return "admin/concernboard/edit";
+	}
+		
+	@PostMapping("/admin/concernboard/update.do")
+	public String adminUpdate(Model model, ConcernBoardVo vo, MultipartFile file, HttpServletRequest req) {
+		if ("1".equals(req.getParameter("delCheck"))) {
+			ConcernBoardVo bv = concernBoardService.adminEdit(vo.getConcern_board_no());
+			File f = new File(req.getRealPath("/upload/")+bv.getFilename_real());
+			f.delete();//실제 서버에서 삭제처리
+			vo.setFilename_org("");
+			vo.setFilename_real("");
+		}
+		if (!file.isEmpty()) {
+			try {
+				String path = req.getRealPath("/upload/");
+				String filename = file.getOriginalFilename();
+				String ext = filename.substring(filename.lastIndexOf("."));
+				String filename_real = System.currentTimeMillis() + ext;
+				
+				file.transferTo(new File(path+filename_real));
+				vo.setFilename_org(filename);
+				vo.setFilename_real(filename_real);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		int r = concernBoardService.adminUpdate(vo);
+		if ( r > 0 ) {
+			model.addAttribute("msg", "정상적으로 수정되었습니다.");
+			model.addAttribute("url", "view.do?board_no="+vo.getConcern_board_no());
+		} else {
+			model.addAttribute("msg", "수정 오류가 발생하였습니다.");
+			model.addAttribute("url", "edit.do?board_no="+vo.getConcern_board_no());
+		}
+		return "include/return";
+	}
 	@PostMapping("/admin/concernboard/boardDeleteAjax.do")
 	public String adminBoardDeleteAjax(HttpServletRequest req, Model model) {
 		String[] deleteArray = req.getParameterValues("no");
@@ -154,12 +199,22 @@ public class ConcernBoardController {
 	}
 	
 	@PostMapping("/admin/concernboard/noticeUpdateAjax.do")
-	public String adminNoticeUpdateAjax(HttpServletRequest req) {
+	public String adminNoticeUpdateAjax(HttpServletRequest req) { //일반 사용자 일반글 ->공지글로 변경
 		String[] updateArray = req.getParameterValues("no");
 		for (int i=0; i<updateArray.length; i++) {
 			ConcernBoardVo vo = new ConcernBoardVo();
 			vo.setConcern_board_no(Integer.parseInt(updateArray[i]));
 			concernBoardService.updateNotice(vo);
+		}
+		return "include/result";
+	}
+	@PostMapping("/admin/concernboard/noticeNotUpdateAjax.do")
+	public String adminNoticeNotUpdateAjax(HttpServletRequest req) { //일반 사용자 공지글 -> 일반글로 다시 변경
+		String[] updateArray = req.getParameterValues("no");
+		for (int i=0; i<updateArray.length; i++) {
+			ConcernBoardVo vo = new ConcernBoardVo();
+			vo.setConcern_board_no(Integer.parseInt(updateArray[i]));
+			concernBoardService.updateNotNotice(vo);
 		}
 		return "include/result";
 	}
@@ -217,6 +272,7 @@ public class ConcernBoardController {
 	public String view(Model model, HttpSession sess, @RequestParam int board_no, HttpServletRequest req, ConcernBoardVo vo) {
 		model.addAttribute("data", concernBoardService.view(board_no));
 		
+		vo.setIs_user('Y');
 		vo.setConcern_board_no(board_no);
 		int Rownum = concernBoardService.getRownum(vo);
 		vo.setRownum(Rownum);

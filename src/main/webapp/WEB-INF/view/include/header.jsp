@@ -64,7 +64,7 @@
 		if (${!empty userInfo }){
 			chatMain();
 			notice();
-			setInterval(chatMain,1000);
+			setInterval(chatMain,100000);
 		}
 	});
 	
@@ -78,7 +78,7 @@
 			}
 		});
 	}
-	
+	//알림창 ajax로 받아오는거
 	function notice(){
 		$.ajax({
 			url : "/thejoun/include/notice.do",
@@ -89,11 +89,12 @@
 			}
 		});
 	}
-	
+	//알림창 버튼 누르면 알림내용 뜨게하고 다시누르면 사라지게하는거
 	function view(){
 		$(".noticeMain").toggle();
 	}
 	
+	//알림창에서 누르면 해당 게시판으로 이동하는거
 	function goBoard(boardno, tablename){
 		if(tablename == 1){
 			location.href="/thejoun/freeboard/view.do?board_no="+boardno;
@@ -104,6 +105,19 @@
 		}else if(tablename == 4){
 			location.href="/thejoun/videoboard/view.do?board_no="+boardno;
 		}
+	}
+	
+	//알림창에서 모두지우기 누르면 알림 다 삭제되는거
+	function deleteAnnounce(){
+		$.ajax({
+			url : "/thejoun/include/deleteAnnounce.do",
+			type : "post",
+			success : function(res){
+				console.log("10");
+				alert(res.trim()+"개의 알림이 삭제되었습니다.");
+				notice();
+			}
+		});
 	}
 </script>
 <meta charset="UTF-8">

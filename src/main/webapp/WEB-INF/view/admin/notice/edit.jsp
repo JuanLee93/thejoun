@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -52,6 +53,21 @@ $(function() {
 			console.log(error);
 		}
 	});
+	
+	$("input:radio[name=useYN]").on("click", function() {
+		var checked_radio = $('input:radio[name=useYN]:checked').val(); // 선택된 radio의 value 가져오기
+		if(checked_radio === undefined) // 선택을 하지 않았을 경우
+		{
+		    alert('옵션을 선택해주세요.');
+		} else {
+			if (checked_radio == "Y") {
+				 alert("공개를 선택하셨습니다.");
+			} else {
+				 alert("비공개를 선택하셨습니다.");
+			}
+		   
+		}
+	});
 });
 </script>
 </head>
@@ -89,6 +105,13 @@ $(function() {
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
 											<input type="text" id="title" name="title" class="w100" value="${data.title }" />	
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">*공개/비공개</label></th>
+										<td colspan="10">
+											<input type="radio" id="open" name="useYN" value="Y" <c:if test="${data.useYN == 'Y' }">checked</c:if> checked="checked"/> 공개	
+											<input type="radio" id="close" name="useYN" value="N" <c:if test="${data.useYN == 'N' }">checked</c:if>/> 비공개	
 										</td>
 									</tr>
 									<tr>

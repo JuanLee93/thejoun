@@ -73,6 +73,7 @@
 
 	<select id="mainSelectList" resultType="freeboard.FreeBoardVo" parameterType="freeboard.FreeBoardVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM user WHERE userno=free_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=free_board.userno) as name, 
 			(SELECT nickname FROM user WHERE userno=free_board.userno) as nickname, 
@@ -147,6 +148,12 @@
 	<update id="updateNotice" parameterType="freeboard.FreeBoardVo">
 		UPDATE free_board SET
 			noticeYN='Y'
+		WHERE board_no = #{board_no}
+	</update>
+	
+	<update id="updateNotNotice" parameterType="freeboard.FreeBoardVo">
+		UPDATE free_board SET
+			noticeYN='N'
 		WHERE board_no = #{board_no}
 	</update>
 	 

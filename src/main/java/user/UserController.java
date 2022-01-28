@@ -18,6 +18,8 @@ import concernboard.ConcernBoardService;
 import freeboard.FreeBoardService;
 import freeboard.FreeBoardVo;
 import imageboard.ImageBoardService;
+import myPage.MyPageService;
+import myPage.MyPageVo;
 import util.CommonUtil;
 import videoboard.VideoBoardService;
 
@@ -34,6 +36,9 @@ public class UserController {
 	ImageBoardService imageBoardService;
 	@Autowired
 	VideoBoardService videoBoardService;
+	
+	@Autowired
+	MyPageService mps;
 	
 	//관리자페이지의 회원관리
 	@GetMapping("/admin/member/index.do")
@@ -226,7 +231,27 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/bookmark.do")
-	public String bookmark() {
+	public String bookmark(Model model, HttpSession sess, UserVo vo) {
+		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		int totCount = mps.count(vo); //총 개수
+		int totPage = totCount / 10; //총 페이지 수
+		if (totCount % 10 > 0) totPage++;
+		
+		int startIdx = (vo.getPage()-1) * 10;
+		vo.setStartIdx(startIdx);
+
+		int pageRange = 10;
+		int startPage = (vo.getPage()-1)/pageRange*pageRange+1; // 시작페이지
+		int endPage = startPage + pageRange - 1;// 종료페이지
+		if (endPage > totPage) endPage = totPage;
+
+
+		
+		List<MyPageVo> list = mps.selectList(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("totPage", totPage);
+		model.addAttribute("totCount", totCount);
+		model.addAttribute("pageArea", CommonUtil.getPageArea("bookmark.do", vo.getPage(), totPage, 10));
 		return "user/bookmark";
 	}
 	
