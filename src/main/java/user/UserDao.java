@@ -6,18 +6,24 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import concernboard.ConcernBoardVo;
-import question.QuestionVo;
+import freeboard.FreeBoardVo;
 
 @Repository
 public class UserDao {
 
 	@Autowired
 	SqlSessionTemplate sst;
+	FreeBoardVo fbv;
+	
 	//관리자 페이지에서 사용할 user정보
 	public List<UserVo> selectList(UserVo vo){
 		return sst.selectList("user.selectList", vo);
 	}
+	
+	public List<FreeBoardVo> selectList(FreeBoardVo fbv){
+		return sst.selectList("fbv.selectList", fbv);
+	}
+	
 	//관리자 페이지 페이징처리
 	public int count(UserVo vo) {
 		return sst.selectOne("user.count", vo);

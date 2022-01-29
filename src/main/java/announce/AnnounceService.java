@@ -42,4 +42,8 @@ public class AnnounceService {
 	public int announceCount(int userno) {
 		return ad.announceCount(userno);
 	}
+	
+	public int deleteAnnounce(int userno) {
+		return ad.deleteAnnounce(userno);
+	}
 }

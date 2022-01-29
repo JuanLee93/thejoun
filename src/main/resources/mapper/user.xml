@@ -54,4 +54,6 @@
 			pwd = md5(#{newPwd})
 			WHERE pwd = md5(#{pwd})
 	</update>
+	
+	
 </mapper>
