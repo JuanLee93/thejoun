@@ -39,6 +39,7 @@
 		<div class="sub">
             <div class="size">
                 <h3 class="sub_title">문의하기</h3>
+                <H1>궁금하신 사항을 문의해주세요!</H1><br>
                 <div class="bbs">
                     <div class="view">
                         <div class="title">
@@ -70,11 +71,34 @@
 			                        </tr>
 		                        </tbody>
 		                    </table>
-		                    <div style="width:100%; margin:50px; 0 0 0"></div>		 
+		                    <div style="width:100%; margin:50px; 0 0 0"></div>
+		                    <c:if test="${empty data.reply }">
+		                    <table class="board_write">
+		                        <tbody>
+		                        	<H2>답변 내용</H2>
+		                        	<tr>
+			                            <th>답변자</th>
+			                            <td class="writer"></td>
+			                        </tr>
+		                        	<tr>
+		                        		<th>답변일</th>
+			                            <td class="updatedate"></td>
+			                       </tr>
+			                       <tr>
+		                        		<th>답변내용</th>
+			                            <td class="reply"><H3>[빠른 시일 내에 답변드리겠습니다. 조금만 기다려주시기 바랍니다. 감사합니다.]</H3></td>
+			                       </tr>
+		                        </tbody>
+		                    </table>
+		                    </c:if>
 		                    <c:if test="${!empty data.reply }">
 		                    <table class="board_write">
 		                        <tbody>
 		                        	<H2>답변 내용</H2>
+		                        	<tr>
+			                            <th>답변자</th>
+			                            <td class="writer">관리자</td>
+			                        </tr>
 		                        	<tr>
 		                        		<th>답변일</th>
 			                            <td class="updatedate">${data.updatedate}</td>
@@ -88,7 +112,7 @@
   							</c:if>                       
                        	</div>    
                     </div>
-                    <div class="btnSet clear" style="text-align:center;">
+                    <div class="btnSet clear" style="margin-top: 40px; text-align:center;">
                             <div class="fl_l" >
                             	<a href="index.do" class="btn1">목록으로</a>
                             	<c:if test="${data.userno == userInfo.userno }">
@@ -100,6 +124,7 @@
                 </div>
             </div>
         </div>
+    <div style="margin-bottom: 40px;"></div>
 	<%@ include file="/WEB-INF/view/include/footer.jsp" %>
 	</div>
 </body>

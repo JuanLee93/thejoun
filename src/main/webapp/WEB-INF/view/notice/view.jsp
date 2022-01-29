@@ -43,23 +43,26 @@
                             </div>
                         </div>
                     	</div>
-                    	<table>
-                        	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
-                        		<c:if test="${empty prev.notice_no}">< 이전 글이 없습니다.</c:if>
-                        		<c:if test="${!empty prev.notice_no}">
-                        		<a href="view.do?notice_no=${prev.notice_no }">< 이전글 - ${prev.title }</a>
-                        		</c:if></td>
-                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
-                        		<c:if test="${!empty next.notice_no}">
-                        		<a href="view.do?notice_no=${next.notice_no }">${next.title } - 다음글 ></a>
-                        		</c:if>       
-                        		<c:if test="${empty next.notice_no}">다음 글이 없습니다. ></c:if></td>        	
-                        </table>
                 	</div>
-                	<div style="margin-top: 40px; height: 30px">
+                	<div style="margin-top: 40px; height: 30px"></div>
+                   	<table>
+                       	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
+                       		<c:if test="${empty prev.notice_no}">< 이전 글이 없습니다.</c:if>
+                       		<c:if test="${!empty prev.notice_no}">
+                       		<a href="view.do?notice_no=${prev.notice_no }">< 이전글 - ${prev.title }</a>
+                       		</c:if>
+                       	</td>
+                       	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
+                       		<c:if test="${!empty next.notice_no}">
+                       		<a href="view.do?notice_no=${next.notice_no }">${next.title } - 다음글 ></a>
+                       		</c:if>       
+                       		<c:if test="${empty next.notice_no}">다음 글이 없습니다. ></c:if>
+                       	</td>        	
+                       </table>
                 </div>
             </div>
         </div>
+        <div style="margin-top: 40px; height: 30px"/>
 		<%@ include file="/WEB-INF/view/include/footer.jsp" %>
 	</div>
 </body>

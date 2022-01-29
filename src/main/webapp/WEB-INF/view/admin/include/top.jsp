@@ -56,7 +56,7 @@ $(window).load(function(){
 </script>
 <div id="header">
 	<div class="header_inner">
-		<h1>THEJOUN(더조은)</h1>
+		<a href="/thejoun/admin/member/index.do"><h1>THEJOUN(더조은)</h1></a>
 		<p class="login_name"></p>
 		<!-- util : s -->
 		<div class="util">

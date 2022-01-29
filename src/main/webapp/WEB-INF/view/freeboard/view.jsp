@@ -254,8 +254,8 @@
                             <dd>
                             	<dt>좋아요</dt>
 	                            <dt class="like"><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dt>
-	                    		<dt class="bookmark" style="text-align: center;"><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
-	                    		<dt class="report" style="text-align: right;"><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
+	                    		<dt class="bookmark" style="width:430px; text-align:right;"><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
+	                    		<dt class="report" style="width:550px; text-align:right;"><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();" >신고하기</button></dt>
                     		</dd>
 						</div>                        
                         </dl> 
@@ -268,6 +268,7 @@
 	                            </c:if>
                             </div>
                         </div>
+                        <div style="margin-top: 40px; height: 30px"></div>
                         <table>
                         	<td style="margin-letf: 20px; text-align: left; font-weight: bold;">
                         		<c:if test="${empty prev.board_no}">< 이전 글이 없습니다.</c:if>
@@ -318,6 +319,7 @@
                 </div>
             </div>
         </div>
+        <div style="margin-bottom: 40px;"></div>
 		<%@ include file="/WEB-INF/view/include/footer.jsp" %>
 	</div>
 </body>

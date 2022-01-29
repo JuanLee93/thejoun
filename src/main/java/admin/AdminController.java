@@ -32,22 +32,6 @@ public class AdminController {
 		return "admin/index";
 	}
 	
-	// 아래 board는 삭제예정
-	@GetMapping("/admin/board/index.do")
-	public String index2() {
-		return "admin/board/index";
-	}
-	 
-	@GetMapping("/admin/board/view.do")
-	public String view() {
-		return "admin/board/view";
-	}
-	
-	@GetMapping("/admin/board/write.do")
-	public String write() {
-		return "admin/board/write";
-	}	
-	
 	@GetMapping("/admin/login.do")
 	public String login() {
 		return "admin/index";
@@ -69,7 +53,7 @@ public class AdminController {
 			logvo.setLogin_IP(req.getRemoteAddr());
 			adminLogService.insert(logvo);
 			
-			return "redirect:/admin/board/index.do";
+			return "redirect:/admin/member/index.do";
 		}else {
 			model.addAttribute("msg", "아이디, 비밀번호를 확인해주세요.");
 			return "include/return";
