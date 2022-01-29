@@ -66,6 +66,7 @@
 	<!--main 페이지용 selectlist  -->	
 	<select id="mainSelectList" resultType="notice.NoticeVo" parameterType="notice.NoticeVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM admin WHERE admin_no=notice.admin_no) as id, 
 			(SELECT name FROM admin WHERE admin_no=notice.admin_no) as name
 			FROM notice

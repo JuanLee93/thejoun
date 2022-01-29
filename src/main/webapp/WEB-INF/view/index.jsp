@@ -128,7 +128,7 @@
 					<ul>
 						<c:forEach var="vo" items="${concernlist }" varStatus="status">
 							<li><a href="/thejoun/concernboard/view.do?board_no=${vo.concern_board_no }">
-							<c:if test="${(vo.new_time) <= 3}">
+								<c:if test="${(vo.new_time) <= 3}">
 	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
 	                            </c:if>${vo.title }</a><span>${vo.nickname }</span></li>
 						</c:forEach>
@@ -142,7 +142,10 @@
 				<div class="board_content" id="board_notice1" style="cursor: pointer;">
 					<ul>
 						<c:forEach var="vo" items="${noticelist}" varStatus="status">
-							<li><a href="/thejoun/notice/view.do?notice_no=${vo.notice_no} ">${vo.title }</a><span>${vo.regdate}</span></li>
+							<li><a href="/thejoun/notice/view.do?notice_no=${vo.notice_no} ">
+								<c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                            </c:if>${vo.title }</a><span>${vo.regdate}</span></li>
 						</c:forEach>
 					</ul>
 				</div>
