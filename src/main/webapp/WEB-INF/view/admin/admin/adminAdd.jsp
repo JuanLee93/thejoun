@@ -105,7 +105,7 @@
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
-						<div id="blist">
+						<div id="bread">
 							<form name="frm" id="frm" action="insert.do" method="post">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 등록화면입니다.">
 									<colgroup>
@@ -122,7 +122,7 @@
 				                        </tr>
 				                        <tr>
 				                            <th>*비밀번호</th>
-				                            <td class="lef"><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요</span> </td>
+				                            <td class="lef"><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt" style="text-align:letf;">&nbsp;&nbsp;&nbsp;비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요</span> </td>
 				                        </tr>
 				                        <tr>
 				                            <th>*비밀번호<span>확인</span></th>
@@ -138,7 +138,7 @@
 							</form>
 							<div class="btn">
 								<div class="btnRight">
-									<a href="javascript:;" class="btn1" onclick="goSave();">등록</a> <a href="javascript:;" class="btn1" onclick="history.back();">취소</a>
+									<button href="javascript:;" class="btn1" onclick="goSave();">등록</button> <button href="javascript:;" class="btn1" onclick="history.back();">취소</button>
 								</div>
 							</div>
 							<!--//btn-->

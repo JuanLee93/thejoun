@@ -75,7 +75,7 @@
 		                    <c:if test="${empty data.reply }">
 		                    <table class="board_write">
 		                        <tbody>
-		                        	<H2>답변 내용</H2>
+		                        	<H2 style="border-top: 2px solid #221f1f;">답변 내용</H2>
 		                        	<tr>
 			                            <th>답변자</th>
 			                            <td class="writer"></td>

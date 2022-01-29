@@ -156,7 +156,7 @@ public class MvcConfig implements WebMvcConfigurer {
 						.addPathPatterns("/admin/question/replyUpdate.do")
 						.addPathPatterns("/admin/question/delete.do")
 						.addPathPatterns("/admin/admin/index.do")
-						.addPathPatterns("/admin/admin/adminAdd.do.do")
+						.addPathPatterns("/admin/admin/adminAdd.do")
 						.addPathPatterns("/admin/admin/insert.do")
 						.addPathPatterns("/admin/admin/delete.do")
 						.addPathPatterns("/admin/loginInfo/index.do")

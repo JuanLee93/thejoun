@@ -5,13 +5,16 @@
 	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
-				(title LIKE '%${searchWord}%' OR contents LIKE '%${searchWord}%' OR userno in (select userno from user where nickname LIKE '%${searchWord}%'))
+				(title LIKE '%${searchWord}%' OR contents LIKE '%${searchWord}%' OR userno in (select userno from user where nickname LIKE '%${searchWord}%') OR admin_no in (select admin_no from admin where name LIKE '%${searchWord}%'))
 			</if>
-			<if test="searchType != 'nickname' and searchType != null and searchType !=''">
+			<if test="searchType != 'nickname' and searchType != 'name' and searchType != null and searchType !=''">
 				${searchType} LIKE '%${searchWord}%'
 			</if>
 			<if test="searchType == 'nickname'">
 				userno in (select userno from user where nickname LIKE '%${searchWord}%')
+			</if>
+			<if test="searchType == 'name'">
+				admin_no in (select admin_no from admin where name LIKE '%${searchWord}%')
 			</if>
 			<if test="userno > 0">
 				AND userno = ${userno} 

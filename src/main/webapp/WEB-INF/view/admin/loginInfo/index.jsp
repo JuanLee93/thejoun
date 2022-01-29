@@ -29,19 +29,21 @@
 							<p>
 								<span><strong>총 ${totCount }개</strong> |	${adminLogVo.page }/${totPage }페이지</span>
 							</p>
-							<form name="frm" id="frm" action="process.do" method="post">
+							<form name="frm" id="frm" action="index.do" method="post">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0"
 									summary="관리자 로그인 접속내역 입니다.">
 									<colgroup>
 										<col class="w6" />
 										<col class="w6" />
-										<col class="" />
 										<col class="w6" />
+										<col class="" />
+										<col class="" />
 										<col class="" />
 									</colgroup>
 									<thead>
 										<tr>
-											<th scope="col">관리자번호</th>
+											<th scope="col">번호</th>
+											<th scope="col">관리자no</th>
 											<th scope="col">이름</th>
 											<th scope="col">메세지</th>
 											<th scope="col">접속일자</th>
@@ -52,12 +54,13 @@
 
 										<c:if test="${empty list }">
 											<tr>
-												<td class="first" colspan="5">등록된 글이 없습니다.</td>
+												<td class="first" colspan="6">등록된 글이 없습니다.</td>
 											</tr>
 										</c:if>
 										<c:if test="${!empty list }">
 											<c:forEach var="vo" items="${list }" varStatus="status">
 												<tr class="board_tr">
+													<td>${(totCount-status.index) - ((adminLogVo.page-1)*10) }</td>
 													<td>${vo.admin_no }</td>
 													<td>${vo.name }</td>
 													<td>${vo.msg }</td>
@@ -82,7 +85,6 @@
 											title="검색분류 선택">
 											<option value="">전체</option>
 											<option value="admin_no">관리자번호</option>
-											<option value=name">이름</option>
 											<option value="date">날짜</option>
 										</select> <input type="text" id="sval1" name="searchWord" value=""
 											title="검색어 입력"> <input type="image"
