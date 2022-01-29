@@ -42,6 +42,7 @@
 				data : $("#frm").serialize(),
 				success : function(res) {
 					alert('선택하신 글을 공지글로 적용하였습니다.');
+					location.reload();
 				}
 			});
 		}
@@ -55,6 +56,7 @@
 				data : $("#frm").serialize(),
 				success : function(res) {
 					alert('선택하신 글을 일반글로 적용하였습니다.');
+					location.reload();
 				}
 			});
 		}
