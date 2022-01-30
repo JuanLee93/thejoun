@@ -257,7 +257,7 @@
 	                    		<dt class="bookmark" style="width:430px; text-align:right;"><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
 	                    		<dt class="report" style="width:550px; text-align:right;"><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();" >신고하기</button></dt>
                     		</dd>
-						</div>                        
+						</div>                          
                         </dl> 
                         <div class="btnSet clear" style="text-align:center;">
                             <div class="fl_l" >

@@ -134,6 +134,7 @@
 
 	}
 	function likeUpdate() {
+		
 			$.ajax({
 				url : "/thejoun/likeupdate",
 				data : {board_no :  ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
@@ -241,24 +242,34 @@
 						<dl class="file">
 							<dt>첨부파일</dt>
 							<dd>
-								<a
-									href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}"
+								<a href="/thejoun/common/download.jsp?path=/upload/&org=${data.filename_org }&real=${data.filename_real}"
 									target="_blank">${data.filename_org }</a>
 							</dd>
 						</dl>
 						<dl class="file">
-						<div>
-							<dt>좋아요</dt>
-							<c:if test="${!empty userInfo }">
-								<dd><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dd>
-							</c:if>
-							<c:if test="${empty userInfo }">
-							<dd><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dd>
-							</c:if>
-									
-                    		<dt><button type="button" class="bm_image" id="bookmarkUpdate" onclick="javascript:bookmarkUpdate();"><img src="/thejoun/images/bookmark.png"></button></dt>
-                    		<dt><button type="button" class="bm_image" id="buttonReport" onclick="javascript:report();">신고하기</button></dt>
-						</div>
+                        <div>
+                            <dd>
+                            	<dt>좋아요</dt>
+                            	<c:if test="${!empty userInfo }">
+	                            	<dt class="like"><a href="javascript:likeUpdate();" id="likeCount">${data.l_count }</a></dt>
+	                            </c:if>
+	                            <c:if test="${empty userInfo }">
+	                            	<dt class="like"><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">${data.l_count }</a></dt>
+	                            </c:if>
+	                            <c:if test="${!empty userInfo }">
+	                    			<dt class="bookmark" style="width:430px; text-align:right;"><a href="javascript:bookmarkUpdate();" id="bookmarkUpdate" ><img src="/thejoun/images/bookmark.png"></a></dt>
+	                    		</c:if>
+	                    		<c:if test="${empty userInfo }">
+	                            	<dt class="bookmark" style="width:430px; text-align:right;"><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';"><img src="/thejoun/images/bookmark.png"></a></dt>
+	                            </c:if>
+	                    		<c:if test="${!empty userInfo }">
+	                    		<dt class="report" style="width:550px; text-align:right;"><a href="javascript:report();" id="buttonReport" >신고하기</a></dt>
+	                    		</c:if>
+	                    		<c:if test="${empty userInfo }">
+	                            	<dt class="report" style="width:550px; text-align:right;"><a href="javascript:alert('로그인 후 사용가능합니다.'); location.href='/thejoun/user/login.do';">신고하기</a></dt>
+	                            </c:if>
+                    		</dd>
+						</div>   
 						</dl>
 						<div class="btnSet clear" style="text-align: center;">
 							<div class="fl_l">
