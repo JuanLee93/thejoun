@@ -42,7 +42,23 @@ div.infoArea > ul > h3 {
 	padding:10px 0px 15px 0px;
 	font-size: 20px;
 }
+.board_tr1{
+	padding : 5px auto;
+}
 </style>
+<script>
+function goBookMark(boardno, tablename){
+	if(tablename == 1){
+		location.href="/thejoun/freeboard/view.do?board_no="+boardno;
+	}else if(tablename == 2){
+		location.href="/thejoun/concernboard/view.do?board_no="+boardno;
+	}else if(tablename == 3){
+		location.href="/thejoun/imageboard/view.do?image_board_no="+boardno;	
+	}else if(tablename == 4){
+		location.href="/thejoun/videoboard/view.do?board_no="+boardno;
+	}
+}
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -64,7 +80,8 @@ div.infoArea > ul > h3 {
 				</div>
 				<div class="infoArea">
 					<ul>
-						<h3><img src="/thejoun/images/bookmark.png">&nbsp;&nbsp;&nbsp;북마크 보기</h3><hr>
+						<h3><img src="/thejoun/images/bookmark.png">&nbsp;&nbsp;&nbsp;북마크 보기</h3>
+						<div class="bbs">
 						<table class="list">
                     <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
                         <caption>자유게시판 목록</caption>
@@ -92,7 +109,7 @@ div.infoArea > ul > h3 {
 						</c:if>
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
-                            <tr class="board_tr" href="${vo.board_no }" style="cursor: pointer;">
+                            <tr class="board_tr1" href="${vo.board_no }" style="cursor: pointer;" onclick="goBookMark(${vo.board_no},${vo.tablename })">
                            		<td>${(totCount-status.index) - ((userVo.page-1)*10) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     ${vo.title } 
@@ -107,25 +124,11 @@ div.infoArea > ul > h3 {
                         </c:if>
                         </tbody>
                     </table>
+                    </div>
 					</ul>
 					${pageArea }
 					<!-- 페이지처리 -->
-                    <div class="bbsSearch">
-                        <form method="get" name="searchForm" id="searchForm" action="">
-                            <span class="srchSelect">
-                                <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
-                                    <option value="">전체</option>
-                                    <option value="title">제목</option>
-                                    <option value="contents">내용</option>
-                                    <option value="nickname">닉네임</option>
-                                </select>
-                            </span>
-                            <span class="searchWord">
-                                <input type="text" id="sval" name="searchWord" value="" title="검색어 입력">
-                                <input type="button" id="" value="검색" title="검색">
-                            </span>
-                        </form>
-                    </div>
+					<br>
 				</div>
 			</div>
 		</div>
