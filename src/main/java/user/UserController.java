@@ -20,6 +20,8 @@ import freeboard.FreeBoardVo;
 import imageboard.ImageBoardService;
 import myPage.MyPageService;
 import myPage.MyPageVo;
+import question.QuestionService;
+import question.QuestionVo;
 import util.CommonUtil;
 import videoboard.VideoBoardService;
 
@@ -36,6 +38,8 @@ public class UserController {
 	ImageBoardService imageBoardService;
 	@Autowired
 	VideoBoardService videoBoardService;
+	@Autowired
+	QuestionService questionService;
 	
 	@Autowired
 	MyPageService mps;
@@ -221,7 +225,7 @@ public class UserController {
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
-		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", fbv.getPage(), totPage, 10));
+		model.addAttribute("pageArea", CommonUtil.getPageArea("myBoardConfirm.do", fbv.getPage(), totPage, 10));
 		return "user/myBoardConfirm";
 	}
 	
@@ -260,8 +264,24 @@ public class UserController {
 		return "user/blockFriends";
 	}
 	
+	// 자신이 쓴 1:1문의 글 목록을 출력
 	@GetMapping("/user/myInquiry.do")
-	public String myInquiry() {
+	public String myInquiry(Model model, HttpServletRequest req, QuestionVo qv, HttpSession sess) {
+		qv.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		
+		int totCount = questionService.count(qv); //총 개수
+		int totPage = totCount / 10; //총 페이지수
+		if (totCount % 10 > 0) totPage++;
+		System.out.println("totPage:"+totPage);
+		
+		int startIdx = (qv.getPage() -1) * 10;
+		qv.setStartIdx(startIdx);
+		
+		List<QuestionVo> list = questionService.selectList(qv); 
+		model.addAttribute("list", list);
+		model.addAttribute("totPage", totPage);
+		model.addAttribute("totCount", totCount);
+		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", qv.getPage(), totPage, 10));
 		return "user/myInquiry";
 	}
 	

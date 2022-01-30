@@ -31,7 +31,22 @@ div.myboard > ul {
 div.myboard > ul > table > tbody > tr > td {
 	text-align:center;
 }
+
+div.myboard > ul > h3 {
+    text-align: center;
+    padding: 10px 0px 15px 0px;
+    font-size: 20px;
+}
+
+.board_tr{
+	padding : 5px auto;
+}
 </style>
+<script>
+function goMyBoard(boardno){
+	location.href="/thejoun/freeboard/view.do?board_no="+boardno;
+}
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -53,7 +68,8 @@ div.myboard > ul > table > tbody > tr > td {
 				</div>
 				<div class="myboard">
 					<ul>
-						<h3>나의글 확인</h3><hr>
+						<h3>나의 글 확인</h3>
+						<div class="bbs">
 						<table class="list">
                     <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
                         <caption>자유게시판 목록</caption>
@@ -83,7 +99,7 @@ div.myboard > ul > table > tbody > tr > td {
 						</c:if>
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
-                            <tr class="board_tr" data-boardno="${vo.board_no }" style="cursor: pointer;">
+                            <tr class="board_tr" data-boardno="${vo.board_no }" style="cursor: pointer;" onclick="goMyBoard(${vo.board_no})">
                             	<c:if test="${vo.noticeYN == 'Y' }">
                             	<td>[공지]</td>
                             	</c:if>
@@ -112,6 +128,7 @@ div.myboard > ul > table > tbody > tr > td {
                         </c:if>
                         </tbody>
                     </table>
+                    </div>
 					</ul>
 					<!-- 페이지처리 -->
                     <div class="bbsSearch">

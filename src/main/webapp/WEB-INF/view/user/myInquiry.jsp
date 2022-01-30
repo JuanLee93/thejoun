@@ -20,7 +20,28 @@
 <link rel="stylesheet" href="/thejoun/css/mypage_index.css" />
 <link rel="stylesheet" href="/thejoun/css/mypage_info.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<style>
+div.myInquiry > ul {
+	position:relative;
+	padding: 10px 15px 15px;
+	float:right;
+	width:75%;
+	height: 550px
+}
+div.myInquiry > ul > table > tbody > tr > td {
+	text-align:center;
+}
+
+div.myInquiry > ul > h3 {
+    text-align: center;
+    padding: 10px 0px 15px 0px;
+    font-size: 20px;
+}
+</style>
 <script>
+function goInquiry(boardno){
+	location.href="/thejoun/question/view.do?qna_no="+boardno;
+}
 </script>
 </head>
 <body>
@@ -41,7 +62,88 @@
 						</ul>
 					</div>
 				</div>
-				<div>test5</div>
+				<div class="myInquiry">
+					<ul>
+						<h3>나의 1:1 문의 확인</h3>
+						<div class="bbs">
+						<table class="list">
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+                        <caption>자유게시판 목록</caption>
+                        <colgroup>
+                            <col width="80px" />
+                            <col width="*" />
+                            <col width="100px" />
+                            <col width="100px" />
+                            <col width="100px" />
+                            <col width="100px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>글쓴이</th>
+                                <th>등록일</th>
+                                <th>조회수</th>
+                                <th>좋아요</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						<c:if test="${empty list }">
+                            <tr>
+                                <td class="first" colspan="6" style="text-align:center">등록된 글이 없습니다.</td>
+                            </tr>
+						</c:if>
+                        <c:if test="${!empty list }">
+                        <c:forEach var="vo" items="${list }" varStatus="status">
+                            <tr class="board_tr" data-qnano="${vo.qna_no }" style="cursor: pointer;" onclick="goInquiry(${vo.qna_no})">
+                            	<c:if test="${vo.noticeYN == 'Y' }">
+                            	<td>[공지]</td>
+                            	</c:if>
+                            	<c:if test="${vo.noticeYN == 'N' }">
+                                <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
+                                </c:if>
+                                <td class="txt_l" style="text-align:left;">
+	                                <c:if test="${(vo.new_time) <= 3}">
+	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
+	                                </c:if>
+                                    ${vo.title } [${vo.c_count }]
+                                </td>
+                                <td class="writer">
+                                	<c:if test="${!empty vo.nickname}">
+                                  	  ${vo.nickname }
+                                   </c:if>
+                                   <c:if test="${empty vo.nickname}">
+                                  	  관리자
+                                   </c:if>
+                                </td>
+                                <td class="date">${vo.regdate }</td>
+                                <td>${vo.readcount }</td>
+                                <td>${vo.l_count }</td>
+                            </tr>
+                        </c:forEach>
+                        </c:if>
+                        </tbody>
+                    </table>
+                    </div>
+					</ul>
+					<!-- 페이지처리 -->
+                    <div class="bbsSearch">
+                        <form method="get" name="searchForm" id="searchForm" action="">
+                            <span class="srchSelect">
+                                <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
+                                    <option value="">전체</option>
+                                    <option value="title">제목</option>
+                                    <option value="contents">내용</option>
+                                    <option value="nickname">닉네임</option>
+                                </select>
+                            </span>
+                            <span class="searchWord">
+                                <input type="text" id="sval" name="searchWord" value="" title="검색어 입력">
+                                <input type="button" id="" value="검색" title="검색">
+                            </span>
+                        </form>
+                    </div>
+				</div>
 			</div>
 		</div>
 	</div>

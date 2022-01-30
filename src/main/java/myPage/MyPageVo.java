@@ -18,6 +18,8 @@ public class MyPageVo extends CommonVo{
 	private int readcount;
 	private int userno;
 	private int tablename;
+	private String noticeYN;
+	private int new_time;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

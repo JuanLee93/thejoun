@@ -25,6 +25,10 @@ public class QuestionVo extends CommonVo {
 	private String state;
 	private String secret;
 	private String nickname;
+	private String noticeYN;
+	private int new_time;
+	private int c_count;
+	private int l_count;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
