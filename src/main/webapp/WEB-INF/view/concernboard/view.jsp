@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
@@ -96,19 +96,24 @@
 	//my_userno 가져올라고 ${data.userno} data에서 컨트롤러로 가져감
 	function goCommentReply(userno, comment_no, gno, ono, nested) {
 		var content = $("#contentReply_"+comment_no).val();
-		$.ajax({
-			url : "/thejoun/comment/insertCommentReply.do",
-			type:'post',
-			data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.concern_board_no}, tablename:2, comment_no : comment_no, content:content, my_userno : ${data.userno}},
-			success : function(res) {
-				if (res.trim() == '1') {
-					alert('정상적으로 답글이 등록되었습니다.');
-					commentList(2, ${data.concern_board_no});
-				} else {
-					alert('답글등록 오류');
+		<c:if test="${!empty userInfo}">
+			$.ajax({
+				url : "/thejoun/comment/insertCommentReply.do",
+				type:'post',
+				data : {userno:${userInfo.userno}, gno:gno, ono:ono, nested:nested, board_no:${data.concern_board_no}, tablename:2, comment_no : comment_no, content:content, my_userno : ${data.userno}},
+				success : function(res) {
+					if (res.trim() == '1') {
+						alert('정상적으로 답글이 등록되었습니다.');
+						commentList(2, ${data.concern_board_no});
+					} else {
+						alert('답글등록 오류');
+					}
 				}
-			}
-		});
+			});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	
 	function goDel(comment_no) {
@@ -119,30 +124,32 @@
 				success : function(res) {
 					if (res.trim() == '1') {
 						alert('정상적으로 삭제되었습니다.');
-						commentList( 2 , ${data.concern_board_no});
+						commentList(2, ${data.concern_board_no});
 					} else {
 						alert('삭제오류');
 					}
-				}
+				}  
 			});
 		}
+
 	}
 	function likeUpdate() {
-		$.ajax({
-			url : "/thejoun/likeupdate",
-			data : {board_no :  ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
-			success : function(res) {
-				if (res.trim() == '1') {
-					// 삭제
-					$("#likeCount").text(Number($("#likeCount").text()) - 1 );
-				} else {
-					// 추가
-					$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+			$.ajax({
+				url : "/thejoun/likeupdate",
+				data : {board_no :  ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
+				success : function(res) {
+					if (res.trim() == '1') {
+						// 삭제
+						$("#likeCount").text(Number($("#likeCount").text()) - 1 );
+					} else {
+						// 추가
+						$("#likeCount").text(Number($("#likeCount").text()) + 1 );
+					}
 				}
-			}
-		});
+			});
 	}	
 	function bookmarkUpdate() {
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/bookmarkupdate",
 			data : {board_no : ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
@@ -155,9 +162,13 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>		
 	}
 	function report() {
-		
+		<c:if test="${!empty userInfo}">
 		$.ajax({
 			url : "/thejoun/report",
 			data : {board_no : ${data.concern_board_no}, userno : ${userInfo.userno}, tablename:2},
@@ -170,6 +181,10 @@
 				}
 			}
 		});
+		</c:if>
+		<c:if test="${empty userInfo}">
+			alert("로그인 후 이용해주세요.");
+		</c:if>
 	}
 	
 	function addFriends(userno){
