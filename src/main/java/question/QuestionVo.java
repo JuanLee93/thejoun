@@ -29,6 +29,7 @@ public class QuestionVo extends CommonVo {
 	private int new_time;
 	private int c_count;
 	private int l_count;
+	private int pageCount;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

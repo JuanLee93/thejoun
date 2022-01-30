@@ -30,7 +30,7 @@
 			FROM qna
 		<include refid="questionWhere"/>
 			ORDER BY regdate DESC
-			LIMIT ${startIdx}, 10
+			LIMIT ${startIdx}, ${pageCount}
 	</select>
 	
 	<insert id="insert" parameterType="question.QuestionVo">

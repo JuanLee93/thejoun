@@ -44,15 +44,4 @@ public class AdminLogController {
 		return "admin/loginInfo/index";
 	}
 	
-	@PostMapping("/admin/loginInfo/insert.do")
-	public String insert(AdminLogVo vo, HttpServletRequest req) {
-		if(adminService.insert(vo) > 0) {
-			req.setAttribute("msg", "정상적으로 로그인 내역을 등록했습니다.");
-			req.setAttribute("url", "/thejoun/admin/loginInfo/index.do");
-		}else {
-			req.setAttribute("msg", "관리자 로그인 내역 등록 중 오류가 발생하였습니다.");
-		}
-		return "include/return";
-	}
-	
 }

@@ -15,8 +15,10 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="/thejoun/js/common.js"></script>
 <script>
+	var pageCount = ${pageCount};
 	$(function() {
 
+		$('#pageCount option[value='+ pageCount +']').attr('selected', true);
 		$(".board_tr").click(function() {
 			
 			var writer = $(this).data("user_no");
@@ -39,6 +41,12 @@
 				}
 				
 		});
+		
+		$("#pageCount").on("change", function() {
+			var page = $(this).val();
+			var pageForm = $("#pageForm");
+			pageForm.submit();
+		})
 	});
 </script>
 </head>
@@ -52,7 +60,16 @@
 	        	<div class="hg" style="height: 25px"></div>
                 <div class="bbs">
                     <table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${questionVo.page }/${totPage }페이지</span></p>
+                    <p style="display:flex; justify-content:space-between; margin-bottom:5px">
+                    	<span><strong>총 ${totCount }개</strong>  |  ${questionVo.page }/${totPage }페이지</span>
+                    	<form method="get" action="" id="pageForm">
+	                    	<select name="pageCount" id="pageCount">
+	                    		<option name="count" value="10">10개</option>
+	                    		<option name="count" value="20">20개</option>
+	                    		<option name="count" value="30">30개</option>
+	                    	</select>
+                    	</form>
+                    </p>
                         <caption>문의하기 목록</caption>
                         <colgroup>
                             <col width="80px" />
@@ -82,7 +99,7 @@
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
                             <tr class="board_tr" data-qna_no="${vo.qna_no }" data-secret="${vo.secret }" data-user_no="${vo.userno }" style="cursor: pointer;">
-                                <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
+                                <td>${(totCount-status.index) - ((questionVo.page-1)*pageCount) }</td>
                                 <td class="txt_l" style="text-align:left;">
                                     <c:if test="${vo.secret == 'Y'}">
 			                            <img src="/thejoun/images/lock.png" style="display: inline-block; vertical-align: middle; width:13px; height: 15px;">
