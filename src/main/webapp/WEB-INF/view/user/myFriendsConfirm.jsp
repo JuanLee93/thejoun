@@ -20,7 +20,23 @@
 <link rel="stylesheet" href="/thejoun/css/mypage_index.css" />
 <link rel="stylesheet" href="/thejoun/css/mypage_info.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<style>
+	.bs-example > .indexPage{
+	float : left;
+	width : 75%;	
+	}
+	div.indexPage > ul > h3 {
+	text-align: center;
+	padding:10px 0px 15px 0px;
+	font-size: 20px;
+}
+</style>
 <script>
+	function goDel(userno,nickname){
+		if(confirm(nickname+" 님을 삭제하시겠습니까?")){
+			$("#deleteFriendsFrm"+userno).submit();
+		}
+	}
 </script>
 </head>
 <body>
@@ -40,8 +56,52 @@
 							<li role="presentation"><a href="/thejoun/user/myInquiry.do">1:1 문의</a></li>
 						</ul>
 					</div>
+					<div class="indexPage">
+						<ul>
+							<h3>&nbsp;&nbsp;&nbsp;친구목록</h3>
+							<div class="bbs">
+								<table class="list">
+			                        <caption>자유게시판 목록</caption>
+			                        <colgroup>
+			                            <col width="200px" />
+			                            <col width="100px" />
+			                            <col width="150px" />
+			                        </colgroup>
+			                        <thead>
+			                            <tr>
+			                                <th>닉네임</th>
+			                                <th>친구 등록일</th>
+			                                <th>친구삭제</th>
+			                            </tr>
+			                        </thead>
+			                        <tbody>
+									<c:if test="${empty list }">
+			                            <tr>
+			                                <td class="first" colspan="6" style="text-align:center">등록된 친구가 없습니다.</td>
+			                            </tr>
+									</c:if>
+			                        <c:if test="${!empty list }">
+			                        <c:forEach var="vo" items="${list }" varStatus="status">
+			                            <tr class="board_tr1" >
+			                                <td class="txt_l">
+			                                    ${vo.nickname } 
+			                                </td>
+			                                <td class="date">${vo.regdate }</td>
+			                                <td class="writer">
+			                                	<form method="post" id="deleteFriendsFrm${vo.userno }" action="deleteFriend.do" >
+			                                	<input type="hidden" name="friends_userno" value="${vo.userno }">
+		                                  	  		<button class="friendsButton" onclick="goDel(${vo.userno}, ${vo.nickname });">친구 삭제</button>
+			                                  	</form>
+			                                </td>
+			                            </tr>
+			                        </c:forEach>
+			                        </c:if>
+			                        </tbody>
+		                    	</table>
+	                    	</div>
+						</ul>
+					</div>
 				</div>
-				<div>test2</div>
 			</div>
 		</div>
 	</div>

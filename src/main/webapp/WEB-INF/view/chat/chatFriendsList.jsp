@@ -62,8 +62,8 @@
 		<c:if test="${!empty friendsList }">
 			<c:forEach var="vo" items="${friendsList }" varStatus="status">
 				<form name="frm" id="frm${vo.userno }" method="post">
-				<div onclick="findChattingList(${vo.userno })">
-					<input type="hidden" name="to_id" value="${vo.userno }">
+					<div onclick="findChattingList(${vo.userno })">
+						<input type="hidden" name="to_id" value="${vo.userno }">
 						<div class="row sideBar-body">
 							<div class="col-sm-3 col-xs-3 sideBar-avatar">
 								<div class="avatar-icon">

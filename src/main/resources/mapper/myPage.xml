@@ -31,4 +31,14 @@
 		LIMIT ${startIdx}, 10
 	</select>
 	
+	<select id="findFriendsList" parameterType="int" resultType="myPage.MyPageFriendsVo">
+		SELECT u.userno, u.nickname, f.regdate
+		FROM (SELECT * FROM friends WHERE my_userno = #{value} OR friends_userno = #{value}) as f join user as u
+		on if(f.my_userno = #{value}, f.friends_userno, f.my_userno) = u.userno;
+	</select>
+	
+	<delete id="deleteFriend" parameterType="friends.FriendsVo">
+		DELETE FROM friends WHERE (my_userno = #{my_userno} AND friends_userno = #{friends_userno}) OR (my_userno = #{friends_userno} AND friends_userno = #{my_userno})  
+	</delete>
+	
 </mapper>

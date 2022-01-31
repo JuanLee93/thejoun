@@ -120,7 +120,8 @@ public class MvcConfig implements WebMvcConfigurer {
 						.addPathPatterns("/question/insert.do")
 						.addPathPatterns("/question/edit.do")
 						.addPathPatterns("/question/update.do")
-						.addPathPatterns("/question/delete.do");
+						.addPathPatterns("/question/delete.do")
+						.addPathPatterns("/chat/index.do");
 		
 		reg.addInterceptor(adminLoginInterceptor())
 						.addPathPatterns("/admin/member/index.do")
