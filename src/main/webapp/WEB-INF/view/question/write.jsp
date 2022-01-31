@@ -76,6 +76,7 @@
                         </tbody>
                     </table>
                     <div class="btn1Set"  style="text-align:right;">
+                    	<a class="btn1" href="index.do">목록으로</a>
                         <a class="btn1" href="javascript:goSave();">저장 </a>
                     </div>
                     </form>
