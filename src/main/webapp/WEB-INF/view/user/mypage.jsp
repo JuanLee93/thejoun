@@ -27,7 +27,7 @@
 div.userinfo > ul > img {
 	max-height: 200px;
     max-width: 200px;
-    margin: 20px 20px 20px 20px;
+    margin: 30px 30px 30px 30px;
     float: left;
 }
 </style>

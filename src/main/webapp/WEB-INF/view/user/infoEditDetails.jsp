@@ -169,7 +169,7 @@ input#image {
 					<li>주소2 : <input type="text" name="addr2" id="addr2" value="${userInfo.addr2}"></li><hr>
 				</ul>
 				<ul>
-					<li>프로필 사진 넣기 (미리보기) : </li>
+					<li>프로필 사진 미리보기 ( 2MB이하의 250PX * 250PX의 사진을 추가해주세요 ) : </li>
 					<div id="image_container" ></div>
 					<input type="file" id="image" name="file" accept="image/*" onchange="setThumbnail(event);"/> 
     				<div>
