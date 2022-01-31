@@ -52,9 +52,7 @@
 	
 	<update id="update" parameterType="admin.AdminVo">
 		UPDATE admin SET
-			id=#{id}
-			, pwd=md5(#{pwd})
-			, name=#{name}
+			name=#{name}
 		WHERE admin_no = #{admin_no}
 	</update>
 	

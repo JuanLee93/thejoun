@@ -18,7 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import concernboard.ConcernBoardService;
 import freeboard.FreeBoardService;
 import freeboard.FreeBoardVo;
+import friends.FriendsVo;
 import imageboard.ImageBoardService;
+import myPage.MyPageFriendsVo;
 import myPage.MyPageService;
 import myPage.MyPageVo;
 import question.QuestionService;
@@ -250,8 +252,24 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/myFriendsConfirm.do")
-	public String myFriendsConfirm() {
+	public String myFriendsConfirm(HttpSession sess, Model model) {
+		
+		List<MyPageFriendsVo> list = mps.findFriendsList(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		model.addAttribute("list", list);
 		return "user/myFriendsConfirm";
+	}
+	
+	@PostMapping("/user/deleteFriend.do")
+	public String deleteFriend(FriendsVo fv, Model model, HttpSession sess) {
+		fv.setMy_userno(((UserVo)sess.getAttribute("userInfo")).getUserno());
+		int num = mps.deleteFriend(fv);
+		if(num > 0) {
+			model.addAttribute("msg", "친구목록에서 삭제되었습니다.");
+			model.addAttribute("url", "/thejoun/user/myFriendsConfirm.do");
+		}else {
+			model.addAttribute("msg", "삭제오류.");
+		}
+		return "include/return";
 	}
 	
 	@GetMapping("/user/bookmark.do")
