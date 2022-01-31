@@ -125,14 +125,12 @@ input#image {
     margin-right : auto;
 }
 
-not
-
 </style>
 </head>
 <div class="wrap">
 	<%@ include file="/WEB-INF/view/include/header.jsp"%>
 	<div class="sub">
-		<form name="infoUpdate" id="infoUpdate" action="infoUpdate.do" method="post">
+		<form name="infoUpdate" id="infoUpdate" action="infoUpdate.do" method="post" enctype="multipart/form-data">
 		<div class="size">
 			<h3 class="sub_title1">마이 페이지</h3>
 			<hr>
@@ -173,7 +171,7 @@ not
 				<ul>
 					<li>프로필 사진 넣기 (미리보기) : </li>
 					<div id="image_container" ></div>
-					<input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/> 
+					<input type="file" id="image" name="file" accept="image/*" onchange="setThumbnail(event);"/> 
     				<div>
     					<input type="submit" value="확인" >
     					<input type="button" value="취소" onclick=location.href="/thejoun/user/mypage.do";>

@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +23,14 @@
 <link rel="stylesheet" href="/thejoun/css/mypage_index.css" />
 <link rel="stylesheet" href="/thejoun/css/mypage_info.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-<script>
-</script>
+<style>
+div.userinfo > ul > img {
+	max-height: 200px;
+    max-width: 200px;
+    margin: 20px 20px 20px 20px;
+    float: left;
+}
+</style>
 </head>
 <body>
 	<div class="wrap">
@@ -44,7 +53,13 @@
 				<div class="userinfo">
 					<ul>
 						<h3>나의 정보</h3><hr>
-						<i class="bi bi-person-circle"></i>
+							<c:if test="${!empty userInfo.filename_org }">
+								<img class="profilePhotoImg" src="<c:url value='/common/download.jsp?path=/upload/&org=${userInfo.filename_org}&real=${userInfo.filename_real}"
+									target="_blank"'/>">
+							</c:if>
+							<c:if test="${empty userInfo.filename_org}">
+								<img class="profilePhotoImg" src="<c:url value='/img/none-user-img.png'/>">
+							</c:if>
 						<li>
 							<a>아이디 : ${userInfo.id}</a><br><br><br>
 							<a>닉네임 : ${userInfo.nickname}</a><br><br><br>
@@ -54,9 +69,12 @@
 					<ul><br><br>
 						<div id="btn_group" style="text-align:center;">
     						<button class="btn_useredit1"><a href="/thejoun/user/infoEdit.do">회원정보 수정</button>
-    						<button class="btn_useredit2"><a href="/thejoun/user/pwdChange.do">비밀번호 변경</button>
+    						<button class="btn_useredit1"><a href="/thejoun/user/pwdChange.do">비밀번호 변경</button>
 						</div>
 					</ul>
+				</div>
+				<div>
+					
 				</div>
 			</div>
 		</div>

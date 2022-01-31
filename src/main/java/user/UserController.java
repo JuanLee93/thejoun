@@ -1,5 +1,6 @@
 package user;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
 import concernboard.ConcernBoardService;
 import freeboard.FreeBoardService;
 import freeboard.FreeBoardVo;
@@ -187,8 +188,27 @@ public class UserController {
 	}
 	
 	@PostMapping("/user/infoUpdate.do")
-	public String infoUpdate(HttpServletRequest req, UserVo vo) {
-		if(userService.infoUpdate(vo) > 0) {
+	public String infoUpdate(HttpServletRequest req, UserVo vo, HttpSession sess, MultipartFile file) {
+		vo.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno()); 
+		//파일저장
+		if (!file.isEmpty()) { // 사용자가 파일을 첨부했다면
+			try {
+				String path = req.getRealPath("/upload/");
+				String filename = file.getOriginalFilename();
+				String ext = filename.substring(filename.lastIndexOf(".")); // 확장자 (.jpg)
+				String filename_real = System.currentTimeMillis() + ext;
+				
+				file.transferTo(new File(path+filename_real)); // 경로에 파일을 저장
+				vo.setFilename_org(filename); // vo에 set
+				vo.setFilename_real(filename_real);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		int r = userService.infoUpdate(vo);
+		
+		if(r > 0) {
 			req.setAttribute("msg", "정상적으로 수정되었습니다");
 			req.setAttribute("url", "/thejoun/user/mypage.do");
 		}else {
@@ -210,7 +230,7 @@ public class UserController {
 	
 	//자유게시판에 쓴 자신의 글 목록을 출력
 	@GetMapping("/user/myBoardConfirm.do")
-	public String myBoardConfirm(Model model, HttpServletRequest req, FreeBoardVo fbv, HttpSession sess) {
+	public String myBoardConfirm(Model model, FreeBoardVo fbv, HttpSession sess) {
 		fbv.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		
 		int totCount = freeboardService.count(fbv); //총 개수
@@ -266,7 +286,7 @@ public class UserController {
 	
 	// 자신이 쓴 1:1문의 글 목록을 출력
 	@GetMapping("/user/myInquiry.do")
-	public String myInquiry(Model model, HttpServletRequest req, QuestionVo qv, HttpSession sess) {
+	public String myInquiry(Model model, QuestionVo qv, HttpSession sess) {
 		qv.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		
 		int totCount = questionService.count(qv); //총 개수
@@ -284,5 +304,5 @@ public class UserController {
 		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", qv.getPage(), totPage, 10));
 		return "user/myInquiry";
 	}
-	
+
 }

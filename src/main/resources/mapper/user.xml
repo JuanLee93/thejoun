@@ -45,7 +45,12 @@
 	
 	<update id="infoUpdate" parameterType="user.UserVo" >
 		UPDATE user SET 
-			nickname = #{nickname} , tel = #{tel} , regdate = NOW() , zipcode = #{zipcode}, addr1 = #{addr1}, addr2 = #{addr2} 
+			nickname = #{nickname} , tel = #{tel} , regdate = NOW() , 
+			zipcode = #{zipcode}, addr1 = #{addr1}, addr2 = #{addr2} 
+			
+			, filename_org=#{filename_org}
+			, filename_real=#{filename_real}
+			
 			WHERE id = #{id}
 	</update>
 	
