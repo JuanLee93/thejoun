@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head>   
 <meta charset="UTF-8">
 <title>고민게시판</title>
 <link rel="stylesheet" href="/thejoun/css/reset.css"/>
@@ -14,10 +14,10 @@
 <script src="/thejoun/js/common.js"></script>
 <script src="https://malsup.github.io/jquery.form.js"></script>
 <script type="text/javascript" src="/thejoun/smarteditor/js/HuskyEZCreator.js"></script>
-<script>
+<script>  
 	var oEditors;
 	$(function(){
-		oEditors = setEditor("content");
+		oEditors = setEditor("contents");
 	});
 	
 
@@ -28,7 +28,7 @@
 			return;
 			
 		}
-		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []);
+		oEditors.getById['contents'].exec("UPDATE_CONTENTS_FIELD", []);
 		var data = $("#frm").serialize();
 		$("#frm").submit();
 	}
@@ -67,7 +67,7 @@
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content" id="content" style="width:100%;">${data.content }</textarea>
+                                <textarea name="contents" id="contents" style="width:100%;">${data.contents }</textarea>
                             </td>
                         </tr>
                         <tr>

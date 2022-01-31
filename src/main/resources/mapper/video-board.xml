@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="videoboard">
-
+  
 	<sql id="boardWhere">
 		<where>
 			<if test="searchType == ''">
@@ -18,6 +18,31 @@
 			</if>
 		</where>
 	</sql>
+	
+	<select id="getRownum" resultType="int" parameterType="videoboard.VideoBoardVo">  
+		select rownum from (
+			select row_number() over () as rownum, video_board_no, title from video_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.video_board_no=#{video_board_no};  
+	</select> 
+	<select id="getNext" resultType="videoboard.VideoBoardVo" parameterType="videoboard.VideoBoardVo"> 
+		select video_board_no, title from (
+			select row_number() over () as rownum, video_board_no, title from video_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}+1;
+	</select>  
+	<select id="getPrev" resultType="videoboard.VideoBoardVo" parameterType="videoboard.VideoBoardVo"> 
+		select video_board_no, title from (
+			select row_number() over () as rownum, video_board_no, title from video_board
+			<include refid = "boardWhere"/>
+			order by ${orderby} ${direction}
+		) as r
+		where r.rownum=#{rownum}-1;
+	</select>
 	
 	<select id="count" resultType="int" parameterType="videoboard.VideoBoardVo">
 		SELECT COUNT(*) FROM video_board

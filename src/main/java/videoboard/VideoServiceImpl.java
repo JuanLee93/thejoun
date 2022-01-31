@@ -1,5 +1,5 @@
 package videoboard;
-
+  
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +57,20 @@ public class VideoServiceImpl implements VideoBoardService {
 	@Override
 	public int updateAnnounce(CommentVo cv) {
 		return videoBoardDao.updateAnnounce(cv);
+	}
+
+	@Override
+	public int getRownum(VideoBoardVo vo) {
+		return videoBoardDao.getRownum(vo);
+	}
+
+	@Override
+	public VideoBoardVo getNext(VideoBoardVo vo) {
+		return videoBoardDao.getNext(vo);
+	}
+
+	@Override
+	public VideoBoardVo getPrev(VideoBoardVo vo) {
+		return videoBoardDao.getPrev(vo);
 	}
 }

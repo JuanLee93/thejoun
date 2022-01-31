@@ -1,5 +1,5 @@
 package videoboard;
-
+  
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import comment.CommentVo;
+import imageboard.ImageBoardVo;
 
 @Repository
 public class VideoBoardDao {
@@ -53,5 +54,16 @@ public class VideoBoardDao {
 	
 	public int updateAnnounce(CommentVo cv) {
 		return sqlSessionTemplate.update("videoboard.updateAnnounce", cv);
+	}
+	public int getRownum(VideoBoardVo vo) {
+		return sqlSessionTemplate.selectOne("videoboard.getRownum", vo);
+	}
+	
+	public VideoBoardVo getNext(VideoBoardVo vo) {
+		return sqlSessionTemplate.selectOne("videoboard.getNext", vo);
+	}
+	
+	public VideoBoardVo getPrev(VideoBoardVo vo) {
+		return sqlSessionTemplate.selectOne("videoboard.getPrev", vo);
 	}
 }

@@ -21,6 +21,7 @@ import comment.CommentService;
 import comment.CommentVo;
 import freeboard.FreeBoardVo;
 import friends.FriendsService;
+import imageboard.ImageBoardVo;
 import user.UserVo;
 import util.CommonUtil;
 
@@ -122,7 +123,7 @@ public class VideoBoardController {
 		
 		return "include/return";
 	}
-	
+	  
 	//여기까지 관리자 페이지에 추가
 	
 	@RequestMapping("/videoboard/write.do")
@@ -176,8 +177,18 @@ public class VideoBoardController {
 		}
 	
 	@GetMapping("/videoboard/view.do")
-	public String view(Model model, HttpSession sess, @RequestParam int board_no) {
+	public String view(Model model, HttpSession sess, @RequestParam int board_no, HttpServletRequest req, VideoBoardVo vo) {
 		model.addAttribute("data", videoBoardService.view(board_no));
+
+		vo.setVideo_board_no(board_no);
+		int Rownum = videoBoardService.getRownum(vo);
+		vo.setRownum(Rownum);
+		VideoBoardVo prev = videoBoardService.getPrev(vo);
+		VideoBoardVo next = videoBoardService.getNext(vo);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+		
+		
 		CommentVo cv = new CommentVo();
 		cv.setBoard_no(board_no);
 		cv.setTablename(4);

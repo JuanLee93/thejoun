@@ -1,5 +1,5 @@
 package videoboard;
-
+  
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -27,6 +27,7 @@ public class VideoBoardVo extends CommonVo{
 	private String orderby;
 	private String direction;	
 	private int state;
+	private int rownum;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

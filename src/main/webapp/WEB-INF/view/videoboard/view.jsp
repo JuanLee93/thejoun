@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
+<html>  
 <head>
 <meta charset="UTF-8">
 <title>동영상 갤러리</title>
@@ -262,6 +262,19 @@
 	                            </c:if>
                             </div>
                         </div>
+                        <div style="margin-top: 40px; height: 30px"></div>
+                        <table>
+                        	<td style="margin-left: 20px; text-align: left; font-weight: bold;">
+                        		<c:if test="${empty prev.video_board_no}">< 이전 글이 없습니다.</c:if>
+                        		<c:if test="${!empty prev.video_board_no}">
+                        		<a href="view.do?board_no=${prev.video_board_no }">< 이전글 - ${prev.title }</a>
+                        		</c:if></td>
+                        	<td style="margin-right: 20px; text-align: right; font-weight: bold;">
+                        		<c:if test="${!empty next.video_board_no}">
+                        		<a href="view.do?board_no=${next.video_board_no }">${next.title } - 다음글 ></a>
+                        		</c:if>       
+                        		<c:if test="${empty next.video_board_no}">다음 글이 없습니다. ></c:if></td>        	
+                        </table>
                     </div>
                     <div style="height: 30px">
 						<p>[댓글]</p>
