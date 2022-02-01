@@ -43,7 +43,7 @@
 										summary="관리자 관리목록입니다.">
 										<colgroup>
 											<col class="w3" />
-											<col class="w3" />
+											<col class="w6" />
 											<col class="" />
 											<col class="" />
 											<col class="w5" />
@@ -53,7 +53,6 @@
 										</colgroup>
 										<thead>
 											<tr>
-												<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
 												<th scope="col">회원번호</th>
 												<th scope="col">이름</th>
 												<th scope="col">아이디</th>
@@ -68,13 +67,12 @@
 
 											<c:if test="${empty list }">
 												<tr>
-													<td class="first" colspan="9">등록된 글이 없습니다.</td>
+													<td class="first" colspan="8">등록된 글이 없습니다.</td>
 												</tr>
 											</c:if>
 											<c:if test="${!empty list }">
 												<c:forEach var="vo" items="${list }" varStatus="status">
 													<tr class="board_tr" data-board_no="${vo.userno }"	style="cursor: pointer;">
-														<td scope="col" class="first"><input type="checkbox"	name="allChk" id="allChk"	onClick="check(this, document.frm.no)" /></td>
 														<td>${vo.userno }</td>
 														<td class="txt_l">${vo.name }</td>
 														<td >${vo.id }</td>
@@ -96,14 +94,6 @@
 										</tbody>
 									</table>
 								</form>
-								<div class="btn">
-									<div class="btnLeft">
-										<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
-									</div>
-									<div class="btnRight">
-										<a class="wbtn" href="write.do"><strong>등록</strong> </a>
-									</div>
-								</div>
 								<!--//btn-->
 								<!-- 페이징 처리 -->
 								<div class='page'>${pageArea }</div>
