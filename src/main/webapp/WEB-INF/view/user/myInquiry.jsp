@@ -67,7 +67,7 @@ function goInquiry(boardno){
 						<h3>나의 1:1 문의 확인</h3>
 						<div class="bbs">
 						<table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${questionVo.page }/${totCount }페이지</span></p>
                         <caption>자유게시판 목록</caption>
                         <colgroup>
                             <col width="80px" />

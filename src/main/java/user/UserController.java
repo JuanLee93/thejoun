@@ -304,22 +304,32 @@ public class UserController {
 	
 	// 자신이 쓴 1:1문의 글 목록을 출력
 	@GetMapping("/user/myInquiry.do")
-	public String myInquiry(Model model, QuestionVo qv, HttpSession sess) {
+	public String myInquiry(Model model, QuestionVo qv, HttpSession sess, @RequestParam(value="pageCount",required=false, defaultValue = "10") Integer pageCount) {
 		qv.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		
-		int totCount = questionService.count(qv); //총 개수
-		int totPage = totCount / 10; //총 페이지수
-		if (totCount % 10 > 0) totPage++;
-		System.out.println("totPage:"+totPage);
+		if (pageCount == null) {
+			pageCount = 10;
+		}
 		
-		int startIdx = (qv.getPage() -1) * 10;
+		int totCount = questionService.count(qv); //총 개수
+		int totPage = totCount / pageCount; //총 페이지 수
+		if (totCount % pageCount > 0) totPage++;
+		System.out.println("totPage : "+totPage);
+		
+		int startIdx = (qv.getPage()-1) * pageCount;
 		qv.setStartIdx(startIdx);
+		qv.setPageCount(pageCount);
+
+		int pageRange = 10;
+		int startPage = (qv.getPage()-1)/pageRange*pageRange+1; // 시작페이지
+		int endPage = startPage + pageRange - 1;// 종료페이지
+		if (endPage > totPage) endPage = totPage;
 		
 		List<QuestionVo> list = questionService.selectList(qv); 
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
-		model.addAttribute("pageArea", CommonUtil.getPageArea("index.do", qv.getPage(), totPage, 10));
+		model.addAttribute("pageArea", CommonUtil.getPageArea("myInquiry.do", qv.getPage(), totPage, 10));
 		return "user/myInquiry";
 	}
 
