@@ -54,6 +54,7 @@
 	
 	<select id="selectList" resultType="imageboard.ImageBoardVo" parameterType="imageboard.ImageBoardVo">
 		SELECT *, 
+			DATEDIFF(NOW(), regdate) as new_time,
 			(SELECT id FROM user WHERE userno=image_board.userno) as id, 
 			(SELECT name FROM user WHERE userno=image_board.userno) as name, 
 			(SELECT nickname FROM user WHERE userno=image_board.userno) as nickname, 

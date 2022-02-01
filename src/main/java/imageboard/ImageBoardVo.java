@@ -27,6 +27,7 @@ public class ImageBoardVo extends CommonVo {
 	private String direction;
 	private int state;
 	private int rownum;
+	private int new_time;//새로운 글(new) 표시
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

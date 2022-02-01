@@ -59,7 +59,11 @@
 					                <div class="section1"  data-image_board_no="${vo.image_board_no }">
 					                    <img src="${CommonUtil.getImgUrl(vo.content) }">
 					                    <div class="txt_l" style="text-align:left;">
-					                    [제목] ${vo.title } [${vo.c_count }]<br>
+					                    [제목] 
+					                    <c:if test="${(vo.new_time) <= 3}">
+	                                		<span><img src="/thejoun/images/admin/new_ico.gif" style="width:13px; height:13px;"></span>
+	                                	</c:if>
+					                    ${vo.title } [${vo.c_count }]<br>
 					                    [작성자] ${vo.nickname }<br>
 					                    [조회수] ${vo.readcount }<br>
 					                    [좋아요] ${vo.l_count }<br>
