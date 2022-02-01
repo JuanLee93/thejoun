@@ -68,7 +68,7 @@ public class AdminController {
 		return "include/return";
 	}
 	
-	@GetMapping("admin/admin/index.do")
+	@GetMapping("/admin/admin/index.do")
 	public String adminIndex(Model model, HttpServletRequest req, HttpSession sess, AdminVo vo) {
 		
 		int totCount = adminService.count(vo); //총 개수

@@ -38,7 +38,7 @@ public class ImageBoardController {
 	@Autowired
 	AnnounceService as;
 
-	@GetMapping("admin/imageboard/index.do")
+	@GetMapping("/admin/imageboard/index.do")
 	public String adminIndex(Model model, HttpServletRequest req, HttpSession sess, ImageBoardVo vo) {
 		
 		int totCount = imageBoardService.count(vo); //총 개수

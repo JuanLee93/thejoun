@@ -40,7 +40,7 @@ public class FreeBoardController {
 	@Autowired
 	AnnounceService as;
 	
-	@GetMapping("admin/freeboard/index.do")
+	@GetMapping("/admin/freeboard/index.do")
 	public String adminIndex(Model model, HttpServletRequest req, HttpSession sess, FreeBoardVo vo) {
 		
 		int totCount = freeBoardService.count(vo); //총 개수
