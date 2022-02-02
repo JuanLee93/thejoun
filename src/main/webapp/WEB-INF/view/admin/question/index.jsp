@@ -45,7 +45,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>Q&A - [목록]</h2>
+					<h2>고객지원 - 문의사항[목록]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">

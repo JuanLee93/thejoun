@@ -84,7 +84,7 @@ $(window).load(function(){
 					<div class="standard_left">
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/admin/notice/index.do"><span>공지사항</span></a></li>
-							<li><a href="<%=request.getContextPath()%>/admin/question/index.do"><span>Q&A</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/question/index.do"><span>문의사항</span></a></li>
 						</ul>
 						</div>
 					</li>

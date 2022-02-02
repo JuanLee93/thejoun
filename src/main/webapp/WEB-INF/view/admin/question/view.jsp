@@ -41,7 +41,7 @@ $(function() {
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [읽기]</h2>
+					<h2>고객지원 - 문의사항[상세 페이지]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">

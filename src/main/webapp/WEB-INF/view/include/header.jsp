@@ -156,7 +156,7 @@
 				</ul></li>
 			<li><a href="">갤러리</a>
 				<ul class="depth2">
-					<li><a href="/thejoun/imageboard/index.do">이미지 갤러리</a></li>
+					<li><a href="/thejoun/imageboard/index.do">자유 갤러리</a></li>
 					<li><a href="/thejoun/videoboard/index.do">동영상 갤러리</a></li>
 				</ul></li>
 			<li><a href="">고객지원</a>

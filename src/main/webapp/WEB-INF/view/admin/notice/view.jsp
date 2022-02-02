@@ -36,7 +36,7 @@ function del() {
 			<div id="container">
 				<div id="content">
 					<div class="con_tit">
-						<h2>게시물 관리- 자유 게시판[상세 페이지]</h2>
+						<h2>고객지원 - 공지사항[상세 페이지]</h2>
 					</div>
 					<!-- //con_tit -->
 					<div class="con">

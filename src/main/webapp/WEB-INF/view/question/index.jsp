@@ -55,7 +55,7 @@
 		<%@ include file="/WEB-INF/view/include/header.jsp" %>
 		<div class="sub">
             <div class="size">
-                <h3 class="sub_title">문의하기</h3>
+                <h3 class="sub_title">문의사항</h3>
 		       
 	        	<div class="hg" style="height: 25px"></div>
                 <div class="bbs">
