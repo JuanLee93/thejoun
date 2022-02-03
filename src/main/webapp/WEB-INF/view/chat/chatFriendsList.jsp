@@ -30,9 +30,17 @@
 <div class="side-one">
 	<div class="row heading" style="width:370px;">
 		<div class="col-sm-3 col-xs-3 heading-avatar">
-			<div class="heading-avatar-icon">
-				<img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-			</div>
+			<c:if test="${!empty userInfo.filename_org }">
+				<div class="heading-avatar-icon">
+					<img class="profilePhotoImg" src="<c:url value='/common/download.jsp?path=/upload/&org=${userInfo.filename_org}
+											&real=${userInfo.filename_real}"target="_blank"'/>">
+				</div>
+			</c:if>
+			<c:if test="${empty userInfo.filename_org }">
+				<div class="heading-avatar-icon">
+					<img class="profilePhotoImg" src="<c:url value='/img/none-user-img.png'/>">
+				</div>
+			</c:if>
 		</div>
 		<div class="col-sm-8 col-xs-7 heading-name" style="width:170px;">${userInfo.nickname }</div>
 		<div class="col-sm-2 col-xs-2 heading-compose  pull-right homeIcon">
@@ -66,9 +74,17 @@
 						<input type="hidden" name="to_id" value="${vo.userno }">
 						<div class="row sideBar-body">
 							<div class="col-sm-3 col-xs-3 sideBar-avatar">
-								<div class="avatar-icon">
-									<img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-								</div>
+								<c:if test="${empty vo.filename_org}">
+									<div class="avatar-icon">
+										<img class="profilePhotoImg" src="<c:url value='/img/none-user-img.png'/>">
+									</div>
+								</c:if>
+								<c:if test="${!empty vo.filename_org}">
+									<div class="avatar-icon">
+										<img class="profilePhotoImg" src="<c:url value='/common/download.jsp?path=/upload/&org=${vo.filename_org}
+										&real=${vo.filename_real}"target="_blank"'/>">
+									</div>
+								</c:if>
 							</div>
 							<div class="col-sm-9 col-xs-9 sideBar-main">
 								<div class="row">
