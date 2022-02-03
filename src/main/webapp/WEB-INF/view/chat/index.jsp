@@ -87,10 +87,10 @@
 		if(stop == "stop"){
 			clearInterval(chat);
 			stop = "go";
-			$(".tttt").val("그만보기");
+			$(".tttt").text("그만보기");
 		}else if(stop == "go"){
 			findChattingList(userno);
-			$(".tttt").val("이전내용 보기");
+			$(".tttt").text("이전내용 보기");
 			stop = "stop";
 		}
 	}

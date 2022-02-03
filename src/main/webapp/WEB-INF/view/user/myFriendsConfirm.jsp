@@ -88,9 +88,9 @@
 			                                </td>
 			                                <td class="date">${vo.regdate }</td>
 			                                <td class="writer">
-			                                	<form method="post" id="deleteFriendsFrm${vo.userno }" action="deleteFriend.do" >
+			                                	<form method="post" id="deleteFriendsFrm${vo.userno }" action="deleteFriend.do" enctype="multipart/form-data">
 			                                	<input type="hidden" name="friends_userno" value="${vo.userno }">
-		                                  	  		<button class="friendsButton" onclick="goDel(${vo.userno}, ${vo.nickname });">친구 삭제</button>
+		                                  	  		<input type="button" class="friendsButton" onclick="goDel(${vo.userno}, '${vo.nickname }');" value="친구삭제">
 			                                  	</form>
 			                                </td>
 			                            </tr>
