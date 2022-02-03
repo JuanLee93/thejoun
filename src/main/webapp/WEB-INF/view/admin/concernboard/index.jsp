@@ -175,6 +175,7 @@
 												<option value="title">제목</option>
 												<option value="content">내용</option>
 												<option value="nickname">닉네임</option>
+												<option value="name">관리자이름</option>
 											</select> <input type="text" id="sval1" name="searchWord" value=""
 												title="검색어 입력"> <input type="image"
 												src="<%=request.getContextPath()%>/images/admin/btn_search.gif"

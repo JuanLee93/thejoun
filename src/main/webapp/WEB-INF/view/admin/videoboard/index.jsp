@@ -57,11 +57,11 @@
 									<span><strong>총 ${totCount }개</strong> |
 										${concernBoardVo.page }/${totPage }페이지</span>
 								</p>
-			  					<form name="frm" id="frm" action="boardDeleteAjax.do" method="post">
+								<form name="frm" id="frm" action="boardDeleteAjax.do" method="post">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 										<colgroup>
 											<col class="w3" />
-											<col class="w4" />
+		  									<col class="w4" />
 											<col class="" />
 											<col class="w10" />
 											<col class="w5" />
@@ -69,7 +69,7 @@
 											<col class="w6" />
 										</colgroup>
 										<thead>
-											<tr>
+											<tr>  
 												<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk"/></th>
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
@@ -114,15 +114,12 @@
 									<div class="btnLeft">
 										<a class="btns" href="#" onclick="goDelete()"><strong>삭제</strong> </a>
 									</div>
-									<div class="btnRight">
-										<a class="wbtn" href="write.do"><strong>등록</strong> </a>
-									</div>
 								</div>
 								<!--//btn-->
 								<!-- 페이징 처리 -->
 								<div class='page'>
 									<div class='page'>${pageArea }</div>
-									<!-- //페이징 처리 -->
+									<!-- //페이징 처리 -->  
 									<div class="bbsSearch">
 										<form method="get" name="searchForm" id="searchForm" action="">
 											<div class="search">
