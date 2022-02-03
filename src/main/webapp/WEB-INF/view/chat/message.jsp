@@ -13,7 +13,13 @@
 	<div class="row heading">
 		<div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
 			<div class="heading-avatar-icon">
-				<img class="profilePhotoImg" src="<c:url value='/img/none-user-img.png'/>">
+				<c:if test="${!empty otherUserno.filename_org }">
+						<img class="profilePhotoImg" src="<c:url value='/common/download.jsp?path=/upload/&org=${otherUserno.filename_org}
+												&real=${otherUserno.filename_real}"target="_blank"'/>">
+				</c:if>
+				<c:if test="${empty otherUserno.filename_org }">
+						<img class="profilePhotoImg" src="<c:url value='/img/none-user-img.png'/>">
+				</c:if>
 			</div>
 		</div>
 		<div class="col-sm-8 col-xs-7 heading-name">

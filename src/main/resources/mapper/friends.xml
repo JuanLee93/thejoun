@@ -16,13 +16,13 @@
 	
 	
 	<select id="selectFriendsAddList" parameterType="friendsAdd.FriendsAddVo" resultType="user.UserVo">
-		SELECT user.userno, user.id, user.nickname, user.gender, user.email, fa.regdate
+		SELECT user.userno, user.id, user.nickname, user.gender, user.email, fa.regdate, user.filename_org, user.filename_real
 		FROM friendsadd AS fa JOIN user
 		ON fa.to_userno = #{to_userno} AND fa.from_userno = user.userno;
 	</select>
 	
 	<select id="selectAddFriendsList" parameterType="friendsAdd.FriendsAddVo" resultType="user.UserVo">
-		SELECT user.userno, user.id, user.nickname, user.gender, user.email, fa.regdate
+		SELECT user.userno, user.id, user.nickname, user.gender, user.email, fa.regdate, user.filename_org, user.filename_real
 		FROM friendsadd AS fa JOIN user
 		ON fa.to_userno = user.userno AND fa.from_userno = #{to_userno};
 	</select>
