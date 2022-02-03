@@ -211,8 +211,9 @@ public class UserController {
 		int r = userService.infoUpdate(vo);
 		
 		if(r > 0) {
-			req.setAttribute("msg", "정상적으로 수정되었습니다");
-			req.setAttribute("url", "/thejoun/user/mypage.do");
+			req.setAttribute("msg", "정상적으로 수정되었습니다. 다시 로그인 해주세요.");
+			req.setAttribute("url", "/thejoun/user/login.do");
+			sess.invalidate();
 		}else {
 			req.setAttribute("msg", "수정 오류");
 		}
@@ -243,7 +244,7 @@ public class UserController {
 		int startIdx = (fbv.getPage() -1) * 10;
 		fbv.setStartIdx(startIdx);
 		
-		List<FreeBoardVo> list = freeboardService.selectList(fbv); 
+		List<FreeBoardVo> list = freeboardService.selectList(fbv);
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
