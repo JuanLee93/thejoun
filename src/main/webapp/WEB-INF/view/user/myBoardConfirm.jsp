@@ -21,18 +21,18 @@
 <link rel="stylesheet" href="/thejoun/css/mypage_info.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <style>
-div.myboard > ul {
+div.selectMyBoard > ul {
 	position:relative;
 	padding: 10px 15px 15px;
 	float:right;
 	width:75%;
 	height: 550px
 }
-div.myboard > ul > table > tbody > tr > td {
+div.selectMyBoard > ul > table > tbody > tr > td {
 	text-align:center;
 }
 
-div.myboard > ul > h3 {
+div.selectMyBoard > ul > h3 {
     text-align: center;
     padding: 10px 0px 15px 0px;
     font-size: 20px;
@@ -43,8 +43,16 @@ div.myboard > ul > h3 {
 }
 </style>
 <script>
-function goMyBoard(boardno){
-	location.href="/thejoun/freeboard/view.do?board_no="+boardno;
+function goMyBoard(board_no, tablename){
+	if(tablename == 1){
+		location.href="/thejoun/freeboard/view.do?board_no="+board_no;
+	}else if(tablename == 2){
+		location.href="/thejoun/concernboard/view.do?board_no="+board_no;
+	}else if(tablename == 3){
+		location.href="/thejoun/imageboard/view.do?image_board_no="+board_no;	
+	}else if(tablename == 4){
+		location.href="/thejoun/videoboard/view.do?board_no="+board_no;
+	}
 }
 </script>
 </head>
@@ -66,12 +74,12 @@ function goMyBoard(boardno){
 						</ul>
 					</div>
 				</div>
-				<div class="myboard">
+				<div class="selectMyBoard">
 					<ul>
 						<h3>나의 글 확인</h3>
 						<div class="bbs">
 						<table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${userVo.page }/${totPage }페이지</span></p>
                         <caption>자유게시판 목록</caption>
                         <colgroup>
                             <col width="80px" />
@@ -99,11 +107,11 @@ function goMyBoard(boardno){
 						</c:if>
                         <c:if test="${!empty list }">
                         <c:forEach var="vo" items="${list }" varStatus="status">
-                            <tr class="board_tr" data-boardno="${vo.board_no }" style="cursor: pointer;" onclick="goMyBoard(${vo.board_no})">
+                            <tr class="board_tr" data-boardno="${vo.board_no }" style="cursor: pointer;" onclick="goMyBoard(${vo.board_no},${vo.tablename })">
                             	<c:if test="${vo.noticeYN == 'Y' }">
                             	<td>[공지]</td>
                             	</c:if>
-                            	<c:if test="${vo.noticeYN == 'N' }">
+                            	<c:if test="${vo.noticeYN != 'Y' }">
                                 <td>${(totCount-status.index) - ((freeBoardVo.page-1)*10) }</td>
                                 </c:if>
                                 <td class="txt_l" style="text-align:left;">

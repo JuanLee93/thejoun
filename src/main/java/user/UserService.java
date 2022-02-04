@@ -22,4 +22,6 @@ public interface UserService {
 	int infoUpdate(UserVo vo);
 	int pwdChange(UserVo vo);
 	List<FreeBoardVo> selectList(FreeBoardVo fbv);
+	int countMyBoard(FreeBoardVo vo);
+	List<UserVo> selectMyBoard(FreeBoardVo vo);
 }

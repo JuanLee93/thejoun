@@ -64,5 +64,13 @@ public class UserDao {
 	public int pwdChange(UserVo vo) {
 		return sst.update("user.pwdChange", vo);
 	}
+	
+	public int countMyBoard(FreeBoardVo vo) {
+		return sst.selectOne("user.countMyBoard", vo);
+	}
+	
+	public List<UserVo> selectMyBoard(FreeBoardVo vo){
+		return sst.selectList("user.selectMyBoard", vo);
+	}
 
 }

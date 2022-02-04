@@ -25,6 +25,11 @@ public class UserVo extends CommonVo {
 	private String newPwd;
 	private String filename_org;
 	private String filename_real;
+	private int board_no;
+	private int tablename;
+	private String noticeYN;
+	private int new_time;
+	private int l_count;
 	
 	//이거 2개는 db에 안들어가있음 불러오기 편할라고 집어넣었어요
 	private int messagecount;  // 확인안한 메세지 카운트할라고 만듬

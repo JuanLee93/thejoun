@@ -233,22 +233,22 @@ public class UserController {
 	
 	//자유게시판에 쓴 자신의 글 목록을 출력
 	@GetMapping("/user/myBoardConfirm.do")
-	public String myBoardConfirm(Model model, FreeBoardVo fbv, HttpSession sess) {
+	public String myBoardConfirm(Model model, FreeBoardVo fbv, HttpSession sess, UserVo vo) {
 		fbv.setUserno(((UserVo)sess.getAttribute("userInfo")).getUserno());
 		
-		int totCount = freeboardService.count(fbv); //총 개수
+		int totCount = userService.countMyBoard(fbv); //총 개수
 		int totPage = totCount / 10; //총 페이지수
 		if (totCount % 10 > 0) totPage++;
 		System.out.println("totPage:"+totPage);
 		
-		int startIdx = (fbv.getPage() -1) * 10;
-		fbv.setStartIdx(startIdx);
+		int startIdx = (vo.getPage() -1) * 10;
+		vo.setStartIdx(startIdx);
 		
-		List<FreeBoardVo> list = freeboardService.selectList(fbv);
+		List<UserVo> list = userService.selectMyBoard(fbv);
 		model.addAttribute("list", list);
 		model.addAttribute("totPage", totPage);
 		model.addAttribute("totCount", totCount);
-		model.addAttribute("pageArea", CommonUtil.getPageArea("myBoardConfirm.do", fbv.getPage(), totPage, 10));
+		model.addAttribute("pageArea", CommonUtil.getPageArea("myBoardConfirm.do", vo.getPage(), totPage, 10));
 		return "user/myBoardConfirm";
 	}
 	

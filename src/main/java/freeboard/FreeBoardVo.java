@@ -34,6 +34,7 @@ public class FreeBoardVo extends CommonVo {
 	private int rownum;//이전글/다음글에서 사용
 	private int new_time;//새로운 글(new) 표시
 	private char is_user;//이 값이 'Y'이고, useYN = 'Y'이면 사용자화면에서 공개
+	private int tablename;
 	
 	public String getRegdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -60,5 +60,43 @@
 			WHERE pwd = md5(#{pwd})
 	</update>
 	
+	<select id="countMyBoard" resultType="int" parameterType="freeboard.FreeBoardVo">
+		SELECT COUNT(*) FROM (
+			select board_no, title,  (select nickname from thejoun.user where userno=free_board.userno) nickname, regdate, readcount, (select count(*) from thejoun.like where tablename=1 and board_no=free_board.board_no) l_count
+			from free_board
+			where userno = #{userno} 
+			union
+			select concern_board_no, (select nickname from thejoun.user where userno=concern_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=2 and board_no=concern_board.concern_board_no) l_count
+			from concern_board
+			where userno = #{userno}
+			union
+			select image_board_no, (select nickname from thejoun.user where userno=image_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=3 and board_no=image_board.image_board_no) l_count
+			from image_board
+			where userno = #{userno}
+			union
+			select video_board_no, (select nickname from thejoun.user where userno=video_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=4 and board_no=video_board.video_board_no) l_count  
+			from video_board
+			where userno = #{userno}
+		) as a
+	</select>
 	
-</mapper>
+	<select id="selectMyBoard" parameterType="freeboard.FreeBoardVo" resultType="freeboard.FreeBoardVo">
+		select board_no as board_no , title,  (select nickname from thejoun.user where userno=free_board.userno) nickname, regdate, readcount, (select count(*) from thejoun.like where tablename=1 and board_no=free_board.board_no) l_count, 1 as tablename
+			from free_board
+			where userno = #{userno} 
+			union
+			select concern_board_no as board_no, (select nickname from thejoun.user where userno=concern_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=2 and board_no=concern_board.concern_board_no) l_count, 2 as tablename
+			from concern_board
+			where userno = #{userno} 
+			union
+			select image_board_no as board_no, (select nickname from thejoun.user where userno=image_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=3 and board_no=image_board.image_board_no) l_count, 3 as tablename
+			from image_board
+			where userno = #{userno} 
+			union
+			select video_board_no as board_no, (select nickname from thejoun.user where userno=video_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=4 and board_no=video_board.video_board_no) l_count  , 4 as tablename
+			from video_board
+			where userno = #{userno}  
+			order by regdate desc  
+			limit ${startIdx}, 10 ;
+	</select>
+</mapper>  

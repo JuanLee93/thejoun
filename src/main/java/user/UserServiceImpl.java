@@ -96,5 +96,15 @@ public class UserServiceImpl implements UserService {
 	public int pwdChange(UserVo vo) {
 		return dao.pwdChange(vo);
 	}
+	
+	@Override
+	public int countMyBoard(FreeBoardVo vo) {		
+		return dao.countMyBoard(vo);
+	}
+
+	@Override
+	public List<UserVo> selectMyBoard(FreeBoardVo vo) {
+		return dao.selectMyBoard(vo);
+	}
 
 }
