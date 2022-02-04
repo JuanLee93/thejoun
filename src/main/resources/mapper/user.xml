@@ -77,7 +77,7 @@
 	
 	<select id="countMyBoard" resultType="int" parameterType="freeboard.FreeBoardVo">
 		SELECT COUNT(*) FROM (
-			select board_no, title,  (select nickname from thejoun.user where userno=free_board.userno) nickname, regdate, readcount, (select count(*) from thejoun.like where tablename=1 and board_no=free_board.board_no) l_count
+			select board_no, (select nickname from thejoun.user where userno=free_board.userno) nickname, title, regdate, readcount, (select count(*) from thejoun.like where tablename=1 and board_no=free_board.board_no) l_count
 			from free_board
 			where userno = #{userno} 
 			union
@@ -96,7 +96,7 @@
 	</select>
 	
 	<select id="selectMyBoard" parameterType="freeboard.FreeBoardVo" resultType="freeboard.FreeBoardVo">
-		select board_no as board_no , title,  (select nickname from thejoun.user where userno=free_board.userno) nickname, regdate, readcount, (select count(*) from thejoun.like where tablename=1 and board_no=free_board.board_no) l_count, 1 as tablename
+		select board_no as board_no , (select nickname from thejoun.user where userno=free_board.userno) nickname,  title,  regdate, readcount, (select count(*) from thejoun.like where tablename=1 and board_no=free_board.board_no) l_count, 1 as tablename
 			from free_board
 			where userno = #{userno} 
 			union
