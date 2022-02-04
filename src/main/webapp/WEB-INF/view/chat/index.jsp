@@ -88,10 +88,12 @@
 			clearInterval(chat);
 			stop = "go";
 			$(".tttt").text("그만보기");
+			console.log("123");
 		}else if(stop == "go"){
 			findChattingList(userno);
 			$(".tttt").text("이전내용 보기");
 			stop = "stop";
+			console.log("456");
 		}
 	}
 	

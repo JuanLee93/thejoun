@@ -137,7 +137,7 @@
 						<li><a href="/thejoun/user/logout.do" class="button-1">로그아웃</a> </li> 
 						<li><a href="/thejoun/user/mypage.do" class="button-1">마이페이지</a> </li>
 						<li><div id="chatMain"></div></li>
-						<li><div id="notice"></div></li>
+						<li><div id="notice" style="cursor : pointer;"></div></li>
 					</c:if>
 				</ul>
 			</div>

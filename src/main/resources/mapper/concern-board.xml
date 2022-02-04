@@ -11,7 +11,7 @@
 				${searchType} LIKE '%${searchWord}%'
 			</if>
 			<if test="searchType == 'nickname'">
-			userno in (select userno from user where nickname LIKE '%${searchWord}%')
+				userno in (select userno from user where nickname LIKE '%${searchWord}%')
 			</if>
 			<if test="searchType == 'name'">
 				admin_no in (select admin_no from admin where name LIKE '%${searchWord}%')
