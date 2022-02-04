@@ -173,7 +173,7 @@
 												title="검색분류 선택">
 												<option value="">전체</option>
 												<option value="title">제목</option>
-												<option value="content">내용</option>
+												<option value="contents">내용</option>
 												<option value="nickname">닉네임</option>
 												<option value="name">관리자이름</option>
 											</select> <input type="text" id="sval1" name="searchWord" value=""
