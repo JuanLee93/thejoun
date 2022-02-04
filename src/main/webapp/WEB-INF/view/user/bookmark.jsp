@@ -29,7 +29,7 @@ div.infoArea > ul {
 	padding: 10px 15px 15px;
 	float:right;
 	width:75%;
-	height: 520px;
+	height: 570px;
 }
 div.infoArea > ul > table > tbody > tr > td{
 	text-align : center;
@@ -83,7 +83,7 @@ function goBookMark(boardno, tablename){
 						<h3><img src="/thejoun/images/bookmark.png">&nbsp;&nbsp;&nbsp;북마크 보기</h3>
 						<div class="bbs">
 						<table class="list">
-                    <p><span><strong>총 ${totCount }개</strong>  |  ${freeBoardVo.page }/${totPage }페이지</span></p>
+                    <p><span><strong>총 ${totCount }개</strong>  |  ${userVo.page }/${totPage }페이지</span></p>
                         <caption>자유게시판 목록</caption>
                         <colgroup>
                             <col width="80px" />
@@ -124,9 +124,9 @@ function goBookMark(boardno, tablename){
                         </c:if>
                         </tbody>
                     </table>
+					${pageArea }
                     </div>
 					</ul>
-					${pageArea }
 					<!-- 페이지처리 -->
 					<br>
 				</div>

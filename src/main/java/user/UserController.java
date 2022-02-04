@@ -241,8 +241,13 @@ public class UserController {
 		if (totCount % 10 > 0) totPage++;
 		System.out.println("totPage:"+totPage);
 		
-		int startIdx = (vo.getPage() -1) * 10;
-		vo.setStartIdx(startIdx);
+		int startIdx = (fbv.getPage() -1) * 10;
+		fbv.setStartIdx(startIdx);
+		
+		int pageRange = 10;
+		int startPage = (fbv.getPage()-1)/pageRange*pageRange+1; // 시작페이지
+		int endPage = startPage + pageRange - 1;// 종료페이지
+		if (endPage > totPage) endPage = totPage;
 		
 		List<UserVo> list = userService.selectMyBoard(fbv);
 		model.addAttribute("list", list);

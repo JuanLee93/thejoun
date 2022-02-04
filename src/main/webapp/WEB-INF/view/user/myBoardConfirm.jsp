@@ -26,7 +26,7 @@ div.selectMyBoard > ul {
 	padding: 10px 15px 15px;
 	float:right;
 	width:75%;
-	height: 550px
+	height: 570px
 }
 div.selectMyBoard > ul > table > tbody > tr > td {
 	text-align:center;
@@ -40,6 +40,11 @@ div.selectMyBoard > ul > h3 {
 
 .board_tr{
 	padding : 5px auto;
+}
+
+div.selectMyBoard > ul > div > ul {
+ 	list-style: none;
+    vertical-align: middle;
 }
 </style>
 <script>
@@ -136,25 +141,9 @@ function goMyBoard(board_no, tablename){
                         </c:if>
                         </tbody>
                     </table>
+                         ${pageArea }
                     </div>
 					</ul>
-					<!-- 페이지처리 -->
-                    <div class="bbsSearch">
-                        <form method="get" name="searchForm" id="searchForm" action="">
-                            <span class="srchSelect">
-                                <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
-                                    <option value="">전체</option>
-                                    <option value="title">제목</option>
-                                    <option value="contents">내용</option>
-                                    <option value="nickname">닉네임</option>
-                                </select>
-                            </span>
-                            <span class="searchWord">
-                                <input type="text" id="sval" name="searchWord" value="" title="검색어 입력">
-                                <input type="button" id="" value="검색" title="검색">
-                            </span>
-                        </form>
-                    </div>
 				</div>
 			</div>
 		</div>
