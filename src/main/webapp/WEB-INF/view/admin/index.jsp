@@ -11,9 +11,9 @@ function loginCheck(){
 		$("#id").val().focus();
 		return false;
 	}
-	if ( $("#password").val().length < 1 ) {
+	if ( $("#pwd").val().length < 1 ) {
 		alert("비밀번호를 입력해주세요.");
-		$("#password").val().focus();
+		$("#pwd").val().focus();
 		return false;
 	}
 	var f = document.board;
@@ -34,15 +34,17 @@ function userid_chk() {
 		f.id.focus();
 		f.id.value="";
 	} else {
-		f.password.focus();
+		f.pwd.focus();
 		f.id.value=useridname;
 		f.reg.checked=true;
 	}
 }
 
 function CookieVal(cookieName) {
-	thisCookie = document.cookie.split("; ");
+	var thisCookie = document.cookie.split("; ");
+
 	for (var i = 0; i < thisCookie.length;i++) {
+		
 		if (cookieName == thisCookie[i].split("=")[0]) {
 			return thisCookie[i].split("=")[1];
 		}
@@ -83,7 +85,7 @@ function CookieVal(cookieName) {
 					</dl>
 				</div>
 				<!-- //infoBox -->
-				<input type="image" src="<%=request.getContextPath()%>/images/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" />
+				<input type="image" src="<%=request.getContextPath()%>/images/admin/member_login_btn.gif" alt="로그인"  class="loginBtn" title="" />
 			</div>
 			<!-- //bgBox -->
 			<div class="joinList">
