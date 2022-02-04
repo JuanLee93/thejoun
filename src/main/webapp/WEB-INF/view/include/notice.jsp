@@ -96,7 +96,7 @@
 		<span class="nav-counter">${announceCount }</span>
 	</a>
 	<ul class="noticeMain">
-		<li onclick="deleteAnnounce();">모두 지우기</li>
+		<li onclick="deleteAnnounce();" style="text-align : right;">모두 지우기</li>
 		<c:forEach var="vo" items="${userVoList}" varStatus="status">
 			<c:if test="${vo.board_or_comment == 0 }">
 				<li onclick="goBoard(${vo.boardno},${vo.tablename });">친구 ${vo.nickname} 님이 게시글을 올렸어요 <br> 게시글내용 : ${vo.content} <br> 알림일 : ${vo.regdate }</li>
