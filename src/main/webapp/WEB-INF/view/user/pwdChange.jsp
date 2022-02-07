@@ -39,16 +39,10 @@ function pwdCheck(){
 			return false;
 		}
 
-	if ($("#newPwd").val().length < 8) {
-		alert("비밀번호는 8자 이상으로 설정해야 합니다.");
-		$("#newPwd").val("").focus();
-		return false;
-	}
-	
 	var reg = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/";
-	if( !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test($("#pwd").val()) ) {
+	if( !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test($("#newPwd").val()) ) {
 	    alert("비밀번호는 문자+숫자 조합으로 8자이상 입력해 주세요");
-	    $("#pwd").focus();
+	    $("#newPwd").focus();
 	    return false;
 	}
 
