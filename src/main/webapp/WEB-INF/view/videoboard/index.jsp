@@ -51,8 +51,7 @@
        		  	<c:forEach var="vo" items="${list }" varStatus="status">
 			                <div class="section"  data-board_no="${vo.video_board_no }" >              
 			               	<tr>
-								<li>
-								<td valign="top" class="" ><td>
+								<td valign="top" class="" >
 									<div class="gallery_list  "  >
 				                    <img src="${CommonUtil.getYoutubeImage(vo.url)}" ><br>
 				                    <font class="thumb_list_title">&nbsp;&nbsp;${vo.title }</font><br>
@@ -61,7 +60,6 @@
 				                    <span class="gallery_data ">작성자:${vo.nickname }</span>
 				                </div>
 				                </td>
-				                </li>
 			                </tr>
 			                </div>
        			 </c:forEach>
