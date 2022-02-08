@@ -64,7 +64,7 @@
 		if (${!empty userInfo }){
 			chatMain();
 			notice();
-			setInterval(chatMain,100000);
+			setInterval(chatMain,5000);
 		}
 	});
 	
