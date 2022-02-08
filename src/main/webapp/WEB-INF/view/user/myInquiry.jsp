@@ -75,7 +75,6 @@ function goInquiry(boardno){
                             <col width="100px" />
                             <col width="100px" />
                             <col width="100px" />
-                            <col width="100px" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -84,13 +83,12 @@ function goInquiry(boardno){
                                 <th>글쓴이</th>
                                 <th>등록일</th>
                                 <th>조회수</th>
-                                <th>좋아요</th>
                             </tr>
                         </thead>
                         <tbody>
 						<c:if test="${empty list }">
                             <tr>
-                                <td class="first" colspan="6" style="text-align:center">등록된 글이 없습니다.</td>
+                                <td class="first" colspan="5" style="text-align:center">등록된 글이 없습니다.</td>
                             </tr>
 						</c:if>
                         <c:if test="${!empty list }">
@@ -99,13 +97,10 @@ function goInquiry(boardno){
                             	<c:if test="${vo.noticeYN == 'Y' }">
                             	<td>[공지]</td>
                             	</c:if>
-                            	<c:if test="${vo.noticeYN == 'N' }">
+                            	<c:if test="${vo.noticeYN != 'Y' }">
                                 <td>${(totCount-status.index) - ((questionVo.page-1)*10) }</td>
                                 </c:if>
                                 <td class="txt_l" style="text-align:left;">
-	                                <c:if test="${(vo.new_time) <= 3}">
-	                                	<span><img src="/thejoun/images/admin/new_ico.gif"></span>
-	                                </c:if>
                                     ${vo.title } [${vo.c_count }]
                                 </td>
                                 <td class="writer">
@@ -118,7 +113,6 @@ function goInquiry(boardno){
                                 </td>
                                 <td class="date">${vo.regdate }</td>
                                 <td>${vo.readcount }</td>
-                                <td>${vo.l_count }</td>
                             </tr>
                         </c:forEach>
                         </c:if>
